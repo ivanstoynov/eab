@@ -7,7 +7,6 @@
 
 		$app=new Eab();
 		$app->run();
-
 		
 		
 		/*
