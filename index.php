@@ -8,6 +8,8 @@
 		$app=new Eab();
 		$app->run();
 
+		
+		
 		/*
 		$db=EabDb::GetInstance();
 		$db->applySettings(
