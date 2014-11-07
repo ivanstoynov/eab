@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+div .listCompPanel{
+	padding:5px;
+	margin:0px;
+	float: left;
+}
+
+div .listCompVertical {}
+div .listCompHorizontal {}
+
+div .listCompPanel label {
+	padding:0px;
+	margin:0px;
+	text-indent:0px;
+	display:block;
+	text-align:right;
+}
+
+div .listCompHorizontal label{
+	float:left;
+}
+
+div .listCompVertical label{
+	clear: left;
+}
+
+div .listCompVertical label input {
+	width:auto;
+	margin:0;
+	padding:0;
+}
