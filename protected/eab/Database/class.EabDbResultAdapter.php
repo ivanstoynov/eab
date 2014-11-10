@@ -38,8 +38,8 @@
 		 */
 		public function __construct($res, $fetchMode=MYSQL_ASSOC)
 		{
-			$this->result=$res;
-			$this->_defaultFetchMode=$fetchMode;
+			$this->result = $res;
+			$this->_defaultFetchMode = $fetchMode;
 		}
 		/**
 		 * Return number of rows in result
@@ -56,10 +56,10 @@
 		 * @param integer
 		 * @return array
 		 */
-		public function fetchAll($fetchMode=null)
+		public function fetchAll($fetchMode = null)
 		{
 			if(!$fetchMode){
-				$fetchMode=$this->_defaultFetchMode;
+				$fetchMode = $this->_defaultFetchMode;
 			}
 			if(!is_resource($this->result)){
 				throw new Exception('Property '.get_class($this).'->_result is not valid mysql resource!');
@@ -68,7 +68,7 @@
 			$data = array();
 			if(mysql_numrows($this->result)>0){
 				$this->seek(0);
-				while($row=mysql_fetch_array($this->result,$fetchMode)){
+				while($row = mysql_fetch_array($this->result, $fetchMode)){
 					$data[]=$row;
 				}
 			}
@@ -81,21 +81,21 @@
 		 * @param integer|null
 		 * @return array
 		 */
-		public function fetchRow($fetchMode=null,$row=null)
+		public function fetchRow($fetchMode = null, $row = null)
 		{
 			if(!$fetchMode){
-				$fetchMode=$this->_defaultFetchMode;
+				$fetchMode = $this->_defaultFetchMode;
 			}
 			if(!is_resource($this->result)){
 				throw new Exception('Property '.get_class($this).'->_result is not valid mysql resource!');
 			}
 
-			if(null==$row) {
-				return mysql_fetch_array($this->result,$fetchMode);
+			if(null == $row) {
+				return mysql_fetch_array($this->result, $fetchMode);
 			} else {
-				$num_rows = mysql_num_rows($this->result);
-				if($row>=$num_rows) {
-					throw new Exception('Can not find this row in result. Result have only '.$num_rows.' rows!');
+				$numRows = mysql_num_rows($this->result);
+				if($row >= $numRows) {
+					throw new Exception('Can not find this row in result. Result have only '.$numRows.' rows!');
 				}
 
 				$this->seek($row);
@@ -109,14 +109,14 @@
 		 * @param integer|null
 		 * @return mixed
 		 */
-		public function fetchOne($col=null,$row=null)
+		public function fetchOne($col = null, $row = null)
 		{
-			$fetchmode=is_numeric($col) ? MYSQL_NUM : MYSQL_ASSOC;
-			$row=$this->fetchRow($fetchmode,$row);
+			$fetchmode = is_numeric($col) ? MYSQL_NUM : MYSQL_ASSOC;
+			$row=$this->fetchRow($fetchmode, $row);
 
 			if(!$row) return null;
 
-			if(null==$col) return current($row);
+			if(null == $col) return current($row);
 			elseif(isset($row[$col])) return $row[$col];
 			else throw new Exception('Not find column with key "'.$col.'"');
 		}
@@ -126,12 +126,12 @@
 		 * @param integer
 		 * @return boolean
 		 */
-		public function seek($rownum=0)
+		public function seek($rowNum = 0)
 		{
 			if(0 == mysql_num_rows($this->result)) return false;
 
-			if(!mysql_data_seek($this->result,$rownum)) {
-				throw new Exception('Can not seek result pointer to row '.$rownum.': '.mysql_error()."\n");
+			if(!mysql_data_seek($this->result, $rowNum)) {
+				throw new Exception('Can not seek result pointer to row '.$rowNum.': '.mysql_error()."\n");
 			}
 			return true;
 		}
@@ -144,7 +144,7 @@
 		public function free()
 		{
 			mysql_free_result($this->result);
-			$this->result=null;
+			$this->result = null;
 		}
 
 		/**

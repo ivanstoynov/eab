@@ -16,7 +16,7 @@
 		{
 			$this->_assigns=array();
 		}
-		public final function assign($key,$val)
+		public final function assign($key, $val)
 		{
 			$this->assigns[$key]=$val;
 		}

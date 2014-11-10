@@ -53,7 +53,7 @@
 		 *
 		 * @param array
 		 */
-		public function __construct($settings=array())
+		public function __construct($settings = array())
 		{
 			$this->loadDefaultSettings();
 			$this->setProperties($settings);
@@ -64,9 +64,9 @@
 		 * @param array
 		 * @return void
 		 */
-		public function setSettings($settings=array())
+		public function setSettings($settings = array())
 		{
-			foreach($settings as $k=$v){
+			foreach($settings as $k => $v){
 				$prop = '_'.$this->$k;
 				if(property_exists($prop)){
 					$this->{$prop} = $v;
@@ -109,6 +109,47 @@
 			$this->_stylesDir = $root_dir.'public/styles/';
 			$this->_jsDir = $root_dir.'public/js/';
 			$this->_imagesDir = $root_dir.'public/images/';
+		}
+		/**
+		 * Add setting
+		 *
+		 * @param string
+		 * @param string
+		 * @return EabAppSettings
+		 */
+		public function addSetting($settingKey, $value)
+		{
+			$this->{$settingKey} = $value;
+			return $this;
+		}
+		/**
+		 * magic method __call use to create getter and setter methods
+		 *
+		 * @param string
+		 * @param array
+		 * @return EabAppSettings
+		 */
+		public function __call($func, $args)
+		{
+			$prefix = strtolower(substr($func, 0, 3));
+			$suffix = substr($func,3, strlen($func));
+
+			if(($prefix == 'get' || $prefix == 'set') && property_exists($this, $suffix) ){
+				$prefix = strtolower(substr($func, 0, 3));
+				if('get' == $prefix){
+					return $this->{$suffix};
+				}
+				else{
+					if(empty($args)){
+						// todo: exception here
+					}
+					$this->{$suffix} = reset($args);
+					return $this;
+				}
+			}
+			else {
+				// todo: exception here
+			}
 		}
 	}
 ?>

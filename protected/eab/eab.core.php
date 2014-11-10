@@ -95,26 +95,26 @@
 		{
 			$root_dir=dirname($_SERVER['SCRIPT_FILENAME']).'/';
 			return array(
-				'ds'=>'/',
-				'ps'=>'/',
-				'mode'=>'DEBUG',
-				'url_path_key'=>'page',
-				'url_path_sep'=>'/',
-				'moduls_dir'=>$root_dir.'protected/library/moduls/',
-				'sections_dir'=>$root_dir.'protected/sections/',
-				'controllers_dir'=>$root_dir.'protected/controllers/',
-				'views_dir'=>$root_dir.'protected/views/',
-				'layouts_dir'=>$root_dir.'protected/views/_layouts/',
-				'default_layout'=>'master.layout.php',
-				'ajax_dir'=>$root_dir.'protected/ajax/',
-				'fw_conf_file'=>$root_dir.'protected/configs/fw.conf.php',
-				'fw_configure_as'=>'array',
-				'head_conf_file'=>$root_dir.'protected/configs/head.conf.php',
-				'head_configure_as'=>'array',
-				'styles_dir'=>$root_dir.'public/styles/',
-				'js_dir'=>$root_dir.'public/js/',
-				'images_dir'=>$root_dir.'public/images/',
-				'default_site_title'=>'My easy application framework'
+				'ds' => '/',
+				'ps' => '/',
+				'mode' => 'DEBUG',
+				'url_path_key' => 'page',
+				'url_path_sep' => '/',
+				'moduls_dir' => $root_dir.'protected/library/moduls/',
+				'sections_dir' => $root_dir.'protected/sections/',
+				'controllers_dir' => $root_dir.'protected/controllers/',
+				'views_dir' => $root_dir.'protected/views/',
+				'layouts_dir' => $root_dir.'protected/views/_layouts/',
+				'default_layout' => 'master.layout.php',
+				'ajax_dir' => $root_dir.'protected/ajax/',
+				'fw_conf_file' => $root_dir.'protected/configs/fw.conf.php',
+				'fw_configure_as' => 'array',
+				'head_conf_file' => $root_dir.'protected/configs/head.conf.php',
+				'head_configure_as' => 'array',
+				'styles_dir' => $root_dir.'public/styles/',
+				'js_dir' => $root_dir.'public/js/',
+				'images_dir' => $root_dir.'public/images/',
+				'default_site_title' => 'My easy application framework'
 			);
 		}
 
@@ -279,6 +279,9 @@
 	 */
 	class Eab
 	{
+		private $_settings = ;
+		private $_dbAdapter;
+		
 		public function __constuct($configs = array())
 		{
 			EabConfigurator::Instance()->reset();
@@ -286,6 +289,18 @@
 				EabConfigurator::Instance()->setConfigs($configs);
 			}
 		}
+		
+		public function addSetting($key, $vbal)
+		{
+			
+		}
+		
+		private function loadAppSettings()
+		{
+			// todo:
+		}
+		
+		
 		
 		public function run()
 		{

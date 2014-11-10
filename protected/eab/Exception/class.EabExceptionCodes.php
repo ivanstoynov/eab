@@ -1,5 +1,13 @@
 <?php
-
+	/**
+	 * EabExceptionCodes class
+	 *
+	 * @category   Exception
+	 * @package    Eab
+	 * @author     Ivan Stoyanov <iv44@yahoo.com>
+	 * @copyright  2010-2014 Stoqnoff
+	 * @since      1.0.0
+	 */
 	class EabExceptionCodes
 	{
 		const DB_EXC = 101;

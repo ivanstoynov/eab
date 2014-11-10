@@ -100,7 +100,7 @@
 		 *
 		 * @param array
 		 */
-		public function __construct($settings=array())
+		public function __construct($settings = array())
 		{
 			$this->loadDefautSettings();
 			
@@ -148,10 +148,10 @@
 		 */
 		public function applySettings($settings=array())
 		{
-			foreach($settings as $k=>$v){
+			foreach($settings as $k => $v){
 				$prop='_'.$k;
-				if(property_exists($this,$prop)){
-					$this->{$prop}=$v;
+				if(property_exists($this, $prop)){
+					$this->{$prop} = $v;
 				}
 			}
 
@@ -166,7 +166,7 @@
 		 */
 		private function connect()
 		{
-			$conn=@mysql_connect($this->_host,$this->_username,$this->_password,$this->_newLink,$this->_clientFlags);
+			$conn=@mysql_connect($this->_host, $this->_username, $this->_password, $this->_newLink, $this->_clientFlags);
 			if(!is_resource($conn)){ 
 				throw new Exception('DB connection error:  '.mysql_error(), mysql_errno()); 
 			}
@@ -189,7 +189,7 @@
 			}
 			else {
 				$now = time();
-				if(($now-$this->_connetedTime)>($this->_reconnectionTimeout-2)){
+				if(($now-$this->_connetedTime) > ($this->_reconnectionTimeout - 2)){
 					$this->reconnect();
 				}
 			}
@@ -223,12 +223,12 @@
 		 *
 		 * @param string
 		 */
-		public function setConnectionCharset($charset='UTF8')
+		public function setConnectionCharset($charset = 'UTF8')
 		{
 			$this->prepareConnection();
 			if(function_exists('mysql_set_charset')) {
 			
-				if(!mysql_set_charset($charset,$this->_dbConn)) {
+				if(!mysql_set_charset($charset, $this->_dbConn)) {
 					throw new Exception('DB set charset error: '.mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
 				}
 			} else {
@@ -277,15 +277,15 @@
 			}
 			
 			if($this->_isDebugMode){
-				list($usec1,$sec1)=explode(' ',$start);
-				list($usec2,$sec2)=explode(' ',$end);
-				$diff = round($sec2-$sec1+$usec2-$usec1, 6);
-				$this->_queries[]=array($sql,$diff);
+				list($usec1, $sec1) = explode(' ', $start);
+				list($usec2, $sec2) = explode(' ', $end);
+				$diff = round($sec2 - $sec1 + $usec2 - $usec1, 6);
+				$this->_queries[] = array($sql, $diff);
 			}
 			
-			$aff_rows = mysql_affected_rows($this->_dbConn);
+			$affRows = mysql_affected_rows($this->_dbConn);
 
-			return $aff_rows;
+			return $affRows;
 		}
 
 		/**
@@ -308,13 +308,13 @@
 			}
 
 			if($this->_isDebugMode){
-				list($usec1,$sec1)=explode(' ',$start);
-				list($usec2,$sec2)=explode(' ',$end);
-				$diff=round($sec2-$sec1+$usec2-$usec1,6);
-				$this->_queries[]=array($sql,$diff);
+				list($usec1, $sec1) = explode(' ', $start);
+				list($usec2, $sec2) = explode(' ', $end);
+				$diff = round($sec2 - $sec1 + $usec2 - $usec1, 6);
+				$this->_queries[] = array($sql, $diff);
 			}
 
-			return new EabDbResultAdapter($res,$this->_fetchMode);
+			return new EabDbResultAdapter($res, $this->_fetchMode);
 		}
 
 		/**
@@ -325,10 +325,10 @@
 		 * @param integer
 		 * @return mixed
 		 */
-		public function fetchOne($sql,$col=null,$row=null)
+		public function fetchOne($sql, $col = null, $row = null)
 		{
 			$r=$this->query($sql);
-			$field=$r->fetchOne($col,$row);
+			$field=$r->fetchOne($col, $row);
 			$r->free();
 			return $field;
 		}
@@ -340,10 +340,10 @@
 		 * @param integer
 		 * @return array
 		 */
-		public function fetchRow($sql,$row=null)
+		public function fetchRow($sql, $row = null)
 		{
-			$r=$this->query($sql);
-			$row = $r->fetchRow($this->_fetchMode,$row);
+			$r = $this->query($sql);
+			$row = $r->fetchRow($this->_fetchMode, $row);
 			$r->free();
 			return $row;
 		}
@@ -356,8 +356,8 @@
 		 */
 		public function fetchAll($sql)
 		{
-			$r=$this->query($sql);
-			$data=$r->fetchAll($this->_fetchMode);
+			$r = $this->query($sql);
+			$data = $r->fetchAll($this->_fetchMode);
 			$r->free();
 			return $data;
 		}
@@ -369,17 +369,17 @@
 		 * @param boolean
 		 * @return mixed
 		 */
-		public function escape($value,$quotes=false)
+		public function escape($value, $quotes = false)
 		{
 			if(is_array($value)){
-				foreach ($value as $key=>$val) {
+				foreach ($value as $key => $val) {
 					$value[$key]=$this->escape($val, $quotes);
 				}
 				return $value;
 			}
 			else{
-				if(is_string($value)&&get_magic_quotes_gpc()) {
-					$value=stripslashes($value);
+				if(is_string($value) && get_magic_quotes_gpc()) {
+					$value = stripslashes($value);
 				}
 
 				if (is_bool($value)) {
@@ -387,11 +387,11 @@
 				}
 				elseif(is_string($value)) {
 					$this->prepareConnection();
-					$value = mysql_real_escape_string($value,$this->_dbConn);
-					if(false===$value){
+					$value = mysql_real_escape_string($value, $this->_dbConn);
+					if(false === $value){
 						throw new Exception('DB escape string error: '.mysql_error($this->_dbConn)); 
 					}
-					if(true==$quotes){ 
+					if(true == $quotes){ 
 						$value = "'".$value."'";
 					}
 					return $value;
@@ -423,7 +423,7 @@
 		 * @param string
 		 * @return void
 		 */
-		public function setTransactionIsolation($isolation='READ COMMITTED', $option='SESSION')
+		public function setTransactionIsolation($isolation = 'READ COMMITTED', $option = 'SESSION')
 		{
 			$this->exec('SET '.$this->escape($option).' TRANSACTION ISOLATION LEVEL '.$this->escape($isolation).';');
 		}
@@ -459,7 +459,7 @@
 		 *
 		 * @return integer
 		 */
-		function rollback()
+		function rollBack()
 		{
 			return $this->exec('ROLLBACK');
 		}
@@ -494,9 +494,9 @@
 		 */
 		public function executeStoredProc($name, $params=null)
 		{
-			$query='CALL '.$name;
-			$query.=$params ? '('.implode(',', $params).')' : '()';
-			$r=$this->query($query);
+			$query = 'CALL '.$name;
+			$query.= $params ? '('.implode(',', $params).')' : '()';
+			$r = $this->query($query);
 
 			$this->reconnect();
 			return $r;
@@ -528,7 +528,7 @@
 		 */
 		public function setUsername($username)
 		{
-			$this->_username=$username;
+			$this->_username = $username;
 			return $this;
 		}
 		/**
@@ -548,7 +548,7 @@
 		 */
 		public function setPassword($password)
 		{
-			$this->_password=$password;
+			$this->_password = $password;
 			return $this;
 		}
 		/**
@@ -588,7 +588,7 @@
 		 */
 		public function setDatabase($database)
 		{
-			$this->_host=$database;
+			$this->_host = $database;
 			return $this;
 		}
 		/**
@@ -608,7 +608,7 @@
 		 */
 		public function setCharset($charset)
 		{
-			$this->_charset=$charset;
+			$this->_charset = $charset;
 			return $this;
 		}
 		/**
@@ -626,9 +626,9 @@
 		 * @param string
 		 * @return EabDbAdapter
 		 */
-		public function setIsDebugMode($is_debug_mode)
+		public function setIsDebugMode($isDebugMode)
 		{
-			$this->_isDebugMode=$is_debug_mode;
+			$this->_isDebugMode = $isDebugMode;
 			return $this;
 		}
 		/**
@@ -646,9 +646,9 @@
 		 * @param string
 		 * @return EabDbAdapter
 		 */
-		public function setNewLink($new_link)
+		public function setNewLink($newLink)
 		{
-			$this->_newLink=$new_link;
+			$this->_newLink = $newLink;
 			return $this;
 		}
 		/**
@@ -666,9 +666,9 @@
 		 * @param string
 		 * @return EabDbAdapter
 		 */
-		public function setClientFlags($client_flags)
+		public function setClientFlags($clientFlags)
 		{
-			$this->_clientFlags=$client_flags;
+			$this->_clientFlags = $clientFlags;
 			return $this;
 		}
 		/**
