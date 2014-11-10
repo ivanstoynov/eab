@@ -8,7 +8,7 @@
 		$app=new Eab();
 		$app->run();
 		
-		// test
+		// test from office
 		
 		/*
 		$db=EabDb::GetInstance();
