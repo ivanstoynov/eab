@@ -279,7 +279,7 @@
 	 */
 	class Eab
 	{
-		public function __constuct($configs=array())
+		public function __constuct($configs = array())
 		{
 			EabConfigurator::Instance()->reset();
 			if(!empty($configs) ){
@@ -289,13 +289,13 @@
 		
 		public function run()
 		{
-			$controller_details=$this->getControllerDetails();
+			$controllerDetails = $this->getControllerDetails();
 
-			$controller_name=$controller_details['controller_name'];
-			$controller_file=$controller_details['controller_file'];
-			$action_name=$controller_details['action_name'];
+			$controllerName = $controllerDetails['controllerName'];
+			$controllerFile = $controllerDetails['controllerFile'];
+			$actionName = $controllerDetails['actionName'];
 		
-			$content = EabController::RunController($controller_name,$controller_file,$action_name);
+			$content = EabController::RunController($controllerName, $controllerFile, $actionName);
 		}
 		
 		private function getControllerDetails()

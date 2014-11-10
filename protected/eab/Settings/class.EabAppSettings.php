@@ -1,5 +1,13 @@
 <?php
-
+	/**
+	 * Class with application settings
+	 *
+	 * @category   Settings
+	 * @package    Eab
+	 * @author     Ivan Stoyanov <iv44@yahoo.com>
+	 * @copyright  2010-2014 Stoqnoff
+	 * @since      1.0.0
+	 */
 	class EabAppSettings
 	{
 		/** @var string Directory separator */
@@ -56,14 +64,23 @@
 		 * @param array
 		 * @return void
 		 */
-		public function setProperties($props_vals=array())
+		public function setSettings($settings=array())
 		{
-			foreach($props_vals as $k=$v){
+			foreach($settings as $k=$v){
 				$prop = '_'.$this->$k;
 				if(property_exists($prop)){
 					$this->{$prop} = $v;
 				}
 			}
+		}
+		/**
+		 * Reset settings (to default)
+		 *
+		 * @return void
+		 */
+		public function reset()
+		{
+			$this->loadDefaultSettings();
 		}
 		/**
 		 * Load default settings
@@ -94,5 +111,4 @@
 			$this->_imagesDir = $root_dir.'public/images/';
 		}
 	}
-
 ?>
