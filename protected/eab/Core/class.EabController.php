@@ -16,7 +16,6 @@
 		public function __constuct()
 		{
 			parent::__construct();
-			$this->loadDefaultLayout();
 		}
 		public function beforeAction()
 		{
@@ -43,7 +42,7 @@
 				}
 			}
 			
-			$views_dir = Eab::NormalizeDir(EabConfigurator::Instance()->get('views_dir'));
+			$views_dir = Eab::normalizeDir(EabConfigurator::Instance()->get('views_dir'));
 			$view_file = $views_dir.$view;
 			if(!is_file($view_file)){
 				throw new EabException('View file "'.$view_file.'" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
@@ -52,7 +51,7 @@
 			include_once($view_file);
 		}
 		
-		public final function renderPartial($partial, $data=array())
+		public final function renderPartial($partial, $data = array())
 		{
 			/*$backtrace=debug_backtrace();
 			$class=__CLASS__;
@@ -64,50 +63,6 @@
 			}*/
 			//$partial=
 			// TODO:
-		}
-		
-		public static function RunController($controller_name, $controller_file, $action_name)
-		{
-			if(!is_file($controller_file)){
-				throw new EabException('File "'.$controller_file.'" is not valid file!', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
-			}
-			
-			include_once($controller_file);
-			$controller_class=$controller_name.'Controller';
-			if(!class_exists($controller_class)){
-				throw new EabException('Class "'.$controller_class.'" can not be found!', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
-			}
-			
-			$controller_instance=new $controller_class();
-			$class=__CLASS__;
-			if(!($controller_instance instanceof $class)){
-				throw new EabException('Class "'.$controller_class.'" must be instance of EabController !', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
-			}
-			
-			if(!method_exists($controller_instance,$action_name)){
-				throw new EabException('Class "'.$controller_class.'" not have method "'.$controller_class.'::'.$action_name.'()"!', EabExceptionCodes::ACTION_NOT_FOUND_EXC);
-			}
-
-			$controller_instance->loadDefaultLayout($controller_name, $action_name);
-			ob_start();
-			$controller_instance->beforeAction();
-			$controller_instance->$action_name();
-			$controller_instance->afterAction();
-			$content=ob_get_contents();
-			ob_clean();
-			
-			$layout=$controller_instance->getLayout();
-			if(!empty($layout)){
-				if(!($layout instanceof EabLayout)){
-					throw new EabException('$layout must be instance of FwLayout!', EabExceptionCodes::INCORECT_TYPE_EXC);
-				}
-				$layout->setContent($content);
-				ob_start();
-				$layout->render();
-				$content=ob_get_contents();
-				ob_clean();
-			}
-			echo $content;
 		}
 		
 		public final function isAjax($script)

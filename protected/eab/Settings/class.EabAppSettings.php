@@ -22,14 +22,6 @@
 		private $_urlPathSep;
 		/** @var string Default layout */
 		private $_defaultLayout;
-		/** @var string Application configurations file */
-		private $_appConfFile; // old fw_conf_file
-		/** @var string How is configure application ('array','xml','json') */
-		private $_appConfigureAs; // old fw_configure_as
-		/** @var string pages config file */
-		private $_pagesConfFile; // old head_conf_file
-		/** @var string How is configure page */
-		private $_pagesConfigureAs; // old head_configure_as
 		/** @var string Modules directory path */
 		private $_modulesDir; // old moduls
 		/** @var string Sections directory path */
@@ -89,18 +81,14 @@
 		 */
 		public function loadDefaultSettings()
 		{
-			$root_dir=dirname($_SERVER['SCRIPT_FILENAME']).'/';
+			$root_dir = dirname($_SERVER['SCRIPT_FILENAME']).'/';
 			
-			$this->_ds = '/';
-			$this->_ps = '/';
+			$this->_ds = DIRECTORY_SEPARATOR;
+			$this->_ps = PATH_SEPARATOR;
 			$this->_isDebugMode = true;
 			$this->_urlPathKey = 'page';
 			$this->_urlPathSep = '/';
 			$this->_defaultLayout = 'master.layout.php';
-			$this->_appConfFile = $root_dir.'protected/configs/app.conf.php';
-			$this->_appConfigureAs = 'array';
-			$this->_pagesConfFile = $root_dir.'protected/configs/pages.conf.php';
-			$this->_pagesConfigureAs = 'array';
 			$this->_modulesDir = $root_dir.'protected/library/moduls/';
 			$this->_sectionsDir = $root_dir.'protected/sections/';
 			$this->_controllersDir = $root_dir.'protected/controllers/';
@@ -132,7 +120,7 @@
 		public function __call($func, $args)
 		{
 			$prefix = strtolower(substr($func, 0, 3));
-			$suffix = substr($func,3, strlen($func));
+			$suffix = lcfirst(substr($func,3, strlen($func)));
 
 			if(($prefix == 'get' || $prefix == 'set') && property_exists($this, $suffix) ){
 				$prefix = strtolower(substr($func, 0, 3));

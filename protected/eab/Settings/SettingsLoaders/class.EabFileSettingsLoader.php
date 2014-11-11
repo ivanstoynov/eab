@@ -8,7 +8,7 @@
 	 * @copyright  2010-2014 Stoqnoff
 	 * @since      1.0.0
 	 */	
-	abstract class EabArrayFileSettingsLoader
+	abstract class EabFileSettingsLoader
 	{
 		/**
 		 * @var string

@@ -15,23 +15,18 @@
 		private $_layout;
 
 		
-		public function __construct($layout=false)
+		public function __construct($layout)
 		{
 			parent::__construct();
-			if(false!==$layout){
-				$this->_layout=$layout;
-			}
-			else{
-				$this->_layout=EabConfigurator::Instance()->get('default_layout');
-			}
+			$this->_layout = $layout;
 		}
 		public function render()
 		{
-			$layout_file=Eab::NormalizeDir(EabConfigurator::Instance()->get('layouts_dir')).$this->_layout;
-			if(!is_file($layout_file)){
-				throw new EabException('Layout file "'.$layout_file.'" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
+			$layoutFile = Eab::normalizeDir(EabConfigurator::Instance()->get('layouts_dir')).$this->_layout;
+			if(!is_file($layoutFile)){
+				throw new EabException('Layout file "'.$layoutFile.'" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
-			include_once($layout_file);
+			include_once($layoutFile);
 		}
 		
 		public function displayHeadTitle()

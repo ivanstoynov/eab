@@ -22,16 +22,16 @@
 			$this->display();
 		}
 
-		protected final function renderHtml($file,$full_path=false)
+		protected final function renderHtml($file, $isFullPath = false)
 		{
-			if(!$full_path){
-				$backtrace=debug_backtrace();
-				$class=__CLASS__;
+			if(!$isFullPath){
+				$backtrace = debug_backtrace();
+				$class = __CLASS__;
 				if(!($backtrace[0]['object'] instanceof $class)){
 					throw new EabException('Unknown object in backtrace!', EabExceptionCodes::UNKNOWN_EXC);
 				}
-				$ds=EabConfigurator::Instance()->get('ds');
-				$file=dirname($backtrace[0]['file']).$ds.$file;
+				$ds = EabConfigurator::Instance()->get('ds');
+				$file = dirname($backtrace[0]['file']).$ds.$file;
 			}
 			
 			if(!is_file($file)){
@@ -42,8 +42,8 @@
 
 		public static function Create($section_name)
 		{
-			$ds=EabConfigurator::Instance()->get('ds');
-			$section_file=Eab::NormalizeDir(EabConfigurator::Instance()->get('sections_dir')).$section_name.$ds.'class.'.$section_name.'.php';
+			$ds = EabConfigurator::Instance()->get('ds');
+			$section_file=Eab::normalizeDir(EabConfigurator::Instance()->get('sections_dir')).$section_name.$ds.'class.'.$section_name.'.php';
 			if(!is_file($section_file)){
 				throw new EabException('File "'.$section_file.'" is not valid file!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
