@@ -5,16 +5,18 @@
 	
 	
 	
-	include_once('protected/eab/ClassLoading/class.EabClassLoader.php');
+	include_once('protected/eab/ClassLoading/class.EabAutoLoader.php');
 	
 	try {
 		
-		$loader = new EabClassLoader();
-		
-		$path = dirname(__FILE__).'protected/eab/';
+		$loader = new EabAutoLoader();
+		//$path = str_replace('\\', '/', dirname(__FILE__).'/protected/eab/');
+		$path = dirname(__FILE__).'/protected/eab/';
+		echo intval(is_dir($path));
 		$loader->registerAutoloadPath($path);
 		
-		
+		$o = new EabAppSettings();
+		$o1 = new EabAssigner();
 
 
 	function f($class)

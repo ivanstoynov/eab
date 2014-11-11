@@ -10,14 +10,25 @@
 	 */
 	class EabException extends Exception
 	{
-		public function __constuct($msg, $code, $isDebug)
+		/**
+		 * Constructor of class
+		 *
+		 * @param string $msg
+		 * @param integer $code
+		 */
+		public function __constuct($msg, $code/*, $isDebug*/)
 		{
-			if($isDebug){
+			//if($isDebug){
 				$msg = $this->appendBacktraceToMsg($msg);
-			}
+			//}
 			parent::__constuct($msg, $code);
 		}
-		
+		/**
+		 * Append backtrace to message
+		 *
+		 * @param string $msg
+		 * @return string
+		 */
 		private function appendBacktraceToMsg($msg)
 		{
 			// @TODO: da dobavq footera na exceptiona

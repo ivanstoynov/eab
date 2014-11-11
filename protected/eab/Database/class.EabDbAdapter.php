@@ -1,6 +1,6 @@
 <?php
 
-	require_once "class.EabDbResultAdapter.php";
+	require_once 'class.EabDbResultAdapter.php';
 
 	/**
 	 * Definition of classes to make database connection and 

@@ -10,20 +10,47 @@
 	 */
 	class EabAssigner
 	{
-		private $_assigns=array();
+		/**
+		 * Array with assigned vars
+		 *
+		 * @var array
+		 */
+		private $_assigns = array();
 		
+		/**
+		 * Constructor of class
+		 */
 		public function __construct()
 		{
-			$this->_assigns=array();
+			$this->_assigns = array();
 		}
-		public final function assign($key, $val)
+		/**
+		 * Assign method
+		 *
+		 * @param string
+		 * @param mixed
+		 */
+		final public function assign($key, $val)
 		{
-			$this->assigns[$key]=$val;
+			$this->assigns[$key] = $val;
 		}
-		public final function getAssignes($key)
+		/**
+		 * Get assigned value
+		 *
+		 * @param string $key
+		 * @return unknown
+		 */
+		public final function getAssigned($key)
 		{
 			return isset($this->assigns[$key]) ? $this->assigns[$key] : null;
 		}
+		/**
+		 * Magic method __get
+		 *
+		 * @param string
+		 * @return mixed
+		 * @throws EabException
+		 */
 		public function __get($prop)
 		{
 			if(isset($this->_assigns[$prop])){
@@ -33,6 +60,13 @@
 				throw new EabException("Property not found!", EabExceptionCodes::PROPERTY_NOT_FOUND_EXC);
 			}
 		}
+		/**
+		 * Magic method __set
+		 *
+		 * @param string
+		 * @param array
+		 * @return void
+		 */
 		public function __set($prop, $args)
 		{
 			$this->_assigns[$prop] = $args;
