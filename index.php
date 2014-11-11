@@ -3,7 +3,18 @@
 	include_once('protected/eab/eab.core.php');
 	include_once('protected/eab/eab.database.php');
 	
+	
+	
+	include_once('protected/eab/ClassLoading/class.EabClassLoader.php');
+	
 	try {
+		
+		$loader = new EabClassLoader();
+		
+		$path = dirname(__FILE__).'protected/eab/';
+		$loader->registerAutoloadPath($path);
+		
+		
 
 
 	function f($class)
