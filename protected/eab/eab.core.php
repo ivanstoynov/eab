@@ -279,7 +279,7 @@
 	 */
 	class Eab
 	{
-		private $_settings = ;
+		private $_settings;
 		private $_dbAdapter;
 		
 		public function __constuct($configs = array())

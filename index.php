@@ -5,6 +5,21 @@
 	
 	try {
 
+
+	function f($class)
+	{
+		echo 'Load f : '.$class.'<br />';
+	}
+	function f1($class)
+	{
+		echo 'Load f1 : '.$class.'<br />';
+	}
+	
+	spl_autoload_register('f');
+	spl_autoload_register('f1');
+	$s = new UnknownClass();
+
+	
 		$app=new Eab();
 		$app->run();
 		
