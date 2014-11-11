@@ -21,7 +21,7 @@
 		 *
 		 * @var array
 		 */
-		private $_finders;
+		private $_loadersPaths;
 		/**
 		 * Classes paths
 		 *
@@ -37,26 +37,32 @@
 		public function __construct($fwDir)
 		{
 			$this->_fwDir = $fwDir;
-			$this->_finders = array();
+			$this->_loadersPaths = array();
 			$this->_pathsCache = array();
 		}
-
-		public function init()
-		{
-			spl_autoload_register(array($this, '_findAppFrameworkClass'));
-		}
 		/**
-		 * Register handler
+		 * Init default loader
 		 * 
 		 * @param string 
 		 * @param string
 		 * @return void
 		 */
-		public function registerOtherClassFinder($category, $path)
+		public function register()
 		{
-			$category = strtolower($category);
-			$this->_finders[$category] = $path;
-			switch($category){
+			spl_autoload_register(array($this, '_findAppFrameworkClass'));
+		}
+		/**
+		 * Register class loader
+		 * 
+		 * @param string ('controller', 'model', 'library')
+		 * @param string
+		 * @return void
+		 */
+		public function activateLoader($loaderType, $basePath)
+		{
+			$loaderType = strtolower($loaderType);
+			$this->_loadersPaths[$loaderType] = $basePath;
+			switch($loaderType){
 				'controller' : 
 					spl_autoload_register(array($this, '_findControllerClass'));
 					break;
@@ -84,7 +90,9 @@
 		 */
 		private function _findControllerClass($class)
 		{
-			$this->_findClass($class, $this->_finders['controller']);
+			if(!empty($this->_loadersPaths['controller'])){
+				$this->_findClass($class, $this->_loadersPaths['controller']);
+			}
 		}
 		/**
 		 * Find model class
@@ -93,7 +101,9 @@
 		 */
 		private function _findModelClass($class)
 		{
-			$this->_findClass($class, $this->_finders['model']);
+			if(!empty($this->_loadersPaths['model'])){
+				$this->_findClass($class, $this->_loadersPaths['model']);
+			}
 		}
 		/**
 		 * Find library class
@@ -102,7 +112,9 @@
 		 */
 		private function _findLibraryClass($class)
 		{
-			$this->_findClass($class, $this->_finders['library']);
+			if(!empty($this->_loadersPaths['library'])){
+				$this->_findClass($class, $this->_loadersPaths['library']);
+			}
 		}
 		
 		/**
@@ -110,7 +122,7 @@
 		 *
 		 * @return void
 		 */
-		private function _findClass($class, $dirName)
+		private function _findClass($class, $basePath)
 		{
 			$class = strtolower($class);
 			if(!empty($this->_pathsCache[$class])){
@@ -118,7 +130,7 @@
 				return;
 			}
 			
-			$this->_fetchDirectory($dirName);
+			$this->_fetchDirectory($basePath);
 			if(!empty($this->_pathsCache[$class])){
 				require_once $this->_pathsCache[$class];
 			}
@@ -128,9 +140,9 @@
 		 *
 		 * @return void
 		 */
-		private function _fetchDirectory($baseDir) {
+		private function _fetchDirectory($basePath) {
 
-			$dirFiles = scandir($baseDir);
+			$dirFiles = scandir($basePath);
 			if(false === $dirFiles){
 				// todo: throw exception
 			}
@@ -138,17 +150,17 @@
 			foreach($dirFiles as $file) {
 				if($file == '.' || $file == '..') continue;
 				
-				$path = $baseDir.DIRECTORY_SEPARATOR.$file;
-				if(is_file($path)){
+				$filePath = $basePath.DIRECTORY_SEPARATOR.$file;
+				if(is_file($filePath)){
 					$file = strtolower($file);
 					if('class.' !== substr($file, 0, 6)){
 						continue;
 					}
 					$class = substr($file, 6, -4);
-					$this->_pathsCache[$class] = $path;
+					$this->_pathsCache[$class] = $filePath;
 				}
-				elseif(is_dir($path)) {
-					$this->__inspectDirectory($path);
+				elseif(is_dir($filePath)) {
+					$this->__inspectDirectory($filePath);
 				}
 			}
 		}
