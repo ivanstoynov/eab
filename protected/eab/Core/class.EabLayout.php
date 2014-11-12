@@ -10,8 +10,23 @@
 	 */
 	class EabLayout extends EabAssigner
 	{
+		/**
+		 * Layout content
+		 * 
+		 * @var string
+		 */
 		private $_content;
+		/**
+		 * Head data
+		 * 
+		 * @var string
+		 */
 		private $_headData;
+		/**
+		 * Layout (file name)
+		 * 
+		 * @var string
+		 */
 		private $_layout;
 
 		
@@ -51,11 +66,21 @@
 		public function displayHeadStyles()
 		{
 		}
-
+		/**
+		 * Get content (getter)
+		 *
+		 * @return string
+		 */
 		public function getContent()
 		{
 			return $this->_content;
 		}
+		/**
+		 * Set layout (setter)
+		 *
+		 * @param string
+		 * @return EabController
+		 */
 		public function setContent($content)
 		{
 			$this->_content = $content;

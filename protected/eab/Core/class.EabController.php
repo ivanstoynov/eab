@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * Base controller class
+	 * Base eab controller class
 	 *
 	 * @category   Core
 	 * @package    Eab
@@ -10,20 +10,43 @@
 	 */
 	class EabController extends EabAssigner
 	{
+		/**
+		 * Layout
+		 *
+		 * @var EabLayout
+		 */
 		private $_layout;
 
 
+		/**
+		 * Constuctor of class
+		 */
 		public function __constuct()
 		{
 			parent::__construct();
 		}
+		/**
+		 * Method call before action
+		 *
+		 * @return void
+		 */
 		public function beforeAction()
 		{
 		}
+		/**
+		 * Method call before action
+		 *
+		 * @return void
+		 */
 		public function afterAction()
 		{
 		}
-		public final function renderView($view=false)
+		/**
+		 * Render view file
+		 *
+		 * @return string
+		 */
+		public final function renderView($view = false)
 		{
 			if(!$view){
 				$backtrace = debug_backtrace();
@@ -42,13 +65,13 @@
 				}
 			}
 			
-			$views_dir = Eab::normalizeDir(EabConfigurator::Instance()->get('views_dir'));
-			$view_file = $views_dir.$view;
-			if(!is_file($view_file)){
-				throw new EabException('View file "'.$view_file.'" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
+			$viewsDir = Eab::normalizeDir(EabConfigurator::Instance()->get('viewsDir'));
+			$viewFile = $viewsDir.$view;
+			if(!is_file($viewFile)){
+				throw new EabException('View file "'.$viewFile.'" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
 			
-			include_once($view_file);
+			include_once $viewFile;
 		}
 		
 		public final function renderPartial($partial, $data = array())
@@ -73,15 +96,15 @@
 		{
 			$this->_layout = new EabLayout();
 			
-			$head_data=array('title'=>EabConfigurator::Instance()->get('default_site_title'));
+			$head_data = array('title'=>EabConfigurator::Instance()->get('default_site_title'));
 
 			$this->_layout->setHeadData($head_data);
 
-			$conf_file=EabConfigurator::Instance()->get('head_conf_file');
-			$configure_as=EabConfigurator::Instance()->get('head_configure_as');
+			$conf_file = EabConfigurator::Instance()->get('head_conf_file');
+			$configure_as = EabConfigurator::Instance()->get('head_configure_as');
 			if(is_file($conf_file)){
 			
-				$head_data=EabConfigurator::GetFileConfigs($conf_file,$configure_as);
+				$head_data = EabConfigurator::GetFileConfigs($conf_file,$configure_as);
 				if(!isset($head_data)||!is_array($head_data)){
 					throw new EabException('Config file "'.$conf_file.'" must be return array!', EabExceptionCodes::CONFIG_FILE_EXC);
 				}
@@ -90,13 +113,25 @@
 				}
 			}
 		}
+		/**
+		 * Set layout (setter)
+		 *
+		 * @param EabLayout
+		 * @return EabController
+		 */
+		public final function setLayout($layout)
+		{
+			$this->_layout = $layout;
+			return $this;
+		}
+		/**
+		 * Get layout (getter)
+		 *
+		 * @return EabLayout
+		 */
 		public final function getlayout()
 		{
 			return $this->_layout;
-		}
-		public final function setLayout($layout)
-		{
-			$this->_layout=$layout;
 		}
 	}
 ?>
