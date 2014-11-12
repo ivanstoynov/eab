@@ -79,11 +79,12 @@
 		 * Set layout (setter)
 		 *
 		 * @param string
-		 * @return EabController
+		 * @return EabLayout
 		 */
 		public function setContent($content)
 		{
 			$this->_content = $content;
+			return $this;
 		}
 		public function getHeadData()
 		{
