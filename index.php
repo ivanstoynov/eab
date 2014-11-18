@@ -1,7 +1,7 @@
 <?php
 
-	include_once('protected/eab/eab.core.php');
-	include_once('protected/eab/eab.database.php');
+	//include_once('protected/eab/eab.core.php');
+	//include_once('protected/eab/eab.database.php');
 	
 	
 	
@@ -10,31 +10,11 @@
 	try {
 		
 		$loader = new EabAutoLoader();
-		//$path = str_replace('\\', '/', dirname(__FILE__).'/protected/eab/');
 		$path = dirname(__FILE__).'/protected/eab/';
-		echo intval(is_dir($path));
 		$loader->registerAutoloadPath($path);
 		
-		$o = new EabAppSettings();
-		$o1 = new EabAssigner();
-
-
-	function f($class)
-	{
-		echo 'Load f : '.$class.'<br />';
-	}
-	function f1($class)
-	{
-		echo 'Load f1 : '.$class.'<br />';
-	}
 	
-	spl_autoload_register('f');
-	spl_autoload_register('f1');
-	$s = new UnknownClass();
-
-	
-		$app=new Eab();
-		$app->run();
+		Eab::app()->run();
 		
 		// test from office
 		

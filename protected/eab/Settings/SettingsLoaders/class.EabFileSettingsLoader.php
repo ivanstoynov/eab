@@ -30,17 +30,17 @@
 		 * @param string Possible values ('array', 'xml', 'json')
 		 * @return EabArrayFileSettingsLoader
 		 */
-		public static function CreateLoader($laodType = 'array')
+		public static function CreateLoader($fileName, $laodType = 'array' )
 		{
 			switch(strtolower($laodType)){
 				case 'array' :
-					return new EabArrayFileSettingsLoader();
+					return new EabArrayFileSettingsLoader($fileName);
 					
 				case 'xml' : 
-					return new EabXmlFileSettingsLoader();
+					return new EabXmlFileSettingsLoader($fileName);
 				
 				case 'json' : 
-					return new EabJsonFileSettingsLoader();
+					return new EabJsonFileSettingsLoader($fileName);
 				
 				default :
 					throw new EabException("Incorrect load type!", EabExceptionCodes::INCORECT_TYPE_EXC);
@@ -53,17 +53,6 @@
 		 * @return array
 		 */
 		abstract public function loadSettings();
-		/**
-		 * Set file name (setter)
-		 * 
-		 * @param string
-		 * @return EabArrayFileSettingsLoader
-		 */
-		public function setFilename($fileName)
-		{
-			$this->_fileName = $fileName;
-			return $this;
-		}
 		/**
 		 * Get file name (getter)
 		 * 

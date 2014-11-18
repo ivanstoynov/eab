@@ -121,11 +121,11 @@
 		{
 			$prefix = strtolower(substr($func, 0, 3));
 			$suffix = lcfirst(substr($func,3, strlen($func)));
-
-			if(($prefix == 'get' || $prefix == 'set') && property_exists($this, $suffix) ){
+			if(($prefix == 'get' || $prefix == 'set') && property_exists($this, '_'.$suffix) ){
 				$prefix = strtolower(substr($func, 0, 3));
+
 				if('get' == $prefix){
-					return $this->{$suffix};
+					return $this->{'_'.$suffix};
 				}
 				else{
 					if(empty($args)){

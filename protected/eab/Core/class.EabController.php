@@ -74,6 +74,22 @@
 			include_once $viewFile;
 		}
 		
+		public final function executeAction($actionName)
+		{
+			if(!method_exists($this, $actionName)){
+				throw new EabException('Class "'.get_class($this).'" not have method "'.get_class($this).'::'.$actionName.'()"!', EabExceptionCodes::ACTION_NOT_FOUND_EXC);
+			}
+
+			ob_start();
+			$this->beforeAction();
+			$this->$actionName();
+			$this->afterAction();
+			$content = ob_get_contents();
+			ob_clean();
+			
+			return $content;
+		}
+		
 		public final function renderPartial($partial, $data = array())
 		{
 			/*$backtrace=debug_backtrace();
@@ -100,6 +116,9 @@
 
 			$this->_layout->setHeadData($head_data);
 
+			
+			$fileSettingsLoader = EabFileSettingsLoader::CreateLoader('array');
+			
 			$conf_file = EabConfigurator::Instance()->get('head_conf_file');
 			$configure_as = EabConfigurator::Instance()->get('head_configure_as');
 			if(is_file($conf_file)){

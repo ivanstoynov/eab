@@ -96,7 +96,6 @@
 		private function _fetchDirectory($basePath) {
 
 			$basePath = rtrim($basePath, "\\/");
-			echo $basePath.'<br />';
 			
 			$dirFiles = scandir($basePath);
 			if(false === $dirFiles){
