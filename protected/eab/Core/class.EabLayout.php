@@ -11,26 +11,26 @@
 	class EabLayout extends EabAssigner
 	{
 		/**
+		 * Layout (file name)
+		 * 
+		 * @var string
+		 */
+		private $_layoutFile;
+		/**
 		 * Layout content
 		 * 
 		 * @var string
 		 */
 		private $_content;
 		/**
-		 * Head data
+		 * Layout head
 		 * 
-		 * @var string
+		 * @var EabLayoutHead
 		 */
-		private $_headData;
-		/**
-		 * Layout (file name)
-		 * 
-		 * @var string
-		 */
-		private $_layoutFile;
+		private $_layoutHead;
 
 		/**
-		 * Cosnstructor of class
+		 * Constructor of class
 		 *
 		 * @param string
 		 */
@@ -38,6 +38,8 @@
 		{
 			parent::__construct();
 			$this->_layoutFile = $layoutFile;
+			$this->_content = '';
+			$this->_layoutHead = new EabLayoutHead();
 		}
 		public function render()
 		{
@@ -46,29 +48,6 @@
 				throw new EabException('Layout file "'.$layoutFile.'" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
 			include_once($layoutFile);
-		}
-		
-		public function displayHeadTitle()
-		{
-			echo '<title>'.$this->_headData['title'].'</title>';
-		}
-		public function displayHeadMetaTags()
-		{
-			if(!empty($this->_headData['meta_tags'])&&is_array($this->_headData['meta_tags'])){
-				foreach($this->_headData['meta_tags'] as $tag_data){
-					$attr=' ';
-					foreach($tag_data as $k=>$v){
-						$attr.=$k.'="'.$v.'" ';
-					}
-					echo '<meta '.$attr.' />';
-				}
-			}
-		}
-		public function displayHeadJs()
-		{
-		}
-		public function displayHeadStyles()
-		{
 		}
 		/**
 		 * Get content (getter)
@@ -80,7 +59,7 @@
 			return $this->_content;
 		}
 		/**
-		 * Set layout (setter)
+		 * Set content (setter)
 		 *
 		 * @param string
 		 * @return EabLayout
@@ -90,13 +69,24 @@
 			$this->_content = $content;
 			return $this;
 		}
-		public function getHeadData()
+		/**
+		 * Get layoutHead (getter)
+		 *
+		 * @return EabLayoutHead
+		 */
+		public function getLayoutHead()
 		{
-			return $this->_headData;
+			return $this->_layoutHead;
 		}
-		public function setHeadData($head_data)
+		/**
+		 * Set layoutHead (setter)
+		 *
+		 * @param EabLayoutHead
+		 * @return EabLayout
+		 */
+		public function setLayoutHead(EabLayoutHead $layoutHead)
 		{
-			$this->_headData = $head_data;
+			$this->_layoutHead = $layoutHead;
 			return $this;
 		}
 	}
