@@ -27,17 +27,21 @@
 		 * 
 		 * @var string
 		 */
-		private $_layout;
+		private $_layoutFile;
 
-		
-		public function __construct($layout)
+		/**
+		 * Cosnstructor of class
+		 *
+		 * @param string
+		 */
+		public function __construct($layoutFile)
 		{
 			parent::__construct();
-			$this->_layout = $layout;
+			$this->_layoutFile = $layoutFile;
 		}
 		public function render()
 		{
-			$layoutFile = Eab::normalizeDir(EabConfigurator::Instance()->get('layouts_dir')).$this->_layout;
+			$layoutFile = Eab::normalizeDir(EabConfigurator::Instance()->get('layouts_dir')).$this->_layoutFile;
 			if(!is_file($layoutFile)){
 				throw new EabException('Layout file "'.$layoutFile.'" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
