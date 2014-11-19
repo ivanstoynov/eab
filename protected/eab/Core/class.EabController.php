@@ -65,7 +65,7 @@
 				}
 			}
 			
-			$viewsDir = Eab::normalizeDir(EabConfigurator::Instance()->get('viewsDir'));
+			$viewsDir = Eab::app()->closeDirPath(Eab::app()->getAppSettings()->getViewsDir());
 			$viewFile = $viewsDir.$view;
 			if(!is_file($viewFile)){
 				throw new EabException('View file "'.$viewFile.'" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
@@ -73,7 +73,12 @@
 			
 			include_once $viewFile;
 		}
-		
+		/**
+		 * Execute action
+		 *
+		 * @param string
+		 * @return string
+		 */
 		public final function executeAction($actionName)
 		{
 			if(!method_exists($this, $actionName)){
@@ -103,34 +108,14 @@
 			//$partial=
 			// TODO:
 		}
-		
-		public final function isAjax($script)
+		/**
+		 * Check is ajax request
+		 *
+		 * @return boolean
+		 */
+		public final function isAjax()
 		{
 			return isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
-		}
-		public final function loadDefaultLayout($controller_name, $action_name)
-		{
-			$this->_layout = new EabLayout();
-			
-			$head_data = array('title'=>EabConfigurator::Instance()->get('default_site_title'));
-
-			$this->_layout->setHeadData($head_data);
-
-			
-			$fileSettingsLoader = EabFileSettingsLoader::CreateLoader('array');
-			
-			$conf_file = EabConfigurator::Instance()->get('head_conf_file');
-			$configure_as = EabConfigurator::Instance()->get('head_configure_as');
-			if(is_file($conf_file)){
-			
-				$head_data = EabConfigurator::GetFileConfigs($conf_file,$configure_as);
-				if(!isset($head_data)||!is_array($head_data)){
-					throw new EabException('Config file "'.$conf_file.'" must be return array!', EabExceptionCodes::CONFIG_FILE_EXC);
-				}
-				if(!empty($head_data[$controler_name]) && !empty($head_data[$controler_name][$action_name])){
-					$this->_layout->setHeadData($head_data[$controler_name][$action_name]);
-				}
-			}
 		}
 		/**
 		 * Set layout (setter)

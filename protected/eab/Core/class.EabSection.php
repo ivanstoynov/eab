@@ -10,57 +10,73 @@
 	 */
 	abstract class EabSection extends EabAssigner
 	{
+		/**
+		 * Constructor of class
+		 */
 		public function __construct()
 		{
 			parent::__construct();
 		}
 		
-		abstract public function display();
-		
-		final public function render()
-		{
-			$this->display();
-		}
+		/**
+		 * Render section (Abstract method - must be override)
+		 *
+		 * @return void
+		 */
+		abstract public function render();
 
+		/**
+		 * Render htm section file
+		 *
+		 * @param string $file
+		 * @param boolean $isFullPath
+		 */
 		protected final function renderHtml($file, $isFullPath = false)
 		{
 			if(!$isFullPath){
 				$backtrace = debug_backtrace();
-				$class = __CLASS__;
-				if(!($backtrace[0]['object'] instanceof $class)){
+				if(!($backtrace[0]['object'] instanceof self)){
 					throw new EabException('Unknown object in backtrace!', EabExceptionCodes::UNKNOWN_EXC);
 				}
-				$ds = EabConfigurator::Instance()->get('ds');
+				
+				$ds = Eab::app()->getAppSettings()->getDs();
 				$file = dirname($backtrace[0]['file']).$ds.$file;
 			}
 			
 			if(!is_file($file)){
 				throw new EabException('File "'.$file.'" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
-			include($file);
+			
+			require $file;
 		}
-
-		public static function Create($section_name)
+		/**
+		 * Create section instance
+		 *
+		 * @param string $sectionName Section class
+		 * @return EabSection
+		 */
+		public static function Create($sectionName)
 		{
-			$ds = EabConfigurator::Instance()->get('ds');
-			$section_file=Eab::normalizeDir(EabConfigurator::Instance()->get('sections_dir')).$section_name.$ds.'class.'.$section_name.'.php';
-			if(!is_file($section_file)){
-				throw new EabException('File "'.$section_file.'" is not valid file!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
+			$ds = Eab::app()->getAppSettings()->getDs();
+
+			$sectionFile = Eab::app()->closeDirPath(Eab::app()->getAppSettings()->getSectionsDir()).$sectionName.$ds.'class.'.$sectionName.'.php';
+			if(!is_file($sectionFile)){
+				throw new EabException('File "'.$sectionFile.'" is not valid file!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
 
-			include_once($section_file);
-			$section_class=$section_name.'Section';
-			if(!class_exists($section_class)){
-				throw new EabException('Section class "'.$section_class.'" can not be found!', EabExceptionCodes::CLASS_NOT_FOUND_EXC);
+			include_once($sectionFile);
+			$sectionClass = $sectionName.'Section';
+			if(!class_exists($sectionClass)){
+				throw new EabException('Section class "'.$sectionClass.'" can not be found!', EabExceptionCodes::CLASS_NOT_FOUND_EXC);
 			}
 
-			$section_instance=new $section_class();
-			$class=__CLASS__;
-			if(!($section_instance instanceof $class)){
-				throw new EabException('Section class "'.$section_class.'" must be instance of '.$class.'!', EabExceptionCodes::CLASS_NOT_FOUND_EXC);
+			$sectionInstance = new $sectionClass();
+
+			if(!($sectionInstance instanceof self)){
+				throw new EabException('Section class "'.$sectionClass.'" must be instance of '.__CLASS__.'!', EabExceptionCodes::CLASS_NOT_FOUND_EXC);
 			}
 
-			return $section_instance;
+			return $sectionInstance;
 		}
 	}
 ?>

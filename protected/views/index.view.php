@@ -1,4 +1,4 @@
-<?php EabImporter::import('Ebl/HtmlComponents/*') ?>
+<?php EabModulsImporter::import('Ebl/HtmlComponents/*') ?>
 
 index view here
 <br/>

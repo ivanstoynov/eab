@@ -35,10 +35,11 @@
 			$this->_appSettings = new EabAppSettings();
 			$this->_dbAdapter = new EabDbAdapter();
 			
-			$root_dir = dirname($_SERVER['SCRIPT_FILENAME']).'/';
-			$this->_appSettingsFile = $root_dir.'protected/configs/app.conf.php';
+			$ds = DIRECTORY_SEPARATOR;
+			$root_dir = dirname($_SERVER['SCRIPT_FILENAME']).$ds;
+			$this->_appSettingsFile = $root_dir.'protected'.$ds.'configs'.$ds.'app.conf.php';
 			$this->_appSettingsFormat = 'array';
-			//$this->_pagesSettingsFile = $root_dir.'protected/configs/pages.conf.php';
+			//$this->_pagesSettingsFile = $root_dir.'protected'.$ds.'configs'.$ds.'pages.conf.php';
 			$this->_pagesSettingsFormat = 'array';
 		}
 		/**
@@ -93,14 +94,14 @@
 			$urlPathSep = $this->_appSettings->getUrlPathSep();
 
 			$page = !empty($_REQUEST[$urlPathKey]) ? $_REQUEST[$urlPathKey] : 'index'.$urlPathSep.'index';
-			
+
 			$exp = explode($urlPathSep, $page);
 
-			$controllerDir = $this->normalizeDir($this->_appSettings->getControllersDir());
+			$controllerDir = $this->closeDirPath($this->_appSettings->getControllersDir());
 			$controllerPath = '';
 			$ds = $this->_appSettings->getDs();
 			$expCnt = count($exp);
-			$i=0;
+			$i = 0;
 			if($expCnt > 2){
 				while($i < ($expCnt-2)){
 					$controllerDir.= $exp[$i].$ds;
@@ -108,12 +109,11 @@
 					$i++;
 				}
 			}
-			
+
 			$this->_controllerName = !empty($exp[$i]) ? ucfirst($exp[$i]).'Controller' : 'IndexController';
 			$this->_controllerPath = $controllerPath;
 			$this->_controllerFile = $controllerDir.'class.'.$this->_controllerName.'.php';
 			$this->_actionName = !empty($exp[$i+1]) ? strtolower($exp[$i+1]) : 'index';
-			
 		}
 		/**
 		 * Run application controller
@@ -125,23 +125,21 @@
 			if(!is_file($this->_controllerFile)){
 				throw new EabException('File "'.$this->_controllerFile.'" is not valid file!', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
 			}
-			
+
 			include_once($this->_controllerFile);
 			$controllerClass = $this->_controllerName;
 			if(!class_exists($controllerClass)){
 				throw new EabException('Class "'.$controllerClass.'" can not be found!', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
 			}
-			
+
 			$controllerInstance = new $controllerClass();
 			if(!($controllerInstance instanceof EabController)){
 				throw new EabException('Class "'.$controllerClass.'" must be instance of EabController !', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
 			}
-			
-			$controllerInstance->loadDefaultLayout($controller_name, $action_name);
-			
+
 			$layout = $this->_getAppLayout();
 			$controllerInstance->setLayout($layout);
-			$content = $controllerInstance->executeAction();
+			$content = $controllerInstance->executeAction($this->_actionName);
 
 			if(!empty($layout)){
 				if(!($layout instanceof EabLayout)){
@@ -162,7 +160,8 @@
 		 */
 		private function _getAppLayout()
 		{
-			$layout = new EabLayout();
+			$defaultLayout = Eab::app()->getAppSettings()->getDefaultLayout();
+			$layout = new EabLayout($defaultLayout);
 			
 			if(empty($this->_pagesSettingsFile)){
 				return $layout;
@@ -209,21 +208,26 @@
 			exit;
 		}
 		/**
-		 * Normalize directory (end with \ or /)
+		 * CLose dir path(end with \ or /)
 		 *
 		 * @param string
 		 * @return string
 		 */
-		public function normalizeDir(&$dir)
+		public function closeDirPath($dir)
 		{
 			$ds = $this->_appSettings->getDs();
 			$ch = substr($dir, -1);
-			if('/' != $ch && '\\' != $ch) {
+			if( '/' != $ch && '\\' != $ch) {
 				$dir.= $ds;
 			}
 			return $dir;
 		}
-
+		/**
+		 * Debug data method
+		 *
+		 * @param mixed
+		 * @return void
+		 */
 		public static function debug($data)
 		{
 			echo '<pre>';
@@ -231,7 +235,7 @@
 			echo '</pre>';
 		}
 		/**
-		 * Get appSettings (getter)
+		 * getAppSettings (getter)
 		 *
 		 * @return EabAppSettings
 		 */
@@ -240,7 +244,7 @@
 			return $this->_appSettings;
 		}
 		/**
-		 * Get controllerName (getter)
+		 * getDbAdapter (getter)
 		 *
 		 * @return EabDbAdapter
 		 */
@@ -258,7 +262,7 @@
 			return $this->_controllerName;
 		}
 		/**
-		 * Get controllerFile (getter)
+		 * getControllerFile (getter)
 		 *
 		 * @return string
 		 */
@@ -267,7 +271,7 @@
 			return $this->_controllerFile;
 		}
 		/**
-		 * Get actionName (getter)
+		 * getActionName (getter)
 		 *
 		 * @return string
 		 */
@@ -276,84 +280,84 @@
 			return $this->actionName;
 		}		
 		/**
-		 * Set appConfFile (setter)
+		 * setAppSettingsFile (setter)
 		 *
 		 * @param string
 		 * @return Eab
 		 */
-		public function setAppConfFile($file)
+		public function setAppSettingsFile($file)
 		{
-			$this->_appConfFile = $file;
+			$this->_appSettingsFile = $file;
 			return $this;
 		}
 		/**
-		 * Get appConfFile (getter)
+		 * getAppSettingsFile (getter)
 		 *
 		 * @return string
 		 */
-		public function getAppConfFile()
+		public function getAppSettingsFile()
 		{
-			return $this->_appConfFile;
+			return $this->_appSettingsFile;
 		}
 		/**
-		 * Set appConfigureAs (setter)
+		 * setAppSettingsFormat (setter)
 		 *
 		 * @param string
 		 * @return Eab
 		 */
-		public function setAppConfigureAs($configureAs = 'array')
+		public function setAppConfigureAs($format)
 		{
-			$this->_appConfigureAs = $configureAs;
+			$this->_appSettingsFormat = $format;
 			return $this;
 		}
 		/**
-		 * Get appConfigureAs (getter)
+		 * getAppSettingsFormat (getter)
 		 *
 		 * @return string
 		 */
-		public function getAppConfigureAs()
+		public function getAppSettingsFormat()
 		{
-			return $this->_appConfigureAs;
+			return $this->_appSettingsFormat;
 		}
 		/**
-		 * Set pagesConfFile (setter)
+		 * setPagesSettingsFile (setter)
 		 *
 		 * @param string
 		 * @return Eab
 		 */
-		public function setPagesConfFile($file)
+		public function setPagesSettingsFile($file)
 		{
-			$this->_pagesConfFile = $file;
+			$this->_pagesSettingsFile = $file;
 			return $this;
 		}
 		/**
-		 * Get pagesConfFile (getter)
+		 * getPagesSettingsFile (getter)
 		 *
 		 * @return string
 		 */
-		public function getPagesConfFile()
+		public function getPagesSettingsFile()
 		{
-			return $this->_pagesConfFile;
+			return $this->_pagesSettingsFile;
 		}
 		/**
-		 * Set pagesConfigureAs (setter)
+		 * setPagesSettingsFormat (setter)
 		 *
 		 * @param string
 		 * @return Eab
 		 */
-		public function setPagesConfigureAs($configureAs = 'array')
+		public function setPagesSettingsFormat($format)
 		{
-			$this->_pagesConfigureAs = $configureAs;
+			$this->_pagesSettingsFormat = $format;
 			return $this;
 		}
 		/**
-		 * Get pagesConfigureAs (getter)
+		 * getPagesSettingsFormat (getter)
 		 *
 		 * @return string
 		 */
-		public function getPagesConfigureAs()
+		public function getPagesSettingsFormat()
 		{
-			return $this->_pagesConfigureAs;
+			return $this->_pagesSettingsFormat;
 		}
 	}
 ?>

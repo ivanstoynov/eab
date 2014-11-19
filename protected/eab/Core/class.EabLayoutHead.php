@@ -179,7 +179,7 @@
 		 * @param array
 		 * @return EabLayoutHead
 		 */
-		public function setMetaTags($styles)
+		public function setStyles($styles)
 		{
 			$this->_styles = $styles;
 			return $this;
