@@ -19,13 +19,13 @@
 		/** @var string Action name */
 		private $_actionName;
 		/** @var string Application configurations file */
-		private $_appSettingsFile; // old fw_conf_file
+		private $_appSettingsFile;
 		/** @var string How is configure application ('array','xml','json') */
-		private $_appSettingsFormat; // old fw_configure_as
+		private $_appSettingsFileFormat;
 		/** @var string pages config file */
-		private $_pagesSettingsFile; // old head_conf_file
+		private $_pagesSettingsFile;
 		/** @var string How is configure page */
-		private $_pagesSettingsFormat; // old head_configure_as
+		private $_pagesSettingsFileFormat;
 		
 		/**
 		 * Constructor of class
@@ -38,9 +38,9 @@
 			$ds = DIRECTORY_SEPARATOR;
 			$root_dir = dirname($_SERVER['SCRIPT_FILENAME']).$ds;
 			$this->_appSettingsFile = $root_dir.'protected'.$ds.'configs'.$ds.'app.conf.php';
-			$this->_appSettingsFormat = 'array';
-			//$this->_pagesSettingsFile = $root_dir.'protected'.$ds.'configs'.$ds.'pages.conf.php';
-			$this->_pagesSettingsFormat = 'array';
+			$this->_appSettingsFileFormat = 'array';
+			$this->_pagesSettingsFile = $root_dir.'protected'.$ds.'configs'.$ds.'pages.conf.php';
+			$this->_pagesSettingsFileFormat = 'array';
 		}
 		/**
 		 * Override __clone() magic method as private
@@ -65,9 +65,7 @@
 		 */
 		public function run()
 		{
-			
 			$this->_loadAppSettings();
-			
 			// Pharse url to load controller and action data
 			$this->_pharseControllersPath();
 			// Run controller
@@ -81,7 +79,12 @@
 		private function _loadAppSettings()
 		{
 			// todo:
-		}		
+			if( $this->_appSettingsFile){
+				$fileSettingsLoader = EabFileSettingsLoader::CreateLoader($this->_appSettingsFile, $this->_appSettingsFileFormat);
+				$settings = $fileSettingsLoader->loadSettings();
+				$this->_appSettings->setSettings($settings);
+			}
+		}
 		/**
 		 * Pharse controller pah and foun controler name, controler file
 		 * and action name
@@ -167,7 +170,7 @@
 				return $layout;
 			}
 			
-			$fileSettingsLoader = EabFileSettingsLoader::CreateLoader($this->_pagesSettingsFile, $this->_pagesSettingsFormat);
+			$fileSettingsLoader = EabFileSettingsLoader::CreateLoader($this->_pagesSettingsFile, $this->_pagesSettingsFileFormat);
 			$pagesSettings = $fileSettingsLoader->loadSettings();
 			
 			if(!empty($pagesSettings['_defaults'])){
@@ -300,24 +303,24 @@
 			return $this->_appSettingsFile;
 		}
 		/**
-		 * setAppSettingsFormat (setter)
+		 * setAppSettingsFileFormat (setter)
 		 *
 		 * @param string
 		 * @return Eab
 		 */
 		public function setAppConfigureAs($format)
 		{
-			$this->_appSettingsFormat = $format;
+			$this->_appSettingsFileFormat = $format;
 			return $this;
 		}
 		/**
-		 * getAppSettingsFormat (getter)
+		 * getAppSettingsFileFormat (getter)
 		 *
 		 * @return string
 		 */
-		public function getAppSettingsFormat()
+		public function getAppSettingsFileFormat()
 		{
-			return $this->_appSettingsFormat;
+			return $this->_appSettingsFileFormat;
 		}
 		/**
 		 * setPagesSettingsFile (setter)
@@ -340,24 +343,24 @@
 			return $this->_pagesSettingsFile;
 		}
 		/**
-		 * setPagesSettingsFormat (setter)
+		 * setPagesSettingsFileFormat (setter)
 		 *
 		 * @param string
 		 * @return Eab
 		 */
-		public function setPagesSettingsFormat($format)
+		public function setPagesSettingsFileFormat($format)
 		{
-			$this->_pagesSettingsFormat = $format;
+			$this->_pagesSettingsFileFormat = $format;
 			return $this;
 		}
 		/**
-		 * getPagesSettingsFormat (getter)
+		 * getPagesSettingsFileFormat (getter)
 		 *
 		 * @return string
 		 */
-		public function getPagesSettingsFormat()
+		public function getPagesSettingsFileFormat()
 		{
-			return $this->_pagesSettingsFormat;
+			return $this->_pagesSettingsFileFormat;
 		}
 	}
 ?>

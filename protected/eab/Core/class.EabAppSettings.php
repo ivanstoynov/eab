@@ -59,8 +59,8 @@
 		public function setSettings($settings = array())
 		{
 			foreach($settings as $k => $v){
-				$prop = '_'.$this->$k;
-				if(property_exists($prop)){
+				$prop = '_'.$k;
+				if(property_exists($this, $prop)){
 					$this->{$prop} = $v;
 				}
 			}
