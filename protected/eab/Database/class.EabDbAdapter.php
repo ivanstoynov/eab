@@ -17,13 +17,13 @@
 	 * 		$result_rows = $db->fetchAll($sql);
 	 *
 	 * @example
-	 * 		$db = EabDb::Singleton();
+	 * 		$db = EabDb::GetInstance();
 	 * 		$sql = "SELECT * FROM `some_table`";
 	 * 		$result	= $db->query($sql);
 	 * 		while($row = $result->fetchRow()) { print_r($row); }
 	 *
 	 * @example
-	 * 		$db = EabDb::Singleton();
+	 * 		$db = EabDb::GetInstance();
 	 * 		$sql = "INSERT INTO `some_table` (field1, field2) VALUES ('1','2'); ";
 	 * 		$db->exec($sql);
 	 *
@@ -108,7 +108,7 @@
 			if($timeout){
 				$this->_reconnectionTimeout = $timeout;
 			}
-			$this->applySettings($settings);
+			$this->setSettings($settings);
 		}
 		/**
 		 * Class destructor
@@ -138,25 +138,22 @@
 			$this->_newLink = false;
 			$this->_clientFlags = 196608;
 			$this->_queries = array();
-			$this->_reconnectionTimeout=60;
+			$this->_reconnectionTimeout = 60;
 		}
 
 		/**
-		 * Set settings to properties and call reconnect method to apply these settings
+		 * Set settings to properties
+		 * Note: this method not reconnect db connection
 		 *
 		 * @param array
 		 */
-		public function applySettings($settings=array())
+		public function setSettings($settings = array())
 		{
 			foreach($settings as $k => $v){
-				$prop='_'.$k;
+				$prop = '_'.$k;
 				if(property_exists($this, $prop)){
 					$this->{$prop} = $v;
 				}
-			}
-
-			if(is_resource($this->_dbConn)){
-				$this->reconnect();
 			}
 		}
 		/**
@@ -166,7 +163,7 @@
 		 */
 		private function connect()
 		{
-			$conn=@mysql_connect($this->_host, $this->_username, $this->_password, $this->_newLink, $this->_clientFlags);
+			$conn = @mysql_connect($this->_host, $this->_username, $this->_password, $this->_newLink, $this->_clientFlags);
 			if(!is_resource($conn)){ 
 				throw new Exception('DB connection error:  '.mysql_error(), mysql_errno()); 
 			}
@@ -215,7 +212,7 @@
 		 */
 		public function setFetchMode($fetchmode)
 		{
-			$this->_fetchMode=$fetchmode;
+			$this->_fetchMode = $fetchmode;
 		}
 
 		/**
@@ -327,8 +324,8 @@
 		 */
 		public function fetchOne($sql, $col = null, $row = null)
 		{
-			$r=$this->query($sql);
-			$field=$r->fetchOne($col, $row);
+			$r = $this->query($sql);
+			$field = $r->fetchOne($col, $row);
 			$r->free();
 			return $field;
 		}

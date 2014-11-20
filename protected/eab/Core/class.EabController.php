@@ -16,6 +16,12 @@
 		 * @var EabLayout
 		 */
 		private $_layout;
+		/**
+		 * Current action
+		 *
+		 * @string
+		 */
+		private $_actionName;
 
 
 		/**
@@ -113,7 +119,7 @@
 		 *
 		 * @return boolean
 		 */
-		public final function isAjax()
+		public function isAjax()
 		{
 			return isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
 		}
@@ -137,5 +143,14 @@
 		{
 			return $this->_layout;
 		}
+		/**
+		 * Get actionName (getter)
+		 *
+		 * @return string
+		 */
+		public  function getActionName()
+		{
+			return $this->_actionName;
+		}		
 	}
 ?>

@@ -66,6 +66,10 @@
 		public function run()
 		{
 			$this->_loadAppSettings();
+			
+			
+			$this->_dbAdapter->setSettings();
+			
 			// Pharse url to load controller and action data
 			$this->_pharseControllersPath();
 			// Run controller
@@ -142,6 +146,7 @@
 
 			$layout = $this->_getAppLayout();
 			$controllerInstance->setLayout($layout);
+
 			$content = $controllerInstance->executeAction($this->_actionName);
 
 			if(!empty($layout)){
@@ -165,36 +170,43 @@
 		{
 			$defaultLayout = Eab::app()->getAppSettings()->getDefaultLayout();
 			$layout = new EabLayout($defaultLayout);
-			
+
 			if(empty($this->_pagesSettingsFile)){
 				return $layout;
 			}
-			
+
 			$fileSettingsLoader = EabFileSettingsLoader::CreateLoader($this->_pagesSettingsFile, $this->_pagesSettingsFileFormat);
 			$pagesSettings = $fileSettingsLoader->loadSettings();
-			
-			if(!empty($pagesSettings['_defaults'])){
-				$layout->getHeadData()->setTitle($pagesSettings['_defaults']['title']);
-				$layout->getHeadData()->setMetaTags($pagesSettings['_defaults']['metaTags']);
-				$layout->getHeadData()->setStyles($pagesSettings['_defaults']['styles']);
-				$layout->getHeadData()->setJs($pagesSettings['_defaults']['js']);
+
+			if(!empty($pagesSettings['__defaults__'])){
+				// Set default values
+				$defSettings = $pagesSettings['__defaults__'];
+				$layout->getLayoutHead()->setTitle($defSettings['title']);
+				$layout->getLayoutHead()->setMetaTags($defSettings['metaTags']);
+				$layout->getLayoutHead()->setStyles($defSettings['styles']);
+				$layout->getLayoutHead()->setJs($defSettings['js']);
 			}
 			
 			$ctrl = $this->_controllerPath.$this->_controllerName;
-			if(!empty($pagesSettings['_controllers'][$ctrl])){
-				$ctrollerSettings = $pagesSettings['_controllers'][$ctrl];
-				$layout->getHeadData()->setTitle($ctrollerSettings['title']);
-				$layout->getHeadData()->setMetaTags($ctrollerSettings['metaTags']);
-				$layout->getHeadData()->setStyles($ctrollerSettings['styles']);
-				$layout->getHeadData()->setJs($ctrollerSettings[$ctrl]['js']);
-			
+			if(!empty($pagesSettings['__controllers__'][$ctrl])){
+				$ctrlSettings = $pagesSettings['__controllers__'][$ctrl];
+				if(!empty($ctrlSettings['__defaults__'])){
+				    // Set controller default values
+					$defaultCtrlSettings = $ctrlSettings['__defaults__'];
+					$layout->getLayoutHead()->setTitle($defaultCtrlSettings['title']);
+					$layout->getLayoutHead()->setMetaTags($defaultCtrlSettings['metaTags']);
+					$layout->getLayoutHead()->setStyles($defaultCtrlSettings['styles']);
+					$layout->getLayoutHead()->setJs($defaultCtrlSettings[$ctrl]['js']);
+				}
+
 				$act = $this->_actionName;
-				if(!empty($ctrollerSettings[$act])){
-					$actionSettings = $ctrollerSettings;
-					$layout->getHeadData()->setTitle($actionSettings['title']);
-					$layout->getHeadData()->setMetaTags($actionSettings['metaTags']);
-					$layout->getHeadData()->setStyles($actionSettings['styles']);
-					$layout->getHeadData()->setJs($actionSettings['js']);
+				if(!empty($ctrlSettings[$act])){
+					// Set action values
+					$actSettings = $ctrlSettings[$act];
+					$layout->getLayoutHead()->setTitle($actSettings['title']);
+					$layout->getLayoutHead()->setMetaTags($actSettings['metaTags']);
+					$layout->getLayoutHead()->setStyles($actSettings['styles']);
+					$layout->getLayoutHead()->setJs($actSettings['js']);
 				}
 			}
 

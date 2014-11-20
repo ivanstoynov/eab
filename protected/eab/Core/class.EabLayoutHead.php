@@ -54,7 +54,7 @@
 		 */
 		public function displayTitle()
 		{
-			echo "\t".'<title>'.$this->_headData['title'].'</title>'."\n";
+			echo "\t".'<title>'.$this->_title.'</title>'."\n";
 		}
 		/**
 		 * Display meta tags
