@@ -66,7 +66,7 @@
 		public function run()
 		{
 			$this->_loadAppSettings();
-			
+
 			
 			$this->_dbAdapter->setSettings();
 			
@@ -104,18 +104,18 @@
 
 			$exp = explode($urlPathSep, $page);
 
-			$controllerDir = $this->closeDirPath($this->_appSettings->getControllersDir());
 			$controllerPath = '';
 			$ds = $this->_appSettings->getDs();
 			$expCnt = count($exp);
 			$i = 0;
 			if($expCnt > 2){
 				while($i < ($expCnt-2)){
-					$controllerDir.= $exp[$i].$ds;
 					$controllerPath.= $exp[$i].$ds;
 					$i++;
 				}
 			}
+			
+			$controllerDir = $this->closeDirPath($this->_appSettings->getControllersDir()).$controllerPath;
 
 			$this->_controllerName = !empty($exp[$i]) ? ucfirst($exp[$i]).'Controller' : 'IndexController';
 			$this->_controllerPath = $controllerPath;

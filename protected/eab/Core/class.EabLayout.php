@@ -41,6 +41,11 @@
 			$this->_content = '';
 			$this->_layoutHead = new EabLayoutHead();
 		}
+		/**
+		 * Render layout
+		 *
+		 * @return void
+		 */
 		public function render()
 		{
 			$layoutFile = Eab::app()->closeDirPath(Eab::app()->getAppSettings()->getLayoutsDir()).$this->_layoutFile;
