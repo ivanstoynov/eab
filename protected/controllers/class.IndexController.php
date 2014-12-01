@@ -2,10 +2,7 @@
 
 	EabModulsImporter::import('Ebl/Validation/class.EblFormValidator.php');
 	EabModulsImporter::import('Ebl/HtmlComponents/Standart/class.EblRadioButtonList.php');
-	
 	EabModulsImporter::import('Ebl/HtmlComponents/Standart/class.EblCheckBoxList.php');
-	
-	
 
 	class IndexController extends EabController
 	{
