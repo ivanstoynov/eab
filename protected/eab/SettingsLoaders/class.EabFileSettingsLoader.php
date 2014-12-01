@@ -32,14 +32,14 @@
 		 */
 		public static function CreateLoader($fileName, $laodType = 'array' )
 		{
-			switch(strtolower($laodType)){
-				case 'array' :
+			switch (strtolower($laodType)){
+				case 'array':
 					return new EabArrayFileSettingsLoader($fileName);
 					
-				case 'xml' : 
+				case 'xml': 
 					return new EabXmlFileSettingsLoader($fileName);
 				
-				case 'json' : 
+				case 'json': 
 					return new EabJsonFileSettingsLoader($fileName);
 				
 				default :

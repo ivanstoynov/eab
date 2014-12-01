@@ -10,12 +10,12 @@
 	 */
 	class EabModulsImporter
 	{
-		public static function import($file, $fullPath = false)
+		public static function import($file, $fullPath = FALSE)
 		{
 			$ds = Eab::app()->getAppSettings()->getDs();
 			$file = trim($file);
 			$file = str_replace(":", $ds, $file);
-			if ($fullPath === true){
+			if ($fullPath === TRUE){
 				if (substr($file, 0, 7) === 'http://' || substr($file, 0, 8) === 'https://' ){
 					throw new EabException('No access to file "' . $file . '"!', EabExceptionCodes::ACCESS_DENIDED_EXC);
 				}
@@ -48,7 +48,7 @@
 				throw new EabException('Directory "' . $dir.'" can not be found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
 			$handler = opendir($dir);
-			if (false === $handler){
+			if (FALSE === $handler){
 				throw new EabException('Directory "' . $dir . '" can not be opened!');
 			}
 			while ($file = readdir($handler)){

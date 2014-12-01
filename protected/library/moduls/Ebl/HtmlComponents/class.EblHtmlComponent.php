@@ -28,34 +28,29 @@
 		/**
 		 * @var array
 		 */
-		private $_attributes=array();
-		/**
-		 * @var array
-		 */
-		private $_validation_rules=array();
-		/**
-		 * @var array
-		 */
-		private $_validation_errors=array();
+		private $_attributes;
 		
-		
+
 		/**
 		 * Constructor of class
 		 * 
 		 * @param array
 		 */
-		public function __construct($attributes=array())
+		public function __construct($attributes = array())
 		{
 			$this->setAttributes($attributes);
-			$this->_name='';
-			$this->_value='';
+			$this->_name = '';
+			$this->_value = '';
+			$this->_text = '';
+			$this->_visible = TRUE;
+			$this->_attributes = array();
 		}
 		/**
 		 * Abstract metod
 		 * 
 		 * @param array
 		 */
-		abstract public function display($arrtibutes=array());
+		abstract public function display($arrtibutes = array());
 		/**
 		 * Static method to render component
 		 * 
@@ -73,9 +68,9 @@
 		 * @param string
 		 * @return EblHtmlComponent
 		 */
-		public function addAttribute($key,$val)
+		public function addAttribute($key, $val)
 		{
-			$this->_attributes[$key]=$val;
+			$this->_attributes[$key] = $val;
 			return $this;
 		}
 		/**
@@ -85,9 +80,9 @@
 		 * @param string
 		 * @return EblHtmlComponent
 		 */
-		public function setAttribute($key,$val)
+		public function setAttribute($key, $val)
 		{
-			$this->addAttribute($key,$val);
+			$this->addAttribute($key, $val);
 			return $this;
 		}
 		/**
@@ -97,7 +92,9 @@
 		 */
 		public function removeAttribute($key)
 		{
-			if(isset($this->_attributes[$key])) unset($this->_attributes[$key]);
+			if (isset($this->_attributes[$key])) {
+				unset($this->_attributes[$key]);
+			}
 		}
 		/**
 		 * Clear attributes
@@ -106,7 +103,7 @@
 		 */
 		public function clearAttributes()
 		{
-			$this->_attributes=array();
+			$this->_attributes = array();
 		}
 		/**
 		 * Get attribute by key
@@ -116,7 +113,7 @@
 		 */
 		public function getAttributeByKey($key)
 		{
-			return isset($this->_attributes[$key])?$this->_attributes[$key]:null;
+			return isset($this->_attributes[$key]) ? $this->_attributes[$key] : null;
 		}
 		/**
 		 * Get attributes as string
@@ -125,12 +122,12 @@
 		 */
 		public function getAttributesAsString()
 		{
-			$att_str=' ';
-			$attributes=$this->getAttributes();
-			foreach($attributes as $att=>$val){
-				$att_str.=$att.'="'.strval($val).'" ';
+			$attStr = ' ';
+			$attributes = $this->getAttributes();
+			foreach ($attributes as $att => $val){
+				$attStr .= $att . '="' . ((string) $val) . '" ';
 			}
-			return $att_str;
+			return $attStr;
 		}
 		/**
 		 * Handle and set value from request
@@ -139,7 +136,7 @@
 		 */
 		public function handleRequestValue()
 		{
-			$val=$_REQUEST[$this->getName()];
+			$val = $_REQUEST[$this->getName()];
 			$this->setValue($val);
 		}
 		/**
@@ -150,7 +147,7 @@
 		 */
 		public function setAttributes($attributes)
 		{
-			$this->_attributes=$attributes;
+			$this->_attributes = $attributes;
 			return $this;
 		}
 		/**
@@ -170,7 +167,7 @@
 		 */
 		public function setName($name)
 		{
-			$this->_name=strval($name);
+			$this->_name = (string) $name;
 			return $this;
 		}
 		/**
@@ -180,7 +177,7 @@
 		 */
 		public function getName()
 		{
-			return $this->_name;
+			return (string) $this->_name;
 		}
 		/**
 		 * Set value (setter)
@@ -190,7 +187,7 @@
 		 */
 		public function setValue($value)
 		{
-			$this->_value=strval($value);
+			$this->_value = (string) $value;
 			return $this;
 		}
 		/**
@@ -210,7 +207,7 @@
 		 */
 		public function setText($text)
 		{
-			$this->_text=strval($text);
+			$this->_text = (string) $text;
 			return $this;
 		}
 		/**
@@ -220,7 +217,7 @@
 		 */
 		public function getText()
 		{
-			return $this->_text;
+			return (string) $this->_text;
 		}
 	}
 ?>

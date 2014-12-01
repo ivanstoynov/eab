@@ -16,13 +16,13 @@
 		/**
 		 * @var array
 		 */
-		private $_elems=array();
+		private $_elems;
 		/**
 		 * Position of label (left|right)
 		 *
 		 * @var string
 		 */
-		private $_text_position;
+		private $_textPosition;
 		/**
 		 * Position of label (horizontal|vertical)
 		 *
@@ -32,11 +32,11 @@
 		/**
 		 * @var integer
 		 */
-		private $_selected_index;
+		private $_selectedIndex;
 		/**
 		 * @var string
 		 */
-		private $_selected_value;
+		private $_selectedValue;
 
 		
 		/**
@@ -45,13 +45,13 @@
 		 * @param string
 		 * @param array
 		 */
-		public function __construct($name='', $elems=array())
+		public function __construct($name='', $elems = array())
 		{
 			parent::__construct();
 			$this->setName($name);
-			$this->_elems=$elems;
-			$this->_selected_index=null;
-			$this->_selected_value=null;
+			$this->_elems = $elems;
+			$this->_selectedIndex = NULL;
+			$this->_selectedValue = NULL;
 		}
 		/**
 		 * Abstract method to add element 
@@ -61,41 +61,41 @@
 		 * @param bolean
 		 * @param array
 		 */
-		abstract public function addElem($label,$value,$checked,$attributes=array());
+		abstract public function addElem($label, $value, $checked, $attributes = array());
 		/**
 		 * Display method - print the list
 		 *
 		 * @param array
 		 * @return void
 		 */
-		public function display($attributes=array())
+		public function display($attributes = array())
 		{
 			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(),$attributes));
+			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 			$atts = $this->getAttributes();
 
-			if(empty($atts['class'])){
-				$class='listCompPanel';
-				$direction=strtolower($this->_direction);
-				if($direction=='vertical'){
-					$class.=' listCompVertical';
+			if (empty($atts['class'])){
+				$class = 'listCompPanel';
+				$direction = strtolower($this->_direction);
+				if ($direction === 'vertical'){
+					$class .= ' listCompVertical';
 				}
-				else{
-					$class.=' listCompHorizontal';
+				else {
+					$class .= ' listCompHorizontal';
 				}
-				$this->setAttribute('class',$class);
+				$this->setAttribute('class', $class);
 			}
 
-			$name=$this->getName();
-			$pos=strpos($name,'[');
-			if(false!==$pos){
-				$name=substr($name,0,$pos);
+			$name = $this->getName();
+			$pos = strpos($name, '[');
+			if (FALSE !== $pos){
+				$name = substr($name, 0, $pos);
 			}
 
-			$i=1;
-			$att_str=$this->getAttributesAsString();
+			$i = 1;
+			$attributesString = $this->getAttributesAsString();
 
-			echo '<div '.$att_str.'>'."\n";
+			echo '<div ' . $attributesString . '>' . "\n";
 			foreach($this->_elems as $elem){
 				
 				//$id=$rbtn_elem->getAttributeByKey('id');
@@ -103,10 +103,10 @@
 					//$id=$name.'_'.$i++;
 					//$rbtn_elem->setAttribute('id',$id);
 				//}
-				$elem->setTextPosition($this->_text_position);
+				$elem->setTextPosition($this->_textPosition);
 				$elem->display();
 			}
-			echo '</div>'."\n";
+			echo '</div>' . "\n";
 		}
 		/**
 		 * Add component to list
@@ -114,9 +114,9 @@
 		 * @param EblHtmlComponent
 		 * @return void
 		 */
-		public function addComponent(EblHtmlComponent $comp)
+		public function addComponent(EblHtmlComponent $component)
 		{
-			$this->_elems[]=$comp;
+			$this->_elems[] = $component;
 		}
 		/**
 		 * Clear list
@@ -125,10 +125,10 @@
 		 */
 		public function clear()
 		{
-			$this->_selected_value=null;
-			$this->_selected_index=null;
-			foreach($this->_elems as $elem){
-				$elem->setSelected(false);
+			$this->_selectedValue = NULL;
+			$this->_selectedIndex = NULL;
+			foreach ($this->_elems as $elem){
+				$elem->setSelected(FALSE);
 			}
 		}
 		/**
@@ -139,17 +139,18 @@
 		 */
 		public function setSelectedIndex($index)
 		{
-			$i=0;
+			$index = (int) $index;
+			$i = 0;
 			// Mark elem as selected
-			foreach($this->_elems as $elem){
-				if($i==$index){
-					$elem->setSelected(false);
+			foreach ($this->_elems as $elem){
+				if ($i === $index){
+					$elem->setSelected(TRUE);
 				}
 				$i++;
 			}
 			
 			//if($index<$i){
-				$this->_selected_index=$index;
+				$this->_selectedIndex = $index;
 			//}
 			return $this;
 		}
@@ -160,7 +161,7 @@
 		 */
 		public function getSelectedIndex()
 		{
-			return $this->_selected_index;
+			return $this->_selectedIndex;
 		}
 		/**
 		 * Set selected value (setter)
@@ -170,16 +171,16 @@
 		 */
 		public function setSelectedValue($value)
 		{
-			$found=false;
+			$found = FALSE;
 			// Mark elem as selected
-			foreach($this->_elems as $elem){
-				if($value==$elem->getValue()){
-					$elem->setSelected(false);
-					$found=true;
+			foreach ($this->_elems as $elem){
+				if ($value === $elem->getValue()) {
+					$elem->setSelected(FALSE);
+					$found = TRUE;
 				}
 			}
 			//if($found){
-				$this->_selected_value=$value;
+				$this->_selectedValue = $value;
 			//}
 			return $this;
 		}
@@ -190,7 +191,7 @@
 		 */
 		public function getSelectedValue()
 		{
-			return $this->_selected_value;
+			return $this->_selectedValue;
 		}
 		/**
 		 * Set elements (setter)
@@ -200,7 +201,7 @@
 		 */
 		public function setElems($elems)
 		{
-			$this->_elems=$elems;
+			$this->_elems = $elems;
 			return $this;
 		}
 		/**
@@ -221,12 +222,12 @@
 		 */		
 		public function setTextPosition($position)
 		{
-			$position=strtolower($position);
-			if(!in_array($position,array('left','right'))){
+			$position = strtolower($position);
+			if (! in_array($position, array('left', 'right'))) {
 				// todo: throw exception
 			}
 
-			$this->_text_position=$position;
+			$this->_textPosition = $position;
 			return $this;
 		}
 		/**
@@ -236,7 +237,7 @@
 		 */
 		public function getTextPosition()
 		{
-			return $this->_text_position;
+			return $this->_textPosition;
 		}
 		/**
 		 * Set direction (setter)
@@ -247,11 +248,11 @@
 		 */	
 		public function setDirection($direction)
 		{
-			$direction=strtolower($direction);
-			if(!in_array($direction,array('horizontal','vertical'))){
+			$direction = strtolower($direction);
+			if (! in_array($direction, array('horizontal', 'vertical'))) {
 				// todo: throw exception
 			}
-			$this->_direction=strtolower($direction);
+			$this->_direction = strtolower($direction);
 		}
 		/**
 		 * get direction (getter)

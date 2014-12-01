@@ -19,10 +19,10 @@
 		 * @param string
 		 * @param array
 		 */
-		public function __construct($name,$value,$attributes=array())
+		public function __construct($name, $value, $attributes = array())
 		{
 			parent::__construct($attributes);
-			$this->setName($name);
+			$this->setName((string) $name);
 			$this->setValue($value);
 		}
 		/**
@@ -31,17 +31,17 @@
 		 * @param array
 		 * @return void
 		 */
-		public function display($attributes=array())
+		public function display($attributes = array())
 		{
 			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(),$attributes));
+			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 
-			$valeu=$this->getValue();
-			if(!$value) $value=$this->getText();
-			$this->setAttribute('name',$this->getName());
-			$this->setAttribute('value',$value);
-			$att_str=$this->getAttributesAsString();
-			echo '<input type="text" '.$att_str.' />'."\n";
+			$value = $this->getValue();
+			
+			$this->setAttribute('name', $this->getName());
+			$this->setAttribute('value', $value);
+			$attributesString = $this->getAttributesAsString();
+			echo '<input type="text" ' . $attributesString . ' />' . "\n";
 		}
 	}
 ?>

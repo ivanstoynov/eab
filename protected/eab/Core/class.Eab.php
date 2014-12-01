@@ -53,7 +53,7 @@
 		 */
 		public static function app()
 		{
-			if (null === self::$_instace){
+			if (NULL === self::$_instace){
 				self::$_instace = new self();
 			}
 			return self::$_instace;
@@ -245,7 +245,7 @@
 		public static function debug($data)
 		{
 			echo '<pre>';
-			echo print_r($data, true);
+			echo print_r($data, TRUE);
 			echo '</pre>';
 		}
 		/**

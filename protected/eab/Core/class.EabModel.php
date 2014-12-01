@@ -46,14 +46,14 @@
 		{
 			$stmt = $this->createPkStatement();
 			if (! $stmt){
-				return false;
+				return FALSE;
 			}
 
 			$sql = "SELECT * FROM `" . $this->_tableName . "` WHERE " . $stmt . " LIMIT 1";
 			$row = $this->_dbAdapter->fetchRow($sql);
 			$this->loadFromArray($row);
 
-			return true;
+			return TRUE;
 		}
 
 		public function save()

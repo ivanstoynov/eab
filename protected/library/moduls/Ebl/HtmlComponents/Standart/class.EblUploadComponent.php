@@ -18,10 +18,10 @@
 		 * @param string
 		 * @param array
 		 */
-		public function __construct($name,$attributes=array())
+		public function __construct($name, $attributes = array())
 		{
 			parent::__construct($attributes);
-			$this->setName(strval($name));
+			$this->setName((string) $name);
 		}
 		/**
 		 * Display method - print the upload field
@@ -29,14 +29,14 @@
 		 * @param array
 		 * @return void
 		 */
-		public function display($attributes=array())
+		public function display($attributes = array())
 		{
 			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(),$attributes));
+			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 
-			$this->setAttribute('name',$this->_name);
-			$att_str=$this->getAttributesAsString();
-			echo '<input type="file" '.$att_str.' />'."\n";
+			$this->setAttribute('name', $this->_name);
+			$attributesString = $this->getAttributesAsString();
+			echo '<input type="file" ' . $attributesString . ' />' . "\n";
 		}
 	}
 ?>

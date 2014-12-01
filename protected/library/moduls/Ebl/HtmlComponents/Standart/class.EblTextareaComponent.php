@@ -19,10 +19,10 @@
 		 * @param string
 		 * @param array
 		 */
-		public function __construct($name,$text,$attributes=array())
+		public function __construct($name, $text, $attributes = array())
 		{
-			$this->setText(strval($text));
-			$this->setName(strval($name));
+			$this->setText((string) $text);
+			$this->setName((string) $name);
 			parent::__construct($attributes);
 		}
 		/**
@@ -31,14 +31,14 @@
 		 * @param array
 		 * @return void
 		 */
-		public function display($attributes=array())
+		public function display($attributes = array())
 		{
 			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(),$attributes));
+			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 
-			$this->setAttribute('name',$this->getName());
-			$att_str=$this->getAttributesAsString();
-			echo '<textarea '.$att_str.'>'.strval($this->getText())."\n".'</textarea>';
+			$this->setAttribute('name', $this->getName());
+			$attributesString = $this->getAttributesAsString();
+			echo '<textarea ' . $attributesString . '>' . $this->getText() . "\n" . '</textarea>';
 		}
 	}
 ?>

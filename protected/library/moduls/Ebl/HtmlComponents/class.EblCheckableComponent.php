@@ -16,7 +16,7 @@
 		/**
 		 * @var string
 		 */
-		private $_text_position;
+		private $_textPosition;
 		/**
 		 * @var string
 		 */
@@ -36,14 +36,14 @@
 		 * @param boolean
 		 * @param array
 		 */
-		public function __construct($name,$label,$value,$checked=false,$attributes=array())
+		public function __construct($name, $label, $value, $checked = FALSE, $attributes = array())
 		{
 			parent::__construct($attributes);
-			$this->setName($name);
-			$this->_label=$label;
+			$this->setName( (string) $name);
+			$this->_label = (string) $label;
 			$this->setValue($value);
-			$this->_checked=$checked;
-			$this->_text_position='left';
+			$this->_checked = (boolean) $checked;
+			$this->_textPosition = 'left';
 		}
 		/**
 		 * Handle and set value from request
@@ -52,9 +52,9 @@
 		 */	
 		public function handleRequestValue()
 		{
-			$val=$_REQUEST[$this->getName()];
-			if($this->getValue()==$val){
-				$this->_checked=true;
+			$value = $_REQUEST[$this->getName()];
+			if ($this->getValue() === $value){
+				$this->_checked = TRUE;
 			}
 		}
 		/**
@@ -63,9 +63,9 @@
 		 * @param string
 		 * @return EblCheckableComponent
 		 */
-		public function setTextPosition($position)
+		public function setTextPosition($textPosition)
 		{
-			$this->_text_position=$position;
+			$this->_textPosition = (string) $textPosition;
 			return $this;
 		}
 		/**
@@ -75,7 +75,7 @@
 		 */
 		public function getTextPosition()
 		{
-			return $this->_text_position;
+			return (string) $this->_textPosition;
 		}
 		/**
 		 * Set label (setter)
@@ -85,7 +85,7 @@
 		 */
 		public function setLabel($label)
 		{
-			$this->_label=strval($label);
+			$this->_label = (string) $label;
 			return $this;
 		}
 		/**
@@ -95,7 +95,7 @@
 		 */
 		public function getLabel()
 		{
-			return $this->_label;
+			return (string) $this->_label;
 		}
 		/**
 		 * Set text position (setter)
@@ -105,7 +105,7 @@
 		 */
 		public function setChecked($checked)
 		{
-			$this->_checked=(boolean)$checked;
+			$this->_checked = (boolean) $checked;
 			return $this;
 		}
 		/**

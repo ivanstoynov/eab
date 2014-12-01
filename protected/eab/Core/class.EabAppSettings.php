@@ -86,7 +86,7 @@
 			
 			$this->_ds = DIRECTORY_SEPARATOR;
 			$this->_ps = PATH_SEPARATOR;
-			$this->_isDebugMode = true;
+			$this->_isDebugMode = TRUE;
 			$this->_urlPathKey = 'page';
 			$this->_urlPathSep = '/';
 			$this->_defaultLayout = 'master.layout.php';

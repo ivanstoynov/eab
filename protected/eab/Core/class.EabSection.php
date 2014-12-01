@@ -31,7 +31,7 @@
 		 * @param string $file
 		 * @param boolean $isFullPath
 		 */
-		protected final function renderHtml($file, $isFullPath = false)
+		protected final function renderHtml($file, $isFullPath = FALSE)
 		{
 			if (! $isFullPath){
 				$backtrace = debug_backtrace();

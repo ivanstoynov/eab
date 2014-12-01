@@ -19,10 +19,9 @@
 		 * @param string
 		 * @param array
 		 */
-		public function __construct($name='', $elems=array())
+		public function __construct($name = '', $elems = array())
 		{
-			parent::__construct($name,$elems);
-			$this->_selected_index=null;
+			parent::__construct($name, $elems);
 		}
 		/**
 		 * Add element to list
@@ -33,9 +32,9 @@
 		 * @param array
 		 * @return void
 		 */
-		public function addElem($label,$value,$checked,$attributes=array())
+		public function addElem($label, $value, $checked, $attributes = array())
 		{
-			$rbtn=new EblRadioButtonComponent($this->getName(),$label,$value,$checked,$attributes);
+			$rbtn = new EblRadioButtonComponent($this->getName(), (string) $label, $value, (boolean) $checked, $attributes);
 			$this->addComponent($rbtn);
 		}
 		/**

@@ -18,7 +18,7 @@
 		/**
 		 * @var integer|null
 		 */
-		private $_selected_index;
+		private $_selectedIndex;
 
 
 		/**
@@ -28,12 +28,12 @@
 		 * @param array
 		 * @param array
 		 */
-		public function __construct($name, $options=array(), $attributes=array())
+		public function __construct($name, $options = array(), $attributes = array())
 		{
 			parent::__construct($attributes);
 			$this->setName($name);
-			$this->_options=$options;
-			$this->_selected_index=null;
+			$this->_options = $options;
+			$this->_selectedIndex = NULL;
 		}
 		/**
 		 * Add option element
@@ -43,7 +43,7 @@
 		 */
 		public function addOption(EblOptionComponent $option)
 		{
-			$this->_options[]=$option;
+			$this->_options[] = $option;
 			return $this;
 		}
 		/**
@@ -52,17 +52,19 @@
 		 * @param array
 		 * @return void
 		 */
-		public function display($attributes=array())
+		public function display($attributes = array())
 		{
 			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(),$attributes));
+			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 			
-			$this->setAttribute('name',$this->getName());
-			echo '<select '.$att_str.' />'."\n";
-			foreach($this->_options as $option){
+			$this->setAttribute('name', $this->getName());
+			$attStr = $this->getAttributesAsString();
+			
+			echo '<select ' . $attStr . ' />' . "\n";
+			foreach ($this->_options as $option){
 				$option->display();
 			}
-			echo '</select>'."\n";
+			echo '</select>' . "\n";
 		}
 		/**
 		 * Handle and set value from request
@@ -71,23 +73,23 @@
 		 */		
 		public function handleRequestValue()
 		{
-			$val=$_REQUEST[$this->getName()];
-			if(is_array($val)){
-				foreach($val as $v){
-					$i=0;
-					foreach($this->_options as $option){
-						if($options->getValue()==$v){
-							$this->_selected_index=$i;
+			$val = $_REQUEST[$this->getName()];
+			if (is_array($val)){
+				foreach ($val as $v){
+					$i = 0;
+					foreach ($this->_options as $option){
+						if ($options->getValue() === $v){
+							$this->_selectedIndex = $i;
 						}
 						$i++;
 					}
 				}
 			}
 			else{
-				$i=0;
-				foreach($this->_options as $option){
-					if($options->getValue()==$val){
-						$this->_selected_index=$i;
+				$i = 0;
+				foreach ($this->_options as $option){
+					if ($options->getValue() === $val){
+						$this->_selectedIndex = $i;
 					}
 					$i++;
 				}
@@ -100,7 +102,7 @@
 		 */
 		public function getSelectedIndex()
 		{
-			return $this->_selected_index;
+			return $this->_selectedIndex;
 		}
 		/**
 		 * Set options (setter)
@@ -147,12 +149,12 @@
 		 * @param boolean
 		 * @param array
 		 */
-		public function __construct($value,$text,$selected=false,$attributes=array())
+		public function __construct($value, $text, $selected = false, $attributes = array())
 		{
 			parent::__construct($attributes);
-			$this->setValue(strval($value));
-			$this->setText(strval($text));;
-			$this->setSelected((boolean)$selected);
+			$this->setValue((string) $value);
+			$this->setText((string) $text);
+			$this->setSelected((boolean) $selected);
 		}
 		/**
 		 * Display method - print the option element
@@ -160,20 +162,21 @@
 		 * @param array
 		 * @return void
 		 */
-		public function display($attributes=array())
+		public function display($attributes = array())
 		{
 			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(),$attributes));
+			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 
-			if($this->getSelected()==true){
-				$this->setAttribute('selected','selected');
+			if($this->getSelected() === TRUE){
+				$this->setAttribute('selected', 'selected');
 			}
 			else{
 				$this->removeAttribute('selected');
 			}
-			$this->setAttribute('value',strval($this->getValue()));
-			$att_str=$this->getAttributesAsString();
-			echo '<option '.$att_str.'>'.strval($this->getText()).'</option>'."\n";
+			
+			$this->setAttribute('value', strval($this->getValue()));
+			$attributesString = $this->getAttributesAsString();
+			echo '<option ' . $attributesString . '>' . $this->getText() . '</option>' . "\n";
 		}
 		/**
 		 * Empty method
@@ -191,7 +194,7 @@
 		 */
 		public function setSelected($selected)
 		{
-			$this->_selected=(boolean)$selected;
+			$this->_selected = (boolean) $selected;
 			return $this;
 		}
 		/**

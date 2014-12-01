@@ -19,9 +19,9 @@
 		 * @param string
 		 * @param array
 		 */
-		public function __construct($name='', $elems=array())
+		public function __construct($name = '', $elems = array())
 		{
-			parent::__construct($name,$elems);
+			parent::__construct($name, $elems);
 		}
 		/**
 		 * Add element to list
@@ -32,9 +32,9 @@
 		 * @param array
 		 * @return void
 		 */		
-		public function addElem($label,$value,$checked,$attributes=array())
+		public function addElem($label, $value, $checked, $attributes = array())
 		{
-			$cbx=new EblCheckBoxComponent($this->getName(),$label,$value,$checked,$attributes);
+			$cbx = new EblCheckBoxComponent($this->getName(), $label, $value, (boolean) $checked, $attributes);
 			$this->addComponent($cbx);
 		}
 		/**

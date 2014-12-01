@@ -77,16 +77,16 @@
 			$class = strtolower($class);
 			if (! empty($this->_pathsCache[$class])){
 				require_once $this->_pathsCache[$class];
-				return true;
+				return TRUE;
 			}
 			
 			$this->_fetchDirectory($path);
 			if (! empty($this->_pathsCache[$class])){
 				require_once $this->_pathsCache[$class];
-				return true;
+				return TRUE;
 			}
 			
-			return false;
+			return FALSE;
 		}
 		/**
 		 * Fetch directory
@@ -98,7 +98,7 @@
 			$basePath = rtrim($basePath, "\\/");
 			
 			$dirFiles = scandir($basePath);
-			if (false === $dirFiles){
+			if (FALSE === $dirFiles){
 				// todo: throw exception
 			}
 

@@ -23,9 +23,9 @@
 		 * @param boolean
 		 * @param array
 		 */
-		public function __construct($name,$label,$value,$checked=false,$attributes=array())
+		public function __construct($name, $label, $value, $checked = FALSE, $attributes = array())
 		{
-			parent::__construct($name,$label,$value,$checked,$attributes);
+			parent::__construct($name, $label, $value, $checked, $attributes);
 		}
 		/**
 		 * Display method - print check box (with lable)
@@ -33,34 +33,34 @@
 		 * @param array
 		 * @return void
 		 */
-		public function display($attributes=array())
+		public function display($attributes = array())
 		{
 			// Append new attributes
 			$this->setAttributes(array_merge($this->getAttributes(),$attributes));
 
-			if($this->getChecked()==true){
-				$this->setAttribute('checked','checked');
+			if ($this->getChecked() === TRUE){
+				$this->setAttribute('checked', 'checked');
 			}
-			else{
+			else {
 				$this->removeAttribute('checked');
 			}
 			
-			$this->setAttribute('name',strval($this->getName()));
-			$this->setAttribute('value',strval($this->getValue()));
-			$att_str=$this->getAttributesAsString();
+			$this->setAttribute('name', $this->getName());
+			$this->setAttribute('value', strval($this->getValue()));
+			$attStr = $this->getAttributesAsString();
 
 			//$id=$this->getAttributeByKey('id');
 			//$label='<label '.( !is_null($id) ? 'for='.$id : '').' >'.$this->getLabel().'</label>';
 
-			$label='<label>';
-			$input='<input type="checkbox" '.$att_str.' />';
-			if('left'==$this->_text_position){
-				$label.="\n\t".$input."\n\t".$this->getLabel()."\n";
+			$label = '<label>';
+			$input = '<input type="checkbox" ' . $attStr . ' />';
+			if ('left' === $this->getTextPosition()){
+				$label .= "\n\t" . $input . "\n\t" . $this->getLabel() . "\n";
 			}
-			else{
-				$label.="\n\t".$this->getLabel()."\n\t".$input."\n";
+			else {
+				$label .= "\n\t" . $this->getLabel() . "\n\t" . $input . "\n";
 			}
-			$label.='</label>'."\n";
+			$label .= '</label>' . "\n";
 			echo $label;
 		}
 		/**
@@ -72,16 +72,17 @@
 		public function displayClearly($attributes=array())
 		{
 			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(),$attributes));
+			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 
-			if($this->_checked){
-				$this->setAttribute('checked','checked');
+			if (true === $this->getChecked()){
+				$this->setAttribute('checked', 'checked');
 			}
-			else{
+			else {
 				$this->removeAttribute('checked');
 			}
 			
-			echo '<input type="checkbox" '.$att_str.' />'."\n";
+			$attributesString = $this->getAttributesAsString();
+			echo '<input type="checkbox" ' . $attributesString . ' />' . "\n";
 		}
 	}
 ?>

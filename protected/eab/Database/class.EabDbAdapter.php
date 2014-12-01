@@ -133,9 +133,9 @@
 			$this->_host = 'localhost';
 			$this->_database = 'test';
 			$this->_charset = 'UTF8';
-			$this->_isDebugMode = true;
+			$this->_isDebugMode = TRUE;
 			$this->_detfetch_mode = MYSQL_ASSOC;
-			$this->_newLink = false;
+			$this->_newLink = FALSE;
 			$this->_clientFlags = 196608;
 			$this->_queries = array();
 			$this->_reconnectionTimeout = 60;
@@ -323,7 +323,7 @@
 		 * @param integer
 		 * @return mixed
 		 */
-		public function fetchOne($sql, $col = null, $row = null)
+		public function fetchOne($sql, $col = NULL, $row = NULL)
 		{
 			$r = $this->query($sql);
 			$field = $r->fetchOne($col, $row);
@@ -338,7 +338,7 @@
 		 * @param integer
 		 * @return array
 		 */
-		public function fetchRow($sql, $row = null)
+		public function fetchRow($sql, $row = NULL)
 		{
 			$r = $this->query($sql);
 			$row = $r->fetchRow($this->_fetchMode, $row);
@@ -367,7 +367,7 @@
 		 * @param boolean
 		 * @return mixed
 		 */
-		public function escape($value, $quotes = false)
+		public function escape($value, $quotes = FALSE)
 		{
 			$quotes = (boolean) $quotes;
 			if (is_array($value)){
@@ -387,10 +387,10 @@
 				elseif (is_string($value)){
 					$this->prepareConnection();
 					$value = mysql_real_escape_string($value, $this->_dbConn);
-					if (false === $value){
+					if (FALSE === $value){
 						throw new Exception('DB escape string error: '.mysql_error($this->_dbConn));
 					}
-					if (true === $quotes){
+					if (TRUE === $quotes){
 						$value = "'" . $value . "'";
 					}
 					return $value;
@@ -398,7 +398,7 @@
 				elseif (/*is_numeric($value)*/ is_float($value) || is_int($value)){
 					return $value;
 				}
-	//			elseif (null === $value) {
+	//			elseif (NULL === $value) {
 	//				return 'NULL';
 	//			}
 				else {
@@ -481,7 +481,7 @@
 			if (isset($this->_dbConn) && is_resource($this->_dbConn)){
 				mysql_close($this->_dbConn);
 			}
-			$this->_dbConn = null;
+			$this->_dbConn = NULL;
 			$this->_connetedTime = 0;
 		}
 		/**
@@ -491,7 +491,7 @@
 		 * @param array
 		 * @return EabDbResultAdapter
 		 */
-		public function executeStoredProc($name, $params = null)
+		public function executeStoredProc($name, $params = NULL)
 		{
 			$query = 'CALL ' . $name;
 			$query .= $params ? '(' . implode(',', $params) . ')' : '()';
