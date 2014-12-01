@@ -36,7 +36,7 @@
 		 * @param resource
 		 * @param integer
 		 */
-		public function __construct($res, $fetchMode=MYSQL_ASSOC)
+		public function __construct($res, $fetchMode = MYSQL_ASSOC)
 		{
 			$this->result = $res;
 			$this->_defaultFetchMode = $fetchMode;
@@ -58,11 +58,11 @@
 		 */
 		public function fetchAll($fetchMode = null)
 		{
-			if(!$fetchMode){
+			if (! $fetchMode){
 				$fetchMode = $this->_defaultFetchMode;
 			}
-			if(!is_resource($this->result)){
-				throw new Exception('Property '.get_class($this).'->_result is not valid mysql resource!');
+			if (! is_resource($this->result)){
+				throw new Exception('Property ' . get_class($this) . '->_result is not valid mysql resource!');
 			}
 
 			$data = array();
@@ -83,18 +83,19 @@
 		 */
 		public function fetchRow($fetchMode = null, $row = null)
 		{
-			if(!$fetchMode){
+			if (! $fetchMode) {
 				$fetchMode = $this->_defaultFetchMode;
 			}
-			if(!is_resource($this->result)){
+			if (! is_resource($this->result)) {
 				throw new Exception('Property '.get_class($this).'->_result is not valid mysql resource!');
 			}
 
-			if(null == $row) {
+			if (null === $row) {
 				return mysql_fetch_array($this->result, $fetchMode);
-			} else {
+			} 
+			else {
 				$numRows = mysql_num_rows($this->result);
-				if($row >= $numRows) {
+				if ($row >= $numRows) {
 					throw new Exception('Can not find this row in result. Result have only '.$numRows.' rows!');
 				}
 
@@ -112,13 +113,21 @@
 		public function fetchOne($col = null, $row = null)
 		{
 			$fetchmode = is_numeric($col) ? MYSQL_NUM : MYSQL_ASSOC;
-			$row=$this->fetchRow($fetchmode, $row);
+			$row = $this->fetchRow($fetchmode, $row);
 
-			if(!$row) return null;
+			if (! $row) {
+				return null;
+			}
 
-			if(null == $col) return current($row);
-			elseif(isset($row[$col])) return $row[$col];
-			else throw new Exception('Not find column with key "'.$col.'"');
+			if (null === $col) {
+				return current($row);
+			}
+			elseif (isset($row[$col])) {
+				return $row[$col];
+			}
+			else {
+				throw new Exception('Not find column with key "' . $col . '"');
+			}
 		}
 		/**
 		 * Seek pointer of result to specified row
@@ -128,10 +137,12 @@
 		 */
 		public function seek($rowNum = 0)
 		{
-			if(0 == mysql_num_rows($this->result)) return false;
+			if (0 === mysql_num_rows($this->result)) {
+				return false;
+			}
 
-			if(!mysql_data_seek($this->result, $rowNum)) {
-				throw new Exception('Can not seek result pointer to row '.$rowNum.': '.mysql_error()."\n");
+			if (! mysql_data_seek($this->result, $rowNum)) {
+				throw new Exception('Can not seek result pointer to row ' . $rowNum.': ' . mysql_error() . "\n");
 			}
 			return true;
 		}

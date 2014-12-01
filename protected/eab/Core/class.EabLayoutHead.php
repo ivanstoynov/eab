@@ -54,7 +54,7 @@
 		 */
 		public function displayTitle()
 		{
-			echo "\t".'<title>'.$this->_title.'</title>'."\n";
+			echo "\t" . '<title>' . $this->_title . '</title>'."\n";
 		}
 		/**
 		 * Display meta tags
@@ -63,16 +63,16 @@
 		 */
 		public function displayMetaTags()
 		{
-			if(empty($this->_metaTags) || !is_array($this->_metaTags)){
+			if (empty($this->_metaTags) || ! is_array($this->_metaTags)){
 				return;
 			}
 
-			foreach($this->_metaTags as $tagData){
+			foreach ($this->_metaTags as $tagData){
 				$attr = ' ';
-				foreach($tagData as $k => $v){
-					$attr.= $k.'="'.$v.'" ';
+				foreach ($tagData as $k => $v){
+					$attr .= $k . '="' . $v . '" ';
 				}
-				echo "\t".'<meta '.$attr.' />'."\n";
+				echo "\t" . '<meta ' . $attr . ' />' . "\n";
 			}
 		}
 		/**
@@ -82,25 +82,25 @@
 		 */
 		public function displayStyles()
 		{
-			if(empty($this->_styles)){
+			if (empty($this->_styles)){
 				return;
 			}
 			
 			$styles = $this->_styles;
-			if(!is_array($styles)){
+			if (! is_array($styles)){
 				$styles = array($styles);
 			}
 			
-			foreach($styles as $style){
-				if(!is_array($style)){
-					echo "\t".'<link rel="stylesheet" href="'.$style.'" type="text/css" media="all" />'."\n";	
+			foreach ($styles as $style){
+				if (! is_array($style)){
+					echo "\t" . '<link rel="stylesheet" href="' . $style . '" type="text/css" media="all" />' . "\n";	
 				}
 				else{
 					$attr = ' ';
-					foreach($style as $k => $v){
-						$attr.= $k.'="'.$v.'" ';
+					foreach ($style as $k => $v){
+						$attr .= $k . '="' . $v.'" ';
 					}
-					echo "\t".'<link '.$attr.' />'."\n";	
+					echo "\t" . '<link ' . $attr . ' />' . "\n";
 				}
 			}
 		}
@@ -111,17 +111,17 @@
 		 */
 		public function displayJs()
 		{
-			if(empty($this->_js)){ 
+			if( empty($this->_js)){
 				return;
 			}
 
 			$js = $this->_js;
-			if(!is_array($js)){
+			if (! is_array($js)){
 				$js = array($js);
 			}
 
-			foreach($js as $jsSrc){
-				echo "\t".'<script type="text/javascript" src="'.$jsSrc.'"></script>'."\n";	
+			foreach ($js as $jsSrc){
+				echo "\t" . '<script type="text/javascript" src="' . $jsSrc . '"></script>' . "\n";
 			}
 		}
 		/**

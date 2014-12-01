@@ -116,7 +116,7 @@
 			
 			$controllerDir = $this->closeDirPath($this->_appSettings->getControllersDir()).$controllerPath;
 
-			$this->_controllerName = ! empty($exp[$i]) ? ucfirst($exp[$i]).'Controller' : 'IndexController';
+			$this->_controllerName = ! empty($exp[$i]) ? ucfirst($exp[$i]) . 'Controller' : 'IndexController';
 			$this->_controllerPath = $controllerPath;
 			$this->_controllerFile = $controllerDir . 'class.' . $this->_controllerName . '.php';
 			$this->_actionName = ! empty($exp[$i+1]) ? strtolower($exp[$i+1]) : 'index';
@@ -129,13 +129,13 @@
 		private function _runController()
 		{
 			if (! is_file($this->_controllerFile)){
-				throw new EabException('File "'.$this->_controllerFile.'" is not valid file!', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
+				throw new EabException('File "' . $this->_controllerFile . '" is not valid file!', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
 			}
 
 			include_once($this->_controllerFile);
 			$controllerClass = $this->_controllerName;
 			if (! class_exists($controllerClass)){
-				throw new EabException('Class "'.$controllerClass.'" can not be found!', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
+				throw new EabException('Class "' . $controllerClass . '" can not be found!', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
 			}
 
 			$controllerInstance = new $controllerClass();
@@ -218,7 +218,7 @@
 		 */
 		public function redirect($url)
 		{
-			header('Location: '.$url);
+			header('Location: ' . $url);
 			exit;
 		}
 		/**
@@ -232,7 +232,7 @@
 			$ds = $this->_appSettings->getDs();
 			$ch = substr($dir, -1);
 			if ('/' != $ch && '\\' != $ch) {
-				$dir.= $ds;
+				$dir .= $ds;
 			}
 			return $dir;
 		}

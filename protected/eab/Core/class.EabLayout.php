@@ -48,9 +48,9 @@
 		 */
 		public function render()
 		{
-			$layoutFile = Eab::app()->closeDirPath(Eab::app()->getAppSettings()->getLayoutsDir()).$this->_layoutFile;
+			$layoutFile = Eab::app()->closeDirPath(Eab::app()->getAppSettings()->getLayoutsDir()) . $this->_layoutFile;
 			if(!is_file($layoutFile)){
-				throw new EabException('Layout file "'.$layoutFile.'" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
+				throw new EabException('Layout file "' . $layoutFile . '" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
 			include_once($layoutFile);
 		}

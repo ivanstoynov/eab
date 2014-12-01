@@ -61,7 +61,7 @@
 				foreach ($backtrace as $trace){
 					if (! empty($trace['class']) && ($trace['object'] instanceof $class)){
 						if ($cnt++ === 1){
-							$view = $trace['function'].'.view.php';
+							$view = $trace['function'] . '.view.php';
 							break;
 						}
 					}
@@ -74,7 +74,7 @@
 			$viewsDir = Eab::app()->closeDirPath(Eab::app()->getAppSettings()->getViewsDir());
 			$viewFile = $viewsDir.$view;
 			if(!is_file($viewFile)){
-				throw new EabException('View file "'.$viewFile.'" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
+				throw new EabException('View file "' . $viewFile . '" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
 			
 			include_once $viewFile;
@@ -88,7 +88,7 @@
 		public final function executeAction($actionName)
 		{
 			if(!method_exists($this, $actionName)){
-				throw new EabException('Class "'.get_class($this).'" not have method "'.get_class($this).'::'.$actionName.'()"!', EabExceptionCodes::ACTION_NOT_FOUND_EXC);
+				throw new EabException('Class "' . get_class($this) . '" not have method "' . get_class($this) . '::' . $actionName . '()"!', EabExceptionCodes::ACTION_NOT_FOUND_EXC);
 			}
 
 			ob_start();

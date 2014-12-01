@@ -12,18 +12,18 @@
 	 * PHP version 5.0 +
 	 *
 	 * @example 
-	 * 		$db = EabDb::GetInstance();
+	 * 		$db = new EabDb();
 	 * 		$sql = "SELECT * FROM `my_table`";
 	 * 		$result_rows = $db->fetchAll($sql);
 	 *
 	 * @example
-	 * 		$db = EabDb::GetInstance();
+	 * 		$db = new EabDb();
 	 * 		$sql = "SELECT * FROM `some_table`";
 	 * 		$result	= $db->query($sql);
-	 * 		while($row = $result->fetchRow()) { print_r($row); }
+	 * 		while ($row = $result->fetchRow()) { print_r($row); }
 	 *
 	 * @example
-	 * 		$db = EabDb::GetInstance();
+	 * 		$db = new EabDb();
 	 * 		$sql = "INSERT INTO `some_table` (field1, field2) VALUES ('1','2'); ";
 	 * 		$db->exec($sql);
 	 *
@@ -105,7 +105,7 @@
 			$this->loadDefautSettings();
 			
 			$timeout = ini_get('mysql.connect_timeout');
-			if($timeout){
+			if ($timeout){
 				$this->_reconnectionTimeout = $timeout;
 			}
 			$this->setSettings($settings);
@@ -117,7 +117,7 @@
 		 */
 		public function __destruct()
 		{
-			if(!empty($this->_dbConn)){
+			if (! empty($this->_dbConn)){
 				$this->disconnect(); 
 			}
 		}
@@ -149,9 +149,9 @@
 		 */
 		public function setSettings($settings = array())
 		{
-			foreach($settings as $k => $v){
-				$prop = '_'.$k;
-				if(property_exists($this, $prop)){
+			foreach ($settings as $k => $v){
+				$prop = '_' . $k;
+				if (property_exists($this, $prop)){
 					$this->{$prop} = $v;
 				}
 			}
@@ -164,8 +164,8 @@
 		private function connect()
 		{
 			$conn = @mysql_connect($this->_host, $this->_username, $this->_password, $this->_newLink, $this->_clientFlags);
-			if(!is_resource($conn)){ 
-				throw new Exception('DB connection error:  '.mysql_error(), mysql_errno()); 
+			if (! is_resource($conn)){ 
+				throw new Exception('DB connection error:  ' . mysql_error(), mysql_errno()); 
 			}
 
 			$this->_dbConn = $conn;
@@ -181,12 +181,12 @@
 		 */
 		private function prepareConnection() {
 
-			if( !is_resource($this->_dbConn) ) {
+			if (! is_resource($this->_dbConn) ) {
 				$this->reconnect();
 			}
 			else {
 				$now = time();
-				if(($now-$this->_connetedTime) > ($this->_reconnectionTimeout - 2)){
+				if (($now-$this->_connetedTime) > ($this->_reconnectionTimeout - 2)){
 					$this->reconnect();
 				}
 			}
@@ -201,8 +201,8 @@
 		public function selectDatabase($database)
 		{
 			$this->prepareConnection();
-			if( !@mysql_select_db($database, $this->_dbConn) ){
-				throw new Exception('DB select db error: '.mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
+			if (! @mysql_select_db($database, $this->_dbConn) ){
+				throw new Exception('DB select db error: ' . mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
 			}
 		}
 		/**
@@ -223,20 +223,21 @@
 		public function setConnectionCharset($charset = 'UTF8')
 		{
 			$this->prepareConnection();
-			if(function_exists('mysql_set_charset')) {
+			if (function_exists('mysql_set_charset')) {
 			
-				if(!mysql_set_charset($charset, $this->_dbConn)) {
-					throw new Exception('DB set charset error: '.mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
+				if (! mysql_set_charset($charset, $this->_dbConn)) {
+					throw new Exception('DB set charset error: ' . mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
 				}
-			} else {
+			} 
+			else {
 				$res = mysql_query("SET NAMES '".$this->escape($charset)."'", $this->_dbConn);
-				if(!$res){ 
-					throw new Exception('DB set names error: '.mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
+				if (! $res){ 
+					throw new Exception('DB set names error: ' . mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
 				}
 
 				$res = mysql_query("SET CHARACTER SET '".$this->escape($charset)."'", $this->_dbConn);
-				if(!$res){
-					throw new Exception( 'DB set charset error: '.mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
+				if (! $res){
+					throw new Exception( 'DB set charset error: ' . mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
 				}
 			}
 		}
@@ -249,8 +250,8 @@
 		public function lastInsertID()
 		{
 			$id = mysql_insert_id($this->_dbConn);
-			if(!$id){
-				throw new Exception('DB get last_insert_id error: '.mysql_error(), mysql_errno($this->_dbConn)); 
+			if (! $id){
+				throw new Exception('DB get last_insert_id error: ' . mysql_error(), mysql_errno($this->_dbConn)); 
 			}
 			return $id;
 		}
@@ -269,11 +270,11 @@
 			$start = microtime();
 			$res = mysql_query($sql, $this->_dbConn);
 			$end = microtime();
-			if(!$res) { 
-				throw new Exception('DB exec error: '.mysql_error($this->_dbConn)); 
+			if (! $res) { 
+				throw new Exception('DB exec error: ' . mysql_error($this->_dbConn));
 			}
 			
-			if($this->_isDebugMode){
+			if ($this->_isDebugMode){
 				list($usec1, $sec1) = explode(' ', $start);
 				list($usec2, $sec2) = explode(' ', $end);
 				$diff = round($sec2 - $sec1 + $usec2 - $usec1, 6);
@@ -300,7 +301,7 @@
 			$res = mysql_query($sql, $this->_dbConn);
 			$end = microtime();
 
-			if(!$res){ 
+			if (! $res){ 
 				throw new Exception('DB query error: '.mysql_error($this->_dbConn)); 
 			}
 
@@ -368,32 +369,33 @@
 		 */
 		public function escape($value, $quotes = false)
 		{
-			if(is_array($value)){
+			$quotes = (boolean) $quotes;
+			if (is_array($value)){
 				foreach ($value as $key => $val) {
 					$value[$key]=$this->escape($val, $quotes);
 				}
 				return $value;
 			}
 			else{
-				if(is_string($value) && get_magic_quotes_gpc()) {
+				if (is_string($value) && get_magic_quotes_gpc()) {
 					$value = stripslashes($value);
 				}
 
 				if (is_bool($value)) {
 					return $value ? 1 : 0;
 				}
-				elseif(is_string($value)) {
+				elseif (is_string($value)){
 					$this->prepareConnection();
 					$value = mysql_real_escape_string($value, $this->_dbConn);
-					if(false === $value){
-						throw new Exception('DB escape string error: '.mysql_error($this->_dbConn)); 
+					if (false === $value){
+						throw new Exception('DB escape string error: '.mysql_error($this->_dbConn));
 					}
-					if(true == $quotes){ 
-						$value = "'".$value."'";
+					if (true === $quotes){
+						$value = "'" . $value . "'";
 					}
 					return $value;
 				}
-				elseif (/*is_numeric($value)*/ is_float($value) || is_int($value)) {
+				elseif (/*is_numeric($value)*/ is_float($value) || is_int($value)){
 					return $value;
 				}
 	//			elseif (null === $value) {
@@ -422,7 +424,7 @@
 		 */
 		public function setTransactionIsolation($isolation = 'READ COMMITTED', $option = 'SESSION')
 		{
-			$this->exec('SET '.$this->escape($option).' TRANSACTION ISOLATION LEVEL '.$this->escape($isolation).';');
+			$this->exec('SET ' . $this->escape($option) . ' TRANSACTION ISOLATION LEVEL ' . $this->escape($isolation) . ';');
 		}
 		/**
 		 * Activate auto commit
@@ -476,7 +478,7 @@
 		 */
 		public function disconnect()
 		{
-			if(!empty($this->_dbConn) && is_resource($this->_dbConn)){
+			if (isset($this->_dbConn) && is_resource($this->_dbConn)){
 				mysql_close($this->_dbConn);
 			}
 			$this->_dbConn = null;
@@ -489,10 +491,10 @@
 		 * @param array
 		 * @return EabDbResultAdapter
 		 */
-		public function executeStoredProc($name, $params=null)
+		public function executeStoredProc($name, $params = null)
 		{
-			$query = 'CALL '.$name;
-			$query.= $params ? '('.implode(',', $params).')' : '()';
+			$query = 'CALL ' . $name;
+			$query .= $params ? '(' . implode(',', $params) . ')' : '()';
 			$r = $this->query($query);
 
 			$this->reconnect();
@@ -565,7 +567,7 @@
 		 */
 		public function setHost($host)
 		{
-			$this->_host=$host;
+			$this->_host = $host;
 			return $this;
 		}
 		/**
