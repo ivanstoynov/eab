@@ -53,7 +53,7 @@
 		 */
 		public function __get($prop)
 		{
-			if(isset($this->_assigns[$prop])){
+			if (isset($this->_assigns[$prop])){
 				return $this->_assigns[$prop];
 			}
 			else{

@@ -58,9 +58,9 @@
 				$backtrace = debug_backtrace();
 				$class = __CLASS__;
 				$cnt = 0;
-				foreach($backtrace as $trace){
-					if(!empty($trace['class']) && ($trace['object'] instanceof $class)){
-						if($cnt++ == 1){
+				foreach ($backtrace as $trace){
+					if (! empty($trace['class']) && ($trace['object'] instanceof $class)){
+						if ($cnt++ === 1){
 							$view = $trace['function'].'.view.php';
 							break;
 						}

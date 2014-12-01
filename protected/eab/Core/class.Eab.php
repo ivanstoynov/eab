@@ -36,10 +36,10 @@
 			$this->_dbAdapter = new EabDbAdapter();
 			
 			$ds = DIRECTORY_SEPARATOR;
-			$root_dir = dirname($_SERVER['SCRIPT_FILENAME']).$ds;
-			$this->_appSettingsFile = $root_dir.'protected'.$ds.'configs'.$ds.'app.conf.php';
+			$root_dir = dirname($_SERVER['SCRIPT_FILENAME']) . $ds;
+			$this->_appSettingsFile = $root_dir . 'protected' . $ds.'configs' . $ds . 'app.conf.php';
 			$this->_appSettingsFileFormat = 'array';
-			$this->_pagesSettingsFile = $root_dir.'protected'.$ds.'configs'.$ds.'pages.conf.php';
+			$this->_pagesSettingsFile = $root_dir . 'protected' . $ds.'configs' . $ds . 'pages.conf.php';
 			$this->_pagesSettingsFileFormat = 'array';
 		}
 		/**
@@ -53,7 +53,7 @@
 		 */
 		public static function app()
 		{
-			if(null === self::$_instace){
+			if (null === self::$_instace){
 				self::$_instace = new self();
 			}
 			return self::$_instace;
@@ -67,7 +67,6 @@
 		{
 			$this->_loadAppSettings();
 
-			
 			$this->_dbAdapter->setSettings();
 			
 			// Pharse url to load controller and action data
@@ -83,7 +82,7 @@
 		private function _loadAppSettings()
 		{
 			// todo:
-			if( $this->_appSettingsFile){
+			if ($this->_appSettingsFile){
 				$fileSettingsLoader = EabFileSettingsLoader::CreateLoader($this->_appSettingsFile, $this->_appSettingsFileFormat);
 				$settings = $fileSettingsLoader->loadSettings();
 				$this->_appSettings->setSettings($settings);
@@ -100,7 +99,7 @@
 			$urlPathKey = $this->_appSettings->getUrlPathKey();
 			$urlPathSep = $this->_appSettings->getUrlPathSep();
 
-			$page = !empty($_REQUEST[$urlPathKey]) ? $_REQUEST[$urlPathKey] : 'index'.$urlPathSep.'index';
+			$page = !empty($_REQUEST[$urlPathKey]) ? $_REQUEST[$urlPathKey] : 'index' . $urlPathSep . 'index';
 
 			$exp = explode($urlPathSep, $page);
 
@@ -108,19 +107,19 @@
 			$ds = $this->_appSettings->getDs();
 			$expCnt = count($exp);
 			$i = 0;
-			if($expCnt > 2){
-				while($i < ($expCnt-2)){
-					$controllerPath.= $exp[$i].$ds;
+			if ($expCnt > 2){
+				while ($i < ($expCnt - 2)){
+					$controllerPath .= $exp[$i].$ds;
 					$i++;
 				}
 			}
 			
 			$controllerDir = $this->closeDirPath($this->_appSettings->getControllersDir()).$controllerPath;
 
-			$this->_controllerName = !empty($exp[$i]) ? ucfirst($exp[$i]).'Controller' : 'IndexController';
+			$this->_controllerName = ! empty($exp[$i]) ? ucfirst($exp[$i]).'Controller' : 'IndexController';
 			$this->_controllerPath = $controllerPath;
-			$this->_controllerFile = $controllerDir.'class.'.$this->_controllerName.'.php';
-			$this->_actionName = !empty($exp[$i+1]) ? strtolower($exp[$i+1]) : 'index';
+			$this->_controllerFile = $controllerDir . 'class.' . $this->_controllerName . '.php';
+			$this->_actionName = ! empty($exp[$i+1]) ? strtolower($exp[$i+1]) : 'index';
 		}
 		/**
 		 * Run application controller
@@ -129,33 +128,33 @@
 		 */
 		private function _runController()
 		{
-			if(!is_file($this->_controllerFile)){
+			if (! is_file($this->_controllerFile)){
 				throw new EabException('File "'.$this->_controllerFile.'" is not valid file!', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
 			}
 
 			include_once($this->_controllerFile);
 			$controllerClass = $this->_controllerName;
-			if(!class_exists($controllerClass)){
+			if (! class_exists($controllerClass)){
 				throw new EabException('Class "'.$controllerClass.'" can not be found!', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
 			}
 
 			$controllerInstance = new $controllerClass();
-			if(!($controllerInstance instanceof EabController)){
-				throw new EabException('Class "'.$controllerClass.'" must be instance of EabController !', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
+			if (! ($controllerInstance instanceof EabController)){
+				throw new EabException('Class "' . $controllerClass . '" must be instance of EabController !', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
 			}
 
-			$layout = $this->_getAppLayout();
-			$controllerInstance->setLayout($layout);
+			$layoutInstance = $this->_getAppLayout();
+			$controllerInstance->setLayout($layoutInstance);
 
 			$content = $controllerInstance->executeAction($this->_actionName);
 
-			if(!empty($layout)){
-				if(!($layout instanceof EabLayout)){
+			if (! empty($layoutInstance)){
+				if (! ($layoutInstance instanceof EabLayout)){
 					throw new EabException('Layout must be instance of EabLayout!', EabExceptionCodes::INCORECT_TYPE_EXC);
 				}
-				$layout->setContent($content);
+				$layoutInstance->setContent($content);
 				ob_start();
-				$layout->render();
+				$layoutInstance->render();
 				$content = ob_get_contents();
 				ob_clean();
 			}
@@ -171,14 +170,14 @@
 			$defaultLayout = Eab::app()->getAppSettings()->getDefaultLayout();
 			$layout = new EabLayout($defaultLayout);
 
-			if(empty($this->_pagesSettingsFile)){
+			if (empty($this->_pagesSettingsFile)){
 				return $layout;
 			}
 
 			$fileSettingsLoader = EabFileSettingsLoader::CreateLoader($this->_pagesSettingsFile, $this->_pagesSettingsFileFormat);
 			$pagesSettings = $fileSettingsLoader->loadSettings();
 
-			if(!empty($pagesSettings['__defaults__'])){
+			if (! empty($pagesSettings['__defaults__'])){
 				// Set default values
 				$defSettings = $pagesSettings['__defaults__'];
 				$layout->getLayoutHead()->setTitle($defSettings['title']);
@@ -188,9 +187,9 @@
 			}
 			
 			$ctrl = $this->_controllerPath.$this->_controllerName;
-			if(!empty($pagesSettings['__controllers__'][$ctrl])){
+			if (! empty($pagesSettings['__controllers__'][$ctrl])){
 				$ctrlSettings = $pagesSettings['__controllers__'][$ctrl];
-				if(!empty($ctrlSettings['__defaults__'])){
+				if (! empty($ctrlSettings['__defaults__'])){
 				    // Set controller default values
 					$defaultCtrlSettings = $ctrlSettings['__defaults__'];
 					$layout->getLayoutHead()->setTitle($defaultCtrlSettings['title']);
@@ -200,7 +199,7 @@
 				}
 
 				$act = $this->_actionName;
-				if(!empty($ctrlSettings[$act])){
+				if (! empty($ctrlSettings[$act])){
 					// Set action values
 					$actSettings = $ctrlSettings[$act];
 					$layout->getLayoutHead()->setTitle($actSettings['title']);
@@ -232,7 +231,7 @@
 		{
 			$ds = $this->_appSettings->getDs();
 			$ch = substr($dir, -1);
-			if( '/' != $ch && '\\' != $ch) {
+			if ('/' != $ch && '\\' != $ch) {
 				$dir.= $ds;
 			}
 			return $dir;
