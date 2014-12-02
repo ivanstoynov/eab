@@ -61,7 +61,7 @@
 			$attStr = $this->getAttributesAsString();
 			
 			echo '<select ' . $attStr . ' />' . "\n";
-			foreach ($this->_options as $option){
+			foreach ($this->_options as $option) {
 				$option->display();
 			}
 			echo '</select>' . "\n";
@@ -74,11 +74,11 @@
 		public function handleRequestValue()
 		{
 			$val = $_REQUEST[$this->getName()];
-			if (is_array($val)){
-				foreach ($val as $v){
+			if (is_array($val)) {
+				foreach ($val as $v) {
 					$i = 0;
-					foreach ($this->_options as $option){
-						if ($options->getValue() === $v){
+					foreach ($this->_options as $option) {
+						if ($options->getValue() === $v) {
 							$this->_selectedIndex = $i;
 						}
 						$i++;
@@ -87,8 +87,8 @@
 			}
 			else{
 				$i = 0;
-				foreach ($this->_options as $option){
-					if ($options->getValue() === $val){
+				foreach ($this->_options as $option) {
+					if ($options->getValue() === $val) {
 						$this->_selectedIndex = $i;
 					}
 					$i++;
@@ -167,7 +167,7 @@
 			// Append new attributes
 			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 
-			if($this->getSelected() === TRUE){
+			if ($this->getSelected() === TRUE) {
 				$this->setAttribute('selected', 'selected');
 			}
 			else{

@@ -28,7 +28,7 @@
 			$this->_validators=array();
 		}
 	
-		private function __clone(){}
+		private function __clone() {}
 		/**
 		 * Get instance
 		 *
@@ -36,8 +36,8 @@
 		 */
 		public static function GetInstance()
 		{
-			if(!isset(self::$_instance)){
-				self::$_instance=new self();
+			if (! isset(self::$_instance)) {
+				self::$_instance = new self();
 			}
 			return self::$_instance;
 		}
@@ -49,8 +49,8 @@
 		 */
 		public function make($field)
 		{
-			if(!isset($this->_validators[$field])){
-				$this->_validators[$field]=new EblElemValidator($field);
+			if (! isset($this->_validators[$field])) {
+				$this->_validators[$field] = new EblElemValidator($field);
 			}
 			return $this->_validators[$field];
 		}
@@ -62,14 +62,17 @@
 		 */
 		public function validate()
 		{
-			if(empty($this->_validators)) return true;
-			$is_valid=true;
-			foreach($this->_validators as $validator){
-				if(!$validator->validate()){
-					$is_valid=false;
+			if (empty($this->_validators)) {
+				return true;
+			}
+			
+			$isValid = true;
+			foreach ($this->_validators as $validator) {
+				if (! $validator->validate()) {
+					$isValid = false;
 				}
 			}
-			return $is_valid;
+			return $isValid;
 		}
 		/**
 		 * reset validators (same as clear)
@@ -78,7 +81,7 @@
 		 */
 		public function reset()
 		{
-			$this->_validators=array();
+			$this->_validators = array();
 		}
 		/**
 		 * clear validators (same clear)
@@ -87,7 +90,7 @@
 		 */
 		public function clear()
 		{
-			$this->_validators=array();
+			$this->_validators = array();
 		}
 	}
 ?>

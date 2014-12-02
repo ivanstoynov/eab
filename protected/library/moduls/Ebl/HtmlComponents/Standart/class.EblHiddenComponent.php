@@ -22,7 +22,7 @@
 		public function __construct($name, $value, $attributes = array())
 		{
 			parent::__construct($attributes);
-			$this->setName($name);
+			$this->setName((string) $name);
 			$this->setValue($value);
 		}
 		/**

@@ -38,7 +38,7 @@
 			// Append new attributes
 			$this->setAttributes(array_merge($this->getAttributes(),$attributes));
 
-			if ($this->getChecked() === TRUE){
+			if ($this->getChecked() === TRUE) {
 				$this->setAttribute('checked', 'checked');
 			}
 			else {
@@ -54,7 +54,7 @@
 
 			$label = '<label>';
 			$input = '<input type="checkbox" ' . $attStr . ' />';
-			if ('left' === $this->getTextPosition()){
+			if ('left' === $this->getTextPosition()) {
 				$label .= "\n\t" . $input . "\n\t" . $this->getLabel() . "\n";
 			}
 			else {
@@ -74,7 +74,7 @@
 			// Append new attributes
 			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 
-			if (true === $this->getChecked()){
+			if (true === $this->getChecked()) {
 				$this->setAttribute('checked', 'checked');
 			}
 			else {

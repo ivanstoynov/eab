@@ -58,17 +58,17 @@
 		 */
 		public function fetchAll($fetchMode = NULL)
 		{
-			if (! $fetchMode){
+			if (! $fetchMode) {
 				$fetchMode = $this->_defaultFetchMode;
 			}
-			if (! is_resource($this->result)){
+			if (! is_resource($this->result)) {
 				throw new Exception('Property ' . get_class($this) . '->_result is not valid mysql resource!');
 			}
 
 			$data = array();
-			if(mysql_numrows($this->result)>0){
+			if (mysql_numrows($this->result)>0) {
 				$this->seek(0);
-				while($row = mysql_fetch_array($this->result, $fetchMode)){
+				while ($row = mysql_fetch_array($this->result, $fetchMode)) {
 					$data[]=$row;
 				}
 			}

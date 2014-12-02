@@ -36,7 +36,7 @@
 			// Append new attributes
 			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 
-			if ($this->getChecked() === TRUE){
+			if ($this->getChecked() === TRUE) {
 				$this->setAttribute('checked', 'checked');
 			}
 			else {

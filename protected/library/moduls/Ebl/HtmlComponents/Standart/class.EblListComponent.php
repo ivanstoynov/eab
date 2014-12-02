@@ -74,10 +74,10 @@
 			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 			$atts = $this->getAttributes();
 
-			if (empty($atts['class'])){
+			if (empty($atts['class'])) {
 				$class = 'listCompPanel';
 				$direction = strtolower($this->_direction);
-				if ($direction === 'vertical'){
+				if ($direction === 'vertical') {
 					$class .= ' listCompVertical';
 				}
 				else {
@@ -88,7 +88,7 @@
 
 			$name = $this->getName();
 			$pos = strpos($name, '[');
-			if (FALSE !== $pos){
+			if (FALSE !== $pos) {
 				$name = substr($name, 0, $pos);
 			}
 
@@ -96,10 +96,10 @@
 			$attributesString = $this->getAttributesAsString();
 
 			echo '<div ' . $attributesString . '>' . "\n";
-			foreach($this->_elems as $elem){
+			foreach ($this->_elems as $elem) {
 				
 				//$id=$rbtn_elem->getAttributeByKey('id');
-				//if(is_null($id)){
+				//if (is_null($id)) {
 					//$id=$name.'_'.$i++;
 					//$rbtn_elem->setAttribute('id',$id);
 				//}
@@ -127,7 +127,7 @@
 		{
 			$this->_selectedValue = NULL;
 			$this->_selectedIndex = NULL;
-			foreach ($this->_elems as $elem){
+			foreach ($this->_elems as $elem) {
 				$elem->setSelected(FALSE);
 			}
 		}
@@ -142,14 +142,14 @@
 			$index = (int) $index;
 			$i = 0;
 			// Mark elem as selected
-			foreach ($this->_elems as $elem){
-				if ($i === $index){
+			foreach ($this->_elems as $elem) {
+				if ($i === $index) {
 					$elem->setSelected(TRUE);
 				}
 				$i++;
 			}
 			
-			//if($index<$i){
+			//if ($index<$i) {
 				$this->_selectedIndex = $index;
 			//}
 			return $this;
@@ -173,13 +173,13 @@
 		{
 			$found = FALSE;
 			// Mark elem as selected
-			foreach ($this->_elems as $elem){
+			foreach ($this->_elems as $elem) {
 				if ($value === $elem->getValue()) {
 					$elem->setSelected(FALSE);
 					$found = TRUE;
 				}
 			}
-			//if($found){
+			//if ($found) {
 				$this->_selectedValue = $value;
 			//}
 			return $this;
