@@ -1,7 +1,8 @@
 <?php
 
-	include_once(dirname(__FILE__).'/../class.EblHtmlComponent.php');
-
+	include_once(dirname(__FILE__).'/class.EblListComponent.php');
+	include_once(dirname(__FILE__).'/class.EblOptionComponent.php');
+	
 	/**
 	 * Class describe html select element
 	 *
@@ -9,18 +10,8 @@
 	 * @pakage Ebl
 	 * @subpakage HtmlComponents/Standard
 	 */
-	class EblSelectComponent extends EblHtmlComponent
+	class EblSelectComponent extends EblListComponent
 	{
-		/**
-		 * @var array
-		 */
-		private $_options=array();
-		/**
-		 * @var integer|null
-		 */
-		private $_selectedIndex;
-
-
 		/**
 		 * Constructor of class
 		 * 
@@ -31,9 +22,10 @@
 		public function __construct($name, $options = array(), $attributes = array())
 		{
 			parent::__construct($attributes);
-			$this->setName($name);
-			$this->_options = $options;
+			$this->setName((string) $name);
+			$this->setElems($options);
 			$this->_selectedIndex = NULL;
+			$this->_selectedValue = NULL;			
 		}
 		/**
 		 * Add option element
@@ -43,7 +35,7 @@
 		 */
 		public function addOption(EblOptionComponent $option)
 		{
-			$this->_options[] = $option;
+			$this->addElem($option);
 			return $this;
 		}
 		/**
@@ -58,51 +50,26 @@
 			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 			
 			$this->setAttribute('name', $this->getName());
-			$attStr = $this->getAttributesAsString();
+			$attributesString = $this->getAttributesAsString();
 			
-			echo '<select ' . $attStr . ' />' . "\n";
-			foreach ($this->_options as $option) {
+			echo '<select ' . $attributesString . ' />' . "\n";
+			foreach ($this->getElems() as $option) {
 				$option->display();
 			}
 			echo '</select>' . "\n";
 		}
 		/**
-		 * Handle and set value from request
+		 * Abstract method to add element 
 		 *
-		 * @return void
-		 */		
-		public function handleRequestValue()
-		{
-			$val = $_REQUEST[$this->getName()];
-			if (is_array($val)) {
-				foreach ($val as $v) {
-					$i = 0;
-					foreach ($this->_options as $option) {
-						if ($options->getValue() === $v) {
-							$this->_selectedIndex = $i;
-						}
-						$i++;
-					}
-				}
-			}
-			else{
-				$i = 0;
-				foreach ($this->_options as $option) {
-					if ($options->getValue() === $val) {
-						$this->_selectedIndex = $i;
-					}
-					$i++;
-				}
-			}
-		}
-		/**
-		 * Get selected index (getter)
-		 *
-		 * @return void
+		 * @param string
+		 * @param string
+		 * @param bolean
+		 * @param array
 		 */
-		public function getSelectedIndex()
+		public function addElem($label, $value, $selected, $attributes = array())
 		{
-			return $this->_selectedIndex;
+			$option = new EblOptionComponent($value, (string) $label, (boolean)$selected, $attributes);
+			$this->addElem($option);
 		}
 		/**
 		 * Set options (setter)
@@ -112,17 +79,17 @@
 		 */
 		public function setOptions($options)
 		{
-			$this->_options=$options;
+			$this->setElems($options);
 			return $this;
 		}
 		/**
 		 * Get options (getter)
 		 *
-		 * @return void
+		 * @return array
 		 */
 		public function getOptions()
 		{
-			return $this->_options;
+			return $this->getElems();
 		}
 	}
 	

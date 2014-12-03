@@ -48,7 +48,7 @@
 		public function __construct($name='', $elems = array())
 		{
 			parent::__construct();
-			$this->setName($name);
+			$this->setName((string) $name);
 			$this->_elems = $elems;
 			$this->_selectedIndex = NULL;
 			$this->_selectedValue = NULL;
@@ -61,7 +61,7 @@
 		 * @param bolean
 		 * @param array
 		 */
-		abstract public function addElem($label, $value, $checked, $attributes = array());
+		abstract public function addElem($label, $value, $selected, $attributes = array());
 		/**
 		 * Display method - print the list
 		 *
@@ -72,8 +72,8 @@
 		{
 			// Append new attributes
 			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
+			
 			$atts = $this->getAttributes();
-
 			if (empty($atts['class'])) {
 				$class = 'listCompPanel';
 				$direction = strtolower($this->_direction);
@@ -92,7 +92,7 @@
 				$name = substr($name, 0, $pos);
 			}
 
-			$i = 1;
+			//$i = 1;
 			$attributesString = $this->getAttributesAsString();
 
 			echo '<div ' . $attributesString . '>' . "\n";
@@ -131,33 +131,86 @@
 				$elem->setSelected(FALSE);
 			}
 		}
+
+		/**
+		 * Handle and set value from request
+		 *
+		 * @return void
+		 */		
+		public function handleRequestValue()
+		{
+			$this->clear();
+			
+			$name = $this->getName();
+			$selectedValue = isset($_REQUEST[$name]) ? $_REQUEST[$name] : '';
+			if (! is_array($selectedValue)) {
+				$selectedIndex = array();
+				foreach ($selectedValue as $k => $value) {
+					$selectedValue[$k] = (string) $value;
+					$i = 0;
+					foreach ($this->_elems as $elem) {
+						if ($elem->getValue() === $value) {
+							$selectedIndex[] = $i;
+						}
+						$i++;
+					}
+				}
+				$this->_selectedIndex = $selectedIndex;
+			}
+			else {
+				$selectedValue = (string) $selectedValue;
+				foreach ($this->_elems as $elem) {
+					if ($elem->getValue() === $selectedValue) {
+						$this->_selectedIndex = $i;
+						break;
+					}
+					$i++;
+				}
+			}
+		}
 		/**
 		 * Set selected index (setter)
 		 *
-		 * @param integer
+		 * @param integer|array
 		 * @return EblListComponent
 		 */
-		public function setSelectedIndex($index)
+		public function setSelectedIndex($selectedIndex)
 		{
-			$index = (int) $index;
-			$i = 0;
-			// Mark elem as selected
-			foreach ($this->_elems as $elem) {
-				if ($i === $index) {
-					$elem->setSelected(TRUE);
+			$this->clear();
+
+			if (is_array($selectedIndex)) {
+				$selectedValues = array();
+				// Mark elem as selected
+				foreach ($selectedIndex as $k => $index) {
+					$index = (int) $index;
+					$selectedIndex[$k] = $index;
+					foreach ($this->_elems as $elemIndex => $elem) {
+						if ($elemIndex === $index) {
+							$elem->setSelected(TRUE);
+							$selectedValues[] = $elem->getValue();
+						}
+					}
 				}
-				$i++;
+				$this->_selectedValue = ! empty($selectedValues) ? $selectedValues : NULL;
+			}
+			else{
+				$selectedIndex = (int) $selectedIndex;
+				foreach ($this->_elems as $elemIndex => $elem) {
+					if ($elemIndex === $selectedIndex) {
+						$elem->setSelected(TRUE);
+						$this->_selectedValue = $elem->getValue();
+						break;
+					}
+				}
 			}
 			
-			//if ($index<$i) {
-				$this->_selectedIndex = $index;
-			//}
+			$this->_selectedIndex = $index;
 			return $this;
 		}
 		/**
 		 * get selected index (getter)
 		 *
-		 * @return integer
+		 * @return integer|array
 		 */
 		public function getSelectedIndex()
 		{
@@ -166,22 +219,40 @@
 		/**
 		 * Set selected value (setter)
 		 *
-		 * @param string
+		 * @param string|array
 		 * @return EblListComponent
 		 */
-		public function setSelectedValue($value)
+		public function setSelectedValue($selectedValue)
 		{
-			$found = FALSE;
-			// Mark elem as selected
-			foreach ($this->_elems as $elem) {
-				if ($value === $elem->getValue()) {
-					$elem->setSelected(FALSE);
-					$found = TRUE;
+			$this->clear();
+
+			if (is_array($selectedValue)) {
+				$selectedIndexes = array();
+				foreach ($selectedValue as $k => $value) {
+					$value = (string) $value;
+					$selectedValue[$k] = $value;
+					foreach ($this->_elems as $elemIndex => $elem) {
+						if ($value === $elem->getValue()) {
+							$elem->setSelected(TRUE);
+							$selectedIndexes[] = $elemIndex;
+						}
+					}
+				}
+				$this->_selectedIndex = ! empty($selectedIndexes) ? $selectedIndexes : NULL;
+			}
+			else {
+				$selectedValue = (string) $selectedValue;
+				foreach ($this->_elems as $elemIndex => $elem) {
+					if ($selectedValue === $elem->getValue()) {
+						$elem->setSelected(TRUE);
+						$this->_selectedIndex = $elemIndex;
+						break;
+					}
 				}
 			}
-			//if ($found) {
-				$this->_selectedValue = $value;
-			//}
+			
+			$this->_selectedValue = $selectedValue;
+
 			return $this;
 		}
 		/**
@@ -222,7 +293,7 @@
 		 */		
 		public function setTextPosition($position)
 		{
-			$position = strtolower($position);
+			$position = strtolower((string) $position);
 			if (! in_array($position, array('left', 'right'))) {
 				// todo: throw exception
 			}
@@ -248,7 +319,7 @@
 		 */	
 		public function setDirection($direction)
 		{
-			$direction = strtolower($direction);
+			$direction = strtolower((string) $direction);
 			if (! in_array($direction, array('horizontal', 'vertical'))) {
 				// todo: throw exception
 			}
