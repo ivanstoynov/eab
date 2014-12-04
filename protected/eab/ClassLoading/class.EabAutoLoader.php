@@ -108,11 +108,18 @@
 				$filePath = $basePath . $this->_ds . $file;
 				if (is_file($filePath)) {
 					$file = strtolower($file);
-					if ('class.' !== substr($file, 0, 6)) {
-						continue;
+					if ('class.' === substr($file, 0, 6)) {
+						$class = substr($file, 6, -4);
+						$this->_pathsCache[$class] = $filePath;
 					}
-					$class = substr($file, 6, -4);
-					$this->_pathsCache[$class] = $filePath;
+					elseif ('interface.' === substr($file, 0, 10)) {
+						$class = substr($file, 10, -4);
+						$this->_pathsCache[$class] = $filePath;
+					}
+					elseif ('trait.' === substr($file, 0, 6)) {
+						$class = substr($file, 6, -4);
+						$this->_pathsCache[$class] = $filePath;
+					}					
 				}
 				elseif (is_dir($filePath)) {
 					$this->_fetchDirectory($filePath);

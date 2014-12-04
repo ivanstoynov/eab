@@ -52,7 +52,7 @@
 			echo '<option ' . $attributesString . '>' . $this->getText() . '</option>' . "\n";
 		}
 		/**
-		 * Empty method
+		 * Rewrite empty
 		 *
 		 * @return void
 		 */

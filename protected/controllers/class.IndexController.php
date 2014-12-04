@@ -22,25 +22,27 @@
 			$cbxList = new EblCheckBoxList('sex');
 			$cbxList->setTextPosition('right');
 			$cbxList->setDirection('vertical');
-			$cbxList->addElem('male', 'm', false);
-			$cbxList->addElem('female', 'f', true);
+			$cbxList->addElement('male', 'm', false);
+			$cbxList->addElement('female', 'f', true);
 			$this->cbxList=$cbxList;
 			
 			
 			$rbList = new EblRadioButtonList('sex');
 			$rbList->setTextPosition('right');
 			$rbList->setDirection('vertical');
-			$rbList->addElem('male', 'm', false);
-			$rbList->addElem('female', 'f', true);
-			$this->rbList=$rbList;
+			$rbList->addElement('male', 'm', false);
+			$rbList->addElement('female', 'f', true);
+			$this->rbList = $rbList;
 			
-			//$validator
-			EblFormValidator::GetInstance()->make('sometextbox')->addRule(array('required'))
-															 ->addRule(array('length', '5:20'))
-															 ->addRule(array('email'));
+			// Validation
+			$formValidator = new EblFormValidator();
+			$formValidator->getValidator('sometextbox')->addRule(array('required'))
+													   ->addRule(array('length', '5:20'))
+													   ->addRule(array('email'));
+			$this->formValidator = $formValidator;
 
 			if($_REQUEST['subBtn']){
-				EblFormValidator::GetInstance()->validate();
+				$formValidator->validate();
 			}
 
 			$this->renderView("index.view.php");

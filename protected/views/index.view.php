@@ -12,7 +12,7 @@ index view here
 <form>
 
 <?php 
-	EblFormValidator::GetInstance()->make('sometextbox')->displayErrors();
+	$this->formValidator->getValidator('sometextbox')->displayErrors();
 	EblHtmlComponent::RenderComponent( new EblTextComponent('sometextbox','test')); 
 ?>
 <br />

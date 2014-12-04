@@ -23,20 +23,7 @@
 		{
 			parent::__construct($attributes);
 			$this->setName((string) $name);
-			$this->setElems($options);
-			$this->_selectedIndex = NULL;
-			$this->_selectedValue = NULL;			
-		}
-		/**
-		 * Add option element
-		 * 
-		 * @param EblOptionComponent
-		 * @return EblSelectComponent;
-		 */
-		public function addOption(EblOptionComponent $option)
-		{
-			$this->addElem($option);
-			return $this;
+			$this->setOptions($options);
 		}
 		/**
 		 * Display method - print the select element
@@ -53,23 +40,34 @@
 			$attributesString = $this->getAttributesAsString();
 			
 			echo '<select ' . $attributesString . ' />' . "\n";
-			foreach ($this->getElems() as $option) {
-				$option->display();
+			foreach ($this->getElements as $optionElement) {
+				$optionElement->display();
 			}
 			echo '</select>' . "\n";
 		}
 		/**
-		 * Abstract method to add element 
+		 * Add option element
+		 * 
+		 * @param EblOptionComponent
+		 * @return EblSelectComponent;
+		 */
+		public function addOption(EblOptionComponent $option)
+		{
+			$this->addElement($option);
+			return $this;
+		}
+		/**
+		 * Implement abstract method to add element
 		 *
 		 * @param string
 		 * @param string
 		 * @param bolean
 		 * @param array
 		 */
-		public function addElem($label, $value, $selected, $attributes = array())
+		public function addElement($label, $value, $selected, $attributes = array())
 		{
-			$option = new EblOptionComponent($value, (string) $label, (boolean)$selected, $attributes);
-			$this->addElem($option);
+			$optionElement = new EblOptionComponent($value, (string) $label, (boolean)$selected, $attributes);
+			$this->addElem($optionElement);
 		}
 		/**
 		 * Set options (setter)
@@ -79,7 +77,7 @@
 		 */
 		public function setOptions($options)
 		{
-			$this->setElems($options);
+			$this->setElements($options);
 			return $this;
 		}
 		/**
@@ -89,7 +87,7 @@
 		 */
 		public function getOptions()
 		{
-			return $this->getElems();
+			return $this->getElements();
 		}
 	}
 ?>

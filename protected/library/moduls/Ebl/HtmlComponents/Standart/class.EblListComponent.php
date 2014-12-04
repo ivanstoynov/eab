@@ -16,7 +16,7 @@
 		/**
 		 * @var array
 		 */
-		private $_elems;
+		private $_elements;
 		/**
 		 * Position of label (left|right)
 		 *
@@ -29,14 +29,6 @@
 		 * @var string
 		 */
 		private $_direction;
-		/**
-		 * @var integer
-		 */
-		private $_selectedIndex;
-		/**
-		 * @var string
-		 */
-		private $_selectedValue;
 
 		
 		/**
@@ -45,13 +37,11 @@
 		 * @param string
 		 * @param array
 		 */
-		public function __construct($name='', $elems = array())
+		public function __construct($name = '', $elements = array())
 		{
 			parent::__construct();
 			$this->setName((string) $name);
-			$this->_elems = $elems;
-			$this->_selectedIndex = NULL;
-			$this->_selectedValue = NULL;
+			$this->_elements = $elements;
 		}
 		/**
 		 * Abstract method to add element 
@@ -61,7 +51,7 @@
 		 * @param bolean
 		 * @param array
 		 */
-		abstract public function addElem($label, $value, $selected, $attributes = array());
+		abstract public function addElement($label, $value, $selected, $attributes = array());
 		/**
 		 * Display method - print the list
 		 *
@@ -96,15 +86,15 @@
 			$attributesString = $this->getAttributesAsString();
 
 			echo '<div ' . $attributesString . '>' . "\n";
-			foreach ($this->_elems as $elem) {
+			foreach ($this->_elements as $element) {
 				
 				//$id=$rbtn_elem->getAttributeByKey('id');
 				//if (is_null($id)) {
 					//$id=$name.'_'.$i++;
 					//$rbtn_elem->setAttribute('id',$id);
 				//}
-				$elem->setTextPosition($this->_textPosition);
-				$elem->display();
+				$element->setTextPosition($this->_textPosition);
+				$element->display();
 			}
 			echo '</div>' . "\n";
 		}
@@ -116,7 +106,7 @@
 		 */
 		public function addComponent(EblHtmlComponent $component)
 		{
-			$this->_elems[] = $component;
+			$this->_elements[] = $component;
 		}
 		/**
 		 * Clear list
@@ -125,10 +115,10 @@
 		 */
 		public function clear()
 		{
-			$this->_selectedValue = NULL;
-			$this->_selectedIndex = NULL;
-			foreach ($this->_elems as $elem) {
-				$elem->setSelected(FALSE);
+			$this->setValue(NULL);
+			
+			foreach ($this->_elements as $element) {
+				$element->setSelected(FALSE);
 			}
 		}
 
@@ -139,130 +129,33 @@
 		 */		
 		public function handleRequestValue()
 		{
-			$this->clear();
-			
 			$name = $this->getName();
-			$selectedValue = isset($_REQUEST[$name]) ? $_REQUEST[$name] : '';
-			if (! is_array($selectedValue)) {
-				$selectedIndex = array();
-				foreach ($selectedValue as $k => $value) {
-					$selectedValue[$k] = (string) $value;
-					$i = 0;
-					foreach ($this->_elems as $elem) {
-						if ($elem->getValue() === $value) {
-							$selectedIndex[] = $i;
+			$value = isset($_REQUEST[$name]) ? $_REQUEST[$name] : '';
+			if (is_array($value)) {
+				foreach ($value as $k => $val) {
+					$value[$k] = (string) $val;
+					foreach ($this->_elements as $element) {
+						if ($element->getValue() === $val) {
+							$element->setSelected(TRUE);
 						}
-						$i++;
+						else {
+							$element->setSelected(FALSE);
+						}
 					}
 				}
-				$this->_selectedIndex = $selectedIndex;
 			}
 			else {
-				$selectedValue = (string) $selectedValue;
-				foreach ($this->_elems as $elem) {
-					if ($elem->getValue() === $selectedValue) {
-						$this->_selectedIndex = $i;
-						break;
+				$value = (string) $value;
+				foreach ($this->_elements as $element) {
+					if ($element->getValue() === $value) {
+						$element->setSelected(TRUE);
 					}
-					$i++;
-				}
-			}
-		}
-		/**
-		 * Set selected index (setter)
-		 *
-		 * @param integer|array
-		 * @return EblListComponent
-		 */
-		public function setSelectedIndex($selectedIndex)
-		{
-			$this->clear();
-
-			if (is_array($selectedIndex)) {
-				$selectedValues = array();
-				// Mark elem as selected
-				foreach ($selectedIndex as $k => $index) {
-					$index = (int) $index;
-					$selectedIndex[$k] = $index;
-					foreach ($this->_elems as $elemIndex => $elem) {
-						if ($elemIndex === $index) {
-							$elem->setSelected(TRUE);
-							$selectedValues[] = $elem->getValue();
-						}
-					}
-				}
-				$this->_selectedValue = ! empty($selectedValues) ? $selectedValues : NULL;
-			}
-			else{
-				$selectedIndex = (int) $selectedIndex;
-				foreach ($this->_elems as $elemIndex => $elem) {
-					if ($elemIndex === $selectedIndex) {
-						$elem->setSelected(TRUE);
-						$this->_selectedValue = $elem->getValue();
-						break;
+					else {
+						$element->setSelected(FALSE);
 					}
 				}
 			}
-			
-			$this->_selectedIndex = $index;
-			return $this;
-		}
-		/**
-		 * get selected index (getter)
-		 *
-		 * @return integer|array
-		 */
-		public function getSelectedIndex()
-		{
-			return $this->_selectedIndex;
-		}
-		/**
-		 * Set selected value (setter)
-		 *
-		 * @param string|array
-		 * @return EblListComponent
-		 */
-		public function setSelectedValue($selectedValue)
-		{
-			$this->clear();
-
-			if (is_array($selectedValue)) {
-				$selectedIndexes = array();
-				foreach ($selectedValue as $k => $value) {
-					$value = (string) $value;
-					$selectedValue[$k] = $value;
-					foreach ($this->_elems as $elemIndex => $elem) {
-						if ($value === $elem->getValue()) {
-							$elem->setSelected(TRUE);
-							$selectedIndexes[] = $elemIndex;
-						}
-					}
-				}
-				$this->_selectedIndex = ! empty($selectedIndexes) ? $selectedIndexes : NULL;
-			}
-			else {
-				$selectedValue = (string) $selectedValue;
-				foreach ($this->_elems as $elemIndex => $elem) {
-					if ($selectedValue === $elem->getValue()) {
-						$elem->setSelected(TRUE);
-						$this->_selectedIndex = $elemIndex;
-						break;
-					}
-				}
-			}
-			
-			$this->_selectedValue = $selectedValue;
-
-			return $this;
-		}
-		/**
-		 * get selected value (getter)
-		 *
-		 * @return string
-		 */
-		public function getSelectedValue()
-		{
-			return $this->_selectedValue;
+			$this->setValue($value);
 		}
 		/**
 		 * Set elements (setter)
@@ -270,9 +163,9 @@
 		 * @param array
 		 * @return EblListComponent
 		 */
-		public function setElems($elems)
+		public function setElements($elements)
 		{
-			$this->_elems = $elems;
+			$this->_elements = $element;
 			return $this;
 		}
 		/**
@@ -280,9 +173,9 @@
 		 *
 		 * @return array
 		 */
-		public function getElems()
+		public function getElements()
 		{
-			return $this->_elems;
+			return $this->_elements;
 		}
 		/**
 		 * Set Text position (setter)

@@ -3,8 +3,6 @@
 	//include_once('protected/eab/eab.core.php');
 	//include_once('protected/eab/eab.database.php');
 	
-	
-	
 	include_once('protected/eab/ClassLoading/class.EabAutoLoader.php');
 	
 	try {
@@ -13,7 +11,6 @@
 		$path = dirname(__FILE__).'/protected/eab/';
 		$loader->registerAutoloadPath($path);
 		
-	
 		Eab::app()->run();
 		
 		// test from office

@@ -32,7 +32,7 @@
 		 * @param array
 		 * @return void
 		 */
-		public function addElem($label, $value, $selected, $attributes = array())
+		public function addElement($label, $value, $selected, $attributes = array())
 		{
 			$rbtn = new EblRadioButtonComponent($this->getName(), (string) $label, $value, (boolean) $selected, $attributes);
 			$this->addComponent($rbtn);

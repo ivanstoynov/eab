@@ -3,7 +3,7 @@
 	include_once('class.EblElemValidator.php');
 
 	/**
-	 * Singleton class, describe form validator
+	 * Class implement form validation operations
 	 *
 	 * @author Ivan Stoyanov <iv44@yahoo.com>
 	 * @pakage Ebl
@@ -12,10 +12,6 @@
 	class EblFormValidator
 	{
 		/**
-		 * @var EblFormValidator
-		 */
-		private static $_instance;
-		/**
 		 * @var array
 		 */
 		private $_validators;
@@ -23,37 +19,25 @@
 		/**
 		 * Constructor of class (private)
 		 */
-		private function __construct()
+		public function __construct()
 		{
-			$this->_validators=array();
+			$this->_validators = array();
 		}
-	
-		private function __clone() {}
+
 		/**
-		 * Get instance
-		 *
-		 * @return EblFormValidator
-		 */
-		public static function GetInstance()
-		{
-			if (! isset(self::$_instance)) {
-				self::$_instance = new self();
-			}
-			return self::$_instance;
-		}
-		/**
-		 * make method
+		 * Make validator, if not exist, and return them
 		 *
 		 * @param string
 		 * @return EblElemValidator
 		 */
-		public function make($field)
+		public function getValidator($field)
 		{
 			if (! isset($this->_validators[$field])) {
 				$this->_validators[$field] = new EblElemValidator($field);
 			}
 			return $this->_validators[$field];
 		}
+
 		/**
 		 * validate method
 		 *

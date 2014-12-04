@@ -56,6 +56,9 @@
 			if ($this->getValue() === $value) {
 				$this->_checked = TRUE;
 			}
+			else {
+				$this->_checked = FALSE;
+			}
 		}
 		/**
 		 * Set text position (setter)
