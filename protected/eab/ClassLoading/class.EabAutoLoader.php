@@ -58,8 +58,8 @@
 		 */
 		private function _autoloadHandler($class)
 		{
-			foreach ($this->_registredPaths as $path){
-				if ($this->_findAndLoadClass($class, $path)){
+			foreach ($this->_registredPaths as $path) {
+				if ($this->_findAndLoadClass($class, $path)) {
 					break;
 				}
 			}
@@ -75,13 +75,13 @@
 		private function _findAndLoadClass($class, $path)
 		{
 			$class = strtolower($class);
-			if (! empty($this->_pathsCache[$class])){
+			if (! empty($this->_pathsCache[$class])) {
 				require_once $this->_pathsCache[$class];
 				return TRUE;
 			}
 			
 			$this->_fetchDirectory($path);
-			if (! empty($this->_pathsCache[$class])){
+			if (! empty($this->_pathsCache[$class])) {
 				require_once $this->_pathsCache[$class];
 				return TRUE;
 			}
@@ -98,7 +98,7 @@
 			$basePath = rtrim($basePath, "\\/");
 			
 			$dirFiles = scandir($basePath);
-			if (FALSE === $dirFiles){
+			if (FALSE === $dirFiles) {
 				// todo: throw exception
 			}
 
@@ -106,13 +106,20 @@
 				if ($file === '.' || $file === '..') continue;
 				
 				$filePath = $basePath . $this->_ds . $file;
-				if (is_file($filePath)){
+				if (is_file($filePath)) {
 					$file = strtolower($file);
-					if ('class.' !== substr($file, 0, 6)){
-						continue;
+					if ('class.' === substr($file, 0, 6)) {
+						$class = substr($file, 6, -4);
+						$this->_pathsCache[$class] = $filePath;
 					}
-					$class = substr($file, 6, -4);
-					$this->_pathsCache[$class] = $filePath;
+					elseif ('interface.' === substr($file, 0, 10)) {
+						$class = substr($file, 10, -4);
+						$this->_pathsCache[$class] = $filePath;
+					}
+					elseif ('trait.' === substr($file, 0, 6)) {
+						$class = substr($file, 6, -4);
+						$this->_pathsCache[$class] = $filePath;
+					}					
 				}
 				elseif (is_dir($filePath)) {
 					$this->_fetchDirectory($filePath);

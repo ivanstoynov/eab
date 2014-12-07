@@ -45,7 +45,7 @@
 		/**
 		 * Override __clone() magic method as private
 		 */
-		private function __clone(){}
+		private function __clone() {}
 		/**
 		 * Get singleton instance
 		 *
@@ -53,7 +53,7 @@
 		 */
 		public static function app()
 		{
-			if (NULL === self::$_instace){
+			if (NULL === self::$_instace) {
 				self::$_instace = new self();
 			}
 			return self::$_instace;
@@ -82,7 +82,7 @@
 		private function _loadAppSettings()
 		{
 			// todo:
-			if ($this->_appSettingsFile){
+			if ($this->_appSettingsFile) {
 				$fileSettingsLoader = EabFileSettingsLoader::CreateLoader($this->_appSettingsFile, $this->_appSettingsFileFormat);
 				$settings = $fileSettingsLoader->loadSettings();
 				$this->_appSettings->setSettings($settings);
@@ -107,8 +107,8 @@
 			$ds = $this->_appSettings->getDs();
 			$expCnt = count($exp);
 			$i = 0;
-			if ($expCnt > 2){
-				while ($i < ($expCnt - 2)){
+			if ($expCnt > 2) {
+				while ($i < ($expCnt - 2)) {
 					$controllerPath .= $exp[$i].$ds;
 					$i++;
 				}
@@ -128,18 +128,18 @@
 		 */
 		private function _runController()
 		{
-			if (! is_file($this->_controllerFile)){
+			if (! is_file($this->_controllerFile)) {
 				throw new EabException('File "' . $this->_controllerFile . '" is not valid file!', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
 			}
 
 			include_once($this->_controllerFile);
 			$controllerClass = $this->_controllerName;
-			if (! class_exists($controllerClass)){
+			if (! class_exists($controllerClass)) {
 				throw new EabException('Class "' . $controllerClass . '" can not be found!', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
 			}
 
 			$controllerInstance = new $controllerClass();
-			if (! ($controllerInstance instanceof EabController)){
+			if (! ($controllerInstance instanceof EabController)) {
 				throw new EabException('Class "' . $controllerClass . '" must be instance of EabController !', EabExceptionCodes::CONTROLLER_NOT_FOUND_EXC);
 			}
 
@@ -148,8 +148,8 @@
 
 			$content = $controllerInstance->executeAction($this->_actionName);
 
-			if (! empty($layoutInstance)){
-				if (! ($layoutInstance instanceof EabLayout)){
+			if (! empty($layoutInstance)) {
+				if (! ($layoutInstance instanceof EabLayout)) {
 					throw new EabException('Layout must be instance of EabLayout!', EabExceptionCodes::INCORECT_TYPE_EXC);
 				}
 				$layoutInstance->setContent($content);
@@ -170,14 +170,14 @@
 			$defaultLayout = Eab::app()->getAppSettings()->getDefaultLayout();
 			$layout = new EabLayout($defaultLayout);
 
-			if (empty($this->_pagesSettingsFile)){
+			if (empty($this->_pagesSettingsFile)) {
 				return $layout;
 			}
 
 			$fileSettingsLoader = EabFileSettingsLoader::CreateLoader($this->_pagesSettingsFile, $this->_pagesSettingsFileFormat);
 			$pagesSettings = $fileSettingsLoader->loadSettings();
 
-			if (! empty($pagesSettings['__defaults__'])){
+			if (! empty($pagesSettings['__defaults__'])) {
 				// Set default values
 				$defSettings = $pagesSettings['__defaults__'];
 				$layout->getLayoutHead()->setTitle($defSettings['title']);
@@ -187,9 +187,9 @@
 			}
 			
 			$ctrl = $this->_controllerPath.$this->_controllerName;
-			if (! empty($pagesSettings['__controllers__'][$ctrl])){
+			if (! empty($pagesSettings['__controllers__'][$ctrl])) {
 				$ctrlSettings = $pagesSettings['__controllers__'][$ctrl];
-				if (! empty($ctrlSettings['__defaults__'])){
+				if (! empty($ctrlSettings['__defaults__'])) {
 				    // Set controller default values
 					$defaultCtrlSettings = $ctrlSettings['__defaults__'];
 					$layout->getLayoutHead()->setTitle($defaultCtrlSettings['title']);
@@ -199,7 +199,7 @@
 				}
 
 				$act = $this->_actionName;
-				if (! empty($ctrlSettings[$act])){
+				if (! empty($ctrlSettings[$act])) {
 					// Set action values
 					$actSettings = $ctrlSettings[$act];
 					$layout->getLayoutHead()->setTitle($actSettings['title']);

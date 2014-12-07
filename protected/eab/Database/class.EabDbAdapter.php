@@ -105,7 +105,7 @@
 			$this->loadDefautSettings();
 			
 			$timeout = ini_get('mysql.connect_timeout');
-			if ($timeout){
+			if ($timeout) {
 				$this->_reconnectionTimeout = $timeout;
 			}
 			$this->setSettings($settings);
@@ -117,7 +117,7 @@
 		 */
 		public function __destruct()
 		{
-			if (! empty($this->_dbConn)){
+			if (! empty($this->_dbConn)) {
 				$this->disconnect(); 
 			}
 		}
@@ -149,9 +149,9 @@
 		 */
 		public function setSettings($settings = array())
 		{
-			foreach ($settings as $k => $v){
+			foreach ($settings as $k => $v) {
 				$prop = '_' . $k;
-				if (property_exists($this, $prop)){
+				if (property_exists($this, $prop)) {
 					$this->{$prop} = $v;
 				}
 			}
@@ -164,7 +164,7 @@
 		private function connect()
 		{
 			$conn = @mysql_connect($this->_host, $this->_username, $this->_password, $this->_newLink, $this->_clientFlags);
-			if (! is_resource($conn)){ 
+			if (! is_resource($conn)) { 
 				throw new Exception('DB connection error:  ' . mysql_error(), mysql_errno()); 
 			}
 
@@ -186,7 +186,7 @@
 			}
 			else {
 				$now = time();
-				if (($now-$this->_connetedTime) > ($this->_reconnectionTimeout - 2)){
+				if (($now-$this->_connetedTime) > ($this->_reconnectionTimeout - 2)) {
 					$this->reconnect();
 				}
 			}
@@ -201,7 +201,7 @@
 		public function selectDatabase($database)
 		{
 			$this->prepareConnection();
-			if (! @mysql_select_db($database, $this->_dbConn) ){
+			if (! @mysql_select_db($database, $this->_dbConn) ) {
 				throw new Exception('DB select db error: ' . mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
 			}
 		}
@@ -231,12 +231,12 @@
 			} 
 			else {
 				$res = mysql_query("SET NAMES '".$this->escape($charset)."'", $this->_dbConn);
-				if (! $res){ 
+				if (! $res) { 
 					throw new Exception('DB set names error: ' . mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
 				}
 
 				$res = mysql_query("SET CHARACTER SET '".$this->escape($charset)."'", $this->_dbConn);
-				if (! $res){
+				if (! $res) {
 					throw new Exception( 'DB set charset error: ' . mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
 				}
 			}
@@ -250,7 +250,7 @@
 		public function lastInsertID()
 		{
 			$id = mysql_insert_id($this->_dbConn);
-			if (! $id){
+			if (! $id) {
 				throw new Exception('DB get last_insert_id error: ' . mysql_error(), mysql_errno($this->_dbConn)); 
 			}
 			return $id;
@@ -274,7 +274,7 @@
 				throw new Exception('DB exec error: ' . mysql_error($this->_dbConn));
 			}
 			
-			if ($this->_isDebugMode){
+			if ($this->_isDebugMode) {
 				list($usec1, $sec1) = explode(' ', $start);
 				list($usec2, $sec2) = explode(' ', $end);
 				$diff = round($sec2 - $sec1 + $usec2 - $usec1, 6);
@@ -301,11 +301,11 @@
 			$res = mysql_query($sql, $this->_dbConn);
 			$end = microtime();
 
-			if (! $res){ 
+			if (! $res) { 
 				throw new Exception('DB query error: '.mysql_error($this->_dbConn)); 
 			}
 
-			if($this->_isDebugMode){
+			if ($this->_isDebugMode) {
 				list($usec1, $sec1) = explode(' ', $start);
 				list($usec2, $sec2) = explode(' ', $end);
 				$diff = round($sec2 - $sec1 + $usec2 - $usec1, 6);
@@ -370,7 +370,7 @@
 		public function escape($value, $quotes = FALSE)
 		{
 			$quotes = (boolean) $quotes;
-			if (is_array($value)){
+			if (is_array($value)) {
 				foreach ($value as $key => $val) {
 					$value[$key]=$this->escape($val, $quotes);
 				}
@@ -384,18 +384,18 @@
 				if (is_bool($value)) {
 					return $value ? 1 : 0;
 				}
-				elseif (is_string($value)){
+				elseif (is_string($value)) {
 					$this->prepareConnection();
 					$value = mysql_real_escape_string($value, $this->_dbConn);
-					if (FALSE === $value){
+					if (FALSE === $value) {
 						throw new Exception('DB escape string error: '.mysql_error($this->_dbConn));
 					}
-					if (TRUE === $quotes){
+					if (TRUE === $quotes) {
 						$value = "'" . $value . "'";
 					}
 					return $value;
 				}
-				elseif (/*is_numeric($value)*/ is_float($value) || is_int($value)){
+				elseif (/*is_numeric($value)*/ is_float($value) || is_int($value)) {
 					return $value;
 				}
 	//			elseif (NULL === $value) {
@@ -478,7 +478,7 @@
 		 */
 		public function disconnect()
 		{
-			if (isset($this->_dbConn) && is_resource($this->_dbConn)){
+			if (isset($this->_dbConn) && is_resource($this->_dbConn)) {
 				mysql_close($this->_dbConn);
 			}
 			$this->_dbConn = NULL;

@@ -2,23 +2,24 @@
 
 	class EblHtmlForm
 	{
-		private static $instances=array();
+		private static $instances = array();
 
 		private $_formName;
 		private $_components;
-		private $_formValidator;
+		private $_validator;
 		
 		private function __construct($formName)
 		{
 			$this->_formName = $formName;
 			$this->_components = array();
+			$this->_validator = new EblFormValidator();
 		}
 
-		private function __clone(){}
+		private function __clone() {}
 
 		public static function make($formName)
 		{
-			if (! isset(self::$instances[$formName])){
+			if (! isset(self::$instances[$formName])) {
 				self::$instances[$formName] = new self($formName);
 			}
 			return self::$instances[$formName];
@@ -26,9 +27,9 @@
 		
 		public function handleRequest()
 		{
-			foreach ($this->_components as $component){
+			foreach ($this->_components as $component) {
 				$name = $component->getName();
-				if (isset($_REQUEST[$name])){
+				if (isset($_REQUEST[$name])) {
 					$val = $_REQUEST[$name];
 				}
 			}

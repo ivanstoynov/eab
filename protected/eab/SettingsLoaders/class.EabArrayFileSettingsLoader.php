@@ -27,7 +27,7 @@
 		public function loadSettings()
 		{
 			$fileName = $this->getfileName();
-			if (! $fileName){
+			if (! $fileName) {
 				throw new EabException('Config file "' . $fileName . '" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
 			

@@ -124,7 +124,7 @@
 		{
 			$attStr = ' ';
 			$attributes = $this->getAttributes();
-			foreach ($attributes as $att => $val){
+			foreach ($attributes as $att => $val) {
 				$attStr .= $att . '="' . ((string) $val) . '" ';
 			}
 			return $attStr;

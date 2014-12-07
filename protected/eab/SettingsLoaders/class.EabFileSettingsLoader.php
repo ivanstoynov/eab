@@ -32,7 +32,7 @@
 		 */
 		public static function CreateLoader($fileName, $laodType = 'array' )
 		{
-			switch (strtolower($laodType)){
+			switch (strtolower($laodType)) {
 				case 'array':
 					return new EabArrayFileSettingsLoader($fileName);
 					

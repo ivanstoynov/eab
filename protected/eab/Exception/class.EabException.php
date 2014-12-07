@@ -18,7 +18,7 @@
 		 */
 		public function __constuct($msg, $code/*, $isDebug*/)
 		{
-			//if($isDebug){
+			//if ($isDebug) {
 				$msg = $this->appendBacktraceToMsg($msg);
 			//}
 			parent::__constuct($msg, $code);

@@ -58,9 +58,9 @@
 		 */
 		public function setSettings($settings = array())
 		{
-			foreach ($settings as $k => $v){
+			foreach ($settings as $k => $v) {
 				$prop = '_'.$k;
-				if (property_exists($this, $prop)){
+				if (property_exists($this, $prop)) {
 					$this->{$prop} = $v;
 				}
 			}
@@ -122,14 +122,14 @@
 		{
 			$prefix = strtolower(substr($func, 0, 3));
 			$suffix = lcfirst(substr($func, 3, strlen($func)));
-			if(($prefix === 'get' || $prefix === 'set') && property_exists($this, '_'.$suffix) ){
+			if (($prefix === 'get' || $prefix === 'set') && property_exists($this, '_'.$suffix) ) {
 				$prefix = strtolower(substr($func, 0, 3));
 
-				if ('get' === $prefix){
+				if ('get' === $prefix) {
 					return $this->{'_'.$suffix};
 				}
 				else{
-					if (empty($args)){
+					if (empty($args)) {
 						// todo: exception here
 					}
 					$this->{$suffix} = reset($args);

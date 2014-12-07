@@ -32,9 +32,9 @@
 		 * @param array
 		 * @return void
 		 */		
-		public function addElem($label, $value, $checked, $attributes = array())
+		public function addElement($label, $value, $selected, $attributes = array())
 		{
-			$cbx = new EblCheckBoxComponent($this->getName(), $label, $value, (boolean) $checked, $attributes);
+			$cbx = new EblCheckBoxComponent($this->getName(), $label, $value, (boolean) $selected, $attributes);
 			$this->addComponent($cbx);
 		}
 		/**

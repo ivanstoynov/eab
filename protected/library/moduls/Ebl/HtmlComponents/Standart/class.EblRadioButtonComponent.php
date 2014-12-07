@@ -36,7 +36,7 @@
 			// Append new attributes
 			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
 
-			if ($this->getChecked() === TRUE){
+			if ($this->getChecked() === TRUE) {
 				$this->setAttribute('checked', 'checked');
 			}
 			else {
@@ -45,13 +45,13 @@
 			
 			$this->setAttribute('name', $this->getName());
 			$this->setAttribute('value', strval($this->getValue()));
-			$attStr = $this->getAttributesAsString();
+			$attributesString = $this->getAttributesAsString();
 
 			//$id=$this->getAttributeByKey('id');
 			//$label='<label '.( !is_null($id) ? 'for='.$id : '').' >'.$this->getLabel().'</label>';
 
 			$label = '<label>';
-			$input = '<input type="radio" ' . $attStr . ' />';
+			$input = '<input type="radio" ' . $attributesString . ' />';
 			if ('left' === $this->getTextPosition()) {
 				$label .= "\n\t" . $input . "\n\t" . $this->getLabel() . "\n";
 			}

@@ -28,7 +28,7 @@
 		/**
 		 * @var string
 		 */
-		private $_custorm_errors_view_callback;
+		private $_custormErrorsViewCallback;
 
 		
 		/**
@@ -42,9 +42,9 @@
 			$this->_field = $field;
 			$this->_rules = $rules;
 			$this->_errors = array();
-			$this->_value = null;
+			$this->_value = NULL;
 
-			$this->_custorm_errors_view_callback = null;
+			$this->_custormErrorsViewCallback = NULL;
 		}
 		/**
 		 * Set rules (setter)
@@ -94,9 +94,9 @@
 		 * @param callable
 		 * @return EblElemValidator
 		 */
-		public function setCustomErrorsView($callback)
+		public function setCustormErrorsViewCallback($callback)
 		{
-			$this->_custorm_errors_view_callback = $callback;
+			$this->_custormErrorsViewCallback = $callback;
 			return $this;
 		}
 		/**
@@ -110,40 +110,40 @@
 			$this->_value = trim(isset($_REQUEST[$this->_field])?$_REQUEST[$this->_field]:'');
 			$this->_errors = array();
 		
-			foreach($this->_rules as $rule){
+			foreach ($this->_rules as $rule) {
 			
 				$type = strtolower(array_shift($rule));
-				$expr = !empty($rule) ? array_shift($rule) : null;
-				$err = !empty($rule) ? array_shift($rule) : null;
+				$expression = ! empty($rule) ? array_shift($rule) : NULL;
+				$error = ! empty($rule) ? array_shift($rule) : NULL;
 				
-				switch($type){
+				switch ($type) {
 					case 'required' : 
-						$this->_validateRequired($expr, $err);
+						$this->_validateRequired($expression, $error);
 						break;
 					case 'numeric' : 
-						$this->_validateNumeric($expr, $err);
+						$this->_validateNumeric($expression, $error);
 						break;
 					case 'equal' : 
 					case 'eq' :
 					case '=' :
-						$this->_validateEqual($expr, $err);
+						$this->_validateEqual($expression, $error);
 						break;
 					case 'range' : 
 					case 'between' : 
-						$this->_validateRange($expr, $err);
+						$this->_validateRange($expression, $error);
 						break;
 					case 'length' : 
-						$this->_validateLength($expr, $err);
+						$this->_validateLength($expression, $error);
 						break;
 					case 'email' : 
-						$this->_validateEmail($expr, $err);
+						$this->_validateEmail($expression, $error);
 						break;
 					case 'regexp' :
-						$this->_validateRegexp($expr, $err);
+						$this->_validateRegexp($expression, $error);
 						break;
 					case 'custom' : 
 					case 'callback' : 
-						$this->_validateCustom($expr, $err);
+						$this->_validateCustom($expression, $error);
 						break;
 				}
 			}
@@ -167,17 +167,17 @@
 		 */
 		public function displayErrors()
 		{
-			if(empty($this->_errors)) return;
+			if (empty($this->_errors)) return;
 
-			if(!empty($this->_custorm_errors_view_callback)){
-				call_user_func($this->_custorm_errors_view_callback, array($this->_errors));
+			if (! empty($this->_custormErrorsViewCallback)) {
+				call_user_func($this->_custormErrorsViewCallback, array($this->_errors));
 			}
 			else{
-				echo "\t\t".'<ul class="formErrorPanel">'."\n";
-				foreach($this->_errors as $error){
-					echo "\t\t\t".'<li>'.$error.'</li>'."\n";
+				echo "\t\t" . '<ul class="formErrorPanel">' . "\n";
+				foreach ($this->_errors as $erroror) {
+					echo "\t\t\t" . '<li>'.$erroror . '</li>' . "\n";
 				}
-				echo "\t\t".'</ul>';
+				echo "\t\t" . '</ul>';
 			}
 		}
 		/**
@@ -187,10 +187,10 @@
 		 * $param string
 		 * @return void
 		 */
-		private function _validateRequired($expr, $err)
+		private function _validateRequired($expression, $error)
 		{
-			if(empty($this->_value)){
-				$this->_errors[] = !empty($err) ? $err : 'Required filed!';
+			if (empty($this->_value)) {
+				$this->_errors[] = ! empty($error) ? $error : 'Required filed!';
 			}
 		}
 		/**
@@ -200,10 +200,10 @@
 		 * $param string
 		 * @return void
 		 */
-		private function _validateNumeric($expr, $err)
+		private function _validateNumeric($expression, $error)
 		{
-			if(!is_numeric($this->_value)){
-				$this->_errors[] = !empty($err) ? $err : 'Value must be numeric!';
+			if (! is_numeric($this->_value)) {
+				$this->_errors[] = ! empty($error) ? $error : 'Value must be numeric!';
 			}
 		}
 		/**
@@ -213,10 +213,10 @@
 		 * $param string
 		 * @return void
 		 */
-		private function _validateEqual($expr, $err)
+		private function _validateEqual($expression, $error)
 		{
-			if($this->_value != $expr){
-				$this->_errors[] = !empty($err) ? $err : 'Value must be numeric!';
+			if ($this->_value !== $expression) {
+				$this->_errors[] = ! empty($error) ? $error : 'Value must be numeric!';
 			}
 		}
 		/**
@@ -226,25 +226,25 @@
 		 * $param string
 		 * @return void
 		 */
-		private function _validateRange($expr, $err)
+		private function _validateRange($expression, $error)
 		{
-			$expl = explode(':', $expr);
+			$expl = explode(':', (string) $expression);
 			$from = trim($expl[0]);
 			$to = trim($expl[1]);
-			$val =floatval($this->_value);
-			if($from != '' && $to != ''){
-				if($val < floatval($from) || $val > floatval($to)){
-					$this->_errors[]=!empty($err)?$err:'Value must be in interval['.$from.';'.$to.']!';
+			$val = floatval($this->_value);
+			if ($from !== '' && $to !== '') {
+				if ($val < floatval($from) || $val > floatval($to)) {
+					$this->_errors[] = ! empty($error) ? $error : 'Value must be in interval[' . $from . ';' . $to . ']!';
 				}
 			}
-			elseif($from != ''){
-				if($val < floatval($from)){
-					$this->_errors[] = !empty($err) ? $err : 'Value must be greater or equal then '.$from.'!';
+			elseif ($from !== '') {
+				if ($val < floatval($from)) {
+					$this->_errors[] = ! empty($error) ? $error : 'Value must be greater or equal then ' . $from . '!';
 				}
 			}
 			else{
-				if($val > floatval($to)){
-					$this->_errors[] = !empty($err) ? $err : 'Value must be less or equal then '.$to.'!';
+				if ($val > floatval($to)) {
+					$this->_errors[] = ! empty($error) ? $error : 'Value must be less or equal then ' . $to . '!';
 				}
 			}
 		}
@@ -255,27 +255,27 @@
 		 * $param string
 		 * @return void
 		 */
-		private function _validateLength($expr, $err)
+		private function _validateLength($expression, $error)
 		{
-			$expl = explode(':', $expr);
+			$expl = explode(':', (string) $expression);
 			$min = trim($expl[0]);
 			$max = trim($expl[1]);
 			$length = strlen($this->_value);
 
-			if($min != '' && $max != ''){
-				if($length < $min || $length > $max){
+			if ($min !== '' && $max !== '') {
+				if ($length < $min || $length > $max) {
 
-					$this->_errors[] = !empty($err) ? $err : 'Length must be in interval['.$min.';'.$max.']!';
+					$this->_errors[] = ! empty($error) ? $error : 'Length must be in interval[' . $min . ';' . $max.']!';
 				}
 			}
-			elseif($from != ''){
-				if($length < $min){
-					$this->_errors[] = !empty($err) ? $err : 'Min length is '.$min.'!';
+			elseif ($from !== '') {
+				if ($length < $min) {
+					$this->_errors[] = ! empty($error) ? $error : 'Min length is ' . $min . '!';
 				}
 			}
 			else{
-				if($length > $max){
-					$this->_errors[] = !empty($err) ? $err : 'Max length is '.$max.'!';
+				if ($length > $max) {
+					$this->_errors[] = ! empty($error) ? $error : 'Max length is ' . $max . '!';
 				}
 			}
 		}
@@ -286,19 +286,19 @@
 		 * $param string
 		 * @return void
 		 */
-		private function _validateEmail($expr, $err)
+		private function _validateEmail($expression, $error)
 		{
-			if( function_exists('filter_var') ){
-				if(!filter_var($this->_value, FILTER_VALIDATE_EMAIL)){
-					$this->_errors[] = !empty($err) ? $err : 'Invalid e-mail address!';
+			if (function_exists('filter_var')) {
+				if (! filter_var($this->_value, FILTER_VALIDATE_EMAIL)) {
+					$this->_errors[] = ! empty($error) ? $error : 'Invalid e-mail address!';
 				}
 			}
 			else{
-				$expr = '/^(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){255,})(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){65,}@)(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22))(?:\\.(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-+[a-z0-9]+)*\\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-+[a-z0-9]+)*)|(?:\\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\\]))$/iD';
-				if(!$err){
-					$err = 'Invalid e-mail address!';
+				$expression = '/^(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)) {255,})(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)) {65,}@)(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22))(?:\\.(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-+[a-z0-9]+)*\\.) {1,126}) {1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-+[a-z0-9]+)*)|(?:\\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}) {7})|(?:(?!(?:.*[a-f0-9][:\\]]) {7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}) {0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}) {0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}) {5}:)|(?:(?!(?:.*[a-f0-9]:) {5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}) {0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}) {0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))) {3}))\\]))$/iD';
+				if (! $error) {
+					$error = 'Invalid e-mail address!';
 				}
-				$this->validateRegexp($expr, $err);
+				$this->validateRegexp($expression, $error);
 			}
 		}
 		
@@ -309,14 +309,14 @@
 		 * $param string
 		 * @return void
 		 */
-		private function _validateRegexp($expr, $err)
+		private function _validateRegexp($expression, $error)
 		{
-			$result = preg_match($expr, $this->_value);
-			if(0 === $result){
-				$this->_errors[] = !empty($err) ? $err : 'Invalid value!';
+			$result = preg_match($expression, $this->_value);
+			if (0 === $result) {
+				$this->_errors[] = ! empty($error) ? $error : 'Invalid value!';
 			}
-			elseif(false === $result){
-				$this->_errors[] = !empty($err) ? $err : 'Invalid regexp pattern!';
+			elseif (false === $result) {
+				$this->_errors[] = ! empty($error) ? $error : 'Invalid regexp pattern!';
 			}
 		}
 		/**
@@ -326,12 +326,12 @@
 		 * $param string
 		 * @return void
 		 */
-		private function _validateCustom($expr, $err)
+		private function _validateCustom($expression, $error)
 		{
-			if(isset($rule['callback'])){
-				$result = call_user_func($expr, $this->_value);
-				if(false == $result){
-					$this->_errors[] = !empty($err) ? $err : "Invalid value!";
+			if (isset($rule['callback'])) {
+				$result = call_user_func($expression, $this->_value);
+				if (false === $result) {
+					$this->_errors[] = ! empty($error) ? $error : "Invalid value!";
 				}
 			}
 		}

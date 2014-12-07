@@ -53,8 +53,11 @@
 		public function handleRequestValue()
 		{
 			$value = $_REQUEST[$this->getName()];
-			if ($this->getValue() === $value){
+			if ($this->getValue() === $value) {
 				$this->_checked = TRUE;
+			}
+			else {
+				$this->_checked = FALSE;
 			}
 		}
 		/**

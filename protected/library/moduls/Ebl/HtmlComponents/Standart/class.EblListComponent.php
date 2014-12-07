@@ -16,7 +16,7 @@
 		/**
 		 * @var array
 		 */
-		private $_elems;
+		private $_elements;
 		/**
 		 * Position of label (left|right)
 		 *
@@ -29,14 +29,6 @@
 		 * @var string
 		 */
 		private $_direction;
-		/**
-		 * @var integer
-		 */
-		private $_selectedIndex;
-		/**
-		 * @var string
-		 */
-		private $_selectedValue;
 
 		
 		/**
@@ -45,13 +37,11 @@
 		 * @param string
 		 * @param array
 		 */
-		public function __construct($name='', $elems = array())
+		public function __construct($name = '', $elements = array())
 		{
 			parent::__construct();
-			$this->setName($name);
-			$this->_elems = $elems;
-			$this->_selectedIndex = NULL;
-			$this->_selectedValue = NULL;
+			$this->setName((string) $name);
+			$this->_elements = $elements;
 		}
 		/**
 		 * Abstract method to add element 
@@ -61,7 +51,7 @@
 		 * @param bolean
 		 * @param array
 		 */
-		abstract public function addElem($label, $value, $checked, $attributes = array());
+		abstract public function addElement($label, $value, $selected, $attributes = array());
 		/**
 		 * Display method - print the list
 		 *
@@ -72,12 +62,12 @@
 		{
 			// Append new attributes
 			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
+			
 			$atts = $this->getAttributes();
-
-			if (empty($atts['class'])){
+			if (empty($atts['class'])) {
 				$class = 'listCompPanel';
 				$direction = strtolower($this->_direction);
-				if ($direction === 'vertical'){
+				if ($direction === 'vertical') {
 					$class .= ' listCompVertical';
 				}
 				else {
@@ -88,23 +78,23 @@
 
 			$name = $this->getName();
 			$pos = strpos($name, '[');
-			if (FALSE !== $pos){
+			if (FALSE !== $pos) {
 				$name = substr($name, 0, $pos);
 			}
 
-			$i = 1;
+			//$i = 1;
 			$attributesString = $this->getAttributesAsString();
 
 			echo '<div ' . $attributesString . '>' . "\n";
-			foreach($this->_elems as $elem){
+			foreach ($this->_elements as $element) {
 				
 				//$id=$rbtn_elem->getAttributeByKey('id');
-				//if(is_null($id)){
+				//if (is_null($id)) {
 					//$id=$name.'_'.$i++;
 					//$rbtn_elem->setAttribute('id',$id);
 				//}
-				$elem->setTextPosition($this->_textPosition);
-				$elem->display();
+				$element->setTextPosition($this->_textPosition);
+				$element->display();
 			}
 			echo '</div>' . "\n";
 		}
@@ -116,7 +106,7 @@
 		 */
 		public function addComponent(EblHtmlComponent $component)
 		{
-			$this->_elems[] = $component;
+			$this->_elements[] = $component;
 		}
 		/**
 		 * Clear list
@@ -125,73 +115,47 @@
 		 */
 		public function clear()
 		{
-			$this->_selectedValue = NULL;
-			$this->_selectedIndex = NULL;
-			foreach ($this->_elems as $elem){
-				$elem->setSelected(FALSE);
-			}
-		}
-		/**
-		 * Set selected index (setter)
-		 *
-		 * @param integer
-		 * @return EblListComponent
-		 */
-		public function setSelectedIndex($index)
-		{
-			$index = (int) $index;
-			$i = 0;
-			// Mark elem as selected
-			foreach ($this->_elems as $elem){
-				if ($i === $index){
-					$elem->setSelected(TRUE);
-				}
-				$i++;
-			}
+			$this->setValue(NULL);
 			
-			//if($index<$i){
-				$this->_selectedIndex = $index;
-			//}
-			return $this;
+			foreach ($this->_elements as $element) {
+				$element->setSelected(FALSE);
+			}
 		}
+
 		/**
-		 * get selected index (getter)
+		 * Handle and set value from request
 		 *
-		 * @return integer
-		 */
-		public function getSelectedIndex()
+		 * @return void
+		 */		
+		public function handleRequestValue()
 		{
-			return $this->_selectedIndex;
-		}
-		/**
-		 * Set selected value (setter)
-		 *
-		 * @param string
-		 * @return EblListComponent
-		 */
-		public function setSelectedValue($value)
-		{
-			$found = FALSE;
-			// Mark elem as selected
-			foreach ($this->_elems as $elem){
-				if ($value === $elem->getValue()) {
-					$elem->setSelected(FALSE);
-					$found = TRUE;
+			$name = $this->getName();
+			$value = isset($_REQUEST[$name]) ? $_REQUEST[$name] : '';
+			if (is_array($value)) {
+				foreach ($value as $k => $val) {
+					$value[$k] = (string) $val;
+					foreach ($this->_elements as $element) {
+						if ($element->getValue() === $val) {
+							$element->setSelected(TRUE);
+						}
+						else {
+							$element->setSelected(FALSE);
+						}
+					}
 				}
 			}
-			//if($found){
-				$this->_selectedValue = $value;
-			//}
-			return $this;
-		}
-		/**
-		 * get selected value (getter)
-		 *
-		 * @return string
-		 */
-		public function getSelectedValue()
-		{
-			return $this->_selectedValue;
+			else {
+				$value = (string) $value;
+				foreach ($this->_elements as $element) {
+					if ($element->getValue() === $value) {
+						$element->setSelected(TRUE);
+					}
+					else {
+						$element->setSelected(FALSE);
+					}
+				}
+			}
+			$this->setValue($value);
 		}
 		/**
 		 * Set elements (setter)
@@ -199,9 +163,9 @@
 		 * @param array
 		 * @return EblListComponent
 		 */
-		public function setElems($elems)
+		public function setElements($elements)
 		{
-			$this->_elems = $elems;
+			$this->_elements = $element;
 			return $this;
 		}
 		/**
@@ -209,9 +173,9 @@
 		 *
 		 * @return array
 		 */
-		public function getElems()
+		public function getElements()
 		{
-			return $this->_elems;
+			return $this->_elements;
 		}
 		/**
 		 * Set Text position (setter)
@@ -222,7 +186,7 @@
 		 */		
 		public function setTextPosition($position)
 		{
-			$position = strtolower($position);
+			$position = strtolower((string) $position);
 			if (! in_array($position, array('left', 'right'))) {
 				// todo: throw exception
 			}
@@ -248,7 +212,7 @@
 		 */	
 		public function setDirection($direction)
 		{
-			$direction = strtolower($direction);
+			$direction = strtolower((string) $direction);
 			if (! in_array($direction, array('horizontal', 'vertical'))) {
 				// todo: throw exception
 			}

@@ -54,26 +54,26 @@
 		 */
 		public final function renderView($view = FALSE)
 		{
-			if (! $view){
+			if (! $view) {
 				$backtrace = debug_backtrace();
 				$class = __CLASS__;
 				$cnt = 0;
-				foreach ($backtrace as $trace){
-					if (! empty($trace['class']) && ($trace['object'] instanceof $class)){
-						if ($cnt++ === 1){
+				foreach ($backtrace as $trace) {
+					if (! empty($trace['class']) && ($trace['object'] instanceof $class)) {
+						if ($cnt++ === 1) {
 							$view = $trace['function'] . '.view.php';
 							break;
 						}
 					}
 				}
-				if (! $view){
+				if (! $view) {
 					throw new EabException('View has been incorrect!', EabExceptionCodes::UNKNOWN_EXC);
 				}
 			}
 			
 			$viewsDir = Eab::app()->closeDirPath(Eab::app()->getAppSettings()->getViewsDir());
 			$viewFile = $viewsDir . $view;
-			if (! is_file($viewFile)){
+			if (! is_file($viewFile)) {
 				throw new EabException('View file "' . $viewFile . '" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
 			
@@ -87,7 +87,7 @@
 		 */
 		public final function executeAction($actionName)
 		{
-			if (! method_exists($this, $actionName)){
+			if (! method_exists($this, $actionName)) {
 				throw new EabException('Class "' . get_class($this) . '" not have method "' . get_class($this) . '::' . $actionName . '()"!', EabExceptionCodes::ACTION_NOT_FOUND_EXC);
 			}
 
@@ -105,8 +105,8 @@
 		{
 			/*$backtrace=debug_backtrace();
 			$class=__CLASS__;
-			foreach($backtrace as $trace){
-				if(!empty($trace['class']) && ($trace['object'] instanceof $class)){
+			foreach ($backtrace as $trace) {
+				if (!empty($trace['class']) && ($trace['object'] instanceof $class)) {
 					$view = $trace['function'].'.view.php';
 					break;
 				}

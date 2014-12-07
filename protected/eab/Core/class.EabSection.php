@@ -33,9 +33,9 @@
 		 */
 		protected final function renderHtml($file, $isFullPath = FALSE)
 		{
-			if (! $isFullPath){
+			if (! $isFullPath) {
 				$backtrace = debug_backtrace();
-				if (! ($backtrace[0]['object'] instanceof self)){
+				if (! ($backtrace[0]['object'] instanceof self)) {
 					throw new EabException('Unknown object in backtrace!', EabExceptionCodes::UNKNOWN_EXC);
 				}
 				
@@ -43,7 +43,7 @@
 				$file = dirname($backtrace[0]['file']).$ds.$file;
 			}
 			
-			if (! is_file($file)){
+			if (! is_file($file)) {
 				throw new EabException('File "' . $file . '" not found!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
 			
@@ -60,19 +60,19 @@
 			$ds = Eab::app()->getAppSettings()->getDs();
 
 			$sectionFile = Eab::app()->closeDirPath(Eab::app()->getAppSettings()->getSectionsDir()) . $sectionName . $ds . 'class.' . $sectionName . '.php';
-			if (! is_file($sectionFile)){
+			if (! is_file($sectionFile)) {
 				throw new EabException('File "' . $sectionFile . '" is not valid file!', EabExceptionCodes::FILE_NOT_FOUND_EXC);
 			}
 
 			include_once($sectionFile);
 			$sectionClass = $sectionName . 'Section';
-			if (! class_exists($sectionClass)){
+			if (! class_exists($sectionClass)) {
 				throw new EabException('Section class "' . $sectionClass . '" can not be found!', EabExceptionCodes::CLASS_NOT_FOUND_EXC);
 			}
 
 			$sectionInstance = new $sectionClass();
 
-			if (! ($sectionInstance instanceof self)){
+			if (! ($sectionInstance instanceof self)) {
 				throw new EabException('Section class "' . $sectionClass . '" must be instance of ' . __CLASS__ . '!', EabExceptionCodes::CLASS_NOT_FOUND_EXC);
 			}
 
