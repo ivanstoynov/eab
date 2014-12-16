@@ -165,7 +165,7 @@
 		 */
 		public function setElements($elements)
 		{
-			$this->_elements = $element;
+			$this->_elements = $elements;
 			return $this;
 		}
 		/**

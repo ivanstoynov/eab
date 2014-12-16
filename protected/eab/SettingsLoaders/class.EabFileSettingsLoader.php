@@ -2,13 +2,13 @@
 	/**
 	 * File settings loader class
 	 *
-	 * @category   Settings
-	 * @package    Eab
+	 * @category   SettingsLoaders
+	 * @package    Eab\SettingsLoaders
 	 * @author     Ivan Stoyanov <iv44@yahoo.com>
 	 * @copyright  2010-2014 Stoqnoff
 	 * @since      1.0.0
 	 */	
-	abstract class EabFileSettingsLoader
+	abstract class EabFileSettingsLoader implements IEabSettingsLoadable
 	{
 		/**
 		 * @var string
@@ -52,7 +52,7 @@
 		 * 
 		 * @return array
 		 */
-		abstract public function loadSettings();
+		//public abstract function loadSettings();
 		/**
 		 * Get file name (getter)
 		 * 

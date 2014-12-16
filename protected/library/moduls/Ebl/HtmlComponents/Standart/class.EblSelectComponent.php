@@ -40,7 +40,7 @@
 			$attributesString = $this->getAttributesAsString();
 			
 			echo '<select ' . $attributesString . ' />' . "\n";
-			foreach ($this->getElements as $optionElement) {
+			foreach ($this->getOptions() as $optionElement) {
 				$optionElement->display();
 			}
 			echo '</select>' . "\n";

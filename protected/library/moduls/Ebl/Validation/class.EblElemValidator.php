@@ -1,5 +1,7 @@
 <?php
 
+	include_once('interface.IEblElemValidator.php');
+
 	/**
 	 * Class describe html element validator
 	 *
@@ -7,7 +9,7 @@
 	 * @pakage Ebl
 	 * @subpakage Validation
 	 */
-	class EblElemValidator
+	class EblElemValidator implements IEblElemValidator
 	{
 		/**
 		 * @var string
@@ -47,25 +49,20 @@
 			$this->_custormErrorsViewCallback = NULL;
 		}
 		/**
-		 * Set rules (setter)
+		 * Add rule.
 		 *
-		 * @param array
+		 * @param EblValidationRulesTypes
+		 * @param string
+		 * @param string
 		 * @return EblElemValidator
 		 */
-		public function setRules($rules)
+		public function addRule($type, $expression = null, $errMgs = null)
 		{
-			$this->_rules = $rules;
-			return $this;
-		}
-		/**
-		 * Add rule. Rules have follow syntax: array('type', 'expression', 'err_msg')
-		 *
-		 * @param array
-		 * @return EblElemValidator
-		 */
-		public function addRule($rule)
-		{
-			$this->_rules[] = $rule;
+			$this->_rules[] = array(
+				'type' => $type,
+				'expression' => $expression,
+				'errMsg' => $errMgs
+			);
 			return $this;
 		}
 		/**
@@ -112,36 +109,36 @@
 		
 			foreach ($this->_rules as $rule) {
 			
-				$type = strtolower(array_shift($rule));
-				$expression = ! empty($rule) ? array_shift($rule) : NULL;
-				$error = ! empty($rule) ? array_shift($rule) : NULL;
+				$type = strtolower($rule['type']);
+				$expression = isset($rule['expression']) ? $rule['expression'] : NULL;
+				$errMsg = isset($rule['errMsg']) ? $rule['errMsg'] : NULL;
 				
 				switch ($type) {
-					case 'required' : 
-						$this->_validateRequired($expression, $error);
+					case EblValidationRulesTypes::REQUIRED : 
+						$this->_validateRequired($expression, $errMsg);
 						break;
-					case 'numeric' : 
-						$this->_validateNumeric($expression, $error);
+					case EblValidationRulesTypes::NUMERIC : 
+						$this->_validateNumeric($expression, $errMsg);
 						break;
-					case 'equal' : 
+					case EblValidationRulesTypes::EQUAL : 
 					case 'eq' :
 					case '=' :
-						$this->_validateEqual($expression, $error);
+						$this->_validateEqual($expression, $errMsg);
 						break;
-					case 'range' : 
+					case EblValidationRulesTypes::RANGE : 
 					case 'between' : 
-						$this->_validateRange($expression, $error);
+						$this->_validateRange($expression, $errMsg);
 						break;
-					case 'length' : 
-						$this->_validateLength($expression, $error);
+					case EblValidationRulesTypes::LENGTH : 
+						$this->_validateLength($expression, $errMsg);
 						break;
-					case 'email' : 
-						$this->_validateEmail($expression, $error);
+					case EblValidationRulesTypes::EMAIL : 
+						$this->_validateEmail($expression, $errMsg);
 						break;
-					case 'regexp' :
+					case EblValidationRulesTypes::REGEXP :
 						$this->_validateRegexp($expression, $error);
 						break;
-					case 'custom' : 
+					case EblValidationRulesTypes::CUSTOM : 
 					case 'callback' : 
 						$this->_validateCustom($expression, $error);
 						break;

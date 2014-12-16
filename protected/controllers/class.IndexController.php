@@ -1,6 +1,6 @@
 <?php
 
-	EabModulsImporter::import('Ebl/Validation/class.EblFormValidator.php');
+	EabModulsImporter::import('Ebl/Validation/*');
 	EabModulsImporter::import('Ebl/HtmlComponents/Standart/class.EblRadioButtonList.php');
 	EabModulsImporter::import('Ebl/HtmlComponents/Standart/class.EblCheckBoxList.php');
 
@@ -33,9 +33,9 @@
 			
 			// Validation
 			$formValidator = new EblFormValidator();
-			$formValidator->getValidator('sometextbox')->addRule(array('required'))
-													   ->addRule(array('length', '5:20'))
-													   ->addRule(array('email'));
+			$formValidator->getValidator('sometextbox')->addRule(EblValidationRulesTypes::REQUIRED)
+													   ->addRule(EblValidationRulesTypes::LENGTH, '5:20')
+													   ->addRule(EblValidationRulesTypes::EMAIL);
 			$this->formValidator = $formValidator;
 
 			if($_REQUEST['subBtn']){
