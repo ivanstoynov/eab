@@ -20,25 +20,24 @@
 		 */
 		private $_rules;
 		/**
-		 * @var array
-		 */
+		* @var array
+		*/
 		private $_errors;
 		/**
-		 * @var string
-		 */
+		* @var string
+		*/
 		private $_value;
 		/**
-		 * @var string
-		 */
+		* @var string
+		*/
 		private $_custormErrorsViewCallback;
 
-		
 		/**
-		 * Constructor of class
-		 * 
-		 * @param string
-		 * @param array
-		 */
+		* Constructor of class
+		* 
+		* @param string
+		* @param array
+		*/
 		public function __construct($field, $rules = array())
 		{
 			$this->_field = $field;
