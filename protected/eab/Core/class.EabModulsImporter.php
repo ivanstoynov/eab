@@ -1,13 +1,13 @@
 <?php
 	/**
-	 * EabImporter class
-	 *
-	 * @category   Core
-	 * @package    Eab
-	 * @author     Ivan Stoyanov <iv44@yahoo.com>
-	 * @copyright  2010-2014 Stoqnoff
-	 * @since      1.0.0
-	 */
+	* EabImporter class
+	*
+	* @category   Core
+	* @package    Eab
+	* @author     Ivan Stoyanov <iv44@yahoo.com>
+	* @copyright  2010-2014 Stoqnoff
+	* @since      1.0.0
+	*/
 	class EabModulsImporter
 	{
 		public static function import($file, $fullPath = FALSE)

@@ -1,13 +1,13 @@
 <?php
 	/**
-	 * Base model class
-	 *
-	 * @category   Core
-	 * @package    Eab
-	 * @author     Ivan Stoyanov <iv44@yahoo.com>
-	 * @copyright  2010-2014 Stoqnoff
-	 * @since      1.0.0
-	 */
+	* Base model class
+	*
+	* @category   Core
+	* @package    Eab
+	* @author     Ivan Stoyanov <iv44@yahoo.com>
+	* @copyright  2010-2014 Stoqnoff
+	* @since      1.0.0
+	*/
 	class EabModel extends EabAssigner
 	{
 		private $_dbAdapter;

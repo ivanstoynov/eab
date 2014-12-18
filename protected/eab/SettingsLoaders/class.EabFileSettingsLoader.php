@@ -1,35 +1,35 @@
 <?php
 	/**
-	 * File settings loader class
-	 *
-	 * @category   SettingsLoaders
-	 * @package    Eab\SettingsLoaders
-	 * @author     Ivan Stoyanov <iv44@yahoo.com>
-	 * @copyright  2010-2014 Stoqnoff
-	 * @since      1.0.0
-	 */	
+	* File settings loader class
+	*
+	* @category   SettingsLoaders
+	* @package    Eab\SettingsLoaders
+	* @author     Ivan Stoyanov <iv44@yahoo.com>
+	* @copyright  2010-2014 Stoqnoff
+	* @since      1.0.0
+	*/	
 	abstract class EabFileSettingsLoader implements IEabSettingsLoadable
 	{
 		/**
-		 * @var string
-		 */
+		* @var string
+		*/
 		protected $_fileName;
 	
 		/**
-		 * Constructor of class
-		 *
-		 * @param string
-		 */
+		* Constructor of class
+		*
+		* @param string
+		*/
 		public function __construct($fileName)
 		{
 			$this->_fileName = $fileName;
 		}
 		/**
-		 * Factory method create concrete file settings loader
-		 *
-		 * @param string Possible values ('array', 'xml', 'json')
-		 * @return EabArrayFileSettingsLoader
-		 */
+		* Factory method create concrete file settings loader
+		*
+		* @param string Possible values ('array', 'xml', 'json')
+		* @return EabArrayFileSettingsLoader
+		*/
 		public static function CreateLoader($fileName, $laodType = 'array' )
 		{
 			switch (strtolower($laodType)) {
@@ -48,16 +48,16 @@
 		}
 		
 		/**
-		 * Load settings and return them as array
-		 * 
-		 * @return array
-		 */
+		* Load settings and return them as array
+		* 
+		* @return array
+		*/
 		//public abstract function loadSettings();
 		/**
-		 * Get file name (getter)
-		 * 
-		 * @return array
-		 */
+		* Get file name (getter)
+		* 
+		* @return array
+		*/
 		public function getFilename()
 		{
 			return $this->_fileName;

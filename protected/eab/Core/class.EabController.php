@@ -1,57 +1,57 @@
 <?php
 	/**
-	 * Base eab controller class
-	 *
-	 * @category   Core
-	 * @package    Eab
-	 * @author     Ivan Stoyanov <iv44@yahoo.com>
-	 * @copyright  2010-2014 Stoqnoff
-	 * @since      1.0.0
-	 */
+	* Base eab controller class
+	*
+	* @category   Core
+	* @package    Eab
+	* @author     Ivan Stoyanov <iv44@yahoo.com>
+	* @copyright  2010-2014 Stoqnoff
+	* @since      1.0.0
+	*/
 	class EabController extends EabAssigner
 	{
 		/**
-		 * Layout
-		 *
-		 * @var EabLayout
-		 */
+		* Layout
+		*
+		* @var EabLayout
+		*/
 		private $_layout;
 		/**
-		 * Current action
-		 *
-		 * @string
-		 */
+		* Current action
+		* @string
+		*
+		*/
 		private $_actionName;
 
 
 		/**
-		 * Constuctor of class
-		 */
+		* Constuctor of class
+		*/
 		public function __constuct()
 		{
 			parent::__construct();
 		}
 		/**
-		 * Method call before action
-		 *
-		 * @return void
-		 */
+		* Method call before action
+		*
+		* @return void
+		*/
 		public function beforeAction()
 		{
 		}
 		/**
-		 * Method call before action
-		 *
-		 * @return void
-		 */
+		* Method call before action
+		*
+		* @return void
+		*/
 		public function afterAction()
 		{
 		}
 		/**
-		 * Render view file
-		 *
-		 * @return string
-		 */
+		* Render view file
+		*
+		* @return string
+		*/
 		public final function renderView($view = FALSE)
 		{
 			if (! $view) {
@@ -80,11 +80,11 @@
 			include_once $viewFile;
 		}
 		/**
-		 * Execute action
-		 *
-		 * @param string
-		 * @return string
-		 */
+		* Execute action
+		*
+		* @param string
+		* @return string
+		*/
 		public final function executeAction($actionName)
 		{
 			if (! method_exists($this, $actionName)) {
@@ -115,39 +115,39 @@
 			// TODO:
 		}
 		/**
-		 * Check is ajax request
-		 *
-		 * @return boolean
-		 */
+		* Check is ajax request
+		*
+		* @return boolean
+		*/
 		public function isAjax()
 		{
 			return isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
 		}
 		/**
-		 * Set layout (setter)
-		 *
-		 * @param EabLayout
-		 * @return EabController
-		 */
+		* Set layout (setter)
+		*
+		* @param EabLayout
+		* @return EabController
+		*/
 		public final function setLayout($layout)
 		{
 			$this->_layout = $layout;
 			return $this;
 		}
 		/**
-		 * Get layout (getter)
-		 *
-		 * @return EabLayout
-		 */
+		* Get layout (getter)
+		*
+		* @return EabLayout
+		*/
 		public final function getlayout()
 		{
 			return $this->_layout;
 		}
 		/**
-		 * Get actionName (getter)
-		 *
-		 * @return string
-		 */
+		* Get actionName (getter)
+		*
+		* @return string
+		*/
 		public  function getActionName()
 		{
 			return $this->_actionName;

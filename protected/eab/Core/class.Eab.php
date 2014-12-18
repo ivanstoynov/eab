@@ -1,7 +1,7 @@
 <?php
 	/**
-	 * Eab (Easy Application Builder)
-	 */
+	* Eab (Easy Application Builder)
+	*/
 	class Eab
 	{
 		/** @var Eab Static instace */
@@ -43,14 +43,14 @@
 			$this->_pagesSettingsFileFormat = 'array';
 		}
 		/**
-		 * Override __clone() magic method as private
-		 */
+		* Override __clone() magic method as private
+		*/
 		private function __clone() {}
 		/**
-		 * Get singleton instance
-		 *
-		 * @return Eab
-		 */
+		* Get singleton instance
+		*
+		* @return Eab
+		*/
 		public static function app()
 		{
 			if (NULL === self::$_instace) {
@@ -59,10 +59,10 @@
 			return self::$_instace;
 		}
 		/**
-		 * Run application
-		 *
-		 * @return void
-		 */
+		* Run application
+		*
+		* @return void
+		*/
 		public function run()
 		{
 			$this->_loadAppSettings();
@@ -75,10 +75,10 @@
 			$this->_runController();
 		}
 		/**
-		 * Load application settings
-		 *
-		 * @return void
-		 */
+		* Load application settings
+		*
+		* @return void
+		*/
 		private function _loadAppSettings()
 		{
 			// todo:
@@ -89,11 +89,11 @@
 			}
 		}
 		/**
-		 * Pharse controller pah and foun controler name, controler file
-		 * and action name
-		 *
-		 * @return void
-		 */
+		* Pharse controller pah and foun controler name, controler file
+		* and action name
+		*
+		* @return void
+		*/
 		private function _pharseControllersPath()
 		{
 			$urlPathKey = $this->_appSettings->getUrlPathKey();
@@ -122,10 +122,10 @@
 			$this->_actionName = ! empty($exp[$i+1]) ? strtolower($exp[$i+1]) : 'index';
 		}
 		/**
-		 * Run application controller
-		 * 
-		 * @return void
-		 */
+		* Run application controller
+		* 
+		* @return void
+		*/
 		private function _runController()
 		{
 			if (! is_file($this->_controllerFile)) {
@@ -161,10 +161,10 @@
 			echo $content;
 		}
 		/**
-		 * Get layout (and load settings)
-		 * 
-		 * return EabLayout
-		 */
+		* Get layout (and load settings)
+		* 
+		* return EabLayout
+		*/
 		private function _getAppLayout()
 		{
 			$defaultLayout = Eab::app()->getAppSettings()->getDefaultLayout();
@@ -212,21 +212,21 @@
 			return $layout;
 		}
 		/**
-		 * Redirect
-		 *
-		 * @param string $url
-		 */
+		* Redirect
+		*
+		* @param string $url
+		*/
 		public function redirect($url)
 		{
 			header('Location: ' . $url);
 			exit;
 		}
 		/**
-		 * CLose dir path(end with \ or /)
-		 *
-		 * @param string
-		 * @return string
-		 */
+		* CLose dir path(end with \ or /)
+		*
+		* @param string
+		* @return string
+		*/
 		public function closeDirPath($dir)
 		{
 			$ds = $this->_appSettings->getDs();
@@ -237,11 +237,11 @@
 			return $dir;
 		}
 		/**
-		 * Debug data method
-		 *
-		 * @param mixed
-		 * @return void
-		 */
+		* Debug data method
+		*
+		* @param mixed
+		* @return void
+		*/
 		public static function debug($data)
 		{
 			echo '<pre>';
@@ -249,126 +249,126 @@
 			echo '</pre>';
 		}
 		/**
-		 * getAppSettings (getter)
-		 *
-		 * @return EabAppSettings
-		 */
+		* getAppSettings (getter)
+		*
+		* @return EabAppSettings
+		*/
 		public function getAppSettings()
 		{
 			return $this->_appSettings;
 		}
 		/**
-		 * getDbAdapter (getter)
-		 *
-		 * @return EabDbAdapter
-		 */
+		* getDbAdapter (getter)
+		*
+		* @return EabDbAdapter
+		*/
 		public function getDbAdapter()
 		{
 			return $this->_dbAdapter;
 		}
 		/**
-		 * Get controllerName (getter)
-		 *
-		 * @return string
-		 */
+		* Get controllerName (getter)
+		*
+		* @return string
+		*/
 		public function getControllerName()
 		{
 			return $this->_controllerName;
 		}
 		/**
-		 * getControllerFile (getter)
-		 *
-		 * @return string
-		 */
+		* getControllerFile (getter)
+		*
+		* @return string
+		*/
 		public function getControllerFile()
 		{
 			return $this->_controllerFile;
 		}
 		/**
-		 * getActionName (getter)
-		 *
-		 * @return string
-		 */
+		* getActionName (getter)
+		*
+		* @return string
+		*/
 		public function getActionName()
 		{
 			return $this->actionName;
 		}		
 		/**
-		 * setAppSettingsFile (setter)
-		 *
-		 * @param string
-		 * @return Eab
-		 */
+		* setAppSettingsFile (setter)
+		*
+		* @param string
+		* @return Eab
+		*/
 		public function setAppSettingsFile($file)
 		{
 			$this->_appSettingsFile = $file;
 			return $this;
 		}
 		/**
-		 * getAppSettingsFile (getter)
-		 *
-		 * @return string
-		 */
+		* getAppSettingsFile (getter)
+		*
+		* @return string
+		*/
 		public function getAppSettingsFile()
 		{
 			return $this->_appSettingsFile;
 		}
 		/**
-		 * setAppSettingsFileFormat (setter)
-		 *
-		 * @param string
-		 * @return Eab
-		 */
+		* setAppSettingsFileFormat (setter)
+		*
+		* @param string
+		* @return Eab
+		*/
 		public function setAppConfigureAs($format)
 		{
 			$this->_appSettingsFileFormat = $format;
 			return $this;
 		}
 		/**
-		 * getAppSettingsFileFormat (getter)
-		 *
-		 * @return string
-		 */
+		* getAppSettingsFileFormat (getter)
+		*
+		* @return string
+		*/
 		public function getAppSettingsFileFormat()
 		{
 			return $this->_appSettingsFileFormat;
 		}
 		/**
-		 * setPagesSettingsFile (setter)
-		 *
-		 * @param string
-		 * @return Eab
-		 */
+		* setPagesSettingsFile (setter)
+		*
+		* @param string
+		* @return Eab
+		*/
 		public function setPagesSettingsFile($file)
 		{
 			$this->_pagesSettingsFile = $file;
 			return $this;
 		}
 		/**
-		 * getPagesSettingsFile (getter)
-		 *
-		 * @return string
-		 */
+		* getPagesSettingsFile (getter)
+		*
+		* @return string
+		*/
 		public function getPagesSettingsFile()
 		{
 			return $this->_pagesSettingsFile;
 		}
 		/**
-		 * setPagesSettingsFileFormat (setter)
-		 *
-		 * @param string
-		 * @return Eab
-		 */
+		* setPagesSettingsFileFormat (setter)
+		*
+		* @param string
+		* @return Eab
+		*/
 		public function setPagesSettingsFileFormat($format)
 		{
 			$this->_pagesSettingsFileFormat = $format;
 			return $this;
 		}
 		/**
-		 * getPagesSettingsFileFormat (getter)
-		 *
-		 * @return string
-		 */
+		* getPagesSettingsFileFormat (getter)
+		*
+		* @return string
+		*/
 		public function getPagesSettingsFileFormat()
 		{
 			return $this->_pagesSettingsFileFormat;

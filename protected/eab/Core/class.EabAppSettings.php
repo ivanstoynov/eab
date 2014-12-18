@@ -1,13 +1,13 @@
 <?php
 	/**
-	 * Class with application settings
-	 *
-	 * @category   Settings
-	 * @package    Eab
-	 * @author     Ivan Stoyanov <iv44@yahoo.com>
-	 * @copyright  2010-2014 Stoqnoff
-	 * @since      1.0.0
-	 */
+	* Class with application settings
+	*
+	* @category   Settings
+	* @package    Eab
+	* @author     Ivan Stoyanov <iv44@yahoo.com>
+	* @copyright  2010-2014 Stoqnoff
+	* @since      1.0.0
+	*/
 	class EabAppSettings
 	{
 		/** @var string Directory separator */
@@ -41,21 +41,21 @@
 	
 	
 		/**
-		 * Constructor of class
-		 *
-		 * @param array
-		 */
+		* Constructor of class
+		*
+		* @param array
+		*/
 		public function __construct($settings = array())
 		{
 			$this->loadDefaultSettings();
 			$this->setProperties($settings);
 		}
 		/**
-		 * Set class properties from assoc array
-		 *
-		 * @param array
-		 * @return void
-		 */
+		* Set class properties from assoc array
+		*
+		* @param array
+		* @return void
+		*/
 		public function setSettings($settings = array())
 		{
 			foreach ($settings as $k => $v) {
@@ -66,19 +66,19 @@
 			}
 		}
 		/**
-		 * Reset settings (to default)
-		 *
-		 * @return void
-		 */
+		* Reset settings (to default)
+		*
+		* @return void
+		*/
 		public function reset()
 		{
 			$this->loadDefaultSettings();
 		}
 		/**
-		 * Load default settings
-		 *
-		 * @return void
-		 */
+		* Load default settings
+		*
+		* @return void
+		*/
 		public function loadDefaultSettings()
 		{
 			$ds = DIRECTORY_SEPARATOR;
@@ -100,24 +100,24 @@
 			$this->_imagesDir = $root_dir . 'public' . $ds . 'images' . $ds;
 		}
 		/**
-		 * Add setting
-		 *
-		 * @param string
-		 * @param string
-		 * @return EabAppSettings
-		 */
+		* Add setting
+		*
+		* @param string
+		* @param string
+		* @return EabAppSettings
+		*/
 		public function addSetting($settingKey, $value)
 		{
 			$this->{$settingKey} = $value;
 			return $this;
 		}
 		/**
-		 * magic method __call use to create getter and setter methods
-		 *
-		 * @param string
-		 * @param array
-		 * @return EabAppSettings
-		 */
+		* magic method __call use to create getter and setter methods
+		*
+		* @param string
+		* @param array
+		* @return EabAppSettings
+		*/
 		public function __call($func, $args)
 		{
 			$prefix = strtolower(substr($func, 0, 3));

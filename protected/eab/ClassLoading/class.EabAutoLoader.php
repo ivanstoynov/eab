@@ -1,39 +1,39 @@
 <?php
 	/**
-	 * Auto loader class
-	 *
-	 * @category   Loaders
-	 * @package    Eab
-	 * @author     Ivan Stoyanov <iv44@yahoo.com>
-	 * @copyright  2010-2014 Stoqnoff
-	 * @since      1.0.0
-	 */
+	* Auto loader class
+	*
+	* @category   Loaders
+	* @package    Eab
+	* @author     Ivan Stoyanov <iv44@yahoo.com>
+	* @copyright  2010-2014 Stoqnoff
+	* @since      1.0.0
+	*/
 	class EabAutoLoader
 	{
 		/**
-		 * Directory separator
-		 *
-		 * @var string
-		 */
+		* Directory separator
+		*
+		* @var string
+		*/
 		private $_ds;
 		/**
-		 * Registred paths
-		 *
-		 * @var array
-		 */
+		* Registred paths
+		*
+		* @var array
+		*/
 		private $_registredPaths;
 		/**
-		 * Classes paths
-		 *
-		 * @var array
-		 */
+		* Classes paths
+		*
+		* @var array
+		*/
 		private $_pathsCache;
 
 		/**
-		 * Constructor of class
-		 *
-		 * @return void
-		 */
+		* Constructor of class
+		*
+		* @return void
+		*/
 		public function __construct()
 		{
 			$this->_registredPaths = array();
@@ -42,20 +42,20 @@
 			spl_autoload_register(array($this, '_autoloadHandler'));
 		}
 		/**
-		 * Register autoload path
-		 * 
-		 * @param string
-		 * @return void
-		 */
+		* Register autoload path
+		* 
+		* @param string
+		* @return void
+		*/
 		public function registerAutoloadPath($path)
 		{
 			$this->_registredPaths[] = $path;
 		}
 		/**
-		 * Find application class
-		 *
-		 * @return void
-		 */
+		* Find application class
+		*
+		* @return void
+		*/
 		private function _autoloadHandler($class)
 		{
 			foreach ($this->_registredPaths as $path) {
@@ -66,12 +66,12 @@
 		}
 		
 		/**
-		 * Find and load class
-		 *
-		 * @param string 
-		 * @param string
-		 * @return boolean
-		 */
+		* Find and load class
+		*
+		* @param string 
+		* @param string
+		* @return boolean
+		*/
 		private function _findAndLoadClass($class, $path)
 		{
 			$class = strtolower($class);
@@ -89,10 +89,10 @@
 			return FALSE;
 		}
 		/**
-		 * Fetch directory
-		 *
-		 * @return void
-		 */
+		* Fetch directory
+		*
+		* @return void
+		*/
 		private function _fetchDirectory($basePath) {
 
 			$basePath = rtrim($basePath, "\\/");

@@ -1,64 +1,64 @@
 <?php
 
 	/**
-	 * Class define db result resource interface
-	 *
-	 * This is not valid adapter, it is just MySql 
-	 * database result class.
-	 *
-	 *
-	 * PHP version 5.0 +
-	 *
-	 * @category   Database
-	 * @package    Eab
-	 * @author     Ivan Stoyanov <iv44@yahoo.com>
-	 * @copyright  2010-2014 Stoqnoff
-	 * @since      1.0.0
-	 */
+	* Class define db result resource interface
+	*
+	* This is not valid adapter, it is just MySql 
+	* database result class.
+	*
+	*
+	* PHP version 5.0 +
+	*
+	* @category   Database
+	* @package    Eab
+	* @author     Ivan Stoyanov <iv44@yahoo.com>
+	* @copyright  2010-2014 Stoqnoff
+	* @since      1.0.0
+	*/
 	class EabDbResultAdapter
 	{
 		/**
-		 * Result resource
-		 *
-		 * @var resource
-		 */
+		* Result resource
+		*
+		* @var resource
+		*/
 		protected $result;
 		/**
-		 * Default fetch mode
-		 *
-		 * @var integer
-		 */
+		* Default fetch mode
+		*
+		* @var integer
+		*/
 		protected $_defaultFetchMode;
 
 		/**
-		 * Constructor of class
-		 *
-		 * @param resource
-		 * @param integer
-		 */
+		* Constructor of class
+		*
+		* @param resource
+		* @param integer
+		*/
 		public function __construct($res, $fetchMode = MYSQL_ASSOC)
 		{
 			$this->result = $res;
 			$this->_defaultFetchMode = $fetchMode;
 		}
 		/**
-		 * Return number of rows in result
-		 *
-		 * @return integer
-		 */
+		* Return number of rows in result
+		*
+		* @return integer
+		*/
 		public function numRows()
 		{
 			return mysql_num_rows($this->result);
 		}
 		/**
-		 * Return array from rows
-		 *
-		 * @param integer
-		 * @return array
-		 */
+		* Return array from rows
+		*
+		* @param integer
+		* @return array
+		*/
 		public function fetchAll($fetchMode = NULL)
 		{
-			if (! $fetchMode) {
+			if (NULL === $fetchMode) {
 				$fetchMode = $this->_defaultFetchMode;
 			}
 			if (! is_resource($this->result)) {
@@ -66,7 +66,7 @@
 			}
 
 			$data = array();
-			if (mysql_numrows($this->result)>0) {
+			if (mysql_numrows($this->result) > 0) {
 				$this->seek(0);
 				while ($row = mysql_fetch_array($this->result, $fetchMode)) {
 					$data[]=$row;
@@ -75,15 +75,15 @@
 			return $data;
 		}
 		/**
-		 * Return row from result. If specified row, then seek result to this row.
-		 *
-		 * @param integer|NULL
-		 * @param integer|NULL
-		 * @return array
-		 */
+		* Return row from result. If specified row, then seek result to this row.
+		*
+		* @param integer|NULL
+		* @param integer|NULL
+		* @return array
+		*/
 		public function fetchRow($fetchMode = NULL, $row = NULL)
 		{
-			if (! $fetchMode) {
+			if (NULL === $fetchMode) {
 				$fetchMode = $this->_defaultFetchMode;
 			}
 			if (! is_resource($this->result)) {
@@ -104,12 +104,12 @@
 			}
 		}
 		/**
-		 * Return only one field
-		 *
-		 * @param integer|NULL
-		 * @param integer|NULL
-		 * @return mixed
-		 */
+		* Return only one field
+		*
+		* @param integer|NULL
+		* @param integer|NULL
+		* @return mixed
+		*/
 		public function fetchOne($col = NULL, $row = NULL)
 		{
 			$fetchmode = is_numeric($col) ? MYSQL_NUM : MYSQL_ASSOC;
@@ -130,11 +130,11 @@
 			}
 		}
 		/**
-		 * Seek pointer of result to specified row
-		 *
-		 * @param integer
-		 * @return boolean
-		 */
+		* Seek pointer of result to specified row
+		*
+		* @param integer
+		* @return boolean
+		*/
 		public function seek($rowNum = 0)
 		{
 			if (0 === mysql_num_rows($this->result)) {
@@ -148,10 +148,10 @@
 		}
 
 		/**
-		 * Osvobojdava zaetata pamet ot resurs na resultata
-		 *
-		 * @return void
-		 */
+		* Osvobojdava zaetata pamet ot resurs na resultata
+		*
+		* @return void
+		*/
 		public function free()
 		{
 			mysql_free_result($this->result);
@@ -159,10 +159,10 @@
 		}
 
 		/**
-		 * Return number of affected rows from previous query
-		 *
-		 * @return integer
-		 */
+		* Return number of affected rows from previous query
+		*
+		* @return integer
+		*/
 		function affectedRows()
 		{
 			return mysql_affected_rows($this->result);

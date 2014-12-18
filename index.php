@@ -8,8 +8,7 @@
 	try {
 		
 		$loader = new EabAutoLoader();
-		$path = dirname(__FILE__).'/protected/eab/';
-		$loader->registerAutoloadPath($path);
+		$loader->registerAutoloadPath(dirname(__FILE__).'/protected/eab/');
 		
 		Eab::app()->run();
 		

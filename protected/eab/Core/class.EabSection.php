@@ -1,36 +1,36 @@
 <?php
 	/**
-	 * Abstract section class
-	 *
-	 * @category   Core
-	 * @package    Eab
-	 * @author     Ivan Stoyanov <iv44@yahoo.com>
-	 * @copyright  2010-2014 Stoqnoff
-	 * @since      1.0.0
-	 */
+	* Abstract section class
+	*
+	* @category   Core
+	* @package    Eab
+	* @author     Ivan Stoyanov <iv44@yahoo.com>
+	* @copyright  2010-2014 Stoqnoff
+	* @since      1.0.0
+	*/
 	abstract class EabSection extends EabAssigner
 	{
 		/**
-		 * Constructor of class
-		 */
+		* Constructor of class
+		*/
 		public function __construct()
 		{
 			parent::__construct();
 		}
 		
 		/**
-		 * Render section (Abstract method - must be override)
-		 *
-		 * @return void
-		 */
+		* Render section (Abstract method - must be override)
+		*
+		* @return void
+		*/
 		abstract public function render();
 
 		/**
-		 * Render htm section file
-		 *
-		 * @param string $file
-		 * @param boolean $isFullPath
-		 */
+		* Render htm section file
+		*
+		* @param string $file
+		* @param boolean $isFullPath
+		*/
 		protected final function renderHtml($file, $isFullPath = FALSE)
 		{
 			if (! $isFullPath) {
@@ -50,11 +50,11 @@
 			require $file;
 		}
 		/**
-		 * Create section instance
-		 *
-		 * @param string $sectionName Section class
-		 * @return EabSection
-		 */
+		* Create section instance
+		*
+		* @param string $sectionName Section class
+		* @return EabSection
+		*/
 		public static function Create($sectionName)
 		{
 			$ds = Eab::app()->getAppSettings()->getDs();

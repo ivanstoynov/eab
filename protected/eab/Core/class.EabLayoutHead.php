@@ -1,45 +1,45 @@
 <?php
 	/**
-	 * LayoutHead class
-	 *
-	 * @category   Core
-	 * @package    Eab
-	 * @author     Ivan Stoyanov <iv44@yahoo.com>
-	 * @copyright  2010-2014 Stoqnoff
-	 * @since      1.0.0
-	 */
+	* LayoutHead class
+	*
+	* @category   Core
+	* @package    Eab
+	* @author     Ivan Stoyanov <iv44@yahoo.com>
+	* @copyright  2010-2014 Stoqnoff
+	* @since      1.0.0
+	*/
 	class EabLayoutHead
 	{
 		/**
-		 * Application title
-		 * 
-		 * @var string
-		 */
+		* Application title
+		* 
+		* @var string
+		*/
 		private $_title;
 		/**
-		 * Meta tags
-		 * 
-		 * @var array
-		 */
+		* Meta tags
+		* 
+		* @var array
+		*/
 		private $_metaTags;
 		/**
-		 * Styles
-		 * 
-		 * @var string
-		 */
+		* Styles
+		* 
+		* @var string
+		*/
 		private $_styles;
 		/**
-		 * JavaScripts
-		 * 
-		 * @var string
-		 */
+		* JavaScripts
+		* 
+		* @var string
+		*/
 		private $_js;
 		
 		/**
-		 * Constructor of class
-		 *
-		 * @param string
-		 */
+		* Constructor of class
+		*
+		* @param string
+		*/
 		public function __construct()
 		{
 			$this->_title = '';
@@ -48,19 +48,19 @@
 			$this->_js = array();
 		}
 		/**
-		 * Display title
-		 *
-		 * @return void
-		 */
+		* Display title
+		*
+		* @return void
+		*/
 		public function displayTitle()
 		{
 			echo "\t" . '<title>' . $this->_title . '</title>'."\n";
 		}
 		/**
-		 * Display meta tags
-		 *
-		 * @return void
-		 */
+		* Display meta tags
+		*
+		* @return void
+		*/
 		public function displayMetaTags()
 		{
 			if (empty($this->_metaTags) || ! is_array($this->_metaTags)) {
@@ -76,10 +76,10 @@
 			}
 		}
 		/**
-		 * Display styles
-		 *
-		 * @return void
-		 */
+		* Display styles
+		*
+		* @return void
+		*/
 		public function displayStyles()
 		{
 			if (empty($this->_styles)) {
@@ -105,10 +105,10 @@
 			}
 		}
 		/**
-		 * Display javascripts
-		 *
-		 * @return void
-		 */
+		* Display javascripts
+		*
+		* @return void
+		*/
 		public function displayJs()
 		{
 			if ( empty($this->_js)) {
@@ -125,80 +125,80 @@
 			}
 		}
 		/**
-		 * Get title (getter)
-		 *
-		 * @return string
-		 */
+		* Get title (getter)
+		*
+		* @return string
+		*/
 		public function getTitle()
 		{
 			return $this->_title;
 		}
 		/**
-		 * Set title (setter)
-		 *
-		 * @param string
-		 * @return EabLayoutHead
-		 */
+		* Set title (setter)
+		*
+		* @param string
+		* @return EabLayoutHead
+		*/
 		public function setTitle($title)
 		{
 			$this->_title = $title;
 			return $this;
 		}
 		/**
-		 * Get meta tags (getter)
-		 *
-		 * @return array
-		 */
+		* Get meta tags (getter)
+		*
+		* @return array
+		*/
 		public function getMetaTags()
 		{
 			return $this->_metaTags;
 		}
 		/**
-		 * Set meta tags (setter)
-		 *
-		 * @param array
-		 * @return EabLayoutHead
-		 */
+		* Set meta tags (setter)
+		*
+		* @param array
+		* @return EabLayoutHead
+		*/
 		public function setMetaTags($metaTags)
 		{
 			$this->_metaTags = $metaTags;
 			return $this;
 		}
 		/**
-		 * Get styles (getter)
-		 *
-		 * @return array
-		 */
+		* Get styles (getter)
+		*
+		* @return array
+		*/
 		public function getStyles()
 		{
 			return $this->_styles;
 		}
 		/**
-		 * Set styles (setter)
-		 *
-		 * @param array
-		 * @return EabLayoutHead
-		 */
+		* Set styles (setter)
+		*
+		* @param array
+		* @return EabLayoutHead
+		*/
 		public function setStyles($styles)
 		{
 			$this->_styles = $styles;
 			return $this;
 		}
 		/**
-		 * Get js (getter)
-		 *
-		 * @return array
-		 */
+		* Get js (getter)
+		*
+		* @return array
+		*/
 		public function getJs()
 		{
 			return $this->_js;
 		}
 		/**
-		 * Set js (setter)
-		 *
-		 * @param array
-		 * @return EabLayoutHead
-		 */
+		* Set js (setter)
+		*
+		* @param array
+		* @return EabLayoutHead
+		*/
 		public function setJs($js)
 		{
 			$this->_js = $js;
