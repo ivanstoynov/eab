@@ -3,13 +3,13 @@
 	include_once(dirname(__FILE__).'/../class.EblValidator.php');
 
 	/**
-	* Required validator class
+	* Numeric validator class
 	*
 	* @author Ivan Stoyanov <iv44@yahoo.com>
 	* @pakage Ebl
 	* @subpakage Validation
 	*/
-	class EblValidator extends EblValidator
+	class EblNumericValidator extends EblValidator
 	{
 		/**
 		* Constructur of class

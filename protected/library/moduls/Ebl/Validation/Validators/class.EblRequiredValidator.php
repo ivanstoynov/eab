@@ -9,7 +9,7 @@
 	* @pakage Ebl
 	* @subpakage Validation
 	*/
-	class EblValidator extends EblValidator
+	class EblRequiredValidator extends EblValidator
 	{
 		/**
 		* Constructur of class

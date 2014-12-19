@@ -212,7 +212,7 @@
 		private function _validateEqual($expression, $error)
 		{
 			if ($this->_value !== $expression) {
-				$this->_errors[] = ! empty($error) ? $error : 'Value must be numeric!';
+				$this->_errors[] = ! empty($error) ? $error : 'Value must be equal!';
 			}
 		}
 		/**
