@@ -32,9 +32,9 @@
 		* @param boolean
 		* @return void
 		*/
-		public function __construct($value, $comparableValue, $strictCompare = TRUE)
+		public function __construct($value, $comparableValue, $strictCompare = TRUE, $errorMessage = null)
 		{
-			parent::__construct($value);
+			parent::__construct($value, $errorMessage);
 			$this->_comparableValue = $comparableValue;
 			$this->strictCompare = $strictCompare;
 		}
@@ -46,22 +46,20 @@
 		*/
 		public function validate()
 		{
-			$value = $this->getValue();
-			
 			$isEqual = TRUE;
 			if (TRUE === $this->_strictCompare) {
-				if ($value !== $this->_comparableValue) {
+				if ($this->_value !== $this->_comparableValue) {
 					$isEqual = FALSE;
 				}
 			}
 			else {
-				if ($value != $this->_comparableValue) {
+				if ($this->_value != $this->_comparableValue) {
 					$isEqual = FALSE;
 				}
 			}
 			
 			if (FALSE === $isEqual) {
-				$this->_errors[] = 'Value must be equal!';
+				$this->_validationErrors[] = ! empty($this->_errorMessage) ? $this->_errorMessage :  'Value must be equal!';
 			}
 			
 			return $isEqual;

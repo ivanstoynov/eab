@@ -12,22 +12,29 @@
 	abstract class EblValidator implements IEblValidator
 	{
 		/**
+		* Message to displayed
+		* 
+		* @var string
+		*/
+		protected $_errorMessage;
+		/**
 		* @var array
 		*/
-		private $_validationErrors;
+		protected $_validationErrors;
 		/**
 		* @var string
 		*/
-		private $_value;
+		protected $_value;
 		
 		/**
 		* Constructur of class
 		* 
 		* @return
 		*/
-		public function __construct($value)
+		public function __construct($value, $errorMessage = null)
 		{
 			$this->_value = $value;
+			$this->_errorMessage = $errorMessage;
 		}
 	    /**
 		* Set validation value
@@ -57,6 +64,6 @@
 		public function getValidationErrors()
 		{
 			return $this->_validationErrors;
-		}		
+		}
 	}
 ?>

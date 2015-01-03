@@ -7,7 +7,7 @@
 	 * @pakage Ebl
 	 * @subpakage HtmlComponents
 	 */
-	abstract class EblHtmlComponent
+	abstract class EblHtmlComponent implements IValidatable, IHtmlPrintable
 	{
 		/**
 		 * @var string
@@ -29,6 +29,10 @@
 		 * @var array
 		 */
 		private $_attributes;
+		/**
+		* @var array
+		*/
+		private $_validators;
 		
 
 		/**
@@ -44,22 +48,7 @@
 			$this->_text = '';
 			$this->_visible = TRUE;
 			$this->_attributes = array();
-		}
-		/**
-		 * Abstract metod
-		 * 
-		 * @param array
-		 */
-		abstract public function display($arrtibutes = array());
-		/**
-		 * Static method to render component
-		 * 
-		 * @param EblHtmlComponent
-		 * @param array
-		 */
-		public static function RenderComponent(EblHtmlComponent $componenet, $arrtibutes=array())
-		{
-			$componenet->display($arrtibutes);
+			$this->_validators = array();
 		}
 		/**
 		 * Add attribute
@@ -138,6 +127,17 @@
 		{
 			$val = $_REQUEST[$this->getName()];
 			$this->setValue($val);
+		}
+		/**
+		* Add validator to component
+		* 
+		* @param EblValidator
+		* @return EblHtmlComponent
+		*/
+		public function addValidator(EblValidator $validator)
+		{
+			$this->_validators[] = $validator;
+			return $this;
 		}
 		/**
 		 * Set attributes (setter)

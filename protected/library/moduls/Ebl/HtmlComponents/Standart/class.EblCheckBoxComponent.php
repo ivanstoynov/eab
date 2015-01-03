@@ -33,11 +33,8 @@
 		 * @param array
 		 * @return void
 		 */
-		public function display($attributes = array())
+		public function printHtml()
 		{
-			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(),$attributes));
-
 			if ($this->getChecked() === TRUE) {
 				$this->setAttribute('checked', 'checked');
 			}

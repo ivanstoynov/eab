@@ -58,11 +58,8 @@
 		 * @param array
 		 * @return void
 		 */
-		public function display($attributes = array())
+		public function printHtml()
 		{
-			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
-			
 			$atts = $this->getAttributes();
 			if (empty($atts['class'])) {
 				$class = 'listCompPanel';

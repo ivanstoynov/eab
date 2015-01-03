@@ -29,11 +29,8 @@
 		 * @param array
 		 * @return void
 		 */
-		public function display($attributes = array())
+		public function printHtml()
 		{
-			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
-
 			$this->setAttribute('name', $this->_name);
 			$attributesString = $this->getAttributesAsString();
 			echo '<input type="file" ' . $attributesString . ' />' . "\n";

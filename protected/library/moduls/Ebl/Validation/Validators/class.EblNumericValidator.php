@@ -15,11 +15,12 @@
 		* Constructur of class
 		* 
 		* @param mixed
+		* @param string|null
 		* @return void
 		*/
-		public function __construct($value)
+		public function __construct($value, $errorMessage = null)
 		{
-			parent::__construct($value);
+			parent::__construct($value, $errorMessage);
 		}
 		
 		/**
@@ -29,10 +30,8 @@
 		*/
 		public function validate()
 		{
-			$value = $this->getValue();
-			
-			if (! is_numeric($value)) {
-				$this->_errors[] = 'Value must be numeric!';
+			if (! is_numeric($this->_value)) {
+				$this->_validationErrors[] = ! empty($this->_errorMessage) ? $this->_errorMessage : 'Value must be numeric!';
 				return FALSE;
 			}
 			

@@ -31,11 +31,8 @@
 		 * @param array
 		 * @return void
 		 */
-		public function display($attributes = array())
+		public function printHtml()
 		{
-			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
-
 			$value = $this->getValue();
 			
 			$this->setAttribute('name', $this->getName());
