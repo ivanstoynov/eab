@@ -30,6 +30,7 @@
 		* @param mixed
 		* @param mixed
 		* @param boolean
+		* @param string|null
 		* @return void
 		*/
 		public function __construct($value, $comparableValue, $strictCompare = TRUE, $errorMessage = null)
