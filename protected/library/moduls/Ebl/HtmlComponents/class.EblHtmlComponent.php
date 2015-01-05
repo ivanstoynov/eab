@@ -1,5 +1,8 @@
 <?php
 
+	include_once(dirname(__FILE__).'/interface.IEblValidator.php');
+	include_once(dirname(__FILE__).'/interface.IHtmlPrintable.php');
+
 	/**
 	 * This is abstract class describe basic html component.
 	 *
