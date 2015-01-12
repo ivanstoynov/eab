@@ -1,6 +1,6 @@
 <?php
 
-	include_once(dirname(__FILE__).'/class.EblListComponent.php');
+	include_once(dirname(__FILE__).'/class.EblChekableList.php');
 	include_once(dirname(__FILE__).'/class.EblRadioButtonComponent.php');
 	
 	/**
@@ -11,7 +11,7 @@
 	 * @pakage Ebl
 	 * @subpakage HtmlComponents/Standard
 	 */
-	class EblRadioButtonList extends EblListComponent
+	class EblRadioButtonList extends EblChekableList
 	{
 		/**
 		 * Constructor of class
@@ -19,33 +19,10 @@
 		 * @param string
 		 * @param array
 		 */
-		public function __construct($name = '', $elems = array())
+		public function __construct($name, $elements = array(), $attributes = array())
 		{
-			parent::__construct($name, $elems);
-		}
-		/**
-		 * Add element to list
-		 *
-		 * @param string
-		 * @param string
-		 * @param boolean
-		 * @param array
-		 * @return void
-		 */
-		public function addElement($label, $value, $selected, $attributes = array())
-		{
-			$rbtn = new EblRadioButtonComponent($this->getName(), (string) $label, $value, (boolean) $selected, $attributes);
-			$this->addComponent($rbtn);
-		}
-		/**
-		 * Add radio button to list
-		 *
-		 * @param EblRadioButton
-		 * @return void
-		 */
-		public function addRadioButton(EblRadioButton $rbtn)
-		{
-			$this->addComponent($rbtn);
+			parent::__construct($name, $elements, $attributes);
+			parent::setMultiple(FALSE);
 		}
 	}
 ?>

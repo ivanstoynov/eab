@@ -1,48 +1,89 @@
 <?php
 
-	class EblHtmlForm
+	include_once(dirname(__FILE__).'/../interfaces/interface.IValidatable.php');
+	
+	/**
+	* EblHtmlForm class
+	*
+	* @author Ivan Stoyanov <iv44@yahoo.com>
+	* @pakage Ebl
+	* @subpakage HtmlComponents
+	*/
+	class EblHtmlForm implements IValidatable, IRequestHandable
 	{
-		private static $instances = array();
-
-		private $_formName;
-		private $_components;
-		private $_validator;
+		/**
+		* Form name
+		* 
+		* @var string
+		*/
+		private $_name;
+		/**
+		* Form elements
+		* 
+		* @var array
+		*/
+		private $_elements;
 		
-		private function __construct($formName)
+		/**
+		* Constructor of class
+		* 
+		* @param string|NULL $name
+		* @return void
+		*/
+		private function __construct($name = NULL)
 		{
-			$this->_formName = $formName;
-			$this->_components = array();
-			$this->_validator = new EblFormValidator();
+			$this->_name = $name;
+			$this->_elements = array();
 		}
-
-		private function __clone() {}
-
-		public static function make($formName)
-		{
-			if (! isset(self::$instances[$formName])) {
-				self::$instances[$formName] = new self($formName);
-			}
-			return self::$instances[$formName];
-		}
-		
+		/**
+		* Handle request
+		* 
+		* @return void
+		*/
 		public function handleRequest()
 		{
-			foreach ($this->_components as $component) {
-				$name = $component->getName();
-				if (isset($_REQUEST[$name])) {
-					$val = $_REQUEST[$name];
+			foreach ($this->_elements as $element) {
+				$elementName = $element->getName();
+				if (isset($_REQUEST[$elementName])) {
+					$element->setValue($_REQUEST[$elementName]);
 				}
 			}
 		}
-
-		public function addComponent(EblHtmlComponent $component)
+		/**
+		* Add element to form
+		* 
+		* @param EblHtmlComponent $element
+		* @return EblHtmlForm
+		*/
+		public function addElement(EblHtmlComponent $element)
 		{
-			$this->_components[] = $component;
+			$this->_components[] = $element;
+			return $this;
 		}
-
-		public function clearComponent()
+		/**
+		* Clear elements
+		* 
+		* @return void
+		*/
+		public function clearElements()
 		{
 			$this->_components[] = array();
 		}
+		/**
+		* Validate element
+		* 
+		* @return boolean
+		*/
+		public function validate()
+		{
+		}
+		/**
+		* Get validation errors
+		* 
+		* @return array
+		*/
+		public function getValidationErrors()
+		{
+		}		
 	}
 ?>

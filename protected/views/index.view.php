@@ -12,31 +12,38 @@ index view here
 <form>
 
 <?php 
-	$this->formValidator->getValidator('sometextbox')->displayErrors();
-	EblHtmlComponent::RenderComponent( new EblTextComponent('sometextbox','test')); 
+	//$this->formValidator->getValidator('sometextbox')->displayErrors();
+	 $textbox = new EblTextComponent('sometextbox','test');
+	 $textbox->printHtml();
 ?>
 <br />
-<?php EblHtmlComponent::RenderComponent( new EblSelectComponent('sex', array(
+<?php $sex =  new EblSelectComponent('sex', array(
 		new EblOptionComponent('', 'select'),
 		new EblOptionComponent('m', 'male', true),
 		new EblOptionComponent('f', 'female')
-	))); 
+	)); 
+	//$sex->setMultiple(TRUE);
+	$sex->printHtml();
 ?>
 	
 <br />
-<?php EblHtmlComponent::RenderComponent( new EblTextareaComponent('textarea','ala bala',array(
+<?php $textarea =  new EblTextareaComponent('textarea','ala bala',array(
 		'rows'=>'10',
 		'cols'=>'50',
-	))); 
+	)); 
+	$textarea->printHtml();
 ?>
 
 <br />
-<?php $this->rbList->display(); ?>
+<?php $this->rbList->printHtml(); ?>
 <br />
 <div style="clear:both"></div>
-<?php $this->cbxList->display(); ?>
+<?php $this->cbxList->printHtml(); ?>
 <div style="clear:both"></div>
 <br />
-<?php EblHtmlComponent::RenderComponent( new EblSubmitComponent('subBtn','Submit form')); ?>
+<?php 
+	$button = new EblSubmitComponent('subBtn','Submit form'); 
+	$button->printHtml();
+?>
 
 </form>

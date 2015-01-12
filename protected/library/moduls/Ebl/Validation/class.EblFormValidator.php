@@ -9,7 +9,7 @@
 	 * @pakage Ebl
 	 * @subpakage Validation
 	 */
-	class EblFormValidator implements IValidatable
+	class EblFormValidator
 	{
 		/**
 		 * @var array

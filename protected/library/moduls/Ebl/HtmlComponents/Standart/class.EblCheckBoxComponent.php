@@ -1,38 +1,37 @@
 <?php
 
 	include_once(dirname(__FILE__).'/../class.EblCheckableComponent.php');
-
 	
 	/**
-	 * @sience 1.0.1
-	 *
-	 * Class describe html check box element
-	 *
-	 * @author Ivan Stoyanov <iv44@yahoo.com>
-	 * @pakage Ebl
-	 * @subpakage HtmlComponents/Standard
-	 */
+	* @sience 1.0.1
+	*
+	* Class describe html check box element
+	*
+	* @author Ivan Stoyanov <iv44@yahoo.com>
+	* @pakage Ebl
+	* @subpakage HtmlComponents/Standard
+	*/
 	class EblCheckBoxComponent extends EblCheckableComponent
 	{
 		/**
-		 * Constructor of class
-		 *
-		 * @param string
-		 * @param string
-		 * @param string
-		 * @param boolean
-		 * @param array
-		 */
+		* Constructor of class
+		*
+		* @param string name
+		* @param string label
+		* @param string value
+		* @param boolean cheched
+		* @param array attributes
+		*/
 		public function __construct($name, $label, $value, $checked = FALSE, $attributes = array())
 		{
 			parent::__construct($name, $label, $value, $checked, $attributes);
 		}
 		/**
-		 * Display method - print check box (with lable)
-		 *
-		 * @param array
-		 * @return void
-		 */
+		* Display method - print check box (with lable)
+		*
+		* @param array
+		* @return void
+		*/
 		public function printHtml()
 		{
 			if ($this->getChecked() === TRUE) {
@@ -61,18 +60,15 @@
 			echo $label;
 		}
 		/**
-		 * Print clear check box, without label
-		 *
-		 * @param array
-		 * @return void
-		 */
-		public function displayClearly($attributes=array())
+		* Print clear check box, without label
+		*
+		* @param array
+		* @return void
+		*/
+		public function printClearlyHtml()
 		{
-			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
-
-			if (true === $this->getChecked()) {
-				$this->setAttribute('checked', 'checked');
+			if (TRUE === $this->getChecked()) {
+				$this->addAttribute('checked', 'checked');
 			}
 			else {
 				$this->removeAttribute('checked');

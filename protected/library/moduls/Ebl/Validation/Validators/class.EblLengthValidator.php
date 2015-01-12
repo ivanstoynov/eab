@@ -51,12 +51,12 @@
 				}
 			}
 			elseif (NULL !== $this->_minLength) {
-				if ($length < $this->_minLength)) {
+				if ($length < $this->_minLength) {
 					$this->_validationErrors[] = ! empty($this->_errorMessage) ? $this->_errorMessage : 'Min length is ' . $this->_minLength . '!';
 				}
 			}
 			else {
-				if ($length > $this->_maxLength)) {
+				if ($length > $this->_maxLength) {
 					$this->_validationErrors[] = ! empty($this->_errorMessage) ? $this->_errorMessage : 'Max length is ' . $this->_maxLength . '!';
 				}
 			}

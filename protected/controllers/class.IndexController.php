@@ -16,30 +16,32 @@
 			//$radio = new EblRadioButtonComponent('sex', 'male', 'male sex',false);
 			//$radio->setTextPosition('right');
 			
-			$cbxList = new EblCheckBoxList('sex');
+			$cbxList = new EblCheckBoxList('sex1');
 			$cbxList->setTextPosition('right');
 			$cbxList->setDirection('vertical');
-			$cbxList->addElement('male', 'm', false);
-			$cbxList->addElement('female', 'f', true);
+			$cbxList->addElement(new EblCheckBoxComponent('', 'male', 'm', false));
+			$cbxList->addElement(new EblCheckBoxComponent('', 'female', 'f', true));
 			$this->cbxList=$cbxList;
 			
 			
-			$rbList = new EblRadioButtonList('sex');
+			$rbList = new EblRadioButtonList('sex2');
 			$rbList->setTextPosition('right');
 			$rbList->setDirection('vertical');
-			$rbList->addElement('male', 'm', false);
-			$rbList->addElement('female', 'f', true);
+			$rbList->addElement(new EblRadioButtonComponent('','male', 'm', false));
+			$rbList->addElement(new EblRadioButtonComponent('','female', 'f', true));
 			$this->rbList = $rbList;
 			
 			// Validation
-			$formValidator = new EblFormValidator();
-			$formValidator->getValidator('sometextbox')->addRule(EblValidationRulesTypes::REQUIRED)
-													   ->addRule(EblValidationRulesTypes::LENGTH, '5:20')
-													   ->addRule(EblValidationRulesTypes::EMAIL);
-			$this->formValidator = $formValidator;
+			//$formValidator = new EblFormValidator();
+			//$formValidator->getValidator('sometextbox')->addRule(EblValidationRulesTypes::REQUIRED)
+//													   ->addRule(EblValidationRulesTypes::LENGTH, '5:20')
+//													   ->addRule(EblValidationRulesTypes::EMAIL);
+//			$this->formValidator = $formValidator;
+
+			Eab::debug($_REQUEST);
 
 			if($_REQUEST['subBtn']){
-				$formValidator->validate();
+				//$formValidator->validate();
 			}
 
 			$this->renderView("index.view.php");

@@ -23,7 +23,7 @@
 		 */
 		public function __construct($name, $label, $value, $checked = FALSE, $attributes = array())
 		{
-			parent::__construct((string) $name, (string) $label, $value, (boolean) $checked, $attributes);
+			parent::__construct($name, $label, $value, (boolean) $checked, $attributes);
 		}
 		/**
 		 * Display method - print radio button (with lable)
@@ -34,14 +34,14 @@
 		public function printHtml()
 		{
 			if ($this->getChecked() === TRUE) {
-				$this->setAttribute('checked', 'checked');
+				$this->addAttribute('checked', 'checked');
 			}
 			else {
 				$this->removeAttribute('checked');
 			}
 			
-			$this->setAttribute('name', $this->getName());
-			$this->setAttribute('value', strval($this->getValue()));
+			$this->addAttribute('name', $this->getName());
+			$this->addAttribute('value', strval($this->getValue()));
 			$attributesString = $this->getAttributesAsString();
 
 			//$id=$this->getAttributeByKey('id');
@@ -64,13 +64,10 @@
 		 * @param array
 		 * @return void
 		 */
-		public function displayClearly($attributes = array())
+		public function printClearlyHtml()
 		{
-			// Append new attributes
-			$this->setAttributes(array_merge($this->getAttributes(), $attributes));
-
 			if (TRUE === $this->_checked) {
-				$this->setAttribute('checked', 'checked');
+				$this->addAttribute('checked', 'checked');
 			}
 			else {
 				$this->removeAttribute('checked');

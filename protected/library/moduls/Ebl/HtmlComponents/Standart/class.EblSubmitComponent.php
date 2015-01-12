@@ -21,8 +21,7 @@
 		 */
 		public function __construct($name, $value, $attributes = array())
 		{
-			parent::__construct($attributes);
-			$this->setName((string) $name);
+			parent::__construct($name, $attributes);
 			$this->setValue($value);
 		}
 		/**
@@ -33,8 +32,8 @@
 		 */
 		public function printHtml()
 		{
-			$this->setAttribute('name', $this->getName());
-			$this->setAttribute('value', $this->getValue());
+			$this->addAttribute('name', $this->getName());
+			$this->addAttribute('value', $this->getValue());
 			$attributesString = $this->getAttributesAsString();
 			echo '<input type="submit" ' . $attributesString . ' />' . "\n";
 		}

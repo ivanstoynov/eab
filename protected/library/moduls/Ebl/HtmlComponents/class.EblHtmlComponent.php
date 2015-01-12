@@ -1,87 +1,93 @@
 <?php
 
-	include_once(dirname(__FILE__).'/interface.IEblValidator.php');
-	include_once(dirname(__FILE__).'/interface.IHtmlPrintable.php');
+	include_once(dirname(__FILE__).'/../Validation/interface.IEblValidator.php');
+	include_once(dirname(__FILE__).'/../interfaces/interface.IHtmlPrintable.php');
+	include_once(dirname(__FILE__).'/../interfaces/interface.IRequestHandable.php');
 
 	/**
-	 * This is abstract class describe basic html component.
-	 *
-	 * @author Ivan Stoyanov <iv44@yahoo.com>
-	 * @pakage Ebl
-	 * @subpakage HtmlComponents
-	 */
-	abstract class EblHtmlComponent implements IValidatable, IHtmlPrintable
+	* This is abstract class describe basic html component.
+	*
+	* @author Ivan Stoyanov <iv44@yahoo.com>
+	* @pakage Ebl
+	* @subpakage HtmlComponents
+	*/
+	abstract class EblHtmlComponent implements IValidatable, IHtmlPrintable, IRequestHandable
 	{
 		/**
-		 * @var string
-		 */
+		* @var string
+		*/
 		private $_name;
 		/**
-		 * @var string
-		 */
+		* @var string
+		*/
 		private $_value;
 		/**
-		 * @var string
-		 */
+		* @var string
+		*/
 		private $_text;
 		/**
-		 * @var boolean
-		 */
+		* @var boolean
+		*/
 		private $_visible;
 		/**
-		 * @var array
-		 */
+		* @var array
+		*/
 		private $_attributes;
 		/**
 		* @var array
 		*/
 		private $_validators;
-		
+		/**
+		* Validation errors
+		* 
+		* @var array
+		*/
+		private $_validationErrors;
 
 		/**
-		 * Constructor of class
-		 * 
-		 * @param array
-		 */
-		public function __construct($attributes = array())
+		* Constructor of class
+		* 
+		* @param array
+		*/
+		public function __construct($name, $attributes = array())
 		{
-			$this->setAttributes($attributes);
-			$this->_name = '';
+			$this->_name = $name;
 			$this->_value = '';
 			$this->_text = '';
 			$this->_visible = TRUE;
-			$this->_attributes = array();
+			$this->_attributes = $attributes;
 			$this->_validators = array();
+			$this->_validationErrors = array();
 		}
 		/**
-		 * Add attribute
-		 *
-		 * @param string
-		 * @param string
-		 * @return EblHtmlComponent
-		 */
+		* Add attribute
+		*
+		* @param string
+		* @param string
+		* @return EblHtmlComponent
+		*/
 		public function addAttribute($key, $val)
 		{
 			$this->_attributes[$key] = $val;
 			return $this;
 		}
 		/**
-		 * Add attribute (same like addAttribute)
-		 *
-		 * @param string
-		 * @param string
-		 * @return EblHtmlComponent
-		 */
+		* Add attribute (same like addAttribute)
+		*
+		* @param string
+		* @param string
+		* @return EblHtmlComponent
+		*/
 		public function setAttribute($key, $val)
 		{
-			$this->addAttribute($key, $val);
+			$this->_attributes[$key] = $val;
 			return $this;
 		}
 		/**
-		 * Remove attribute (if exist)
-		 *
-		 * @param string
-		 */
+		* Remove attribute (if exist)
+		*
+		* @param string
+		*/
 		public function removeAttribute($key)
 		{
 			if (isset($this->_attributes[$key])) {
@@ -89,29 +95,29 @@
 			}
 		}
 		/**
-		 * Clear attributes
-		 *
-		 * @return void
-		 */
+		* Clear attributes
+		*
+		* @return void
+		*/
 		public function clearAttributes()
 		{
 			$this->_attributes = array();
 		}
 		/**
-		 * Get attribute by key
-		 *
-		 * @param string
-		 * @return boolean
-		 */
+		* Get attribute by key
+		*
+		* @param string
+		* @return boolean
+		*/
 		public function getAttributeByKey($key)
 		{
 			return isset($this->_attributes[$key]) ? $this->_attributes[$key] : null;
 		}
 		/**
-		 * Get attributes as string
-		 *
-		 * @return string
-		 */
+		* Get attributes as string
+		*
+		* @return string
+		*/
 		public function getAttributesAsString()
 		{
 			$attStr = ' ';
@@ -122,14 +128,39 @@
 			return $attStr;
 		}
 		/**
-		 * Handle and set value from request
-		 *
-		 * @return void
-		 */
-		public function handleRequestValue()
+		* Handle request
+		*
+		* @return void
+		*/
+		public function handleRequest()
 		{
-			$val = $_REQUEST[$this->getName()];
-			$this->setValue($val);
+			$value = $_REQUEST[$this->getName()];
+			$this->setValue($value);
+		}
+		/**
+		* Validate element
+		* 
+		* @return boolean
+		*/
+		public function validate()
+		{
+			$isValid = TRUE;
+			$validationErrors = array();
+			foreach ($this->_validators as $validator) {
+				$isValid = $isValid && $validator->validate();
+				$validationErrors = array_merge($validationErrors, $validator->getValidationErrors());
+			}
+			$this->_validationErrors = $validationErrors;
+			return $isValid;
+		}
+		/**
+		* Get validation errors
+		* 
+		* @return array
+		*/
+		public function getValidationErrors()
+		{
+			return $this->_validationErrors;
 		}
 		/**
 		* Add validator to component
@@ -143,81 +174,81 @@
 			return $this;
 		}
 		/**
-		 * Set attributes (setter)
-		 *
-		 * @param array
-		 * @return EblHtmlComponent
-		 */
+		* Set attributes (setter)
+		*
+		* @param array
+		* @return EblHtmlComponent
+		*/
 		public function setAttributes($attributes)
 		{
 			$this->_attributes = $attributes;
 			return $this;
 		}
 		/**
-		 * Get attributes (getter)
-		 *
-		 * @return void
-		 */
+		* Get attributes (getter)
+		*
+		* @return void
+		*/
 		public function getAttributes()
 		{
 			return $this->_attributes;
 		}
 		/**
-		 * Set name (setter)
-		 *
-		 * @param string
-		 * @return EblHtmlComponent
-		 */
+		* Set name (setter)
+		*
+		* @param string
+		* @return EblHtmlComponent
+		*/
 		public function setName($name)
 		{
 			$this->_name = (string) $name;
 			return $this;
 		}
 		/**
-		 * Get name (getter)
-		 *
-		 * @return void
-		 */
+		* Get name (getter)
+		*
+		* @return void
+		*/
 		public function getName()
 		{
 			return (string) $this->_name;
 		}
 		/**
-		 * Set value (setter)
-		 *
-		 * @param string
-		 * @return EblHtmlComponent
-		 */
+		* Set value (setter)
+		*
+		* @param string
+		* @return EblHtmlComponent
+		*/
 		public function setValue($value)
 		{
 			$this->_value = (string) $value;
 			return $this;
 		}
 		/**
-		 * Get value (getter)
-		 *
-		 * @return void
-		 */
+		* Get value (getter)
+		*
+		* @return void
+		*/
 		public function getValue()
 		{
 			return $this->_value;
 		}
 		/**
-		 * Set text (setter)
-		 *
-		 * @param string
-		 * @return EblHtmlComponent
-		 */
+		* Set text (setter)
+		*
+		* @param string
+		* @return EblHtmlComponent
+		*/
 		public function setText($text)
 		{
 			$this->_text = (string) $text;
 			return $this;
 		}
 		/**
-		 * Get text (getter)
-		 *
-		 * @return void
-		 */
+		* Get text (getter)
+		*
+		* @return void
+		*/
 		public function getText()
 		{
 			return (string) $this->_text;

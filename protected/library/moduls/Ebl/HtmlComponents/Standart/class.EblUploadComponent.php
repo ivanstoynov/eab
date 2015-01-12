@@ -20,8 +20,7 @@
 		 */
 		public function __construct($name, $attributes = array())
 		{
-			parent::__construct($attributes);
-			$this->setName((string) $name);
+			parent::__construct($name, $attributes);
 		}
 		/**
 		 * Display method - print the upload field
@@ -31,7 +30,7 @@
 		 */
 		public function printHtml()
 		{
-			$this->setAttribute('name', $this->_name);
+			$this->addAttribute('name', $this->_name);
 			$attributesString = $this->getAttributesAsString();
 			echo '<input type="file" ' . $attributesString . ' />' . "\n";
 		}

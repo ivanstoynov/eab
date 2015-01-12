@@ -1,90 +1,114 @@
 <?php
 
-	include_once(dirname(__FILE__).'/class.EblListComponent.php');
+	include_once(dirname(__FILE__).'/class.EblChekableList.php');
 	include_once(dirname(__FILE__).'/class.EblOptionComponent.php');
 	
 	/**
-	 * Class describe html select element
+	 * Class of html select element
 	 *
 	 * @author Ivan Stoyanov <iv44@yahoo.com>
 	 * @pakage Ebl
 	 * @subpakage HtmlComponents/Standard
 	 */
-	class EblSelectComponent extends EblListComponent
+	class EblSelectComponent extends EblHtmlComponent
 	{
 		/**
-		 * Constructor of class
-		 * 
-		 * @param string
-		 * @param array
-		 * @param array
-		 */
+		* Options of select component
+		* 
+		* @var array
+		*/
+		private $_options;
+		/**
+		* Is multiple list
+		* 
+		* @var boolean
+		*/
+		private $_multiple;		
+		/**
+		* Constructor of class
+		* 
+		* @param string
+		* @param array
+		* @param array
+		*/
 		public function __construct($name, $options = array(), $attributes = array())
 		{
-			parent::__construct($attributes);
-			$this->setName((string) $name);
-			$this->setOptions($options);
+			parent::__construct($name, $attributes);
+			$this->_options = $options;
+			$this->_multiple = FALSE;
 		}
 		/**
-		 * Display method - print the select element
-		 *
-		 * @param array
-		 * @return void
-		 */
+		* Display method - print the select element
+		*
+		* @param array
+		* @return void
+		*/
 		public function printHtml()
 		{
-			$this->setAttribute('name', $this->getName());
+			$name = $this->getName();
+			if (TRUE === $this->_multiple) {
+				$this->addAttribute('multiple', 'multiple');
+				$name .= '[]';
+			}
+			$this->addAttribute('name', $name);
 			$attributesString = $this->getAttributesAsString();
 			
 			echo '<select ' . $attributesString . ' />' . "\n";
-			foreach ($this->getOptions() as $optionElement) {
-				$optionElement->display();
+			foreach ($this->_options as $option) {
+				$option->printHtml();
 			}
 			echo '</select>' . "\n";
 		}
 		/**
-		 * Add option element
-		 * 
-		 * @param EblOptionComponent
-		 * @return EblSelectComponent;
-		 */
+		* Add option element
+		* 
+		* @param EblOptionComponent
+		* @return EblSelectComponent;
+		*/
 		public function addOption(EblOptionComponent $option)
 		{
-			$this->addElement($option);
+			$this->_options[] = $option;
 			return $this;
 		}
 		/**
-		 * Implement abstract method to add element
-		 *
-		 * @param string
-		 * @param string
-		 * @param bolean
-		 * @param array
-		 */
-		public function addElement($label, $value, $selected, $attributes = array())
-		{
-			$optionElement = new EblOptionComponent($value, (string) $label, (boolean)$selected, $attributes);
-			$this->addElem($optionElement);
-		}
-		/**
-		 * Set options (setter)
-		 *
-		 * @param array
-		 * @return EblSelectComponent
-		 */
+		* Set options (setter)
+		*
+		* @param array
+		* @return EblSelectComponent
+		*/
 		public function setOptions($options)
 		{
-			$this->setElements($options);
+			$this->_options = $options;
 			return $this;
 		}
 		/**
-		 * Get options (getter)
-		 *
-		 * @return array
-		 */
+		* Get options (getter)
+		*
+		* @return array
+		*/
 		public function getOptions()
 		{
-			return $this->getElements();
+			return $this->_options;
 		}
+		/**
+		* Set is multiple component
+		*
+		* @param boolean $multiple
+		* @return EblSelectComponent
+		*/		
+		public function setMultiple($multiple)
+		{
+			$this->_multiple = $multiple;
+			return $this;
+		}
+		/**
+		* get text position (getter)
+		*
+		* @return string
+		*/
+		public function getMultiple()
+		{
+			return $this->_multiple;
+		}			
 	}
 ?>

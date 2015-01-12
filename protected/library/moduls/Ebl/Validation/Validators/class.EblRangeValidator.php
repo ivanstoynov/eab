@@ -49,12 +49,12 @@
 				}
 			}
 			elseif (NULL !== $this->_from) {
-				if ($this->_value < $this->_from)) {
+				if ($this->_value < $this->_from) {
 					$this->_validationErrors[] = ! empty($this->_errorMessage) ? $this->_errorMessage : 'Value must be greater or equal then ' . $this->_from . '!';
 				}
 			}
 			else {
-				if ($this->_value > $this->_to)) {
+				if ($this->_value > $this->_to) {
 					$this->_validationErrors[] = ! empty($this->_errorMessage) ? $this->_errorMessage : 'Value must be less or equal then ' . $this->_to . '!';
 				}
 			}

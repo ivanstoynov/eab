@@ -21,9 +21,8 @@
 		 */
 		public function __construct($name, $text, $attributes = array())
 		{
+			parent::__construct($name, $attributes);
 			$this->setText((string) $text);
-			$this->setName((string) $name);
-			parent::__construct($attributes);
 		}
 		/**
 		 * Print textarea
@@ -33,7 +32,7 @@
 		 */
 		public function printHtml()
 		{
-			$this->setAttribute('name', $this->getName());
+			$this->addAttribute('name', $this->getName());
 			$attributesString = $this->getAttributesAsString();
 			echo '<textarea ' . $attributesString . '>' . $this->getText() . "\n" . '</textarea>';
 		}

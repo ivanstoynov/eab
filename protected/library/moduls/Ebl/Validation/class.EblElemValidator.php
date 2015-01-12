@@ -3,21 +3,21 @@
 	include_once('interface.IEblElemValidator.php');
 
 	/**
-	 * Class describe html element validator
-	 *
-	 * @author Ivan Stoyanov <iv44@yahoo.com>
-	 * @pakage Ebl
-	 * @subpakage Validation
-	 */
+	* Class describe html element validator
+	*
+	* @author Ivan Stoyanov <iv44@yahoo.com>
+	* @pakage Ebl
+	* @subpakage Validation
+	*/
 	class EblElemValidator implements IEblElemValidator
 	{
 		/**
-		 * @var string
-		 */
+		* @var string
+		*/
 		private $_filed;
 		/**
-		 * @var array
-		 */
+		* @var array
+		*/
 		private $_rules;
 		/**
 		* @var array
@@ -48,13 +48,13 @@
 			$this->_custormErrorsViewCallback = NULL;
 		}
 		/**
-		 * Add rule.
-		 *
-		 * @param EblValidationRulesTypes
-		 * @param string
-		 * @param string
-		 * @return EblElemValidator
-		 */
+		* Add rule.
+		*
+		* @param EblValidationRulesTypes
+		* @param string
+		* @param string
+		* @return EblElemValidator
+		*/
 		public function addRule($type, $expression = null, $errMgs = null)
 		{
 			$this->_rules[] = array(
@@ -65,42 +65,42 @@
 			return $this;
 		}
 		/**
-		 * Clear rules
-		 *
-		 * @param array
-		 * @return EblElemValidator
-		 */
+		* Clear rules
+		*
+		* @param array
+		* @return EblElemValidator
+		*/
 		public function clearRules()
 		{
 			$this->_rules[] = array();
 		}
 		/**
-		 * Get errors (getter)
-		 *
-		 * @param array
-		 * @return EblElemValidator
-		 */
+		* Get errors (getter)
+		*
+		* @param array
+		* @return EblElemValidator
+		*/
 		public function getErrors()
 		{
 			return $this->_errors;
 		}
 		/**
-		 * Set custom_errors_view callback (setter)
-		 *
-		 * @param callable
-		 * @return EblElemValidator
-		 */
+		* Set custom_errors_view callback (setter)
+		*
+		* @param callable
+		* @return EblElemValidator
+		*/
 		public function setCustormErrorsViewCallback($callback)
 		{
 			$this->_custormErrorsViewCallback = $callback;
 			return $this;
 		}
 		/**
-		 * Validate html field. If element is valid return true, otherwise 
-		 * return false and set errors.
-		 *
-		 * @return boolean
-		 */
+		* Validate html field. If element is valid return true, otherwise 
+		* return false and set errors.
+		*
+		* @return boolean
+		*/
 		public function validate()
 		{
 			$this->_value = trim(isset($_REQUEST[$this->_field])?$_REQUEST[$this->_field]:'');

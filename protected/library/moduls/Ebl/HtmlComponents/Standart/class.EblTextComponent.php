@@ -21,8 +21,7 @@
 		 */
 		public function __construct($name, $value, $attributes = array())
 		{
-			parent::__construct($attributes);
-			$this->setName((string) $name);
+			parent::__construct($name, $attributes);
 			$this->setValue($value);
 		}
 		/**
@@ -35,8 +34,8 @@
 		{
 			$value = $this->getValue();
 			
-			$this->setAttribute('name', $this->getName());
-			$this->setAttribute('value', $value);
+			$this->addAttribute('name', $this->getName());
+			$this->addAttribute('value', $value);
 			$attributesString = $this->getAttributesAsString();
 			echo '<input type="text" ' . $attributesString . ' />' . "\n";
 		}
