@@ -12,12 +12,14 @@
 	 */
 	class EblTextareaComponent extends EblHtmlComponent
 	{
-		/**
+		 /**
 		 * Constructor of class
-		 *
-		 * @param string
-		 * @param string
-		 * @param array
+		 * 
+		 * @param string $name
+		 * @param string $text
+		 * @param array $attributes
+		 * 
+		 * @return void
 		 */
 		public function __construct($name, $text, $attributes = array())
 		{
@@ -25,9 +27,8 @@
 			$this->setText((string) $text);
 		}
 		/**
-		 * Print textarea
+		 * Print textarea html
 		 *
-		 * @param array
 		 * @return void
 		 */
 		public function printHtml()

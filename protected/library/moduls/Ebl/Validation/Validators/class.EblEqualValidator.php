@@ -27,10 +27,11 @@
 		/**
 		* Constructur of class
 		* 
-		* @param mixed
-		* @param mixed
-		* @param boolean
-		* @param string|null
+		* @param mixed $value
+		* @param mixed $comparableValue
+		* @param boolean $strictCompare
+		* @param string|null $errorMessage
+		* 
 		* @return void
 		*/
 		public function __construct($value, $comparableValue, $strictCompare = TRUE, $errorMessage = null)

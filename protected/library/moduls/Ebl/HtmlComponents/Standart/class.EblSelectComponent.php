@@ -24,12 +24,15 @@
 		* @var boolean
 		*/
 		private $_multiple;		
+
 		/**
 		* Constructor of class
 		* 
-		* @param string
-		* @param array
-		* @param array
+		* @param string $name
+		* @param array $options
+		* @param array $attributes
+		* 
+		* @return void
 		*/
 		public function __construct($name, $options = array(), $attributes = array())
 		{
@@ -38,9 +41,8 @@
 			$this->_multiple = FALSE;
 		}
 		/**
-		* Display method - print the select element
+		* Display select element html
 		*
-		* @param array
 		* @return void
 		*/
 		public function printHtml()
@@ -62,7 +64,8 @@
 		/**
 		* Add option element
 		* 
-		* @param EblOptionComponent
+		* @param EblOptionComponent $option
+		* 
 		* @return EblSelectComponent;
 		*/
 		public function addOption(EblOptionComponent $option)
@@ -73,7 +76,8 @@
 		/**
 		* Set options (setter)
 		*
-		* @param array
+		* @param array $options
+		* 
 		* @return EblSelectComponent
 		*/
 		public function setOptions($options)
@@ -94,6 +98,7 @@
 		* Set is multiple component
 		*
 		* @param boolean $multiple
+		* 
 		* @return EblSelectComponent
 		*/		
 		public function setMultiple($multiple)

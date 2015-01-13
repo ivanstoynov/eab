@@ -26,15 +26,16 @@
 		*/
 		private $_checked;
 
-		
 		/**
 		* Constructor of class
-		*
-		* @param string
-		* @param string
-		* @param string
-		* @param boolean
-		* @param array
+		* 
+		* @param string $name
+		* @param string $label
+		* @param string $value
+		* @param boolean $checked
+		* @param array $attributes
+		* 
+		* @return void
 		*/
 		public function __construct($name, $label, $value, $checked = FALSE, $attributes = array())
 		{
@@ -62,7 +63,8 @@
 		/**
 		* Set text position (setter)
 		*
-		* @param string
+		* @param string $textPosition
+		* 
 		* @return EblCheckableComponent
 		*/
 		public function setTextPosition($textPosition)
@@ -82,7 +84,8 @@
 		/**
 		* Set label (setter)
 		*
-		* @param string
+		* @param string $label
+		* 
 		* @return EblCheckableComponent
 		*/
 		public function setLabel($label)
@@ -102,7 +105,8 @@
 		/**
 		* Set text position (setter)
 		*
-		* @param boolean
+		* @param boolean $checked
+		* 
 		* @return EblCheckableComponent
 		*/
 		public function setChecked($checked)

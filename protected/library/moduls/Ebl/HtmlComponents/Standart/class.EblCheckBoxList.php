@@ -15,9 +15,12 @@
 	{
 		/**
 		* Constructor of class
-		*
-		* @param string
-		* @param array
+		* 
+		* @param string $name
+		* @param array $elements
+		* @param array $attributes
+		* 
+		* @return void
 		*/
 		public function __construct($name, $elements = array(), $attributes = array())
 		{

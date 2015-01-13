@@ -7,6 +7,11 @@
 	*/
 	interface IHtmlPrintable
 	{
+		/**
+		* Print html
+		* 
+		* @return void
+		*/
 		public function printHtml();
 	}
 ?>

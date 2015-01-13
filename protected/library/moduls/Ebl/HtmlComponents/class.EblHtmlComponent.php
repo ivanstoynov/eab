@@ -47,7 +47,10 @@
 		/**
 		* Constructor of class
 		* 
-		* @param array
+		* @param string $name
+		* @param array $attributes
+		* 
+		* @return void
 		*/
 		public function __construct($name, $attributes = array())
 		{
@@ -62,31 +65,35 @@
 		/**
 		* Add attribute
 		*
-		* @param string
-		* @param string
+		* @param string $key
+		* @param string $value
+		* 
 		* @return EblHtmlComponent
 		*/
-		public function addAttribute($key, $val)
+		public function addAttribute($key, $value)
 		{
-			$this->_attributes[$key] = $val;
+			$this->_attributes[$key] = $value;
 			return $this;
 		}
 		/**
 		* Add attribute (same like addAttribute)
 		*
-		* @param string
-		* @param string
+		* @param string $key
+		* @param string $value
+		* 
 		* @return EblHtmlComponent
 		*/
-		public function setAttribute($key, $val)
+		public function setAttribute($key, $value)
 		{
-			$this->_attributes[$key] = $val;
+			$this->_attributes[$key] = $value;
 			return $this;
 		}
 		/**
 		* Remove attribute (if exist)
 		*
-		* @param string
+		* @param string $key
+		* 
+		* @return void
 		*/
 		public function removeAttribute($key)
 		{
@@ -106,7 +113,8 @@
 		/**
 		* Get attribute by key
 		*
-		* @param string
+		* @param string $key
+		* 
 		* @return boolean
 		*/
 		public function getAttributeByKey($key)
@@ -165,7 +173,8 @@
 		/**
 		* Add validator to component
 		* 
-		* @param EblValidator
+		* @param EblValidator $validator
+		* 
 		* @return EblHtmlComponent
 		*/
 		public function addValidator(EblValidator $validator)
@@ -176,7 +185,8 @@
 		/**
 		* Set attributes (setter)
 		*
-		* @param array
+		* @param array $attributes
+		* 
 		* @return EblHtmlComponent
 		*/
 		public function setAttributes($attributes)
@@ -196,7 +206,8 @@
 		/**
 		* Set name (setter)
 		*
-		* @param string
+		* @param string $name
+		* 
 		* @return EblHtmlComponent
 		*/
 		public function setName($name)
@@ -216,7 +227,8 @@
 		/**
 		* Set value (setter)
 		*
-		* @param string
+		* @param string $value
+		* 
 		* @return EblHtmlComponent
 		*/
 		public function setValue($value)
@@ -236,7 +248,8 @@
 		/**
 		* Set text (setter)
 		*
-		* @param string
+		* @param string $text
+		* 
 		* @return EblHtmlComponent
 		*/
 		public function setText($text)

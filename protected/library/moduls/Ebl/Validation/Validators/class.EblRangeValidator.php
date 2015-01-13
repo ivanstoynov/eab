@@ -23,10 +23,11 @@
 		/**
 		* Constructur of class
 		* 
-		* @param float|integer
-		* @param float|integer|null
-		* @param float|integer|null
-		* @param string|null
+		* @param float|integer $value
+		* @param float|integer|null $from
+		* @param float|integer|null $to
+		* @param string|null $errorMessage
+		* 
 		* @return void
 		*/
 		public function __construct($value, $from, $to, $errorMessage = null)

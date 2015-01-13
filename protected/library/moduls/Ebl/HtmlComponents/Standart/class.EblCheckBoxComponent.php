@@ -15,21 +15,24 @@
 	{
 		/**
 		* Constructor of class
-		*
-		* @param string name
-		* @param string label
-		* @param string value
-		* @param boolean cheched
-		* @param array attributes
+		* 
+		* @param string $name
+		* @param string $label
+		* @param string $value
+		* @param boolean $checked
+		* @param array $attributes
+		* 
+		* @return void
 		*/
 		public function __construct($name, $label, $value, $checked = FALSE, $attributes = array())
 		{
 			parent::__construct($name, $label, $value, $checked, $attributes);
 		}
 		/**
-		* Display method - print check box (with lable)
+		* Print checkbox as html
 		*
 		* @param array
+		* 
 		* @return void
 		*/
 		public function printHtml()
@@ -60,9 +63,8 @@
 			echo $label;
 		}
 		/**
-		* Print clear check box, without label
+		* Print checkbox clearly, without label
 		*
-		* @param array
 		* @return void
 		*/
 		public function printClearlyHtml()

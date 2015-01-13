@@ -23,11 +23,18 @@
 		* @var array
 		*/
 		private $_elements;
-		
+		/**
+		* Validation errors
+		* 
+		* @var array
+		*/
+		private $_validationErrors;		
+
 		/**
 		* Constructor of class
 		* 
 		* @param string|NULL $name
+		* 
 		* @return void
 		*/
 		private function __construct($name = NULL)
@@ -42,7 +49,7 @@
 		*/
 		public function handleRequest()
 		{
-			foreach ($this->_elements as $element) {
+			foreach ($this->_elements as &$element) {
 				$elementName = $element->getName();
 				if (isset($_REQUEST[$elementName])) {
 					$element->setValue($_REQUEST[$elementName]);
@@ -53,11 +60,12 @@
 		* Add element to form
 		* 
 		* @param EblHtmlComponent $element
+		* 
 		* @return EblHtmlForm
 		*/
 		public function addElement(EblHtmlComponent $element)
 		{
-			$this->_components[] = $element;
+			$this->_elements[$element->getName()] = $element;
 			return $this;
 		}
 		/**
@@ -67,7 +75,7 @@
 		*/
 		public function clearElements()
 		{
-			$this->_components[] = array();
+			$this->_elements = array();
 		}
 		/**
 		* Validate element
@@ -76,6 +84,14 @@
 		*/
 		public function validate()
 		{
+			$this->_validationErrors = array();
+			foreach ($this->_elements as $element) {
+				if (FALSE === $element->validate()) {
+					$this->_validationErrors[] = $element->getValidationErrors();
+				}
+			}
+			
+			return ! empty($this->_validationErrors);
 		}
 		/**
 		* Get validation errors
@@ -84,6 +100,16 @@
 		*/
 		public function getValidationErrors()
 		{
-		}		
+			return $this->_validationErrors;
+		}
+		/**
+		* Add validation rules, and set validators from they
+		* 
+		* @param array $rules
+		*/
+		public function addValidationRules($rules)
+		{
+			
+		}
 	}
 ?>

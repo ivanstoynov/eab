@@ -12,23 +12,24 @@
 	 */
 	class EblRadioButtonComponent extends EblCheckableComponent
 	{
-		/**
+		 /**
 		 * Constructor of class
-		 *
-		 * @param string
-		 * @param string
-		 * @param string
-		 * @param boolean
-		 * @param array
+		 * 
+		 * @param string $name
+		 * @param string $label
+		 * @param string $value
+		 * @param boolean $checked
+		 * @param array $attributes
+		 * 
+		 * @return void
 		 */
 		public function __construct($name, $label, $value, $checked = FALSE, $attributes = array())
 		{
 			parent::__construct($name, $label, $value, (boolean) $checked, $attributes);
 		}
 		/**
-		 * Display method - print radio button (with lable)
+		 * Print element html
 		 *
-		 * @param array
 		 * @return void
 		 */
 		public function printHtml()
@@ -61,7 +62,6 @@
 		/**
 		 * Print clear radio button, without label
 		 *
-		 * @param array
 		 * @return void
 		 */
 		public function printClearlyHtml()

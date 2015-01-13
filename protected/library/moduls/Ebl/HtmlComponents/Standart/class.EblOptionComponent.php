@@ -28,14 +28,15 @@
 		*/
 		private $_attributes;
 
-		
 		/**
 		* Constructor of class
 		* 
-		* @param string
-		* @param string
-		* @param boolean
-		* @param array
+		* @param string $value
+		* @param string $text
+		* @param boolean $selected
+		* @param array $attributes
+		* 
+		* @return void
 		*/
 		public function __construct($value, $text, $selected = FALSE, $attributes = array())
 		{

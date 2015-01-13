@@ -23,10 +23,11 @@
 		/**
 		* Constructur of class
 		* 
-		* @param integer|integer
-		* @param integer|null
-		* @param integer|null
-		* @param string|null
+		* @param string $value
+		* @param integer|null $minLength
+		* @param integer|null $maxLength
+		* @param string|null $errorMessage
+		* 
 		* @return void
 		*/
 		public function __construct($value, $minLength, $maxLength, $errorMessage = null)

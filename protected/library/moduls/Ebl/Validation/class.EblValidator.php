@@ -29,7 +29,10 @@
 		/**
 		* Constructur of class
 		* 
-		* @return
+		* @param mixed $value
+		* @param string|NULL $errorMessage
+		* 
+		* @return void
 		*/
 		public function __construct($value, $errorMessage = null)
 		{
@@ -39,7 +42,8 @@
 	    /**
 		* Set validation value
 		* 
-		* @param mixed
+		* @param mixed $value
+		* 
 		* @return void
 		*/
 		public function setValue($value)
@@ -58,8 +62,7 @@
 		/**
 		* Get errors (getter)
 		*
-		* @param array
-		* @return mixed
+		* @return array
 		*/
 		public function getValidationErrors()
 		{

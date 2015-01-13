@@ -36,13 +36,14 @@
 		*/
 		private $_multiple;
 
-		
 		/**
 		* Constructor of class
-		*
+		* 
 		* @param string $name
 		* @param array $elements
 		* @param array $attributes
+		* 
+		* @return void
 		*/
 		public function __construct($name, $elements = array(), $attributes = array())
 		{
@@ -61,9 +62,8 @@
 			$this->_elements[] = $element;
 		}
 		/**
-		 * Display method - print the list
+		 * Print element as htmlt
 		 *
-		 * @param array
 		 * @return void
 		 */
 		public function printHtml()

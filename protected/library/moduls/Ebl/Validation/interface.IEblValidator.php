@@ -14,7 +14,8 @@
 		/**
 		* Set validation value
 		* 
-		* @param mixed
+		* @param mixed $value
+		* 
 		* @return void
 		*/
 		public function setValue($value);

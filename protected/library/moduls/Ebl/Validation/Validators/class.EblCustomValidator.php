@@ -21,9 +21,10 @@
 		/**
 		* Constructur of class
 		* 
-		* @param string
-		* @param string
-		* @param string|null
+		* @param string $value
+		* @param callable $validationCallback
+		* @param string|null $errorMessage
+		* 
 		* @return void
 		*/
 		public function __construct($value, $validationCallback, $errorMessage = null)

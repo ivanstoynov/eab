@@ -14,10 +14,12 @@
 	{
 		/**
 		* Constructor of class
-		*
-		* @param string
-		* @param string
-		* @param array
+		* 
+		* @param string $name
+		* @param string $value
+		* @param array $attributes
+		* 
+		* @return void
 		*/
 		public function __construct($name, $value, $attributes = array())
 		{
@@ -25,9 +27,8 @@
 			$this->setValue($value);
 		}
 		/**
-		* Print hidden field
+		* Print element html
 		*
-		* @param array
 		* @return void
 		*/
 		public function printHtml()

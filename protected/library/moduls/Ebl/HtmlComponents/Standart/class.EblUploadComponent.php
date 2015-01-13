@@ -12,20 +12,21 @@
 	 */
 	class EblUploadComponent extends EblHtmlComponent
 	{
-		/**
+		 /**
 		 * Constructor of class
-		 *
-		 * @param string
-		 * @param array
+		 * 
+		 * @param string $name
+		 * @param array $attributes
+		 * 
+		 * @return void
 		 */
 		public function __construct($name, $attributes = array())
 		{
 			parent::__construct($name, $attributes);
 		}
 		/**
-		 * Display method - print the upload field
+		 * Print upload field html
 		 *
-		 * @param array
 		 * @return void
 		 */
 		public function printHtml()

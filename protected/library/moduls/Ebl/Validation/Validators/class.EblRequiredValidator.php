@@ -14,8 +14,9 @@
 		/**
 		* Constructur of class
 		* 
-		* @param mixed
-		* @param string|null
+		* @param mixed $value
+		* @param string|null $errorMessage
+		* 
 		* @return void
 		*/
 		public function __construct($value, $errorMessage = null)
@@ -38,5 +39,4 @@
 			return TRUE;
 		}
 	}
-
 ?>
