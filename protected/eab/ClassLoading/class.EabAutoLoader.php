@@ -103,7 +103,9 @@
 			}
 
 			foreach ($dirFiles as $file) {
-				if ($file === '.' || $file === '..') continue;
+				if ($file === '.' || $file === '..') {
+					continue;
+				}
 				
 				$filePath = $basePath . $this->_ds . $file;
 				if (is_file($filePath)) {

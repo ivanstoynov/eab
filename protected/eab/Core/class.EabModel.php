@@ -10,23 +10,47 @@
 	*/
 	class EabModel extends EabAssigner
 	{
+		/**
+		* 
+		* @var resource
+		* 
+		*/
 		private $_dbAdapter;
+		/**
+		* 
+		* @var string
+		* 
+		*/
 		private $_tableName;
+		/**
+		* 
+		* @var array
+		* 
+		*/
 		private $_tableColumns;
+		/**
+		* 
+		* @var string
+		* 
+		*/
 		private $_pkColumn;
 
+		/**
+		* Constructor of class
+		* 
+		* @return void
+		*/
 		public function __construct()
 		{
 			$this->_pkColumn = 'id';
-			$this->_tableColumns = array();
-			if (empty($this->_tableName)) {
-				$this->_loadTableNameFromClass();
-			}
-			if (empty($this->_tableColumns)) {
-				$this->_loadTableColumnsFromDb();
-			}
+			$this->_loadTableNameFromClass();
+			$this->_loadTableColumnsFromDb();
 		}
-		
+		/**
+		* Load table name from class name
+		* 
+		* @return void
+		*/
 		private function _loadTableNameFromClass()
 		{
 			$class = strtolower(get_class($this));
@@ -35,13 +59,21 @@
 			}
 			$this->_tableName = $class . 's';
 		}
-		
+		/**
+		* Load table columns from database
+		* 
+		* @return void
+		*/
 		private function _loadTableColumnsFromDb()
 		{
 			//$result = mysql_query("SHOW TABLES LIKE 'myTable'");
 			//$sql="SHOW COLUMNS FROM authors";
 		}
-
+		/**
+		* Load model from database
+		* 
+		* @return
+		*/
 		public function load()
 		{
 			$stmt = $this->createPkStatement();
@@ -55,7 +87,11 @@
 
 			return TRUE;
 		}
-
+		/**
+		* Save model
+		* 
+		* @return void to database
+		*/
 		public function save()
 		{
 			$stmt = $this->createPkStatement();
@@ -85,12 +121,23 @@
 				$this->_dbAdapter->exec($sql);
 			}
 		}
+		/**
+		* Delete model from database
+		* 
+		* @return void
+		*/
 		public function delete()
 		{
 			$sql = "DELETE FROM `" . $this->_tableName . "` WHERE " . $where_expr . " LIMIT 1";
 			$this->_dbAdapter->exec($sql);
 		}
-		
+		/**
+		* Find model
+		* 
+		* @param undefined $criterias
+		* 
+		* @return
+		*/
 		public function find($criterias = array())
 		{
 			if (! empty($criterias['columns'])) {
@@ -123,8 +170,8 @@
 			
 			$class = get_class($this);
 			$models = array();
-			$res = $this->_dbAdapter->query($sql);
-			while ( ( ($row = $res->fetchRow()) {
+			$result = $this->_dbAdapter->query($sql);
+			while ($row = $result->fetchRow()) {
 				$model = new $class();
 				$model->loadFromArray($row);
 				$models[] = $model;
@@ -132,7 +179,11 @@
 
 			return $models;
 		}
-
+		/**
+		* Create primary key statement
+		* 
+		* @return string
+		*/
 		private function createPkStatement()
 		{
 			if (empty($this->_pkColumn)) {
@@ -155,30 +206,62 @@
 
 			return $stmt;
 		}
-		
+		/**
+		* Load model data from array
+		* 
+		* @param undefined $data
+		* 
+		* @return
+		*/
 		public function loadFromArray($data)
 		{
 			foreach ($data as $col => $val) {
 				$this->assign($col, $val);
 			}
 		}
-		
+		/**
+		* Set pkColumn (setter)
+		* 
+		* @param string|array $column
+		* 
+		* @return EabModel
+		*/
 		public function setPkColumn($column)
 		{
 			$this->_pkColumn = $column;
+			return $this;
 		}
+		/**
+		* Get pkColumn (getter)
+		* 
+		* @return string|array
+		*/
 		public function getPkColumn()
 		{
 			return $this->_pkColumn;
 		}
+		/**
+		* Set tableName (setter)
+		* 
+		* @param string $tableName
+		* 
+		* @return EabModel
+		*/
 		public function setTableName($tableName)
 		{
 			$this->_tableName = $tableName;
+			return $this;
 		}
+		/**
+		* Set tableName (getter)
+		* 
+		* @return string
+		*/
 		public function getTableName()
 		{
 			return $this->_tableName;
 		}
+		/*
 		public function setTableColumn($tableColumns)
 		{
 			$this->_tableColumns = $tableColumns;
@@ -187,5 +270,6 @@
 		{
 			return $this->_tableColumns;
 		}
+		*/
 	}
 ?>

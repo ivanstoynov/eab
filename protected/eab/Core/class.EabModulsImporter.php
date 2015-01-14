@@ -10,6 +10,13 @@
 	*/
 	class EabModulsImporter
 	{
+		/**
+		* 
+		* @param string $file
+		* @param boolean $fullPath
+		* 
+		* @return void
+		*/
 		public static function import($file, $fullPath = FALSE)
 		{
 			$ds = Eab::app()->getAppSettings()->getDs();
@@ -20,7 +27,7 @@
 					throw new EabException('No access to file "' . $file . '"!', EabExceptionCodes::ACCESS_DENIDED_EXC);
 				}
 			}
-			else{
+			else {
 				$modulsDir = Eab::app()->closeDirPath(Eab::app()->getAppSettings()->getModulesDir());
 				$file = $modulsDir . $file;
 			}
@@ -35,7 +42,13 @@
 				include_once($file);
 			}
 		}
-
+		/**
+		* Include directory files (recurcive)
+		* 
+		* @param undefined $dir
+		* 
+		* @return void
+		*/
 		private static function IncludeDirFiles($dir)
 		{
 			$ds = Eab::app()->getAppSettings()->getDs();

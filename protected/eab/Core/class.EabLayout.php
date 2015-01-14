@@ -32,7 +32,9 @@
 		/**
 		* Constructor of class
 		*
-		* @param string
+		* @param string $layoutFile
+		* 
+		* @return void
 		*/
 		public function __construct($layoutFile)
 		{
@@ -66,7 +68,8 @@
 		/**
 		* Set content (setter)
 		*
-		* @param string
+		* @param string $content
+		* 
 		* @return EabLayout
 		*/
 		public function setContent($content)
@@ -86,7 +89,8 @@
 		/**
 		* Set layoutHead (setter)
 		*
-		* @param EabLayoutHead
+		* @param EabLayoutHead $layoutHead
+		* 
 		* @return EabLayout
 		*/
 		public function setLayoutHead(EabLayoutHead $layoutHead)

@@ -37,7 +37,7 @@
 		* 
 		* @return void
 		*/
-		private function __construct($name = NULL)
+		public function __construct($name = NULL)
 		{
 			$this->_name = $name;
 			$this->_elements = array();
@@ -103,13 +103,31 @@
 			return $this->_validationErrors;
 		}
 		/**
-		* Add validation rules, and set validators from they
-		* 
-		* @param array $rules
+		* Magic method __get
+		*
+		* @param string
+		* @return mixed
+		* @throws EabException
 		*/
-		public function addValidationRules($rules)
+		public function __get($prop)
 		{
-			
+			if (isset($this->_elements[$prop])) {
+				return $this->_elements[$prop];
+			}
+			else{
+				throw new EabException("Property not found!", EabExceptionCodes::PROPERTY_NOT_FOUND_EXC);
+			}
+		}
+		/**
+		* Magic method __set
+		*
+		* @param string
+		* @param array
+		* @return void
+		*/
+		public function __set($prop, $args)
+		{
+			$this->_elements[$prop] = $args;
 		}
 	}
 ?>

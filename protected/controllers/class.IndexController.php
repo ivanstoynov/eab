@@ -1,7 +1,7 @@
 <?php
 
 	EabModulsImporter::import('Ebl/Validation/*');
-	EabModulsImporter::import('Ebl/HtmlComponents/Standart/class.EblRadioButtonList.php');
+	EabModulsImporter::import('Ebl/HtmlComponents/*');
 	EabModulsImporter::import('Ebl/HtmlComponents/Standart/class.EblCheckBoxList.php');
 
 	class IndexController extends EabController
@@ -16,12 +16,15 @@
 			//$radio = new EblRadioButtonComponent('sex', 'male', 'male sex',false);
 			//$radio->setTextPosition('right');
 			
+			$form = new EblHtmlForm();
+			
 			$cbxList = new EblCheckBoxList('sex1');
 			$cbxList->setTextPosition('right');
 			$cbxList->setDirection('vertical');
 			$cbxList->addElement(new EblCheckBoxComponent('', 'male', 'm', false));
 			$cbxList->addElement(new EblCheckBoxComponent('', 'female', 'f', true));
-			$this->cbxList=$cbxList;
+			$this->cbxList = $cbxList;
+			$form->cbxList = $cbxList;
 			
 			
 			$rbList = new EblRadioButtonList('sex2');
@@ -30,6 +33,8 @@
 			$rbList->addElement(new EblRadioButtonComponent('','male', 'm', false));
 			$rbList->addElement(new EblRadioButtonComponent('','female', 'f', true));
 			$this->rbList = $rbList;
+			
+			
 			
 			// Validation
 			//$formValidator = new EblFormValidator();
