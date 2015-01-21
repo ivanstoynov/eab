@@ -10,33 +10,89 @@
 	*/
 	class EabAppSettings
 	{
-		/** @var string Directory separator */
+		/**
+		* Directory separator
+		* 
+		* @var string
+		*/
 		private $_ds;
-		/** @var string Path separator */
+		/**
+		* Path separator
+		* 
+		* @var string
+		*/
 		private $_ps;
-		/** @var boolean Is debug mode */
+		/**
+		* Is debug mode
+		* 
+		* @var boolean
+		*/
 		private $_isDebugMode;
-		/** @var string Key of url path */
+		/**
+		* Key of url path
+		* 
+		* @var string
+		*/
 		private $_urlPathKey;
-		/** @var string Separator of url path */
+		/**
+		* Separator of url path
+		* 
+		* @var string
+		*/
 		private $_urlPathSep;
-		/** @var string Default layout */
+		/**
+		* Default layout
+		* 
+		* @var string
+		*/
 		private $_defaultLayout;
-		/** @var string Modules directory path */
-		private $_modulesDir; // old moduls
-		/** @var string Sections directory path */
+		/**
+		* Modules directory path
+		* 
+		* @var string
+		*/
+		private $_modulesDir;
+		/**
+		* Sections directory path
+		* 
+		* @var string
+		*/
 		private $_sectionsDir;
-		/** @var string Controllers directory path */
+		/**
+		* Controllers directory path
+		* 
+		* @var string
+		*/
 		private $_controllersDir;
-		/** @var string Views directory path */
+		/**
+		* Views directory path
+		* 
+		* @var string
+		*/
 		private $_viewsDir;
-		/** @var string Layouts directory path */
+		/**
+		* Layouts directory path
+		* 
+		* @var string
+		*/
 		private $_layoutsDir;
-		/** @var string Styles directory path */
+		/**
+		* Styles directory path
+		* 
+		* @var string
+		*/
 		private $_stylesDir;
-		/** @var string Js directory path */
+		/**
+		* Js directory path
+		* 
+		* @var string
+		*/
 		private $_jsDir;
-		/** @var string Images directory path */
+		/**
+		* Images directory path
+		* 
+		* @var string
+		*/
 		private $_imagesDir;
 	
 	
@@ -53,7 +109,8 @@
 		/**
 		* Set class properties from assoc array
 		*
-		* @param array
+		* @param array $settings
+		* 
 		* @return void
 		*/
 		public function setSettings($settings = array())
@@ -102,8 +159,9 @@
 		/**
 		* Add setting
 		*
-		* @param string
-		* @param string
+		* @param string $settingKey
+		* @param string $value
+		* 
 		* @return EabAppSettings
 		*/
 		public function addSetting($settingKey, $value)
@@ -114,8 +172,8 @@
 		/**
 		* magic method __call use to create getter and setter methods
 		*
-		* @param string
-		* @param array
+		* @param string $func
+		* @param array $args
 		* @return EabAppSettings
 		*/
 		public function __call($func, $args)

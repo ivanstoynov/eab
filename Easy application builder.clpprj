@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="D:\xampp\htdocs\eab\Easy application builder.clpprj">
 	<settings><PM_URL><![CDATA[http://localhost/eab/]]></PM_URL><PM_HOME_URL><![CDATA[http://localhost/eab/]]></PM_HOME_URL><PM_LIBS><![CDATA[]]></PM_LIBS><PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION><PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR><PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE></settings><removed value=";D:\xampp\htdocs\eab\protected\library\moduls\Ebl\Validation\ValidationErrorsPrinters;"/><added value=""/><lastopfiles>
-		<file name="D:\xampp\htdocs\eab\protected\controllers\class.IndexController.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\class.EblHtmlForm.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\library\moduls\Ebl\Validation\class.EblElemValidator.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\library\moduls\Ebl\Validation\class.EblFormValidator.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\library\moduls\Ebl\Validation\class.EblValidationRulesTypes.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\library\moduls\Ebl\Validation\class.EblValidator.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\library\moduls\Ebl\Validation\interface.IEblElemValidator.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\class.EblHtmlComponent.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\class.EblCheckableComponent.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabAssigner.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabController.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabLayout.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php"/>
 		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabLayoutHead.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabModulsImporter.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabSection.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php"/>
-		<file name="D:\xampp\htdocs\eab\index.php"/>
-		<file name="D:\xampp\htdocs\eab\protected\eab\ClassLoading\class.EabAutoLoader.php"/>
+		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php"/>
+		<file name="D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php"/>
+		<file name="D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php"/>
 	</lastopfiles>
 	<codestructure version="5.0">
 		<phptree>
@@ -192,86 +176,86 @@
 				<treenode node="_pagesSettingsFileFormat;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.Eab.php;f10;27;35;27;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
 			</treenode>
-			<treenode node="EabAppSettings;PHP:Class Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f1;10;2;142;;;;vpos;;v;;r&#xA;Description&#xA;     Class with application settings;;d1,11;;b0,0;;m">
-				<treenode node="__call;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f9;120;3;141;;;;vpos;;vEabAppSettings;;r&#xA;Description&#xA;     magic method __call use to create getter and setter methods&#xA;&#xA;Parameters:&#xA;    string&#xA;    array;;d2,121;;b1,0;;mstring;;parray;;p">
-					<treenode node="args;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f32;120;37;120;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+			<treenode node="EabAppSettings;PHP:Class Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f1;10;2;200;;;;vpos;;v;;r&#xA;Description&#xA;     Class with application settings;;d1,11;;b0,0;;m">
+				<treenode node="__call;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f9;178;3;199;;;;vpos;;vEabAppSettings;;r&#xA;Description&#xA;     magic method __call use to create getter and setter methods&#xA;&#xA;Parameters:&#xA;    string $func&#xA;    array $args;;d2,179;;b1,0;;mstring $func;;parray $args;;p">
+					<treenode node="args;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f32;178;37;178;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="func;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f25;120;30;120;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="func;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f25;178;30;178;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="prefix;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;122;10;122;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="prefix;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;180;10;180;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="suffix;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;123;10;123;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="suffix;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;181;10;181;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f67;124;72;124;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="__construct;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f9;47;3;51;;;;vpos;;v;;r&#xA;Description&#xA;     Constructor of class&#xA;&#xA;Parameters:&#xA;    array;;d2,48;;b1,0;;marray;;p">
-					<treenode node="settings;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f30;47;39;47;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;49;8;49;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f67;182;72;182;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="addSetting;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f9;108;3;112;;;;vpos;;vEabAppSettings;;r&#xA;Description&#xA;     Add setting&#xA;&#xA;Parameters:&#xA;    string&#xA;    string;;d2,109;;b1,0;;mstring;;pstring;;p">
-					<treenode node="settingKey;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f29;108;40;108;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="__construct;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f9;103;3;107;;;;vpos;;v;;r&#xA;Description&#xA;     Constructor of class&#xA;&#xA;Parameters:&#xA;    array;;d2,104;;b1,0;;marray;;p">
+					<treenode node="settings;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f30;103;39;103;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;110;8;110;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="value;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f42;108;48;108;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;105;8;105;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="loadDefaultSettings;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f9;81;3;100;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Load default settings;;d2,82;;b1,0;;m">
-					<treenode node="_SERVER;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f23;84;31;84;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="addSetting;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f9;166;3;170;;;;vpos;;vEabAppSettings;;r&#xA;Description&#xA;     Add setting&#xA;&#xA;Parameters:&#xA;    string $settingKey&#xA;    string $value;;d2,167;;b1,0;;mstring $settingKey;;pstring $value;;p">
+					<treenode node="settingKey;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f29;166;40;166;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="ds;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;83;6;83;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;168;8;168;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="root_dir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;84;12;84;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;86;8;86;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="value;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f42;166;48;166;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="reset;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f9;72;3;75;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Reset settings (to default);;d2,73;;b1,0;;m">
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;74;8;74;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="loadDefaultSettings;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f9;138;3;157;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Load default settings;;d2,139;;b1,0;;m">
+					<treenode node="_SERVER;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f23;141;31;141;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="ds;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;140;6;140;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="root_dir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;141;12;141;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;143;8;143;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="setSettings;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f9;58;3;66;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Set class properties from assoc array&#xA;&#xA;Parameters:&#xA;    array;;d2,59;;b1,0;;marray;;p">
-					<treenode node="k;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f25;60;27;60;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="prop;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f4;61;9;61;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="settings;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f30;58;39;58;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f24;62;29;62;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="v;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f31;60;33;60;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="reset;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f9;129;3;132;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Reset settings (to default);;d2,130;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f3;131;8;131;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="_controllersDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;29;26;29;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="setSettings;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f9;115;3;123;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Set class properties from assoc array&#xA;&#xA;Parameters:&#xA;    array $settings;;d2,116;;b1,0;;marray $settings;;p">
+					<treenode node="k;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f25;117;27;117;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="prop;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f4;118;9;118;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="settings;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f30;115;39;115;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f24;119;29;119;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="v;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f31;117;33;117;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
-				<treenode node="_defaultLayout;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;23;25;23;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_controllersDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;65;26;65;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_ds;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;13;14;13;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_defaultLayout;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;47;25;47;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_imagesDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;39;21;39;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_ds;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;17;14;17;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_isDebugMode;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;17;23;17;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_imagesDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;95;21;95;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_jsDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;37;17;37;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_isDebugMode;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;29;23;29;;;;vposboolean;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_layoutsDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;33;22;33;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_jsDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;89;17;89;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_modulesDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;25;22;25;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_layoutsDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;77;22;77;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_ps;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;15;14;15;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_modulesDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;53;22;53;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_sectionsDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;27;23;27;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_ps;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;23;14;23;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_stylesDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;35;21;35;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_sectionsDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;59;23;59;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_urlPathKey;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;19;22;19;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_stylesDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;83;21;83;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_urlPathSep;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;21;22;21;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_urlPathKey;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;35;22;35;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_viewsDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;31;20;31;;;;vpos;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_urlPathSep;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;41;22;41;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
+				</treenode>
+				<treenode node="_viewsDir;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php;f10;71;20;71;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
 			</treenode>
 			<treenode node="EabArrayFileSettingsLoader;PHP:Class Name;D:\xampp\htdocs\eab\protected\eab\SettingsLoaders\class.EabArrayFileSettingsLoader.php;f1;10;2;36;;;;vpos;;vEabFileSettingsLoader;;c;;r&#xA;Description&#xA;     Array file settings loader;;d1,11;;b0,0;;m">
@@ -430,29 +414,75 @@
 				<treenode node="__construct;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;102;3;111;;;;vpos;;v;;r&#xA;Description&#xA;     Constructor of class&#xA;&#xA;Parameters:&#xA;    array;;d2,103;;b1,0;;marray;;p">
 					<treenode node="settings;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f30;102;39;102;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;104;8;104;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="timeout;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;106;11;106;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="__destruct;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;117;3;122;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Class destructor;;d2,118;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f15;119;20;119;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="activateCommitTransaction;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;433;3;436;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Activate auto commit;;d2,434;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;435;8;435;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="beginTransaction;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f2;451;3;454;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Begin transaction;;d2,452;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;453;8;453;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="commit;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f2;469;3;472;;;;vpos;;vinteger;;r&#xA;Description&#xA;     Commit transaction;;d2,470;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;471;15;471;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="connect;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;163;3;175;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Connect to database;;d2,164;;b3,0;;m">
+					<treenode node="conn;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;165;8;165;;;;vposresource;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f26;165;31;165;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="deactivateAutoCommitTransaction;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;442;3;445;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Remove auto commit;;d2,443;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;444;8;444;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="disconnect;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;478;3;485;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Disconnect;;d2,479;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f13;480;18;480;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="escape;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;369;3;407;;;;vpos;;vmixed;;r&#xA;Description&#xA;     Escape input value&#xA;&#xA;Parameters:&#xA;    string|array&#xA;    boolean;;d2,370;;b1,0;;mstring|array;;pboolean;;p">
+					<treenode node="k;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f23;373;25;373;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="quotes;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f33;369;40;369;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="value;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f25;369;31;369;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f16;374;21;374;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="v;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f29;373;31;373;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="value;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f25;369;31;369;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="exec;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;264;3;286;;;;vpos;;vinteger;;r&#xA;Description&#xA;     Execute database insert or update query&#xA;&#xA;Parameters:&#xA;    string;;d2,265;;b1,0;;mstring;;p">
+					<treenode node="affectedRows;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;283;16;283;;;;vposint;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="difference;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f4;279;15;279;;;;vposfloat;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="end;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;271;7;271;;;;vposmixed;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="result;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;270;10;270;;;;vposresource;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="sec1;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f17;277;22;277;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="sec2;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f17;278;22;278;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f23;264;27;264;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="start;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;269;9;269;;;;vposmixed;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;266;8;266;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="usec1;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;277;15;277;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="usec2;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;278;15;278;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="executeStoredProc;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;493;3;501;;;;vpos;;vEabDbResultAdapter;;r&#xA;Description&#xA;     Call stored procedure&#xA;&#xA;Parameters:&#xA;    string&#xA;    array;;d2,494;;b1,0;;mstring;;parray;;p">
@@ -460,101 +490,207 @@
 					</treenode>
 					<treenode node="params;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f43;493;50;493;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="query;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;495;9;495;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="r;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;497;5;497;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f8;497;13;497;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="fetchAll;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;354;3;360;;;;vpos;;varray;;r&#xA;Description&#xA;     Fetch all&#xA;&#xA;Parameters:&#xA;    string;;d2,355;;b1,0;;mstring;;p">
+					<treenode node="data;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;357;8;357;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="r;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;356;5;356;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f27;354;31;354;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f8;356;13;356;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="fetchOne;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;325;3;331;;;;vpos;;vmixed;;r&#xA;Description&#xA;     Return only one field from result&#xA;&#xA;Parameters:&#xA;    string&#xA;    integer&#xA;    integer;;d2,326;;b1,0;;mstring;;pinteger;;pinteger;;p">
 					<treenode node="col;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f33;325;37;325;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="field;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;328;9;328;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="r;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;327;5;327;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="row;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f46;325;50;325;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f27;325;31;325;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f8;327;13;327;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="fetchRow;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;340;3;346;;;;vpos;;varray;;r&#xA;Description&#xA;     Fetch row&#xA;&#xA;Parameters:&#xA;    string&#xA;    integer;;d2,341;;b1,0;;mstring;;pinteger;;p">
+					<treenode node="r;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;342;5;342;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="row;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f33;340;37;340;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f27;340;31;340;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f8;342;13;342;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="getCharset;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;617;3;620;;;;vpos;;vstring;;r&#xA;Description&#xA;     Get charset (getter);;d2,618;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;619;15;619;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="getClientEncoding;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;413;3;416;;;;vpos;;vstring;;r&#xA;Description&#xA;     Get client encoding;;d2,414;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f32;415;37;415;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="getClientFlags;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;677;3;680;;;;vpos;;vstring;;r&#xA;Description&#xA;     Get client_flags (getter);;d2,678;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;679;15;679;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="getDatabase;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;597;3;600;;;;vpos;;vstring;;r&#xA;Description&#xA;     Get database (getter);;d2,598;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;599;15;599;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="getHost;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;577;3;580;;;;vpos;;vstring;;r&#xA;Description&#xA;     Get host (getter);;d2,578;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;579;15;579;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="getIsDebugMode;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;637;3;640;;;;vpos;;vstring;;r&#xA;Description&#xA;     Get is_debug_mode (getter);;d2,638;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;639;15;639;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="getNewLink;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;657;3;660;;;;vpos;;vstring;;r&#xA;Description&#xA;     Get new_link (getter);;d2,658;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;659;15;659;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="getPassword;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;557;3;560;;;;vpos;;vstring;;r&#xA;Description&#xA;     Get password (getter);;d2,558;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;559;15;559;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="getQueries;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;517;3;520;;;;vpos;;varray;;r&#xA;Description&#xA;     Get queries;;d2,518;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;519;15;519;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="getUsername;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;537;3;540;;;;vpos;;vstring;;r&#xA;Description&#xA;     Get username (getter);;d2,538;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;539;15;539;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="lastInsertID;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;249;3;256;;;;vpos;;vinteger;;r&#xA;Description&#xA;     Return last inserted id;;d2,250;;b1,0;;m">
+					<treenode node="id;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;251;6;251;;;;vposint;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f25;251;30;251;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="loadDefautSettings;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;128;3;141;;;;vpos;;varray;;r&#xA;Description&#xA;     Get default settings;;d2,129;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;130;8;130;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="prepareConnection;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;181;3;192;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Prepare connection - reconnect if connection has been lost;;d39,181;;b3,0;;m">
+					<treenode node="now;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f4;187;8;187;;;;vposint;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f21;183;26;183;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="query;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;294;3;315;;;;vpos;;vEabDbResultAdapter;;r&#xA;Description&#xA;     Execute database query&#xA;&#xA;Parameters:&#xA;    string;;d2,295;;b1,0;;mstring;;p">
+					<treenode node="difference;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f4;310;15;310;;;;vposfloat;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="end;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;301;7;301;;;;vposmixed;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="res;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f33;314;37;314;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="result;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;300;10;300;;;;vposresource;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="sec1;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f17;308;22;308;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="sec2;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f17;309;22;309;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f24;294;28;294;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="start;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;299;9;299;;;;vposmixed;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;296;8;296;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="usec1;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;308;15;308;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="usec2;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;309;15;309;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="reconnect;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;507;3;511;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Reconnect database;;d2,508;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;509;8;509;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="rollBack;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f2;460;3;463;;;;vpos;;vinteger;;r&#xA;Description&#xA;     Rollback transaction;;d2,461;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f10;462;15;462;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="selectDatabase;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;200;3;206;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Select work database&#xA;&#xA;Parameters:&#xA;    string $database;;d2,201;;b1,0;;mstring $database;;p">
 					<treenode node="database;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f33;200;42;200;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;202;8;202;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="setCharset;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;607;3;611;;;;vpos;;vEabDbAdapter;;r&#xA;Description&#xA;     Set charset (setter)&#xA;&#xA;Parameters:&#xA;    string;;d2,608;;b1,0;;mstring;;p">
 					<treenode node="charset;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f29;607;37;607;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;609;8;609;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="setClientFlags;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;667;3;671;;;;vpos;;vEabDbAdapter;;r&#xA;Description&#xA;     Set client_flags (setter)&#xA;&#xA;Parameters:&#xA;    string;;d2,668;;b1,0;;mstring;;p">
 					<treenode node="clientFlags;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f33;667;45;667;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;669;8;669;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="setConnectionCharset;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;222;3;242;;;;vpos;;v;;r&#xA;Description&#xA;     Set charset&#xA;&#xA;Parameters:&#xA;    string;;d2,223;;b1,0;;mstring;;p">
 					<treenode node="charset;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f39;222;47;222;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="res;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f4;232;8;232;;;;vposresource;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;224;8;224;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="setDatabase;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;587;3;591;;;;vpos;;vEabDbAdapter;;r&#xA;Description&#xA;     Set database (setter)&#xA;&#xA;Parameters:&#xA;    string;;d2,588;;b1,0;;mstring;;p">
 					<treenode node="database;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f30;587;39;587;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;589;8;589;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="setFetchMode;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;212;3;215;;;;vpos;;v;;r&#xA;Description&#xA;     Set fetch mode&#xA;&#xA;Parameters:&#xA;    string;;d2,213;;b1,0;;mstring;;p">
 					<treenode node="fetchmode;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f31;212;41;212;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;214;8;214;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="setHost;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;567;3;571;;;;vpos;;vEabDbAdapter;;r&#xA;Description&#xA;     Set host (setter)&#xA;&#xA;Parameters:&#xA;    string;;d2,568;;b1,0;;mstring;;p">
 					<treenode node="host;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f26;567;31;567;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;569;8;569;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="setIsDebugMode;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;627;3;631;;;;vpos;;vEabDbAdapter;;r&#xA;Description&#xA;     Set is_debug_mode (setter)&#xA;&#xA;Parameters:&#xA;    string;;d2,628;;b1,0;;mstring;;p">
 					<treenode node="isDebugMode;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f33;627;45;627;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;629;8;629;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="setNewLink;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;647;3;651;;;;vpos;;vEabDbAdapter;;r&#xA;Description&#xA;     Set new_link (setter)&#xA;&#xA;Parameters:&#xA;    string;;d2,648;;b1,0;;mstring;;p">
 					<treenode node="newLink;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f29;647;37;647;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;649;8;649;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="setPassword;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;547;3;551;;;;vpos;;vEabDbAdapter;;r&#xA;Description&#xA;     Set password (setter)&#xA;&#xA;Parameters:&#xA;    string;;d2,548;;b1,0;;mstring;;p">
 					<treenode node="password;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f30;547;39;547;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;549;8;549;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="setSettings;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;149;3;157;;;;vpos;;v;;r&#xA;Description&#xA;     Set settings to properties Note: this method not reconnect db connection&#xA;&#xA;Parameters:&#xA;    array;;d2,150;;b1,0;;marray;;p">
+					<treenode node="k;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f25;151;27;151;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="prop;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f4;152;9;152;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="settings;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f30;149;39;149;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f24;153;29;153;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="v;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f31;151;33;151;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="setTransactionIsolation;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;424;3;427;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Set transaction isolation&#xA;&#xA;Parameters:&#xA;    string&#xA;    string;;d2,425;;b1,0;;mstring;;pstring;;p">
@@ -562,8 +698,12 @@
 					</treenode>
 					<treenode node="option;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f73;424;80;424;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;426;8;426;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="setUsername;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f9;527;3;531;;;;vpos;;vEabDbAdapter;;r&#xA;Description&#xA;     Set username (setter)&#xA;&#xA;Parameters:&#xA;    string;;d2,528;;b1,0;;mstring;;p">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f3;529;8;529;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="username;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php;f30;527;39;527;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
@@ -600,31 +740,55 @@
 					</treenode>
 					<treenode node="res;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f30;38;34;38;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f3;40;8;40;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="affectedRows;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f2;165;3;168;;;;vpos;;vinteger;;r&#xA;Description&#xA;     Return number of affected rows from previous query;;d2,166;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f30;167;35;167;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="fetchAll;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f9;58;3;75;;;;vpos;;varray;;r&#xA;Description&#xA;     Return array from rows&#xA;&#xA;Parameters:&#xA;    integer;;d2,59;;b1,0;;minteger;;p">
+					<treenode node="data;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f3;67;8;67;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="fetchMode;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f27;58;37;58;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="row;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f11;70;15;70;;;;vposarray;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f17;61;22;61;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="fetchOne;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f9;112;3;130;;;;vpos;;vmixed;;r&#xA;Description&#xA;     Return only one field&#xA;&#xA;Parameters:&#xA;    integer|NULL&#xA;    integer|NULL;;d2,113;;b1,0;;minteger|NULL;;pinteger|NULL;;p">
 					<treenode node="col;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f27;112;31;112;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="fetchMode;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f3;114;13;114;;;;vposbool;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="row;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f40;112;44;112;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f10;115;15;115;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="fetchRow;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f9;83;3;104;;;;vpos;;varray;;r&#xA;Description&#xA;     Return row from result. If specified row, then seek result to this row.&#xA;&#xA;Parameters:&#xA;    integer|NULL&#xA;    integer|NULL;;d2,84;;b1,0;;minteger|NULL;;pinteger|NULL;;p">
 					<treenode node="fetchMode;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f27;83;37;83;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="numRows;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f4;96;12;96;;;;vposint;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="row;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f46;83;50;83;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f17;86;22;86;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="free;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f9;154;3;158;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Osvobojdava zaetata pamet ot resurs na resultata;;d2,155;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f21;156;26;156;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="numRows;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f9;48;3;51;;;;vpos;;vinteger;;r&#xA;Description&#xA;     Return number of rows in result;;d2,49;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f25;50;30;50;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
 				<treenode node="seek;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f9;137;3;147;;;;vpos;;vboolean;;r&#xA;Description&#xA;     Seek pointer of result to specified row&#xA;&#xA;Parameters:&#xA;    integer;;d2,138;;b1,0;;minteger;;p">
-					<treenode node="rowNum;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f23;137;30;137;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="rowNum;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f23;137;30;137;;;;vposint;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f28;139;33;139;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="_defaultFetchMode;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php;f12;30;30;30;;;;vposinteger;;v;;r;;d-1,-1;;b2,0;;m">
@@ -820,112 +984,128 @@
 				<treenode node="_title;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabLayoutHead.php;f10;17;17;17;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
 			</treenode>
-			<treenode node="EabModel;PHP:Class Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f1;10;2;273;;;;vpos;;vEabAssigner;;c;;r&#xA;Description&#xA;     Base model class;;d1,11;;b0,0;;m">
-				<treenode node="__construct;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;42;3;47;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Constructor of class;;d2,43;;b1,0;;m">
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;44;8;44;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+			<treenode node="EabModel;PHP:Class Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f1;10;2;291;;;;vpos;;v;;r&#xA;Description&#xA;     Base model class;;d1,11;;b0,0;;m">
+				<treenode node="__construct;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;45;3;54;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Constructor of class&#xA;&#xA;Parameters:&#xA;    string|NULL $tableName&#xA;    mixed $pkColumn;;d2,46;;b1,0;;mstring|NULL $tableName;;pmixed $pkColumn;;p">
+					<treenode node="pkColumn;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f49;45;58;45;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="tableName;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f30;45;40;45;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f4;48;9;48;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="_loadTableColumnsFromDb;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;66;3;70;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Load table columns from database;;d2,67;;b3,0;;m">
-				</treenode>
-				<treenode node="_loadTableNameFromClass;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;53;3;60;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Load table name from class name;;d2,54;;b3,0;;m">
-					<treenode node="class;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;55;9;55;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="__get;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;269;3;277;;;;vpos;;vmixed;;r&#xA;Description&#xA;     Magic method __get&#xA;&#xA;Parameters:&#xA;    string $prop;;d2,270;;b1,0;;mstring $prop;;p">
+					<treenode node="prop;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f24;269;29;269;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f33;55;38;55;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f13;271;18;271;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="createPkStatement;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;186;3;207;;;;vpos;;vstring;;r&#xA;Description&#xA;     Create primary key statement;;d2,187;;b3,0;;m">
-					<treenode node="col;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f33;197;37;197;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="__set;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;286;3;289;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Magic method __set&#xA;&#xA;Parameters:&#xA;    string $prop&#xA;    array $args;;d2,287;;b1,0;;mstring $prop;;parray $args;;p">
+					<treenode node="args;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f31;286;36;286;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="id;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f14;194;17;194;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="prop;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f24;286;29;286;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="stmt;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;192;8;192;;;;vposbool;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f13;188;18;188;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;288;8;288;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="delete;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;128;3;132;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Delete model from database;;d2,129;;b1,0;;m">
-					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;130;7;130;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="_loadTableNameFromClass;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;60;3;67;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Load table name from class name;;d2,61;;b3,0;;m">
+					<treenode node="class;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;62;9;62;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f28;130;33;130;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="where_expr;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f61;130;72;130;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f22;62;27;62;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="find;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;140;3;180;;;;vpos;;v;;r&#xA;Description&#xA;     Find model&#xA;&#xA;Parameters:&#xA;    undefined $criterias;;d2,141;;b1,0;;mundefined $criterias;;p">
-					<treenode node="class;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;170;9;170;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="createPkStatement;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;185;3;203;;;;vpos;;vstring;;r&#xA;Description&#xA;     Create primary key statement;;d2,186;;b3,0;;m">
+					<treenode node="col;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f33;193;37;193;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="criterias;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f23;140;33;140;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="statement;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;191;13;191;;;;vposbool;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="model;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f4;174;10;174;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="models;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;171;10;171;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="result;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;172;10;172;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="row;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;173;14;173;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f5;144;9;144;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f29;151;34;151;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f13;187;18;187;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="getPkColumn;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;238;3;241;;;;vpos;;vstring;;r&#xA;Description&#xA;     Get pkColumn (getter)&#xA;&#xA;Return:&#xA;   |array;;d2,239;;b1,0;;m">
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;240;15;240;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="delete;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;125;3;131;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Delete model from database;;d2,126;;b1,0;;m">
+					<treenode node="pkStatement;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;127;15;127;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;129;7;129;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f18;127;23;127;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="where_expr;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f88;129;99;129;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="getTableName;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;259;3;262;;;;vpos;;vstring;;r&#xA;Description&#xA;     Set tableName (getter);;d2,260;;b1,0;;m">
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;261;15;261;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="find;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;139;3;179;;;;vpos;;v;;r&#xA;Description&#xA;     Find model&#xA;&#xA;Parameters:&#xA;    undefined $criterias;;d2,140;;b1,0;;mundefined $criterias;;p">
+					<treenode node="class;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;169;9;169;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="criterias;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f23;139;33;139;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="model;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f4;173;10;173;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="models;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;170;10;170;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="result;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;171;10;171;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="row;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;172;14;172;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f5;143;9;143;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f29;150;34;150;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="load;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;76;3;88;;;;vpos;;v;;r&#xA;Description&#xA;     Load model from database;;d2,77;;b1,0;;m">
-					<treenode node="row;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;84;7;84;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;83;7;83;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="stmt;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;78;8;78;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f11;78;16;78;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="getPkColumn;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;236;3;239;;;;vpos;;vstring;;r&#xA;Description&#xA;     Get pkColumn (getter)&#xA;&#xA;Return:&#xA;   |array;;d2,237;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;238;15;238;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="loadFromArray;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;215;3;220;;;;vpos;;v;;r&#xA;Description&#xA;     Load model data from array&#xA;&#xA;Parameters:&#xA;    undefined $data;;d2,216;;b1,0;;mundefined $data;;p">
-					<treenode node="col;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f21;217;25;217;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="data;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f32;215;37;215;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f4;218;9;218;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="val;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f29;217;33;217;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="getTableName;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;257;3;260;;;;vpos;;vstring;;r&#xA;Description&#xA;     Set tableName (getter);;d2,258;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;259;15;259;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="save;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;94;3;122;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Save model&#xA;&#xA;Return:&#xA;   to database;;d2,95;;b1,0;;m">
-					<treenode node="col;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f37;100;41;100;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="load;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;73;3;85;;;;vpos;;v;;r&#xA;Description&#xA;     Load model from database;;d2,74;;b1,0;;m">
+					<treenode node="pkStatement;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;75;15;75;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f4;98;8;98;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="row;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;81;7;81;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="stmt;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;96;8;96;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;80;7;80;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f11;96;16;96;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="values;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f19;104;26;104;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f18;75;23;75;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="setPkColumn;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;228;3;232;;;;vpos;;vEabModel;;r&#xA;Description&#xA;     Set pkColumn (setter)&#xA;&#xA;Parameters:&#xA;    string|array $column;;d2,229;;b1,0;;mstring|array $column;;p">
-					<treenode node="column;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f30;228;37;228;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="loadFromArray;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;211;3;218;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Load model data from array&#xA;&#xA;Parameters:&#xA;    undefined $data;;d2,212;;b1,0;;mundefined $data;;p">
+					<treenode node="column;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f21;215;28;215;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;230;8;230;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="data;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f32;211;37;211;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;213;8;213;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="value;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f32;215;38;215;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="setTableName;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;249;3;253;;;;vpos;;vEabModel;;r&#xA;Description&#xA;     Set tableName (setter)&#xA;&#xA;Parameters:&#xA;    string $tableName;;d2,250;;b1,0;;mstring $tableName;;p">
-					<treenode node="tableName;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f31;249;41;249;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="save;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;91;3;119;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Save model&#xA;&#xA;Return:&#xA;   to database;;d2,92;;b1,0;;m">
+					<treenode node="col;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f37;97;41;97;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;251;8;251;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pkStatement;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;93;15;93;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="sql;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f4;95;8;95;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f18;93;23;93;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="values;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f19;101;26;101;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="setPkColumn;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;226;3;230;;;;vpos;;vEabModel;;r&#xA;Description&#xA;     Set pkColumn (setter)&#xA;&#xA;Parameters:&#xA;    string|array $column;;d2,227;;b1,0;;mstring|array $column;;p">
+					<treenode node="column;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f30;226;37;226;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;228;8;228;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="setTableName;PHP:Function Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f9;247;3;251;;;;vpos;;vEabModel;;r&#xA;Description&#xA;     Set tableName (setter)&#xA;&#xA;Parameters:&#xA;    string $tableName;;d2,248;;b1,0;;mstring $tableName;;p">
+					<treenode node="tableName;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f31;247;41;247;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f3;249;8;249;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="_dbAdapter;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;17;21;17;;;;vposresource;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_pkColumn;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;35;20;35;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_modelFields;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;35;23;35;;;;vposarray;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
-				<treenode node="_tableColumns;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;29;24;29;;;;vposarray;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="_pkColumn;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;29;20;29;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
 				<treenode node="_tableName;PHP:Var Name;D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php;f10;23;21;23;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
@@ -1103,115 +1283,115 @@
 				</treenode>
 			</treenode>
 			<treenode node="EblChekableList;PHP:Class Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;13;2;262;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;13;2;262;;;;vpos;;vEblHtmlComponent;;c;;r&#xA;Description&#xA;      sience 1.0.1;;d1,14;;b0,0;;m">
-				<treenode node="__construct;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;46;3;51;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;47;3;52;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Constructor of class&#xA;&#xA;Parameters:&#xA;    string $name&#xA;    array $elements&#xA;    array $attributes;;d2,48;;b1,0;;mstring $name;;parray $elements;;parray $attributes;;p">
-					<treenode node="attributes;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f58;46;69;46;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f58;47;69;47;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="__construct;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;46;3;51;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;47;3;52;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;47;3;52;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Constructor of class&#xA;&#xA;Parameters:&#xA;    string $name&#xA;    array $elements&#xA;    array $attributes;;d2,48;;b1,0;;mstring $name;;parray $elements;;parray $attributes;;p">
+					<treenode node="attributes;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f58;46;69;46;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f58;47;69;47;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f58;47;69;47;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="elements;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f37;46;46;46;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f37;47;46;47;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="elements;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f37;46;46;46;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f37;47;46;47;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f37;47;46;47;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="name;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f30;46;35;46;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f30;47;35;47;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="name;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f30;46;35;46;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f30;47;35;47;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f30;47;35;47;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;49;8;49;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;50;8;50;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="addComponent;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;119;3;122;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;119;3;122;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Add component to list&#xA;&#xA;Parameters:&#xA;    EblHtmlComponent $component;;d2,120;;b1,0;;mEblHtmlComponent $component;;p">
-					<treenode node="component;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f48;119;58;119;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f48;119;58;119;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;121;8;121;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;121;8;121;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;49;8;49;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;50;8;50;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;50;8;50;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="addElement;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;58;3;61;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;59;3;62;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Add element&#xA;&#xA;Parameters:&#xA;    EblCheckableComponent $element;;d2,60;;b1,0;;mEblCheckableComponent $element;;p">
-					<treenode node="element;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f51;58;59;58;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f51;59;59;59;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="addComponent;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;119;3;122;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;119;3;122;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;119;3;122;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Add component to list&#xA;&#xA;Parameters:&#xA;    EblHtmlComponent $component;;d2,120;;b1,0;;mEblHtmlComponent $component;;p">
+					<treenode node="component;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f48;119;58;119;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f48;119;58;119;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f48;119;58;119;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;60;8;60;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;61;8;61;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="clear;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;128;3;135;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;128;3;135;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Clear list;;d2,129;;b1,0;;m">
-					<treenode node="element;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f32;132;40;132;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f32;132;40;132;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;130;8;130;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;130;8;130;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;121;8;121;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;121;8;121;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;121;8;121;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="getDirection;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;238;3;241;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;238;3;241;;;;vpos;;vstring;;r&#xA;Description&#xA;     get direction (getter);;d2,239;;b1,0;;m">
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;240;15;240;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;240;15;240;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="addElement;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;58;3;61;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;59;3;62;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;59;3;62;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Add element&#xA;&#xA;Parameters:&#xA;    EblCheckableComponent $element;;d2,60;;b1,0;;mEblCheckableComponent $element;;p">
+					<treenode node="element;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f51;58;59;58;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f51;59;59;59;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f51;59;59;59;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;60;8;60;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;61;8;61;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;61;8;61;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="getElements;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;188;3;191;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;188;3;191;;;;vpos;;varray;;r&#xA;Description&#xA;     get selected index (getter);;d2,189;;b1,0;;m">
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;190;15;190;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;190;15;190;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="clear;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;128;3;135;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;128;3;135;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;128;3;135;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Clear list;;d2,129;;b1,0;;m">
+					<treenode node="element;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f32;132;40;132;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f32;132;40;132;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f32;132;40;132;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;130;8;130;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;130;8;130;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;130;8;130;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="getMultiple;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f12;258;3;261;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f12;258;3;261;;;;vpos;;vstring;;r&#xA;Description&#xA;     get text position (getter);;d2,259;;b2,0;;m">
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;260;15;260;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;260;15;260;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="getDirection;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;238;3;241;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;238;3;241;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;238;3;241;;;;vpos;;vstring;;r&#xA;Description&#xA;     get direction (getter);;d2,239;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;240;15;240;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;240;15;240;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;240;15;240;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="getTextPosition;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;214;3;217;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;214;3;217;;;;vpos;;vstring;;r&#xA;Description&#xA;     get text position (getter);;d2,215;;b1,0;;m">
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;216;15;216;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;216;15;216;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="getElements;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;188;3;191;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;188;3;191;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;188;3;191;;;;vpos;;varray;;r&#xA;Description&#xA;     get selected index (getter);;d2,189;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;190;15;190;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;190;15;190;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;190;15;190;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="handleRequest;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;141;3;171;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;141;3;171;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Rewrite request handling;;d2,142;;b1,0;;m">
-					<treenode node="_REQUEST;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f18;144;27;144;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f18;144;27;144;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="element;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f34;148;42;148;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f34;148;42;148;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="k;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f23;146;25;146;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f23;146;25;146;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="name;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;143;8;143;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;143;8;143;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f11;143;16;143;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f11;143;16;143;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="val;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f29;146;33;146;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f29;146;33;146;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="value;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;144;9;144;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;144;9;144;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="getMultiple;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f12;258;3;261;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f12;258;3;261;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f12;258;3;261;;;;vpos;;vstring;;r&#xA;Description&#xA;     get text position (getter);;d2,259;;b2,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;260;15;260;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;260;15;260;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;260;15;260;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="printHtml;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;68;3;112;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;68;3;112;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Print element as htmlt;;d2,69;;b1,0;;m">
-					<treenode node="attributesString;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;90;20;90;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;90;20;90;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="atts;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;70;8;70;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;70;8;70;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="class;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f4;72;10;72;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f4;72;10;72;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="direction;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f4;73;14;73;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f4;73;14;73;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="element;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f32;93;40;93;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f32;93;40;93;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="name;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;83;8;83;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;83;8;83;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="pos;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;84;7;84;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;84;7;84;;;;vposmixed;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f11;70;16;70;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f11;70;16;70;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="getTextPosition;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;214;3;217;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;214;3;217;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;214;3;217;;;;vpos;;vstring;;r&#xA;Description&#xA;     get text position (getter);;d2,215;;b1,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;216;15;216;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;216;15;216;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;216;15;216;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="setDirection;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;225;3;232;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;225;3;232;;;;vpos;;vEblChekableList;;r&#xA;Description&#xA;     Set direction (setter)&#xA;&#xA;Parameters:&#xA;    string $direction;;d2,226;;b1,0;;mstring $direction;;p">
-					<treenode node="direction;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f31;225;41;225;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f31;225;41;225;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="handleRequest;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;141;3;171;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;141;3;171;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;141;3;171;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Rewrite request handling;;d2,142;;b1,0;;m">
+					<treenode node="_REQUEST;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f18;144;27;144;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f18;144;27;144;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f18;144;27;144;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;231;8;231;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;231;8;231;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="element;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f34;148;42;148;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f34;148;42;148;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f34;148;42;148;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-				</treenode>
-				<treenode node="setElements;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;178;3;182;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;178;3;182;;;;vpos;;vEblChekableList;;r&#xA;Description&#xA;     Set elements (setter)&#xA;&#xA;Parameters:&#xA;    array $elements;;d2,179;;b1,0;;marray $elements;;p">
-					<treenode node="elements;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f30;178;39;178;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f30;178;39;178;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="k;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f23;146;25;146;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f23;146;25;146;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f23;146;25;146;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;180;8;180;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;180;8;180;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="name;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;143;8;143;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;143;8;143;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;143;8;143;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-				</treenode>
-				<treenode node="setMultiple;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f12;248;3;252;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f12;248;3;252;;;;vpos;;vEblChekableList;;r&#xA;Description&#xA;     Set is multiple component&#xA;&#xA;Parameters:&#xA;    boolean $multiple;;d2,249;;b2,0;;mboolean $multiple;;p">
-					<treenode node="multiple;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f33;248;42;248;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f33;248;42;248;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f11;143;16;143;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f11;143;16;143;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f11;143;16;143;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;250;8;250;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;250;8;250;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="val;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f29;146;33;146;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f29;146;33;146;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f29;146;33;146;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="value;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;144;9;144;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;144;9;144;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;144;9;144;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="setTextPosition;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;199;3;208;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;199;3;208;;;;vpos;;vEblChekableList;;r&#xA;Description&#xA;     Set Text position (setter)&#xA;&#xA;Parameters:&#xA;    string $position;;d2,200;;b1,0;;mstring $position;;p">
-					<treenode node="position;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f34;199;43;199;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f34;199;43;199;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="printHtml;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;68;3;112;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;68;3;112;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;68;3;112;;;;vpos;;vvoid;;r&#xA;Description&#xA;     Print element as htmlt;;d2,69;;b1,0;;m">
+					<treenode node="attributesString;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;90;20;90;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;90;20;90;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;90;20;90;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;206;8;206;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;206;8;206;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="atts;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;70;8;70;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;70;8;70;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;70;8;70;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="class;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f4;72;10;72;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f4;72;10;72;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f4;72;10;72;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="direction;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f4;73;14;73;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f4;73;14;73;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f4;73;14;73;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="element;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f32;93;40;93;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f32;93;40;93;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f32;93;40;93;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="name;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;83;8;83;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;83;8;83;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;83;8;83;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="pos;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;84;7;84;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;84;7;84;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;84;7;84;;;;vposmixed;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f11;70;16;70;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f11;70;16;70;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f11;70;16;70;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="_direction;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;30;21;30;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;30;21;30;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="setDirection;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;225;3;232;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;225;3;232;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;225;3;232;;;;vpos;;vEblChekableList;;r&#xA;Description&#xA;     Set direction (setter)&#xA;&#xA;Parameters:&#xA;    string $direction;;d2,226;;b1,0;;mstring $direction;;p">
+					<treenode node="direction;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f31;225;41;225;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f31;225;41;225;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f31;225;41;225;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;231;8;231;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;231;8;231;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;231;8;231;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
-				<treenode node="_elements;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f12;18;22;18;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f12;18;22;18;;;;vposarray;;v;;r;;d-1,-1;;b2,0;;m">
+				<treenode node="setElements;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;178;3;182;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;178;3;182;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;178;3;182;;;;vpos;;vEblChekableList;;r&#xA;Description&#xA;     Set elements (setter)&#xA;&#xA;Parameters:&#xA;    array $elements;;d2,179;;b1,0;;marray $elements;;p">
+					<treenode node="elements;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f30;178;39;178;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f30;178;39;178;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f30;178;39;178;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;180;8;180;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;180;8;180;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;180;8;180;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
-				<treenode node="_multiple;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;36;20;36;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;36;20;36;;;;vposboolean;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="setMultiple;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f12;248;3;252;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f12;248;3;252;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f12;248;3;252;;;;vpos;;vEblChekableList;;r&#xA;Description&#xA;     Set is multiple component&#xA;&#xA;Parameters:&#xA;    boolean $multiple;;d2,249;;b2,0;;mboolean $multiple;;p">
+					<treenode node="multiple;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f33;248;42;248;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f33;248;42;248;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f33;248;42;248;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;250;8;250;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;250;8;250;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;250;8;250;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 				</treenode>
-				<treenode node="_textPosition;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;24;24;24;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;24;24;24;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
+				<treenode node="setTextPosition;PHP:Function Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f9;199;3;208;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;199;3;208;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f9;199;3;208;;;;vpos;;vEblChekableList;;r&#xA;Description&#xA;     Set Text position (setter)&#xA;&#xA;Parameters:&#xA;    string $position;;d2,200;;b1,0;;mstring $position;;p">
+					<treenode node="position;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f34;199;43;199;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f34;199;43;199;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f34;199;43;199;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f3;206;8;206;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;206;8;206;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f3;206;8;206;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="_direction;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;30;21;30;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;30;21;30;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;30;21;30;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
+				</treenode>
+				<treenode node="_elements;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f12;18;22;18;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f12;18;22;18;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f12;18;22;18;;;;vposarray;;v;;r;;d-1,-1;;b2,0;;m">
+				</treenode>
+				<treenode node="_multiple;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;36;20;36;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;36;20;36;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;36;20;36;;;;vposboolean;;v;;r;;d-1,-1;;b3,0;;m">
+				</treenode>
+				<treenode node="_textPosition;PHP:Var Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableListComponent.php;f10;24;24;24;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;24;24;24;;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblChekableList.php;f10;24;24;24;;;;vposstring;;v;;r;;d-1,-1;;b3,0;;m">
 				</treenode>
 			</treenode>
 			<treenode node="EblChekableListComponent;PHP:Class Name;D:\xampp\htdocs\eab\protected\library\moduls\Ebl\HtmlComponents\Standart\class.EblListComponent.php;f10;13;2;225;;;;vpos;;vEblHtmlComponent;;c;;r&#xA;Description&#xA;      sience 1.0.1;;d1,14;;b0,0;;m">
@@ -5991,8 +6171,8 @@
 			<todo name="todo:" pos="4;83"/>
 		</todofile>
 		<todofile name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php">
-			<todo name="todo: exception here" pos="7;132"/>
-			<todo name="todo: exception here" pos="5;139"/>
+			<todo name="todo: exception here" pos="7;190"/>
+			<todo name="todo: exception here" pos="5;197"/>
 		</todofile>
 		<todofile name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabController.php">
 			<todo name="TODO:" pos="4;114"/>
@@ -6070,16 +6250,16 @@
 		<file name="D:\xampp\htdocs\eab\protected\eab\SettingsLoaders\class.EabArrayFileSettingsLoader.php" crc="2078715082"/>
 		<file name="D:\xampp\htdocs\eab\protected\eab\Exception\class.EabExceptionCodes.php" crc="-255564076"/>
 		<file name="D:\xampp\htdocs\eab\protected\eab\Exception\class.EabException.php" crc="-255808767"/>
-		<file name="D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php" crc="2126270352"/>
-		<file name="D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php" crc="155484974"/>
+		<file name="D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbResultAdapter.php" crc="913215200"/>
+		<file name="D:\xampp\htdocs\eab\protected\eab\Database\class.EabDbAdapter.php" crc="1314252029"/>
 		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabSection.php" crc="1855834159"/>
 		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabModulsImporter.php" crc="302432037"/>
-		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php" crc="1703459971"/>
+		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabModel.php" crc="-415371299"/>
 		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabLayoutHead.php" crc="1500931613"/>
 		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabLayout.php" crc="2101739797"/>
 		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabController.php" crc="-77254675"/>
 		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabAssigner.php" crc="-1163474551"/>
-		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php" crc="710209171"/>
+		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.EabAppSettings.php" crc="-1252994706"/>
 		<file name="D:\xampp\htdocs\eab\protected\eab\Core\class.Eab.php" crc="-10161900"/>
 		<file name="D:\xampp\htdocs\eab\protected\eab\ClassLoading\class.EabAutoLoader.php" crc="-1634443718"/>
 		<file name="D:\xampp\htdocs\eab\protected\controllers\class.IndexController.php" crc="-1922131984"/>

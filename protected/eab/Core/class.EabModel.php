@@ -8,43 +8,50 @@
 	* @copyright  2010-2014 Stoqnoff
 	* @since      1.0.0
 	*/
-	class EabModel extends EabAssigner
+	class EabModel
 	{
 		/**
+		* Database adapter
 		* 
 		* @var resource
-		* 
 		*/
 		private $_dbAdapter;
 		/**
+		* Table name
 		* 
 		* @var string
-		* 
 		*/
 		private $_tableName;
 		/**
-		* 
-		* @var array
-		* 
-		*/
-		private $_tableColumns;
-		/**
+		* Primary key column
 		* 
 		* @var string
-		* 
 		*/
 		private $_pkColumn;
+		/**
+		* Model fields
+		* 
+		* @var array
+		*/
+		private $_modelFields;
 
 		/**
 		* Constructor of class
 		* 
+		* @param string|NULL $tableName
+		* @param mixed $pkColumn
+		* 
 		* @return void
 		*/
-		public function __construct()
+		public function __construct($tableName = NULL, $pkColumn = NULL)
 		{
-			$this->_pkColumn = 'id';
-			$this->_loadTableNameFromClass();
-			$this->_loadTableColumnsFromDb();
+			if (NULL === $tableName) {
+				$this->_loadTableNameFromClass();
+			}
+			if (NULL === $pkColumn) {
+				$this->_pkColumn = 'id';
+			}
+			$this->_modelFields = array();
 		}
 		/**
 		* Load table name from class name
@@ -53,21 +60,11 @@
 		*/
 		private function _loadTableNameFromClass()
 		{
-			$class = strtolower(get_class($this));
-			if (substr($class, -5, 5) !== 'model') {
+			$class = get_class($this);
+			if ('model' !== substr(strtolower($class), -5, 5)) {
 				throw new EabException('Model class must be ended with "model"!', EabExceptionCodes::UNKNOWN_EXC);
 			}
 			$this->_tableName = $class . 's';
-		}
-		/**
-		* Load table columns from database
-		* 
-		* @return void
-		*/
-		private function _loadTableColumnsFromDb()
-		{
-			//$result = mysql_query("SHOW TABLES LIKE 'myTable'");
-			//$sql="SHOW COLUMNS FROM authors";
 		}
 		/**
 		* Load model from database
@@ -76,12 +73,12 @@
 		*/
 		public function load()
 		{
-			$stmt = $this->createPkStatement();
-			if (! $stmt) {
-				return FALSE;
+			$pkStatement = $this->createPkStatement();
+			if (empty($pkStatement)) {
+				throw new EabException('No primary key defined!', EabExceptionCodes::UNKNOWN_EXC);
 			}
 
-			$sql = "SELECT * FROM `" . $this->_tableName . "` WHERE " . $stmt . " LIMIT 1";
+			$sql = "SELECT * FROM `" . $this->_dbAdapter->escape($this->_tableName) . "` WHERE " . $pkStatement . " LIMIT 1";
 			$row = $this->_dbAdapter->fetchRow($sql);
 			$this->loadFromArray($row);
 
@@ -94,30 +91,30 @@
 		*/
 		public function save()
 		{
-			$stmt = $this->createPkStatement();
-			if (! $stmt) {
+			$pkStatement = $this->createPkStatement();
+			if (! $pkStatement) {
 				$sql = "INSERT INTO `" . $this->_tableName . "` (`" . implode('`,`', $this->_tableColumns) . "`) VALUES \n";
 				$sql.= "(";
 				foreach ($this->_tableColumns as $col) {
-					if (is_null($this->{$col})) $sql .= "null,";
+					if (is_null($this->{$col})) $sql .= "NULL,";
 					else $sql .= "'" . stripslashes($this->{$col}) . "',";
 				}
 				$sql .= substr($values, 0, -1) . ")";
 				$this->_dbAdapter->exec($sql);
 
 				if (strtolower($this->_pkColumn) === 'id') {
-					$this->id = $this->_dbAdapter->lastInsertId();
+					$this->{$this->_pkColumn} = $this->_dbAdapter->lastInsertId();
 				}
 			}
 			else{
 				$sql = "UPDATE `" . $this->_tableName . "` SET \n";
 				foreach ($this->_tableColumns as $col) {
 					if (! is_null($this->{$col})) {
-						$sql .= "'" . stripslashes($this->{$col}) . "',";
+						$sql .= "'" . $this->_dbAdapter->escape($this->{$col}) . "',";
 					}
 				}
 
-				$sql .= substr($values, 0, -1) . " WHERE " . $stmt . " LIMIT 1";
+				$sql .= substr($values, 0, -1) . " WHERE " . $pkStatement . " LIMIT 1";
 				$this->_dbAdapter->exec($sql);
 			}
 		}
@@ -128,7 +125,9 @@
 		*/
 		public function delete()
 		{
-			$sql = "DELETE FROM `" . $this->_tableName . "` WHERE " . $where_expr . " LIMIT 1";
+			$pkStatement = $this->createPkStatement();
+			
+			$sql = "DELETE FROM `" . $this->_dbAdapter->escape($this->_tableName) . "` WHERE " . $where_expr . " LIMIT 1";
 			$this->_dbAdapter->exec($sql);
 		}
 		/**
@@ -190,33 +189,32 @@
 				throw new EabException('Primary key column for model "' . get_class($this) . '" is empty!', EabExceptionCodes::PROPERTY_NOT_FOUND_EXC);
 			}
 
-			$stmt = '';
+			$statement = '';
 			if (is_array($this->_pkColumn)) {
-				if (empty($id)) {
-					throw new EabException('Key column is empty"' . $this->_pkColumn . '" for model "' . get_class($this) . '"!', EabExceptionCodes::PROPERTY_NOT_FOUND_EXC);
-				}
 				foreach ($this->_pkColumn as $col) {
-					$stmt = $col . "='" . addslashes($this->{$col}) . "'";
+					$statement = $this->_dbAdapter->escape($col) . "='" . $this->_dbAdapter->escape($this->{$col}) . "'";
 				}
-				$stmt = substr($stmt, 0, -1);
+				$statement = substr($statement, 0, -1);
 			}
 			else{
-				$stmt = $this->_pkColumn . "='" . addslashes($this->{$this->_pkColumn}) . "'";
+				$statement = $this->_dbAdapter->escape($this->_pkColumn) . "='" . $this->_dbAdapter->escape($this->{$this->_pkColumn}) . "'";
 			}
 
-			return $stmt;
+			return $statement;
 		}
 		/**
 		* Load model data from array
 		* 
 		* @param undefined $data
 		* 
-		* @return
+		* @return void
 		*/
 		public function loadFromArray($data)
 		{
-			foreach ($data as $col => $val) {
-				$this->assign($col, $val);
+			$this->_modelFields = array();
+			
+			foreach ($data as $column => $value) {
+				$this->_modelFields[$column] = $value;
 			}
 		}
 		/**
@@ -261,15 +259,35 @@
 		{
 			return $this->_tableName;
 		}
-		/*
-		public function setTableColumn($tableColumns)
-		{
-			$this->_tableColumns = $tableColumns;
-		}
-		public function getTableColumn()
-		{
-			return $this->_tableColumns;
-		}
+		/**
+		* Magic method __get
+		*
+		* @param string $prop
+		* 
+		* @return mixed
+		* @throws EabException
 		*/
+		public function __get($prop)
+		{
+			if (isset($this->_modelFields[$prop])) {
+				return $this->_modelFields[$prop];
+			}
+			else{
+				throw new EabException("Property not found!", EabExceptionCodes::PROPERTY_NOT_FOUND_EXC);
+			}
+		}
+		/**
+		* Magic method __set
+		*
+		* @param string $prop
+		* @param array $args
+		* 
+		* @return void
+		*/
+		public function __set($prop, $args)
+		{
+			$this->_modelFields[$prop] = $args;
+		}
+
 	}
 ?>

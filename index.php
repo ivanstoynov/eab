@@ -12,6 +12,17 @@
 		
 		Eab::app()->run();
 		
+		$db = new EabDbAdapter(array(
+			'username' => 'root',
+			'password' => '',
+			'host' => 'localhost',
+			'database' => 'books_library',
+			'charset' => 'UTF8',
+		));
+		
+		$data = $db->exec("UPDATE books SET price = 25 WHERE id = 1");
+		Eab::debug($data);
+		
 		// test from office
 		
 		/*

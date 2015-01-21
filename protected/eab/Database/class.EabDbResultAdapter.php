@@ -22,13 +22,13 @@
 		*
 		* @var resource
 		*/
-		protected $result;
+		protected $_result;
 		/**
 		* Default fetch mode
 		*
 		* @var integer
 		*/
-		protected $_defaultFetchMode;
+		protected $_defaultResultType;
 
 		/**
 		* Constructor of class
@@ -36,10 +36,10 @@
 		* @param resource
 		* @param integer
 		*/
-		public function __construct($res, $fetchMode = MYSQL_ASSOC)
+		public function __construct($res, $resultType = MYSQLI_ASSOC)
 		{
-			$this->result = $res;
-			$this->_defaultFetchMode = $fetchMode;
+			$this->_result = $res;
+			$this->_defaultResultType = $resultType;
 		}
 		/**
 		* Return number of rows in result
@@ -48,59 +48,66 @@
 		*/
 		public function numRows()
 		{
-			return mysql_num_rows($this->result);
+			return mysqli_num_rows($this->_result);
 		}
 		/**
 		* Return array from rows
 		*
-		* @param integer
+		* @param integer|NULL
+		* 
 		* @return array
 		*/
-		public function fetchAll($fetchMode = NULL)
+		public function fetchAll($resultType = NULL)
 		{
-			if (NULL === $fetchMode) {
-				$fetchMode = $this->_defaultFetchMode;
+			if (NULL === $resultType) {
+				$resultType = $this->_defaultResultType;
 			}
-			if (! is_resource($this->result)) {
-				throw new Exception('Property ' . get_class($this) . '->_result is not valid mysql resource!');
+			if (empty($this->_result)) {
+				throw new Exception('Property ' . get_class($this) . '->_result is not valid mysqli resource!', EabExceptionCodes::DB_EXC);
 			}
-
-			$data = array();
-			if (mysql_numrows($this->result) > 0) {
-				$this->seek(0);
-				while ($row = mysql_fetch_array($this->result, $fetchMode)) {
-					$data[]=$row;
+			
+			if (function_exists('mysqli_fetch_all')) {
+				return mysqli_fetch_all($this->_result, $resultType);
+			}
+			else {
+				$data = array();
+				if (mysqli_num_rows($this->_result) > 0) {
+					$this->seek(0);
+					while ($row = mysqli_fetch_array($this->_result, $resultType)) {
+						$data[]=$row;
+					}
 				}
+				return $data;
 			}
-			return $data;
 		}
 		/**
 		* Return row from result. If specified row, then seek result to this row.
 		*
 		* @param integer|NULL
 		* @param integer|NULL
+		* 
 		* @return array
 		*/
-		public function fetchRow($fetchMode = NULL, $row = NULL)
+		public function fetchRow($resultType = NULL, $row = NULL)
 		{
-			if (NULL === $fetchMode) {
-				$fetchMode = $this->_defaultFetchMode;
+			if (NULL === $resultType) {
+				$resultType = $this->_defaultResultType;
 			}
-			if (! is_resource($this->result)) {
-				throw new Exception('Property '.get_class($this).'->_result is not valid mysql resource!');
+			if (empty($this->_result)) {
+				throw new Exception('Property '.get_class($this).'->_result is not valid mysql resource!', EabExceptionCodes::DB_EXC);
 			}
 
 			if (NULL === $row) {
-				return mysql_fetch_array($this->result, $fetchMode);
+				return mysqli_fetch_array($this->_result, $resultType);
 			} 
 			else {
-				$numRows = mysql_num_rows($this->result);
+				$numRows = mysqli_num_rows($this->_result);
 				if ($row >= $numRows) {
-					throw new Exception('Can not find this row in result. Result have only '.$numRows.' rows!');
+					throw new Exception('Can not find this row in result. Result have only '.$numRows.' rows!', EabExceptionCodes::DB_EXC);
 				}
 
 				$this->seek($row);
-				return mysql_fetch_array($this->result, $fetchMode);
+				return mysqli_fetch_array($this->_result, $resultType);
 			}
 		}
 		/**
@@ -112,8 +119,8 @@
 		*/
 		public function fetchOne($col = NULL, $row = NULL)
 		{
-			$fetchmode = is_numeric($col) ? MYSQL_NUM : MYSQL_ASSOC;
-			$row = $this->fetchRow($fetchmode, $row);
+			$resultType = is_numeric($col) ? MYSQLI_NUM : MYSQLI_ASSOC;
+			$row = $this->fetchRow($resultType, $row);
 
 			if (! $row) {
 				return NULL;
@@ -126,9 +133,12 @@
 				return $row[$col];
 			}
 			else {
-				throw new Exception('Not find column with key "' . $col . '"');
+				throw new Exception('Not find column with key "' . $col . '"', EabExceptionCodes::DB_EXC);
 			}
 		}
+		
+		
+		
 		/**
 		* Seek pointer of result to specified row
 		*
@@ -137,12 +147,12 @@
 		*/
 		public function seek($rowNum = 0)
 		{
-			if (0 === mysql_num_rows($this->result)) {
+			if (0 === mysqli_num_rows($this->_result)) {
 				return FALSE;
 			}
 
-			if (! mysql_data_seek($this->result, $rowNum)) {
-				throw new Exception('Can not seek result pointer to row ' . $rowNum.': ' . mysql_error() . "\n");
+			if (! mysqli_data_seek($this->_result, $rowNum)) {
+				throw new Exception('Can not seek result pointer to row ' . $rowNum.': ' . mysql_error() . "\n", EabExceptionCodes::DB_EXC);
 			}
 			return TRUE;
 		}
@@ -154,8 +164,8 @@
 		*/
 		public function free()
 		{
-			mysql_free_result($this->result);
-			$this->result = NULL;
+			mysqli_free_result($this->_result);
+			$this->_result = NULL;
 		}
 
 		/**
@@ -165,7 +175,7 @@
 		*/
 		function affectedRows()
 		{
-			return mysql_affected_rows($this->result);
+			return mysql_affected_rows($this->_result);
 		}
 	}
 ?>

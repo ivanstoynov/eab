@@ -12,18 +12,18 @@
 	* PHP version 5.0 +
 	*
 	* @example 
-	* 		$db = new EabDb();
+	* 		$db = new EabDbAdapter();
 	* 		$sql = "SELECT * FROM `my_table`";
 	* 		$result_rows = $db->fetchAll($sql);
 	*
 	* @example
-	* 		$db = new EabDb();
+	* 		$db = new EabDbAdapter();
 	* 		$sql = "SELECT * FROM `some_table`";
 	* 		$result	= $db->query($sql);
 	* 		while ($row = $result->fetchRow()) { print_r($row); }
 	*
 	* @example
-	* 		$db = new EabDb();
+	* 		$db = new EabDbAdapter();
 	* 		$sql = "INSERT INTO `some_table` (field1, field2) VALUES ('1','2'); ";
 	* 		$db->exec($sql);
 	*
@@ -62,7 +62,7 @@
 		/**
 		* @var string
 		*/
-		private $_fetchMode;
+		private $_resultType;
 		/**
 		* @var string
 		*/
@@ -82,7 +82,7 @@
 		*
 		* @var resource
 		*/
-		private $_dbConn;
+		private $_conn;
 		/**
 		* Time of last connection. Need to reconnect method.
 		*
@@ -105,7 +105,7 @@
 			$this->loadDefautSettings();
 			
 			$timeout = ini_get('mysql.connect_timeout');
-			if ($timeout) {
+			if (! empty($timeout)) {
 				$this->_reconnectionTimeout = $timeout;
 			}
 			$this->setSettings($settings);
@@ -117,7 +117,7 @@
 		*/
 		public function __destruct()
 		{
-			if (! empty($this->_dbConn)) {
+			if (! empty($this->_conn)) {
 				$this->disconnect(); 
 			}
 		}
@@ -134,7 +134,7 @@
 			$this->_database = 'test';
 			$this->_charset = 'UTF8';
 			$this->_isDebugMode = TRUE;
-			$this->_detfetch_mode = MYSQL_ASSOC;
+			$this->_resultType = MYSQLI_ASSOC;
 			$this->_newLink = FALSE;
 			$this->_clientFlags = 196608;
 			$this->_queries = array();
@@ -161,28 +161,29 @@
 		*
 		* @return void
 		*/
-		private function connect()
+		public function connect()
 		{
-			$conn = @mysql_connect($this->_host, $this->_username, $this->_password, $this->_newLink, $this->_clientFlags);
-			if (! is_resource($conn)) { 
-				throw new Exception('DB connection error:  ' . mysql_error(), mysql_errno()); 
-			}
+			$conn = @ mysqli_connect($this->_host, $this->_username, $this->_password, $this->_database);
 
-			$this->_dbConn = $conn;
+			/* check connection */
+			if (mysqli_connect_errno()) {
+				throw new EabException('DB connection error: ' . mysqli_connect_error(), EabExceptionCodes::DB_EXC);
+			}			
+
+			$this->_conn = $conn;
 			$this->_connetedTime = time();
 
-			$this->setConnectionCharset($this->_charset);
-			$this->selectDatabase($this->_database);
+			$this->_setConnectionCharset($this->_charset);
 		}
 		/**
 		* Prepare connection - reconnect if connection has been lost
 		*
 		* @return void
 		*/
-		private function prepareConnection() {
+		private function _prepareConnection() {
 
-			if (! is_resource($this->_dbConn) ) {
-				$this->reconnect();
+			if (empty($this->_conn)) {
+				$this->connect();
 			}
 			else {
 				$now = time();
@@ -191,53 +192,37 @@
 				}
 			}
 		}
-
-		/**
-		* Select work database
-		*
-		* @param string $database
-		* @return void
-		*/
-		public function selectDatabase($database)
-		{
-			$this->prepareConnection();
-			if (! @mysql_select_db($database, $this->_dbConn) ) {
-				throw new Exception('DB select db error: ' . mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
-			}
-		}
 		/**
 		* Set fetch mode
 		*
 		* @param string
 		*/
-		public function setFetchMode($fetchmode)
+		public function setFetchMode($resultType)
 		{
-			$this->_fetchMode = $fetchmode;
+			$this->_resultType = $resultType;
 		}
-
 		/**
 		* Set charset
 		*
 		* @param string
 		*/
-		public function setConnectionCharset($charset = 'UTF8')
+		public function _setConnectionCharset($charset = 'utf8')
 		{
-			$this->prepareConnection();
-			if (function_exists('mysql_set_charset')) {
-			
-				if (FALSE === mysql_set_charset($charset, $this->_dbConn)) {
-					throw new Exception('DB set charset error: ' . mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
+			$this->_prepareConnection();
+			if (function_exists('mysqli_set_charset(')) {
+				if (FALSE === mysqli_set_charset($this->_conn, $charset)) {
+					throw new EabException('DB set charset error: ' . mysqli_error($this->_conn), EabExceptionCodes::DB_EXC);
 				}
-			} 
+			}
 			else {
-				$res = mysql_query("SET NAMES '".$this->escape($charset)."'", $this->_dbConn);
-				if (FALSE === $res) { 
-					throw new Exception('DB set names error: ' . mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
+				$result = mysqli_query($this->_conn, "SET NAMES '".$this->escape($charset)."'");
+				if (FALSE === $result) { 
+					throw new EabException('DB set names error: ' . mysqli_error($this->_conn), EabExceptionCodes::DB_EXC);
 				}
 
-				$res = mysql_query("SET CHARACTER SET '".$this->escape($charset)."'", $this->_dbConn);
-				if (FALSE === $res) {
-					throw new Exception( 'DB set charset error: ' . mysql_error($this->_dbConn), mysql_errno($this->_dbConn));
+				$result = mysqli_query($this->_conn, "SET CHARACTER SET '".$this->escape($charset)."'");
+				if (FALSE === $result) {
+					throw new EabException( 'DB set charset error: ' . mysqli_error($this->_conn), EabExceptionCodes::DB_EXC);
 				}
 			}
 		}
@@ -249,9 +234,9 @@
 		*/
 		public function lastInsertID()
 		{
-			$id = mysql_insert_id($this->_dbConn);
+			$id = mysqli_insert_id($this->_conn);
 			if (FALSE === $id) {
-				throw new Exception('DB get last_insert_id error: ' . mysql_error(), mysql_errno($this->_dbConn)); 
+				throw new EabException('DB get last_insert_id error: ' . mysqli_error($this->_conn), EabExceptionCodes::DB_EXC); 
 			}
 			return $id;
 		}
@@ -264,24 +249,23 @@
 		*/
 		public function exec($sql)
 		{
-			$this->prepareConnection();
+			$this->_prepareConnection();
 
-			$this->last_query = $sql;
-			$start = microtime();
-			$result = mysql_query($sql, $this->_dbConn);
-			$end = microtime();
+			$t1 = microtime();
+			$result = mysqli_query($this->_conn, $sql);
+			$t2 = microtime();
 			if (FALSE === $result) { 
-				throw new Exception('DB exec error: ' . mysql_error($this->_dbConn));
+				throw new EabException('DB exec error: ' . mysqli_error($this->_conn));
 			}
 			
 			if (TRUE === $this->_isDebugMode) {
-				list($usec1, $sec1) = explode(' ', $start);
-				list($usec2, $sec2) = explode(' ', $end);
+				list($usec1, $sec1) = explode(' ', $t1);
+				list($usec2, $sec2) = explode(' ', $t2);
 				$difference = round($sec2 - $sec1 + $usec2 - $usec1, 6);
 				$this->_queries[] = array($sql, $difference);
 			}
 			
-			$affectedRows = mysql_affected_rows($this->_dbConn);
+			$affectedRows = mysqli_affected_rows($this->_conn);
 
 			return $affectedRows;
 		}
@@ -294,26 +278,87 @@
 		*/
 		public function query($sql)
 		{
-			$this->prepareConnection();
+			$this->_prepareConnection();
 
-			$this->last_query = $sql;
-			$start = microtime();
-			$result = mysql_query($sql, $this->_dbConn);
-			$end = microtime();
+			$t1 = microtime();
+			$result = mysqli_query($this->_conn, $sql);
+			$t2 = microtime();
 
 			if (FALSE === $result) { 
-				throw new Exception('DB query error: '.mysql_error($this->_dbConn)); 
+				throw new EabException('DB query error: '.mysqli_error($this->_conn), EabExceptionCodes::DB_EXC); 
 			}
 
 			if (TRUE === $this->_isDebugMode) {
-				list($usec1, $sec1) = explode(' ', $start);
-				list($usec2, $sec2) = explode(' ', $end);
+				list($usec1, $sec1) = explode(' ', $t1);
+				list($usec2, $sec2) = explode(' ', $t2);
 				$difference = round($sec2 - $sec1 + $usec2 - $usec1, 6);
 				$this->_queries[] = array($sql, $difference);
 			}
 
-			return new EabDbResultAdapter($res, $this->_fetchMode);
+			return new EabDbResultAdapter($result, $this->_resultType);
 		}
+		
+		/**
+		* Execute database multy query
+		*
+		* @param string
+		* 
+		* @return void
+		*/
+		public function multyQuery($sql)
+		{
+			$this->_prepareConnection();
+
+			$t1 = microtime();
+			$result = mysqli_query($this->_conn, $sql);
+			$t2 = microtime();
+
+			if (FALSE === $result) { 
+				throw new EabException('DB query error: '.mysqli_error($this->_conn), EabExceptionCodes::DB_EXC); 
+			}
+
+			if (TRUE === $this->_isDebugMode) {
+				list($usec1, $sec1) = explode(' ', $t1);
+				list($usec2, $sec2) = explode(' ', $t2);
+				$difference = round($sec2 - $sec1 + $usec2 - $usec1, 6);
+				$this->_queries[] = array($sql, $difference);
+			}
+		}
+
+		/**
+		* Get stored result
+		*
+		* @return EabDbResultAdapter
+		*/
+		public function storeResult()
+		{
+			$result = mysqli_store_result($this->_conn);
+			if (FALSE === $result) {
+				throw new EabException('DB store result not found', EabExceptionCodes::DB_EXC);
+			}
+			return new EabDbResultAdapter($result, $this->_resultType);
+		}
+		/**
+		* Check if there are any more query results from a multi query
+		* 
+		* @return EabDbResultAdapter
+		*/
+		public function moreResults()
+		{
+			$result = mysqli_more_results($this->_conn);
+			return new EabDbResultAdapter($result, $this->_resultType);
+		}
+		/**
+		* Prepare next result from multi_query
+		* 
+		* @return boolean
+		*/
+		public function nextResult()
+		{
+			$result = mysqli_next_result($this->_conn);
+			return new EabDbResultAdapter($result, $this->_resultType);
+		}
+
 
 		/**
 		* Return only one field from result
@@ -341,7 +386,7 @@
 		public function fetchRow($sql, $row = NULL)
 		{
 			$r = $this->query($sql);
-			$row = $r->fetchRow($this->_fetchMode, $row);
+			$row = $r->fetchRow($this->_resultType, $row);
 			$r->free();
 			return $row;
 		}
@@ -355,7 +400,7 @@
 		public function fetchAll($sql)
 		{
 			$r = $this->query($sql);
-			$data = $r->fetchAll($this->_fetchMode);
+			$data = $r->fetchAll($this->_resultType);
 			$r->free();
 			return $data;
 		}
@@ -367,12 +412,12 @@
 		* @param boolean
 		* @return mixed
 		*/
-		public function escape($value, $quotes = FALSE)
+		public function escape($value)
 		{
 			$quotes = (boolean) $quotes;
 			if (is_array($value)) {
-				foreach ($value as $key => $val) {
-					$value[$key]=$this->escape($val, $quotes);
+				foreach ($value as $k => $v) {
+					$value[$k]=$this->escape($v, $quotes);
 				}
 				return $value;
 			}
@@ -382,44 +427,52 @@
 				}
 
 				if (is_bool($value)) {
-					return $value ? 1 : 0;
+					return TRUE === $value ? 1 : 0;
 				}
 				elseif (is_string($value)) {
-					$this->prepareConnection();
-					$value = mysql_real_escape_string($value, $this->_dbConn);
+					$this->_prepareConnection();
+					$value = mysqli_real_escape_string($this->_conn, $value);
 					if (FALSE === $value) {
-						throw new Exception('DB escape string error: '.mysql_error($this->_dbConn));
-					}
-					if (TRUE === $quotes) {
-						$value = "'" . $value . "'";
+						throw new EabException('DB escape string error: '.mysqli_error($this->_conn));
 					}
 					return $value;
 				}
-				elseif (/*is_numeric($value)*/ is_float($value) || is_int($value)) {
+				elseif (is_float($value) || is_int($value)) {
 					return $value;
 				}
-	//			elseif (NULL === $value) {
-	//				return 'NULL';
-	//			}
 				else {
 					return '';
 				}
 			}
 		}
 		/**
-		* Get client encoding
+		* Prepare statement
+		* 
+		* @return mysqli_stmt
+		*/
+		public function prerapeStatement($sql)
+		{
+			$stmt = mysqli_prepare($this->_conn, $sql);
+			if (FALSE === $stmt) {
+				throw new EabException('DB prepare statement error: '.mysqli_error($this->_conn), EabExceptionCodes::DB_EXC);
+			}
+			
+			return $stmt;
+		}
+		/**
+		* Get the default character set for the database connection
 		*
 		* @return string
 		*/
-		public function getClientEncoding()
+		public function getConnectionDefaultCharset()
 		{
-			return mysql_client_encoding($this->_dbConn);
+			return mysqli_character_set_name($this->_conn);
 		}
 		/**
 		* Set transaction isolation
 		*
-		* @param string
-		* @param string
+		* @param string $isolation
+		* @param string $option
 		* @return void
 		*/
 		public function setTransactionIsolation($isolation = 'READ COMMITTED', $option = 'SESSION')
@@ -431,18 +484,18 @@
 		*
 		* @return void
 		*/
-		public function activateCommitTransaction()
+		public function activateAutoCommit()
 		{
-			$this->exec("SET AUTOCOMMIT=1");
+			$this->exec("SET AUTOCOMMIT = 1");
 		}
 		/**
-		* Remove auto commit
+		* Deactivate auto commit
 		*
 		* @return void
 		*/
-		public function deactivateAutoCommitTransaction()
+		public function deactivateAutoCommit()
 		{
-			$this->exec("SET AUTOCOMMIT=0");
+			$this->exec("SET AUTOCOMMIT = 0");
 		}
 		/**
 		* Begin transaction
@@ -451,7 +504,12 @@
 		*/
 		function beginTransaction()
 		{
-			$this->exec('START TRANSACTION');
+			if (function_exists('mysqli_begin_transaction')) {
+				mysqli_begin_transaction($this->_conn);
+			}
+			else {
+				$this->exec('START TRANSACTION');
+			}
 		}
 		/**
 		* Rollback transaction
@@ -460,7 +518,12 @@
 		*/
 		function rollBack()
 		{
-			return $this->exec('ROLLBACK');
+			if (function_exists('mysqli_rollback')) {
+				mysqli_rollback($this->_conn);
+			}
+			else {
+				$this->exec('ROLLBACK');
+			}
 		}
 		/**
 		* Commit transaction
@@ -469,7 +532,12 @@
 		*/
 		function commit()
 		{
-			return $this->exec('COMMIT');
+			if (function_exists('mysqli_rollback')) {
+				mysqli_commit($this->_conn);
+			}
+			else {
+				$this->exec('COMMIT');
+			}
 		}
 		/**
 		* Disconnect
@@ -478,27 +546,37 @@
 		*/
 		public function disconnect()
 		{
-			if (isset($this->_dbConn) && is_resource($this->_dbConn)) {
-				mysql_close($this->_dbConn);
+			if (! empty($this->_conn)) {
+				mysqli_close($this->_conn);
 			}
-			$this->_dbConn = NULL;
+			$this->_conn = NULL;
 			$this->_connetedTime = 0;
 		}
 		/**
-		* Call stored procedure
+		* Call stored procedure (with multy query).
+		* 
+		* Each param in params must be array with:
+		* 0 => param name
+		* 1 => param value
+		* 2 => param type symbol
 		*
 		* @param string 
 		* @param array
-		* @return EabDbResultAdapter
+		* 
+		* @return void
 		*/
 		public function executeStoredProc($name, $params = NULL)
 		{
-			$query = 'CALL ' . $name;
-			$query .= $params ? '(' . implode(',', $params) . ')' : '()';
-			$r = $this->query($query);
-
-			$this->reconnect();
-			return $r;
+			if (! empty($params)) {
+				foreach ($params as $k => $v) {
+					$params[$k] = $this->escape($v);
+				}
+			}
+			
+			$query = 'CALL ' . $this->escape($name);
+			$query .= ! empty($params) ? '(' . implode(',', $params) . ')' : '()';
+			
+			$this->multyQuery($query);
 		}
 		/**
 		* Reconnect database
