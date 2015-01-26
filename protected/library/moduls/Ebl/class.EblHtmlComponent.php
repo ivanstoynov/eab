@@ -1,6 +1,6 @@
 <?php
 
-	include_once dirname(__FILE__) . '/Interfaces/interface.IRednable.php';
+	include_once dirname(__FILE__) . '/Interfaces/interface.IRednderable.php';
 
 	/**
 	* This is abstract class describe basic html component.
@@ -9,8 +9,7 @@
 	* @pakage Ebl
 	* @subpakage HtmlComponents
 	*/
-	abstract class EblHtmlComponent implements IRendable
+	abstract class EblHtmlComponent implements IRednderable
 	{
-		
 	}
 ?>
