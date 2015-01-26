@@ -1,9 +1,4 @@
-<?php EabModulsImporter::import('Ebl/HtmlComponents/*') ?>
-
 index view here
-<br/>
-<?php echo $this->testt; ?>
-
 <br />
 <br />
 <br />
@@ -14,7 +9,7 @@ index view here
 <?php 
 	//$this->formValidator->getValidator('sometextbox')->displayErrors();
 	 $textbox = new EblTextComponent('sometextbox','test');
-	 $textbox->printHtml();
+	 $textbox->render();
 ?>
 <br />
 <?php $sex =  new EblSelectComponent('sex', array(
@@ -23,7 +18,7 @@ index view here
 		new EblOptionComponent('f', 'female')
 	)); 
 	//$sex->setMultiple(TRUE);
-	$sex->printHtml();
+	$sex->render();
 ?>
 	
 <br />
@@ -31,19 +26,19 @@ index view here
 		'rows'=>'10',
 		'cols'=>'50',
 	)); 
-	$textarea->printHtml();
+	$textarea->render();
 ?>
 
 <br />
-<?php $this->rbList->printHtml(); ?>
+<?php $this->form->rbList->render(); ?>
 <br />
 <div style="clear:both"></div>
-<?php $this->cbxList->printHtml(); ?>
+<?php $this->form->cbxList->render(); ?>
 <div style="clear:both"></div>
 <br />
 <?php 
 	$button = new EblSubmitComponent('subBtn','Submit form'); 
-	$button->printHtml();
+	$button->render();
 ?>
 
 </form>

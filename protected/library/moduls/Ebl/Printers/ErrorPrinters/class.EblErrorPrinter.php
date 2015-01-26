@@ -1,6 +1,6 @@
 <?php
 	/**
-	* IEblErrorPrinter interface
+	* EblErrorPrinter interface
 	*
 	* @author Ivan Stoyanov <iv44@yahoo.com>
 	* @pakage Ebl/Printers

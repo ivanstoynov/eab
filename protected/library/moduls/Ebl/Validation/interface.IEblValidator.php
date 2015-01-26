@@ -1,6 +1,6 @@
 <?php
 
-	include_once(dirname(__FILE__).'/../interfaces/interface.IValidatable.php');
+	include_once dirname(__FILE__) .  '/../Interfaces/interface.IValidatable.php';
 
 	/**
 	* IEblValidator interface

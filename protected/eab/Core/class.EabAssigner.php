@@ -57,7 +57,7 @@
 				return $this->_assigns[$prop];
 			}
 			else{
-				throw new EabException("Property not found!", EabExceptionCodes::PROPERTY_NOT_FOUND_EXC);
+				throw new EabException("Can not found assigned valueProperty not found!", EabExceptionCodes::PROPERTY_NOT_FOUND_EXC);
 			}
 		}
 		/**

@@ -7,11 +7,11 @@
 	
 	try {
 		
-		$loader = new EabAutoLoader();
+		$loader = EabAutoLoader::GetInstance();
 		$loader->registerAutoloadPath(dirname(__FILE__).'/protected/eab/');
 		
 		Eab::app()->run();
-		
+/*		
 		$db = new EabDbAdapter(array(
 			'username' => 'root',
 			'password' => '',
@@ -22,21 +22,7 @@
 		
 		$data = $db->exec("UPDATE books SET price = 25 WHERE id = 1");
 		Eab::debug($data);
-		
-		// test from office
-		
-		/*
-		$db=EabDb::GetInstance();
-		$db->applySettings(
-			array(
-				'host'=>'127.0.0.1',
-				'username'=>'root',
-				'password'=>'',
-				'database'=>'schoolrate'
-		));
-		
-		Eab::debug($db->fetchOne("select from schools"));
-		*/
+*/		
 			
 
 /*	

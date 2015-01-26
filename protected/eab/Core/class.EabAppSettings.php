@@ -65,6 +65,12 @@
 		*/
 		private $_controllersDir;
 		/**
+		* Models directory path
+		* 
+		* @var string
+		*/
+		private $_modelsDir;
+		/**
 		* Views directory path
 		* 
 		* @var string
@@ -150,6 +156,7 @@
 			$this->_modulesDir = $root_dir . 'protected' . $ds . 'library' . $ds.'moduls' . $ds;
 			$this->_sectionsDir = $root_dir . 'protected' . $ds . 'sections' . $ds;
 			$this->_controllersDir = $root_dir . 'protected' . $ds . 'controllers' . $ds;
+			$this->_modelsDir = $root_dir . 'protected' . $ds . 'models' . $ds;
 			$this->_viewsDir = $root_dir . 'protected' . $ds.'views' . $ds;
 			$this->_layoutsDir = $root_dir . 'protected' . $ds . 'views' . $ds . '_layouts' . $ds;
 			$this->_stylesDir = $root_dir . 'public' . $ds . 'styles' . $ds;

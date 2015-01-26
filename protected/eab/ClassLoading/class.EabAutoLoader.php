@@ -10,6 +10,7 @@
 	*/
 	class EabAutoLoader
 	{
+		private static $_instance;
 		/**
 		* Directory separator
 		*
@@ -34,13 +35,29 @@
 		*
 		* @return void
 		*/
-		public function __construct()
+		private function __construct()
 		{
 			$this->_registredPaths = array();
 			$this->_pathsCache = array();
 			$this->_ds = DIRECTORY_SEPARATOR;
 			spl_autoload_register(array($this, '_autoloadHandler'));
 		}
+		
+		private function __clone(){}
+		
+		/**
+		* Get instance of class
+		* 
+		* @return EabAutoLoader
+		*/
+		public static function GetInstance()
+		{
+			if (! isset(self::$_instance)) {
+				self::$_instance = new self();
+			}
+			return self::$_instance;
+		}
+
 		/**
 		* Register autoload path
 		* 

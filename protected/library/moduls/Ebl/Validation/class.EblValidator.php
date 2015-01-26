@@ -1,6 +1,6 @@
 <?php
 
-	include_once(dirname(__FILE__).'/interface.IEblValidator.php');
+	include_once dirname(__FILE__) . '/interface.IEblValidator.php';
 
 	/**
 	* Class describe html element validator

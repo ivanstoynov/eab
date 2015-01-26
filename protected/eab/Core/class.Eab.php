@@ -4,27 +4,70 @@
 	*/
 	class Eab
 	{
-		/** @var Eab Static instace */
+		/**
+		* 
+		* @var Eab
+		*/
 		private static $_instace;
-		/** @var EabAppSettings Application settings */
+		/**
+		* Application settings
+		* 
+		* @var EabAppSettings
+		*/
 		private $_appSettings;
-		/** @var EabDbAdapter Database addapter */
+		/**
+		* Database addapter
+		* 
+		* @var EabDbAdapter
+		*/
 		private $_dbAdapter;
-		/** @var string Controller name */
+		/**
+		* Controller name
+		* 
+		* @var string
+		*/
 		private $_controllerName;
-		/** @var string Controller path */
+		/**
+		* Controller path
+		* 
+		* @var string
+		*/
 		private $_controllerPath;
-		/** @var string Controller file */
+		/**
+		* Controller file
+		* 
+		* @var string
+		*/
 		private $_controllerFile;
-		/** @var string Action name */
+		/**
+		* Action name
+		* 
+		* @var sting
+		*/
 		private $_actionName;
-		/** @var string Application configurations file */
+		/**
+		* Application configurations file
+		* 
+		* @var string
+		*/
 		private $_appSettingsFile;
-		/** @var string How is configure application ('array','xml','json') */
+		/**
+		* How is configure application ('array','xml','json')
+		* 
+		* @var string
+		*/
 		private $_appSettingsFileFormat;
-		/** @var string pages config file */
+		/**
+		* Pages config file
+		* 
+		* @var string
+		*/
 		private $_pagesSettingsFile;
-		/** @var string How is configure page */
+		/**
+		* How is configure page ('array','xml','json')
+		* 
+		* @var string
+		*/
 		private $_pagesSettingsFileFormat;
 		
 		/**
@@ -65,28 +108,21 @@
 		*/
 		public function run()
 		{
-			$this->_loadAppSettings();
-
-			$this->_dbAdapter->setSettings();
+			if (! empty($this->_appSettingsFile)) {
+				$fileSettingsLoader = EabFileSettingsLoader::CreateLoader($this->_appSettingsFile, $this->_appSettingsFileFormat);
+				$settings = $fileSettingsLoader->loadSettings();
+				$this->_appSettings->setSettings($settings['appSettings']);
+				$this->_dbAdapter->setSettings($settings['dbSettings']);
+			}
 			
+			$autoLoader = EabAutoLoader::GetInstance();
+			$autoLoader->registerAutoloadPath($this->_appSettings->getModelsDir());
+			// Connect to database
+			$this->_dbAdapter->connect();
 			// Pharse url to load controller and action data
 			$this->_pharseControllersPath();
 			// Run controller
 			$this->_runController();
-		}
-		/**
-		* Load application settings
-		*
-		* @return void
-		*/
-		private function _loadAppSettings()
-		{
-			// todo:
-			if ($this->_appSettingsFile) {
-				$fileSettingsLoader = EabFileSettingsLoader::CreateLoader($this->_appSettingsFile, $this->_appSettingsFileFormat);
-				$settings = $fileSettingsLoader->loadSettings();
-				$this->_appSettings->setSettings($settings);
-			}
 		}
 		/**
 		* Pharse controller pah and foun controler name, controler file

@@ -1,6 +1,6 @@
 <?php
 
-	include_once(dirname(__FILE__).'/class.EblErrorPrinter.php');
+	include_once dirname(__FILE__) . '/class.EblErrorPrinter.php';
 
 	/**
 	* CustumErrorPrinter class

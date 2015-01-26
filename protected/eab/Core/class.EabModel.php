@@ -52,6 +52,8 @@
 				$this->_pkColumn = 'id';
 			}
 			$this->_modelFields = array();
+			
+			$this->_dbAdapter = Eab::app()->getDbAdapter();
 		}
 		/**
 		* Load table name from class name
@@ -64,7 +66,7 @@
 			if ('model' !== substr(strtolower($class), -5, 5)) {
 				throw new EabException('Model class must be ended with "model"!', EabExceptionCodes::UNKNOWN_EXC);
 			}
-			$this->_tableName = $class . 's';
+			$this->_tableName = substr($class, 0, -5) . 's';
 		}
 		/**
 		* Load model from database
@@ -137,41 +139,48 @@
 		* 
 		* @return
 		*/
-		public function find($criterias = array())
+		public static function find($criterias = array())
 		{
+			$dbAdapter = Eab::app()->getDbAdapter();
+			
 			if (! empty($criterias['columns'])) {
 				if (is_array($criterias['columns'])) {
 					$sql = 'SELECT `' . implode('`,`', $criterias['columns']) . '` FROM ';
 				}
 				else{
-					$sql = 'SELECT '.$criterias['columns'].' FROM ';
+					$sql = 'SELECT ' . $dbAdapter->escape($criterias['columns']);
 				}
 			}
 			else{
-				$sql = 'SELECT * FROM `'.$this->_tableName.'` ';
+				$sql = 'SELECT *';
 			}
 			
+			$modelClass = get_called_class();
+			$model = new $modelClass();
+			
+			$tableName = $model->getTableName();
+			$sql .= ' FROM `' . $dbAdapter->escape($tableName) . '` ';
+			
 			if (! empty($criterias['where'])) {
-				$sql .= "\nWHERE " . $criterias['where'] . ' ';
+				$sql .= "\nWHERE " . $dbAdapter->escape($criterias['where']) . ' ';
 			}
 			
 			if (! empty($criterias['order'])) {
-				$sql .= "\nORDER BY " . $criterias['order'] . ' ';
+				$sql .= "\nORDER BY " . $dbAdapter->escape($criterias['order']) . ' ';
 			}
 			
 			if (! empty($criterias['having'])) {
-				$sql .= "\nHAVING " . $criterias['having'] . ' ';
+				$sql .= "\nHAVING " . $dbAdapter->escape($criterias['having']) . ' ';
 			}
 
 			if (! empty($criterias['limit'])) {
-				$sql .= "\nLIMIT " . $criterias['limit'] . ' ';
+				$sql .= "\nLIMIT " . $dbAdapter->escape($criterias['limit']) . ' ';
 			}
-			
-			$class = get_class($this);
+
 			$models = array();
-			$result = $this->_dbAdapter->query($sql);
+			$result = $dbAdapter->query($sql);
 			while ($row = $result->fetchRow()) {
-				$model = new $class();
+				$model = new $modelClass();
 				$model->loadFromArray($row);
 				$models[] = $model;
 			}
@@ -196,7 +205,7 @@
 				}
 				$statement = substr($statement, 0, -1);
 			}
-			else{
+			else {
 				$statement = $this->_dbAdapter->escape($this->_pkColumn) . "='" . $this->_dbAdapter->escape($this->{$this->_pkColumn}) . "'";
 			}
 

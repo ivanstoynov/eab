@@ -1,29 +1,29 @@
 <?php
 
 	EabModulsImporter::import('Ebl/Validation/*');
-	EabModulsImporter::import('Ebl/HtmlComponents/*');
-	EabModulsImporter::import('Ebl/HtmlComponents/Standart/class.EblCheckBoxList.php');
-
+	EabModulsImporter::import('Ebl/FormComponents/*');
+	
 	class IndexController extends EabController
 	{
 		public function index()
 		{
-			echo 'This is '.__METHOD__.'()<br/>';
-			$this->testt='testtt';
 			
-			Eab::debug($name);
+			
+			$books = BookModel::find(array('where'=>'id=' . 2));
+			$book = $books[0];
+			//$book->
+			//Eab::debug($books);
 			
 			//$radio = new EblRadioButtonComponent('sex', 'male', 'male sex',false);
 			//$radio->setTextPosition('right');
 			
-			$form = new EblHtmlForm();
+			$form = new EblForm();
 			
 			$cbxList = new EblCheckBoxList('sex1');
 			$cbxList->setTextPosition('right');
 			$cbxList->setDirection('vertical');
 			$cbxList->addElement(new EblCheckBoxComponent('', 'male', 'm', false));
 			$cbxList->addElement(new EblCheckBoxComponent('', 'female', 'f', true));
-			$this->cbxList = $cbxList;
 			$form->cbxList = $cbxList;
 			
 			
@@ -32,9 +32,13 @@
 			$rbList->setDirection('vertical');
 			$rbList->addElement(new EblRadioButtonComponent('','male', 'm', false));
 			$rbList->addElement(new EblRadioButtonComponent('','female', 'f', true));
-			$this->rbList = $rbList;
+			$form->rbList = $rbList;
 			
 			
+			 $txtName = new EblTextComponent('sometextbox','test');
+			 //$txtName->addValidator();
+			
+			$this->form = $form;
 			
 			// Validation
 			//$formValidator = new EblFormValidator();

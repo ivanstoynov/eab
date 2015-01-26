@@ -1,6 +1,6 @@
 <?php
 
-	include_once(dirname(__FILE__).'/../class.EblValidator.php');
+	include_once dirname(__FILE__) . '/../class.EblValidator.php';
 
 	/**
 	* Range validator class

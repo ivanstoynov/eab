@@ -10,5 +10,4 @@
 		const REGEXP   = 'regexp';
 		const CUSTOM   = 'custom';
 	}
-
 ?>
