@@ -37,7 +37,7 @@
 		* 
 		* @return void
 		*/
-		public function __construct($name, $label, $value, $checked = FALSE, $attributes = array())
+		public function __construct($name, $label, $value = null, $checked = FALSE, $attributes = array())
 		{
 			parent::__construct($name, $attributes);
 			$this->_label = (string) $label;
@@ -52,13 +52,15 @@
 		*/
 		public function handleRequest()
 		{
-			$value = $_REQUEST[$this->getName()];
-			if ($this->getValue() === $value) {
+			$value = isset($_REQUEST[$this->getName()]) ? $_REQUEST[$this->getName()] : NULL;
+			$this->setValue($value);
+			if (isset($value)) {
 				$this->_checked = TRUE;
 			}
 			else {
 				$this->_checked = FALSE;
 			}
+			$this->updateValidatorValues();
 		}
 		/**
 		* Set text position (setter)

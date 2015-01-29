@@ -143,6 +143,7 @@
 		{
 			$name = $this->getName();
 			$value = isset($_REQUEST[$name]) ? $_REQUEST[$name] : '';
+			$this->setValue($value);
 			if (is_array($value)) {
 				foreach ($value as $k => $val) {
 					$value[$k] = (string) $val;
@@ -167,8 +168,8 @@
 					}
 				}
 			}
-
 			$this->setValue($value);
+			$this->updateValidatorValues();
 		}
 		/**
 		* Set elements (setter)

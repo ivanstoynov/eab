@@ -14,14 +14,13 @@
 		/**
 		* Constructur of class
 		* 
-		* @param mixed $value
 		* @param string|null $errorMessage
 		* 
 		* @return void
 		*/
-		public function __construct($value, $errorMessage = null)
+		public function __construct($errorMessage = null)
 		{
-			parent::__construct($value, $errorMessage);
+			parent::__construct($errorMessage);
 		}
 		
 		/**

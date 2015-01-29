@@ -21,15 +21,14 @@
 		/**
 		* Constructur of class
 		* 
-		* @param string value
 		* @param string $regExp
 		* @param string|null $errorMessage
 		* 
 		* @return void
 		*/
-		public function __construct($value, $regExp, $errorMessage = null)
+		public function __construct($regExp, $errorMessage = null)
 		{
-			parent::__construct($value, $errorMessage);
+			parent::__construct($errorMessage);
 			$this->_regExp = $regExp;
 		}
 		

@@ -29,14 +29,12 @@
 		/**
 		* Constructur of class
 		* 
-		* @param mixed $value
 		* @param string|NULL $errorMessage
 		* 
 		* @return void
 		*/
-		public function __construct($value, $errorMessage = null)
+		public function __construct($errorMessage = null)
 		{
-			$this->_value = $value;
 			$this->_errorMessage = $errorMessage;
 		}
 	    /**

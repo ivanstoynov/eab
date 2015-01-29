@@ -4,6 +4,7 @@ return array(
 	'appSettings' => array(
 		'defaultLayout'=>'master.layout.php',
 	),
+	
 	'dbSettings' => array(
 		'username' => 'root',
 		'password' => '',

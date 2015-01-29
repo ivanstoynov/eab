@@ -27,16 +27,15 @@
 		/**
 		* Constructur of class
 		* 
-		* @param mixed $value
 		* @param mixed $comparableValue
 		* @param boolean $strictCompare
 		* @param string|null $errorMessage
 		* 
 		* @return void
 		*/
-		public function __construct($value, $comparableValue, $strictCompare = TRUE, $errorMessage = null)
+		public function __construct($comparableValue, $strictCompare = TRUE, $errorMessage = null)
 		{
-			parent::__construct($value, $errorMessage);
+			parent::__construct($errorMessage);
 			$this->_comparableValue = $comparableValue;
 			$this->strictCompare = $strictCompare;
 		}

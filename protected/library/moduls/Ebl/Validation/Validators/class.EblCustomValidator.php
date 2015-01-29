@@ -21,15 +21,14 @@
 		/**
 		* Constructur of class
 		* 
-		* @param string $value
 		* @param callable $validationCallback
 		* @param string|null $errorMessage
 		* 
 		* @return void
 		*/
-		public function __construct($value, $validationCallback, $errorMessage = null)
+		public function __construct($validationCallback, $errorMessage = null)
 		{
-			parent::__construct($value, $errorMessage);
+			parent::__construct($errorMessage);
 			$this->_validationCallback = $validationCallback;
 		}
 		

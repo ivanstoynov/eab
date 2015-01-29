@@ -144,6 +144,7 @@
 		{
 			$value = $_REQUEST[$this->getName()];
 			$this->setValue($value);
+			$this->updateValidatorValues();
 		}
 		/**
 		* Validate element
@@ -187,7 +188,7 @@
 		* 
 		* @return void
 		*/
-		public function updateValidators()
+		public function updateValidatorValues()
 		{
 			foreach ($this->_validators as &$validator) {
 				$validator->setValue($this->_value);

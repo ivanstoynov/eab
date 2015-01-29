@@ -53,7 +53,7 @@
 				$elementName = $element->getName();
 				if (isset($_REQUEST[$elementName])) {
 					$element->setValue($_REQUEST[$elementName]);
-					$element->updateValidators();
+					$element->updateValidatorValues();
 				}
 			}
 		}

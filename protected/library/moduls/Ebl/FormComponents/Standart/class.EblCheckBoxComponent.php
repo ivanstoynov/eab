@@ -24,7 +24,7 @@
 		* 
 		* @return void
 		*/
-		public function __construct($name, $label, $value, $checked = FALSE, $attributes = array())
+		public function __construct($name, $label, $value = null, $checked = FALSE, $attributes = array())
 		{
 			parent::__construct($name, $label, $value, $checked, $attributes);
 		}

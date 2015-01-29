@@ -23,14 +23,13 @@
 		/**
 		* Constructur of class
 		* 
-		* @param float|integer $value
 		* @param float|integer|null $from
 		* @param float|integer|null $to
 		* @param string|null $errorMessage
 		* 
 		* @return void
 		*/
-		public function __construct($value, $from, $to, $errorMessage = null)
+		public function __construct($from, $to, $errorMessage = null)
 		{
 			parent::__construct($value, $errorMessage);
 			$this->_from = $from;

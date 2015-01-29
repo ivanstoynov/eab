@@ -23,16 +23,15 @@
 		/**
 		* Constructur of class
 		* 
-		* @param string $value
 		* @param integer|null $minLength
 		* @param integer|null $maxLength
 		* @param string|null $errorMessage
 		* 
 		* @return void
 		*/
-		public function __construct($value, $minLength, $maxLength, $errorMessage = null)
+		public function __construct($minLength, $maxLength, $errorMessage = null)
 		{
-			parent::__construct($value, $errorMessage);
+			parent::__construct($errorMessage);
 			$this->_minLength = $minLength;
 			$this->_maxLength = $maxLength;
 		}
