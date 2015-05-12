@@ -169,7 +169,7 @@
 				call_user_func($this->_custormErrorsViewCallback, array($this->_errors));
 			}
 			else{
-				echo "\t\t" . '<ul class="formErrorPanel">' . "\n";
+				echo "\t\t" . '<ul class="validationError">' . "\n";
 				foreach ($this->_errors as $erroror) {
 					echo "\t\t\t" . '<li>'.$erroror . '</li>' . "\n";
 				}

@@ -180,7 +180,7 @@
 		*
 		* @return void
 		*/
-		private function _prepareConnection() {
+		private function _checkConnection() {
 
 			if (empty($this->_conn)) {
 				$this->connect();
@@ -208,7 +208,7 @@
 		*/
 		public function _setConnectionCharset($charset = 'utf8')
 		{
-			$this->_prepareConnection();
+			$this->_checkConnection();
 			if (function_exists('mysqli_set_charset(')) {
 				if (FALSE === mysqli_set_charset($this->_conn, $charset)) {
 					throw new EabException('DB set charset error: ' . mysqli_error($this->_conn), EabExceptionCodes::DB_EXC);
@@ -249,7 +249,7 @@
 		*/
 		public function exec($sql)
 		{
-			$this->_prepareConnection();
+			$this->_checkConnection();
 
 			$t1 = microtime();
 			$result = mysqli_query($this->_conn, $sql);
@@ -278,7 +278,7 @@
 		*/
 		public function query($sql)
 		{
-			$this->_prepareConnection();
+			$this->_checkConnection();
 
 			$t1 = microtime();
 			$result = mysqli_query($this->_conn, $sql);
@@ -307,7 +307,7 @@
 		*/
 		public function multyQuery($sql)
 		{
-			$this->_prepareConnection();
+			$this->_checkConnection();
 
 			$t1 = microtime();
 			$result = mysqli_query($this->_conn, $sql);
@@ -430,7 +430,7 @@
 					return TRUE === $value ? 1 : 0;
 				}
 				elseif (is_string($value)) {
-					$this->_prepareConnection();
+					$this->_checkConnection();
 					$value = mysqli_real_escape_string($this->_conn, $value);
 					if (FALSE === $value) {
 						throw new EabException('DB escape string error: '.mysqli_error($this->_conn));

@@ -40,6 +40,41 @@
 			echo '<input ' . $attStr . ' />' . "\n";
 		}
 		/**
+		* Open form
+		* 
+		* @param array $attributes
+		* 
+		* @return void
+		*/
+		public static function open($settings = array())
+		{
+			$method = ! empty($settings['method']) ? htmlspecialchars($settings['method']) : 'POST';
+			
+			$attributes = 'method="' . $method . '" ';
+			if (! empty($settings['accept'])) {
+				$attributes.= 'accept="' . htmlspecialchars($settings['accept']) . '" ';
+			}
+			if (! empty($settings['charset'])) {
+				$attributes.= 'accept-charset="' . htmlspecialchars($settings['charset']) . '" ';
+			}
+			if (! empty($settings['enctype'])) {
+				$attributes.= 'enctype="' . htmlspecialchars($settings['enctype']) . '" ';
+			}
+			
+			
+			echo '<form ' . $attributes . '>';
+			echo '<input type="hidden" name="_method" value="' . $method . '">';
+		}
+		/**
+		* Close form
+		* 
+		* @return
+		*/
+		public static function close()
+		{
+			echo '</form>';
+		}		
+		/**
 		* Create text field
 		* 
 		* @param string $name
@@ -214,7 +249,7 @@
 		* 
 		* @return
 		*/
-		public static function selectOfRangeM($name, $from, $to, $value, $attributes = array())
+		public static function selectOfRange($name, $from, $to, $value, $attributes = array())
 		{
 			$options = array();
 			if( $from < $to) {
